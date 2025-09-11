@@ -33,7 +33,7 @@ extension Color {
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var isAuthenticated = false
+    @AppStorage("isUserLoggedIn") private var isAuthenticated = false
     @State private var showLogin = false
     @State private var showSignup = false
     @State private var showForgotPassword = false
@@ -190,20 +190,7 @@ struct MapView: View {
     }
 }
 
-struct ProfileView: View {
-    var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Profile")
-                    .font(.system(size: 48, weight: .bold))
-                    .foregroundColor(Color.primary)
-                Spacer()
-            }
-            .padding()
-            .navigationTitle("Profile")
-        }
-    }
-}
+// Removido ProfileView duplicado para evitar conflito de declaração
 
 // MARK: - Authentication Screens (Custom UI)
 // (ForgotPasswordView, InstructionsView are now in their own files)
