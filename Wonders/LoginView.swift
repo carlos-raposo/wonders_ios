@@ -1,5 +1,8 @@
 import SwiftUI
 import FirebaseAuth
+import GoogleSignIn
+import FirebaseFirestore
+import FirebaseCore
 
 struct LoginView: View {
     var onAuthenticated: () -> Void
@@ -9,6 +12,7 @@ struct LoginView: View {
     @State private var showSignUp = false
     @State private var errorMessage: String? = nil
     @Environment(\.dismiss) private var dismiss
+    @State private var notificationObserver: NSObjectProtocol?
 
     var body: some View {
         VStack(spacing: 24) {
@@ -59,7 +63,11 @@ struct LoginView: View {
             }
             .padding(.horizontal)
 
-            Button(action: { /* Google sign-in */ }) {
+            Button(action: {
+                if let rootVC = UIApplication.topViewController() {
+                    GIDSignIn.sharedInstance.signIn(withPresenting: rootVC)
+                }
+            }) {
                 HStack {
                     Image(systemName: "g.circle")
                         .foregroundColor(.red)
@@ -88,5 +96,33 @@ struct LoginView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            notificationObserver = NotificationCenter.default.addObserver(forName: .googleSignInSuccess, object: nil, queue: .main) { _ in
+                onAuthenticated()
+            }
+        }
+        .onDisappear {
+            if let observer = notificationObserver {
+                NotificationCenter.default.removeObserver(observer)
+            }
+        }
+    }
+}
+
+// Helper to get the current UIViewController from SwiftUI
+extension UIApplication {
+    static func topViewController(base: UIViewController? = UIApplication.shared.connectedScenes
+        .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+        .first?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return topViewController(base: selected)
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
     }
 }

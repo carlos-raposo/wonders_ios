@@ -9,6 +9,7 @@ target 'Wonders' do
   pod 'leveldb-library'
   pod 'RecaptchaInterop'
   pod 'nanopb'
+  pod 'GoogleSignIn'
 
   target 'WondersTests' do
     inherit! :search_paths

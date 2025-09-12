@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct SignupView: View {
     var onAuthenticated: () -> Void
@@ -53,7 +54,22 @@ struct SignupView: View {
                         self.errorMessage = error.localizedDescription
                     } else {
                         self.errorMessage = nil
-                        onAuthenticated()
+                        let db = Firestore.firestore()
+                        db.collection("users").document(result!.user.uid).setData([
+                            "name": name,
+                            "email": email,
+                            "createdAt": FieldValue.serverTimestamp(),
+                            "lastLogin": FieldValue.serverTimestamp(),
+                            "authProvider": "local",
+                            "photoURL": ""
+                        ]) { error in
+                            if let error = error {
+                                self.errorMessage = error.localizedDescription
+                            } else {
+                                self.errorMessage = nil
+                                onAuthenticated()
+                            }
+                        }
                     }
                 }
             }) {

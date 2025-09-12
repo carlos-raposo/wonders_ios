@@ -10,6 +10,7 @@ import Firebase
 
 @main
 struct WondersApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init() {
         FirebaseApp.configure()
     }

@@ -48,7 +48,9 @@ struct ContentView: View {
                     onAuthenticated: { isAuthenticated = true }
                 )
             } else {
-                MainTabView()
+                NavigationStack {
+                    MainTabView()
+                }
             }
         }
         .background(
@@ -128,37 +130,6 @@ struct AuthenticationFlowView: View {
     }
 }
 
-// MARK: - Tab Bar Navigation
-struct MainTabView: View {
-    @State private var selectedTab = 0
-
-    var body: some View {
-        TabView(selection: $selectedTab) {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
-                }.tag(0)
-            FavoritesView()
-                .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("Favorites")
-                }.tag(1)
-            MapView()
-                .tabItem {
-                    Image(systemName: "map.fill")
-                    Text("Map")
-                }.tag(2)
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person.crop.circle")
-                    Text("Profile")
-                }.tag(3)
-        }
-        .accentColor(WondersTheme.buttonBlue)
-    }
-}
-
 // MARK: - Placeholder Views
 struct FavoritesView: View {
     var body: some View {
@@ -171,21 +142,6 @@ struct FavoritesView: View {
             }
             .padding()
             .navigationTitle("Favorites")
-        }
-    }
-}
-
-struct MapView: View {
-    var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Map")
-                    .font(.system(size: 48, weight: .bold))
-                    .foregroundColor(Color.primary)
-                Spacer()
-            }
-            .padding()
-            .navigationTitle("Map")
         }
     }
 }
