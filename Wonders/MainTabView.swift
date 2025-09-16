@@ -54,10 +54,7 @@ struct MainTabView: View {
                     }
                 case 2:
                     NavigationStack {
-                        VStack {
-                            Text("Search")
-                            Spacer()
-                        }
+                        SearchView()
                     }
                 case 3:
                     NavigationStack {
