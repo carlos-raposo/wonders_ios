@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var languageSettings: LanguageSettings
     @State private var selectedTab: Int = 0
     @State private var showMiniaturas: Bool = false
     @State private var selectedCategoryIndex: Int? = nil
@@ -24,54 +25,49 @@ struct MainTabView: View {
     ]
     
     var body: some View {
-        ZStack {
-            switch selectedTab {
-            case 0:
-                VStack(spacing: 0) {
-                    if showMiniaturas, let idx = selectedCategoryIndex {
-                        MiniaturasView(
-                            categories: categories.map { $0.title },
-                            initialCategory: idx,
-                            selectedTab: $selectedTab,
-                            showMiniaturas: $showMiniaturas
-                        )
-                    } else {
-                        HomeView(
-                            categories: categories,
-                            imageNames: imageNames,
-                            columns: columns,
-                            showMiniaturas: $showMiniaturas,
-                            selectedCategoryIndex: $selectedCategoryIndex,
-                            selectedTab: $selectedTab
-                        )
+        VStack(spacing: 0) {
+            ZStack {
+                switch selectedTab {
+                case 0:
+                    NavigationStack {
+                        if showMiniaturas, let idx = selectedCategoryIndex {
+                            MiniaturasView(
+                                categories: categories.map { $0.title },
+                                initialCategory: idx,
+                                selectedTab: $selectedTab,
+                                showMiniaturas: $showMiniaturas
+                            )
+                        } else {
+                            HomeView(
+                                categories: categories,
+                                imageNames: imageNames,
+                                columns: columns,
+                                showMiniaturas: $showMiniaturas,
+                                selectedCategoryIndex: $selectedCategoryIndex,
+                                selectedTab: $selectedTab
+                            )
+                        }
                     }
-                    MiniaturasTabBar(selectedTab: $selectedTab, showMiniaturas: $showMiniaturas)
+                case 1:
+                    NavigationStack {
+                        FavoritesView()
+                    }
+                case 2:
+                    NavigationStack {
+                        VStack {
+                            Text("Search")
+                            Spacer()
+                        }
+                    }
+                case 3:
+                    NavigationStack {
+                        SettingsView(selectedTab: $selectedTab)
+                    }
+                default:
+                    EmptyView()
                 }
-            case 1:
-                VStack {
-                    Text("Favorites")
-                    Spacer()
-                    MiniaturasTabBar(selectedTab: $selectedTab)
-                }
-            case 2:
-                VStack {
-                    Text("Search")
-                    Spacer()
-                    MiniaturasTabBar(selectedTab: $selectedTab)
-                }
-            case 3:
-                VStack(spacing: 0) {
-                    SettingsView()
-                    MiniaturasTabBar(selectedTab: $selectedTab)
-                }
-            default:
-                EmptyView()
             }
-        }
-        .onChange(of: selectedTab) { newValue in
-            if newValue != 0 {
-                showMiniaturas = false
-            }
+            MiniaturasTabBar(selectedTab: $selectedTab, showMiniaturas: $showMiniaturas)
         }
     }
 }
@@ -80,6 +76,15 @@ struct MainTabView: View {
 struct MiniaturasTabBar: View {
     @Binding var selectedTab: Int
     var showMiniaturas: Binding<Bool>? = nil
+    @EnvironmentObject var languageSettings: LanguageSettings
+    private let tabTranslations: [String: [String]] = [
+        "en": ["Home", "Favorites", "Search", "Settings"],
+        "pt": ["Início", "Favoritos", "Pesquisar", "Definições"]
+    ]
+    private func t(_ idx: Int) -> String {
+        let lang = languageSettings.language
+        return tabTranslations[lang]?[idx] ?? tabTranslations["en"]![idx]
+    }
     var body: some View {
         HStack {
             Spacer()
@@ -89,7 +94,7 @@ struct MiniaturasTabBar: View {
             }) {
                 VStack {
                     Image(systemName: "house.fill")
-                    Text("Home")
+                    Text(t(0))
                 }
                 .foregroundColor(selectedTab == 0 ? .blue : .primary)
             }
@@ -97,7 +102,7 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 1 }) {
                 VStack {
                     Image(systemName: "heart")
-                    Text("Favorites")
+                    Text(t(1))
                 }
                 .foregroundColor(selectedTab == 1 ? .blue : .primary)
             }
@@ -105,7 +110,7 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 2 }) {
                 VStack {
                     Image(systemName: "magnifyingglass")
-                    Text("Search")
+                    Text(t(2))
                 }
                 .foregroundColor(selectedTab == 2 ? .blue : .primary)
             }
@@ -113,7 +118,7 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 3 }) {
                 VStack {
                     Image(systemName: "gearshape")
-                    Text("Settings")
+                    Text(t(3))
                 }
                 .foregroundColor(selectedTab == 3 ? .blue : .primary)
             }

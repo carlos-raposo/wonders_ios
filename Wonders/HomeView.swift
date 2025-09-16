@@ -7,6 +7,34 @@ struct HomeView: View {
     @Binding var showMiniaturas: Bool
     @Binding var selectedCategoryIndex: Int?
     @Binding var selectedTab: Int
+    @EnvironmentObject var languageSettings: LanguageSettings
+    private let translations: [String: [String: String]] = [
+        "en": [
+            "choose_category": "Choose a Category",
+            "Monuments": "Monuments",
+            "Nature": "Nature",
+            "Gastronomy": "Gastronomy",
+            "Popular": "Popular",
+            "Churches": "Churches",
+            "Museums": "Museums",
+            "Sintra": "Sintra",
+            "Vocabulary": "Vocabulary"
+        ],
+        "pt": [
+            "choose_category": "Escolha uma Categoria",
+            "Monuments": "Monumentos",
+            "Nature": "Natureza",
+            "Gastronomy": "Gastronomia",
+            "Popular": "Popular",
+            "Churches": "Igrejas",
+            "Museums": "Museus",
+            "Sintra": "Sintra",
+            "Vocabulary": "Vocabulário"
+        ]
+    ]
+    private func t(_ key: String) -> String {
+        translations[languageSettings.language]?[key] ?? translations["en"]![key]!
+    }
     var body: some View {
         GeometryReader { geometry in
             let horizontalPadding: CGFloat = 6
@@ -17,7 +45,7 @@ struct HomeView: View {
             let enumeratedImageNames = imageNames
             VStack(spacing: 0) {
                 Spacer().frame(height: safeAreaTop() + 4)
-                Text("Escolha uma Categoria")
+                Text(t("choose_category"))
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -48,7 +76,7 @@ struct HomeView: View {
                                     .frame(width: itemWidth, height: itemWidth)
                                     VStack {
                                         Spacer()
-                                        Text(category.title)
+                                        Text(t(category.title))
                                             .font(.system(size: 20, weight: .regular))
                                             .foregroundColor(.black)
                                             .multilineTextAlignment(.center)

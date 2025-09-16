@@ -1,0 +1,53 @@
+# NOTAS SOBRE ONDE MUDAR OS DADOS
+
+Este arquivo serve para anotar onde modificar os dados principais do app Wonders, especialmente coordenadas e outros dados de mock.
+
+---
+
+## [COORDENADAS]
+
+- **MiniaturaModels.swift**
+  - Todas as coordenadas (latitude, longitude, extraLocations) das miniaturas estão neste arquivo.
+  - Para alterar ou adicionar coordenadas de um ponto de interesse, edite as propriedades `latitude`, `longitude` e/ou `extraLocations` de cada `MiniaturaCard`.
+  - Exemplo:
+    ```swift
+    MiniaturaCard(
+        id: 2,
+        imagem: "miradouros",
+        categoria: categoria,
+        ordem: 2,
+        ...
+        latitude: 38.7138,
+        longitude: -9.1335,
+        extraLocations: [
+            (38.7181, -9.1336),
+            (38.7132, -9.1393),
+            (38.7147, -9.1371)
+        ]
+    )
+    ```
+
+---
+
+## [OUTROS DADOS MOCK]
+
+- **MiniaturaModels.swift**
+  - Todas as descrições, títulos, traduções, etc. das miniaturas estão neste arquivo.
+  - Para alterar textos, traduções ou categorias, edite os campos dentro de cada `MiniaturaCardTranslation`.
+
+---
+
+## [OBSERVAÇÕES]
+
+- Se quiser adicionar novos pontos, basta criar um novo `MiniaturaCard`.
+- Se quiser alterar a lógica de exibição dos dados, procure os arquivos de View, como:
+  - `MiniaturasCategoryView.swift`
+  - `MiniaturasMapView.swift`
+  - `MiniaturaCardView.swift`
+
+---
+
+## [RESUMO]
+- Coordenadas e dados das miniaturas: **MiniaturaModels.swift**
+- Lógica de exibição: arquivos de View (SwiftUI)
+- Este arquivo pode ser expandido conforme novas necessidades surgirem.

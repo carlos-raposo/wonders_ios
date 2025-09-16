@@ -8,15 +8,61 @@ struct SettingsView: View {
     @State private var userName: String? = nil
     @State private var isLoadingName = false
     @State private var isDarkMode = false
-    @State private var language = "English"
+    @EnvironmentObject var languageSettings: LanguageSettings
     @State private var showLanguageSheet = false
     @State private var showTutorial = false
     @State private var showContact = false
     @State private var showPrivacy = false
     @State private var showDeleteAlert = false
+    @Environment(\.dismiss) private var dismiss
+    @Binding var selectedTab: Int
+    var showBackButton: Bool = false
 
     var user: User? {
         Auth.auth().currentUser
+    }
+
+    private let translations: [String: [String: String]] = [
+        "en": [
+            "account": "Account",
+            "settings": "Settings",
+            "help": "Help",
+            "logout": "Logout",
+            "delete_account": "Delete Account",
+            "switch_dark": "Switch to dark mode",
+            "language": "Language",
+            "tutorial": "Tutorial",
+            "contact": "Contact",
+            "privacy": "Privacy Policy",
+            "delete_title": "Delete Account",
+            "delete_message": "Are you sure you want to delete your account? This action cannot be undone.",
+            "delete_confirm": "Delete",
+            "cancel": "Cancel",
+            "select_language": "Select Language",
+            "user": "User"
+        ],
+        "pt": [
+            "account": "Conta",
+            "settings": "Configurações",
+            "help": "Ajuda",
+            "logout": "Sair",
+            "delete_account": "Excluir Conta",
+            "switch_dark": "Alternar modo escuro",
+            "language": "Idioma",
+            "tutorial": "Tutorial",
+            "contact": "Contato",
+            "privacy": "Política de Privacidade",
+            "delete_title": "Excluir Conta",
+            "delete_message": "Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+            "delete_confirm": "Excluir",
+            "cancel": "Cancelar",
+            "select_language": "Selecionar Idioma",
+            "user": "Usuário"
+        ]
+    ]
+    
+    private func t(_ key: String) -> String {
+        translations[languageSettings.language]?[key] ?? translations["en"]![key]!
     }
 
     var body: some View {
@@ -24,9 +70,27 @@ struct SettingsView: View {
             VStack(spacing: 32) {
                 // Account Header
                 VStack(spacing: 12) {
-                    Text("Account")
+                    HStack {
+                        if showBackButton {
+                            Button(action: {
+                                // Se for modal/push, tente dismiss, senão volte para Home
+                                if #available(iOS 15.0, *) {
+                                    dismiss()
+                                } else {
+                                    selectedTab = 0
+                                }
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .font(.title2)
+                                    .foregroundColor(.primary)
+                                    .padding(.trailing, 8)
+                            }
+                        }
+                        Spacer()
+                    }
+                    Text(t("account"))
                         .font(.system(size: 32, weight: .bold))
-                        .padding(.top, 24)
+                        .padding(.top, 8)
                     // Avatar
                     ZStack {
                         Circle()
@@ -38,7 +102,7 @@ struct SettingsView: View {
                     }
                     // Name and edit
                     HStack(spacing: 6) {
-                        Text(userName ?? user?.displayName ?? "User")
+                        Text(userName ?? user?.displayName ?? t("user"))
                             .font(.title2)
                             .fontWeight(.bold)
                         Image(systemName: "pencil")
@@ -52,43 +116,43 @@ struct SettingsView: View {
                 }
                 // Settings Section
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Settings")
+                    Text(t("settings"))
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
-                    CardButton(icon: "moon.fill", text: "Switch to dark mode", isDestructive: false) {
+                    CardButton(icon: "moon.fill", text: t("switch_dark"), isDestructive: false) {
                         isDarkMode.toggle()
                     }
-                    CardButton(icon: "globe", text: "Language", trailing: Text(language).foregroundColor(.gray)) {
+                    CardButton(icon: "globe", text: t("language"), trailing: Text(languageDisplayName).foregroundColor(.gray)) {
                         showLanguageSheet = true
                     }
                 }
                 // Help Section
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Help")
+                    Text(t("help"))
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
-                    CardButton(icon: "questionmark.circle", text: "Tutorial", isDestructive: false) {
+                    CardButton(icon: "questionmark.circle", text: t("tutorial"), isDestructive: false) {
                         showTutorial = true
                     }
-                    CardButton(icon: "envelope", text: "Contact", isDestructive: false) {
+                    CardButton(icon: "envelope", text: t("contact"), isDestructive: false) {
                         showContact = true
                     }
-                    CardButton(icon: "shield", text: "Privacy Policy", isDestructive: false) {
+                    CardButton(icon: "shield", text: t("privacy"), isDestructive: false) {
                         showPrivacy = true
                     }
                 }
                 // Account Section
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Account")
+                    Text(t("account"))
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
-                    CardButton(icon: "arrowshape.turn.up.left", text: "Logout", isDestructive: false) {
+                    CardButton(icon: "arrowshape.turn.up.left", text: t("logout"), isDestructive: false) {
                         logout()
                     }
-                    CardButton(icon: "trash", text: "Delete Account", isDestructive: true) {
+                    CardButton(icon: "trash", text: t("delete_account"), isDestructive: true) {
                         showDeleteAlert = true
                     }
                 }
@@ -97,16 +161,16 @@ struct SettingsView: View {
             .onAppear(perform: loadUserName)
         }
         .actionSheet(isPresented: $showLanguageSheet) {
-            ActionSheet(title: Text("Select Language"), buttons: [
-                .default(Text("English")) { language = "English" },
-                .default(Text("Portuguese")) { language = "Portuguese" },
-                .cancel()
+            ActionSheet(title: Text(t("select_language")), buttons: [
+                .default(Text("English")) { languageSettings.language = "en" },
+                .default(Text("Portuguese")) { languageSettings.language = "pt" },
+                .cancel(Text(t("cancel")))
             ])
         }
         .alert(isPresented: $showDeleteAlert) {
-            Alert(title: Text("Delete Account"), message: Text("Are you sure you want to delete your account? This action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
+            Alert(title: Text(t("delete_title")), message: Text(t("delete_message")), primaryButton: .destructive(Text(t("delete_confirm"))) {
                 // TODO: Implement delete
-            }, secondaryButton: .cancel())
+            }, secondaryButton: .cancel(Text(t("cancel"))))
         }
     }
 
@@ -115,6 +179,14 @@ struct SettingsView: View {
             return String(first).uppercased()
         }
         return "U"
+    }
+
+    private var languageDisplayName: String {
+        switch languageSettings.language {
+        case "pt": return "Portuguese"
+        case "en": return "English"
+        default: return languageSettings.language.capitalized
+        }
     }
 
     private func loadUserName() {
@@ -190,5 +262,5 @@ extension CardButton where Trailing == EmptyView {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(selectedTab: .constant(1))
 }

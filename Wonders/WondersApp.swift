@@ -14,9 +14,11 @@ struct WondersApp: App {
     init() {
         FirebaseApp.configure()
     }
+    var languageSettings = LanguageSettings()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(languageSettings)
         }
     }
 }

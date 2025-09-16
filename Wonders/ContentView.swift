@@ -37,6 +37,8 @@ struct ContentView: View {
     @State private var showLogin = false
     @State private var showSignup = false
     @State private var showForgotPassword = false
+    @StateObject private var favoritesManager = FavoritesManager()
+    @StateObject private var languageSettings = LanguageSettings()
 
     var body: some View {
         Group {
@@ -53,6 +55,8 @@ struct ContentView: View {
                 }
             }
         }
+        .environmentObject(favoritesManager)
+        .environmentObject(languageSettings)
         .background(
             colorScheme == .dark ? WondersTheme.darkBackground : WondersTheme.lightBackground
         )
@@ -129,24 +133,6 @@ struct AuthenticationFlowView: View {
         }
     }
 }
-
-// MARK: - Placeholder Views
-struct FavoritesView: View {
-    var body: some View {
-        NavigationStack {
-            VStack {
-                Text("Favorites")
-                    .font(.system(size: 48, weight: .bold))
-                    .foregroundColor(Color.primary)
-                Spacer()
-            }
-            .padding()
-            .navigationTitle("Favorites")
-        }
-    }
-}
-
-// Removido ProfileView duplicado para evitar conflito de declaração
 
 // MARK: - Authentication Screens (Custom UI)
 // (ForgotPasswordView, InstructionsView are now in their own files)

@@ -3,6 +3,8 @@ import SwiftUI
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var languageSettings: LanguageSettings
+    @State private var showMapSheet = false
+    @State private var selectedCard: MiniaturaCard? = nil
     private let columns = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
     
     private func getFavoriteCards() -> [(key: String, card: MiniaturaCard, translation: MiniaturaCardTranslation)] {
@@ -42,13 +44,13 @@ struct FavoritesView: View {
             let spacing: CGFloat = 10
             let totalSpacing = spacing + horizontalPadding * 2
             let itemWidth = (geometry.size.width - totalSpacing) / 2
+            let favoriteCards = getFavoriteCards()
             VStack(spacing: 0) {
                 Text(languageSettings.language == "pt" ? "Favoritos" : "Favorites")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.bottom, 12)
-                let favoriteCards = getFavoriteCards()
                 if favoriteCards.isEmpty {
                     Spacer()
                     Text(languageSettings.language == "pt" ? "Nenhum favorito ainda" : "No favorites yet")
@@ -62,45 +64,48 @@ struct FavoritesView: View {
                         VStack(spacing: 0) {
                             LazyVGrid(columns: columns, spacing: spacing) {
                                 ForEach(favoriteCards, id: \.key) { (favKey, card, translation) in
-                                    ZStack(alignment: .topTrailing) {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                                .fill(Color(.systemGray6))
-                                                .frame(width: itemWidth, height: itemWidth)
-                                            VStack(spacing: 0) {
-                                                Image(imageName(for: card))
-                                                    .resizable()
-                                                    .scaledToFill()
+                                    Button(action: { selectedCard = card }) {
+                                        ZStack(alignment: .topTrailing) {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                                    .fill(Color(.systemGray6))
                                                     .frame(width: itemWidth, height: itemWidth)
-                                                    .clipped()
-                                                    .cornerRadius(18)
-                                                Spacer(minLength: 0)
+                                                VStack(spacing: 0) {
+                                                    Image(imageName(for: card))
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .frame(width: itemWidth, height: itemWidth)
+                                                        .clipped()
+                                                        .cornerRadius(18)
+                                                    Spacer(minLength: 0)
+                                                }
+                                                .frame(width: itemWidth, height: itemWidth)
+                                                VStack {
+                                                    Spacer()
+                                                    Text(translation.titulo)
+                                                        .font(.system(size: 20, weight: .regular))
+                                                        .foregroundColor(.black)
+                                                        .multilineTextAlignment(.center)
+                                                        .padding(.horizontal, 8)
+                                                        .padding(.bottom, 18)
+                                                        .shadow(color: Color.white.opacity(0.7), radius: 4, y: 1)
+                                                }
+                                                .frame(width: itemWidth, height: itemWidth)
                                             }
-                                            .frame(width: itemWidth, height: itemWidth)
-                                            VStack {
-                                                Spacer()
-                                                Text(translation.titulo)
-                                                    .font(.system(size: 20, weight: .regular))
-                                                    .foregroundColor(.black)
-                                                    .multilineTextAlignment(.center)
-                                                    .padding(.horizontal, 8)
-                                                    .padding(.bottom, 18)
-                                                    .shadow(color: Color.white.opacity(0.7), radius: 4, y: 1)
+                                            Button(action: {
+                                                favoritesManager.toggleFavorite(card: card)
+                                            }) {
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundColor(.red)
+                                                    .padding(8)
+                                                    .background(Color.white.opacity(0.7))
+                                                    .clipShape(Circle())
                                             }
-                                            .frame(width: itemWidth, height: itemWidth)
+                                            .padding(8)
+                                            .accessibilityLabel(languageSettings.language == "pt" ? "Remover dos favoritos" : "Remove from favorites")
                                         }
-                                        Button(action: {
-                                            favoritesManager.toggleFavorite(card: card)
-                                        }) {
-                                            Image(systemName: "heart.fill")
-                                                .foregroundColor(.red)
-                                                .padding(8)
-                                                .background(Color.white.opacity(0.7))
-                                                .clipShape(Circle())
-                                        }
-                                        .padding(8)
-                                        .accessibilityLabel(languageSettings.language == "pt" ? "Remover dos favoritos" : "Remove from favorites")
                                     }
+                                    .buttonStyle(PlainButtonStyle())
                                 }
                             }
                             .padding(.horizontal, horizontalPadding)
@@ -111,15 +116,14 @@ struct FavoritesView: View {
                 Spacer(minLength: 0)
                 HStack {
                     Spacer()
-                    Button(action: { /* Map action */ }) {
+                    Button(action: { showMapSheet = true }) {
                         HStack {
-                            Text(languageSettings.language == "pt" ? "Mapa" : "Map")
                             Image(systemName: "map")
+                            Text(languageSettings.language == "pt" ? "Mapa" : "Map")
                         }
-                        .font(.headline)
-                        .padding(.horizontal, 28)
-                        .padding(.vertical, 14)
-                        .background(Color(.systemBackground).opacity(0.95))
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(.ultraThinMaterial)
                         .clipShape(Capsule())
                         .shadow(radius: 4)
                     }
@@ -131,6 +135,21 @@ struct FavoritesView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color(.systemBackground))
             .ignoresSafeArea(edges: .bottom)
+            .sheet(isPresented: $showMapSheet) {
+                let locations: [MiniaturaLocation] = favoriteCards.compactMap { (_, card, translation) in
+                    if let lat = card.latitude, let lon = card.longitude {
+                        return MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem)
+                    }
+                    return nil
+                }
+                MiniaturasMapView(locations: locations, mapTitle: languageSettings.language == "pt" ? "Mapa dos favoritos" : "Favorites Map")
+            }
+            .sheet(item: $selectedCard) { card in
+                CardsDeckPage(card: card, language: languageSettings.language)
+                    .presentationDetents([.large])
+                    .interactiveDismissDisabled(false)
+                    .presentationDragIndicator(.visible)
+            }
         }
     }
 }
