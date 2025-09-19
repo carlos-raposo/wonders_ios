@@ -74,22 +74,15 @@ struct AuthenticationFlowView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 32) {
+                
+                Spacer(minLength: 16)
+
                 // Lottie Animation Placeholder
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(width: 180, height: 180)
-                    .overlay(Text("Lottie").font(.title2).foregroundColor(.gray))
-                    .shadow(radius: 8)
+                LottieView(filename: "welcome_animation")
+                    .frame(height: 290)
+                    .shadow(radius: 1)
 
-                Text("Wonders")
-                    .font(.system(size: 48, weight: .bold, design: .default))
-                    .foregroundColor(Color.primary)
-                    .padding(.bottom, 8)
-
-                Text("Welcome! Discover the wonders of the world.")
-                    .font(.title3)
-                    .foregroundColor(Color.secondary)
-                    .multilineTextAlignment(.center)
+                Spacer(minLength: 16)
 
                 VStack(spacing: 16) {
                     Button(action: { showLogin = true }) {
@@ -119,6 +112,7 @@ struct AuthenticationFlowView: View {
                     }
                 }
                 .padding(.horizontal)
+                .padding(.bottom, 50)
             }
             .padding()
             .navigationDestination(isPresented: $showLogin) {

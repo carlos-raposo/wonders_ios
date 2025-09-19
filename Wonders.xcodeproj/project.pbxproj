@@ -10,7 +10,7 @@
 		759E64575312BCC2DAB6908E /* Pods_WondersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7F916D74C464887C2A1439 /* Pods_WondersTests.framework */; };
 		AFD91E5CA7A003177EB5AC25 /* Pods_Wonders_WondersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594BF8D481FC02744B8B5378 /* Pods_Wonders_WondersUITests.framework */; };
 		E84161D5381B2E3D72968A52 /* Pods_Wonders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98C252A727EDCBB7AC2A20B6 /* Pods_Wonders.framework */; };
-		F2A3B4C5D6E7F8A9B0C1D2E3 /* Wonders/GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E2 /* Wonders/GoogleService-Info.plist */; };
+		F2A3B4C5D6E7F8A9B0C1D2E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		C2E15BC82E68CBC70071ED0A /* WondersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WondersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E15BD22E68CBC70071ED0A /* WondersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WondersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74B4161E092161E940562C6 /* Pods-Wonders-WondersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders-WondersUITests.release.xcconfig"; path = "Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F1A2B3C4D5E6F7A8B9C0D1E2 /* Wonders/GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wonders/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1A2B3C4D5E6F7A8B9C0D1E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wonders/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE8FA1DFBC2C8F1319211F39 /* Pods-WondersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WondersTests.release.xcconfig"; path = "Target Support Files/Pods-WondersTests/Pods-WondersTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,11 +67,15 @@
 		};
 		C2E15BCB2E68CBC70071ED0A /* WondersTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = WondersTests;
 			sourceTree = "<group>";
 		};
 		C2E15BD52E68CBC70071ED0A /* WondersUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = WondersUITests;
 			sourceTree = "<group>";
 		};
@@ -118,7 +122,7 @@
 		C22ABB292E68EA6600C8FED5 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				F1A2B3C4D5E6F7A8B9C0D1E2 /* Wonders/GoogleService-Info.plist */,
+				F1A2B3C4D5E6F7A8B9C0D1E2 /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -278,7 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2A3B4C5D6E7F8A9B0C1D2E3 /* Wonders/GoogleService-Info.plist in Resources */,
+				F2A3B4C5D6E7F8A9B0C1D2E3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,13 +377,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Wonders/Pods-Wonders-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Wonders/Pods-Wonders-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -394,13 +394,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
