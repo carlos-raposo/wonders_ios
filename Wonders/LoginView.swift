@@ -65,7 +65,28 @@ struct LoginView: View {
 
             Button(action: {
                 if let rootVC = UIApplication.topViewController() {
-                    GIDSignIn.sharedInstance.signIn(withPresenting: rootVC)
+                    GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
+                        if let error = error {
+                            self.errorMessage = error.localizedDescription
+                            return
+                        }
+                        guard let user = signInResult?.user,
+                              let idToken = user.idToken?.tokenString else {
+                            self.errorMessage = "Google authentication failed."
+                            return
+                        }
+                        let accessToken = user.accessToken.tokenString
+                        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+                        Auth.auth().signIn(with: credential) { authResult, error in
+                            if let error = error {
+                                self.errorMessage = error.localizedDescription
+                            } else {
+                                self.errorMessage = nil
+                                onAuthenticated()
+                                NotificationCenter.default.post(name: .googleSignInSuccess, object: nil)
+                            }
+                        }
+                    }
                 }
             }) {
                 HStack {

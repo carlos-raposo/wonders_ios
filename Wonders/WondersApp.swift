@@ -11,9 +11,6 @@ import Firebase
 @main
 struct WondersApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    init() {
-        FirebaseApp.configure()
-    }
     var languageSettings = LanguageSettings()
     var body: some Scene {
         WindowGroup {
