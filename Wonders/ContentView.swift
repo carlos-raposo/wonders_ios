@@ -47,7 +47,10 @@ struct ContentView: View {
                     showLogin: $showLogin,
                     showSignup: $showSignup,
                     showForgotPassword: $showForgotPassword,
-                    onAuthenticated: { isAuthenticated = true }
+                    onAuthenticated: {
+                        isAuthenticated = true
+                        favoritesManager.refreshFavorites() // Ensure favorites update for the new user
+                    }
                 )
             } else {
                 NavigationStack {

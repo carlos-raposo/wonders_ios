@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import GoogleSignIn
 
 struct SignupView: View {
     var onAuthenticated: () -> Void
@@ -84,7 +85,53 @@ struct SignupView: View {
             }
             .padding(.horizontal)
 
-            Button(action: { /* Google sign-up */ }) {
+            Button(action: {
+                if let rootVC = UIApplication.topViewController() {
+                    GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
+                        if let error = error {
+                            self.errorMessage = error.localizedDescription
+                            return
+                        }
+                        guard let user = signInResult?.user,
+                              let idToken = user.idToken?.tokenString else {
+                            self.errorMessage = "Google authentication failed."
+                            return
+                        }
+                        let accessToken = user.accessToken.tokenString
+                        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+                        Auth.auth().signIn(with: credential) { authResult, error in
+                            if let error = error {
+                                self.errorMessage = error.localizedDescription
+                            } else if let authResult = authResult {
+                                let db = Firestore.firestore()
+                                let userRef = db.collection("users").document(authResult.user.uid)
+                                userRef.getDocument { document, error in
+                                    if let document = document, document.exists {
+                                        self.errorMessage = nil
+                                        onAuthenticated()
+                                    } else {
+                                        userRef.setData([
+                                            "name": authResult.user.displayName ?? "",
+                                            "email": authResult.user.email ?? "",
+                                            "createdAt": FieldValue.serverTimestamp(),
+                                            "lastLogin": FieldValue.serverTimestamp(),
+                                            "authProvider": "google",
+                                            "photoURL": authResult.user.photoURL?.absoluteString ?? ""
+                                        ]) { error in
+                                            if let error = error {
+                                                self.errorMessage = error.localizedDescription
+                                            } else {
+                                                self.errorMessage = nil
+                                                onAuthenticated()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }) {
                 HStack {
                     Image(systemName: "g.circle")
                         .foregroundColor(.red)
