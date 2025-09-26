@@ -50,6 +50,8 @@ struct CardsDeckPage: View, Identifiable {
                     Text(translation.titulo)
                         .font(.title)
                         .bold()
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     if let description = translation.description, !description.isEmpty {
                         Text(description)
                             .font(.body)
@@ -59,7 +61,42 @@ struct CardsDeckPage: View, Identifiable {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(Translations.shared.t("history", lang: language))
                                 .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
                             Text(history)
+                                .font(.body)
+                                .foregroundColor(.primary)
+                        }
+                    }
+                    if let destaques = translation.destaques, !destaques.isEmpty {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(language == "en" ? "Highlights" : "Destaques")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            Text(destaques)
+                                .font(.body)
+                                .foregroundColor(.primary)
+                        }
+                    }
+                    if let usage = translation.usage, !usage.isEmpty {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(language == "en" ? "Usage" : "Uso")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            Text(usage)
+                                .font(.body)
+                                .foregroundColor(.primary)
+                        }
+                    }
+                    if let pronunciation = translation.pronunciation, !pronunciation.isEmpty {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(language == "en" ? "Pronunciation" : "Pronúncia")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            Text(pronunciation)
                                 .font(.body)
                                 .foregroundColor(.primary)
                         }
@@ -68,6 +105,8 @@ struct CardsDeckPage: View, Identifiable {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(Translations.shared.t("adress", lang: language))
                                 .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity, alignment: .center)
                             Text(adress)
                                 .font(.body)
                                 .foregroundColor(.primary)

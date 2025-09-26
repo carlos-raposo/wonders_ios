@@ -42,7 +42,7 @@ struct MiniaturasCategoryView: View {
             case "monuments", "monumentos": return "Monumentos"
             case "nature", "natureza": return "Natureza"
             case "gastronomy", "gastronomia": return "Gastronomia"
-            case "culture", "cultura": return "Cultura"
+            case "popular", "populare": return "Popular"
             case "beaches", "praias": return "Praias"
             case "museums", "museus": return "Museus"
             case "parks", "parques": return "Parques"
