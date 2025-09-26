@@ -34,6 +34,7 @@ extension Color {
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("isUserLoggedIn") private var isAuthenticated = false
+    @AppStorage("isDarkMode") private var isDarkMode = false // Persist dark mode
     @State private var showLogin = false
     @State private var showSignup = false
     @State private var showForgotPassword = false
@@ -53,17 +54,12 @@ struct ContentView: View {
                     }
                 )
             } else {
-                NavigationStack {
-                    MainTabView()
-                }
+                MainTabView()
+                    .environmentObject(favoritesManager)
+                    .environmentObject(languageSettings)
             }
         }
-        .environmentObject(favoritesManager)
-        .environmentObject(languageSettings)
-        .background(
-            colorScheme == .dark ? WondersTheme.darkBackground : WondersTheme.lightBackground
-        )
-        .ignoresSafeArea()
+        .preferredColorScheme(isDarkMode ? .dark : .light) // Apply global dark/light mode
     }
 }
 

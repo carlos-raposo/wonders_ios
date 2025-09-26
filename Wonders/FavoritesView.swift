@@ -5,6 +5,7 @@ struct FavoritesView: View {
     @EnvironmentObject var languageSettings: LanguageSettings
     @State private var showMapSheet = false
     @State private var selectedCard: MiniaturaCard? = nil
+    @State private var showShareSheet = false
     private let columns = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
     
     private func getFavoriteCards() -> [(key: String, card: MiniaturaCard, translation: MiniaturaCardTranslation)] {
@@ -117,10 +118,12 @@ struct FavoritesView: View {
                 HStack {
                     Spacer()
                     Button(action: { showMapSheet = true }) {
-                        HStack {
+                        HStack(spacing: 8) {
                             Image(systemName: "map")
+                                .frame(height: 24)
                             Text(languageSettings.language == "pt" ? "Mapa" : "Map")
                         }
+                        .frame(minWidth: 120, maxHeight: 40)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
                         .background(.ultraThinMaterial)
@@ -128,6 +131,21 @@ struct FavoritesView: View {
                         .shadow(radius: 4)
                     }
                     .accessibilityLabel(languageSettings.language == "pt" ? "Abrir mapa dos favoritos" : "Open favorites map")
+                    Spacer()
+                    Button(action: { showShareSheet = true }) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "square.and.arrow.up")
+                                .frame(height: 24)
+                            Text(languageSettings.language == "pt" ? "Partilhar" : "Share")
+                        }
+                        .frame(minWidth: 120, maxHeight: 40)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(.ultraThinMaterial)
+                        .clipShape(Capsule())
+                        .shadow(radius: 4)
+                    }
+                    .accessibilityLabel(languageSettings.language == "pt" ? "Partilhar favoritos" : "Share favorites")
                     Spacer()
                 }
                 .padding(.bottom, 24)
@@ -149,6 +167,10 @@ struct FavoritesView: View {
                     .presentationDetents([.large])
                     .interactiveDismissDisabled(false)
                     .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $showShareSheet) {
+                let favoritesList = favoriteCards.map { "• " + $0.2.titulo }.joined(separator: "\n")
+                ActivityView(activityItems: [favoritesList])
             }
         }
     }
@@ -173,4 +195,14 @@ fileprivate struct RoundedCorner: Shape {
 // Helper for safe area top
 fileprivate func safeAreaTop() -> CGFloat {
     UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+}
+
+// Helper for share sheet
+struct ActivityView: UIViewControllerRepresentable {
+    let activityItems: [Any]
+    let applicationActivities: [UIActivity]? = nil
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+    }
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

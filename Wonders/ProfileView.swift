@@ -4,10 +4,10 @@ import FirebaseFirestore
 
 struct SettingsView: View {
     @AppStorage("isUserLoggedIn") var isUserLoggedIn: Bool = true
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false // Persist dark mode
     @State private var errorMessage: String?
     @State private var userName: String? = nil
     @State private var isLoadingName = false
-    @State private var isDarkMode = false
     @EnvironmentObject var languageSettings: LanguageSettings
     @State private var showLanguageSheet = false
     @State private var showTutorial = false
@@ -94,17 +94,18 @@ struct SettingsView: View {
                     // Avatar
                     ZStack {
                         Circle()
-                            .fill(Color.blue.opacity(0.2))
+                            .fill(Color(.systemBlue).opacity(0.2)) // Adaptive blue
                             .frame(width: 120, height: 120)
                         Text(userInitial)
                             .font(.system(size: 56, weight: .bold))
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color(.systemBlue)) // Adaptive blue
                     }
                     // Name and edit
                     HStack(spacing: 6) {
                         Text(userName ?? user?.displayName ?? t("user"))
                             .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(.primary)
                         Image(systemName: "pencil")
                             .font(.system(size: 18, weight: .medium))
                             .foregroundColor(.gray)
@@ -112,7 +113,7 @@ struct SettingsView: View {
                     // Email
                     Text(user?.email ?? "-")
                         .font(.body)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
                 }
                 // Settings Section
                 VStack(alignment: .leading, spacing: 12) {
@@ -120,6 +121,7 @@ struct SettingsView: View {
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
+                        .foregroundColor(.primary)
                     CardButton(icon: "moon.fill", text: t("switch_dark"), isDestructive: false) {
                         isDarkMode.toggle()
                     }
@@ -133,6 +135,7 @@ struct SettingsView: View {
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
+                        .foregroundColor(.primary)
                     CardButton(icon: "questionmark.circle", text: t("tutorial"), isDestructive: false) {
                         showTutorial = true
                     }
@@ -149,6 +152,7 @@ struct SettingsView: View {
                         .font(.title3)
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
+                        .foregroundColor(.primary)
                     CardButton(icon: "arrowshape.turn.up.left", text: t("logout"), isDestructive: false) {
                         logout()
                     }
@@ -171,6 +175,9 @@ struct SettingsView: View {
             Alert(title: Text(t("delete_title")), message: Text(t("delete_message")), primaryButton: .destructive(Text(t("delete_confirm"))) {
                 // TODO: Implement delete
             }, secondaryButton: .cancel(Text(t("cancel"))))
+        }
+        .sheet(isPresented: $showTutorial) {
+            TutorialView()
         }
     }
 
@@ -245,11 +252,11 @@ struct CardButton<Trailing: View>: View {
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 14)
-                    .stroke(isDestructive ? Color.red : Color.gray.opacity(0.2), lineWidth: isDestructive ? 2 : 1)
-                    .background(
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(Color.white)
-                    )
+                    .fill(Color(.systemBackground)) // Adaptive background
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(isDestructive ? Color.red : Color(.separator), lineWidth: isDestructive ? 2 : 1)
             )
         }
     }
