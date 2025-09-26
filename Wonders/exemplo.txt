@@ -1,0 +1,338 @@
+Este é um ficheiro de texto de exemplo para o projeto Wonders.
+
+---
+
+# MiniaturaCardView
+
+O componente **MiniaturaCardView** é uma View do SwiftUI responsável por exibir visualmente uma "miniatura" de um card (`MiniaturaCard`) na interface do app. Ele mostra a imagem, o número do card, o título traduzido e permite favoritar/desfavoritar o card (exceto para cards de vocabulário em português).
+
+## Funções e estrutura principais
+- **card**: O modelo de dados do card a ser exibido.
+- **translation**: Os textos traduzidos do card para o idioma atual.
+- **favoritesManager**: Gerencia os cards favoritos do usuário.
+- **languageSettings**: Gerencia o idioma atual do app.
+- **isVocabularyPT**: Lógica para saber se o card é de vocabulário em português (usado para desabilitar o botão de favorito).
+
+## O que pode ser mudado em MiniaturaCardView?
+Você pode alterar ou adicionar:
+
+1. **Layout visual**: Mudar o design, cores, espaçamento, fontes, bordas, sombras, etc.
+2. **Conteúdo exibido**: Mostrar mais ou menos informações do card (ex: título, descrição, categoria, etc).
+3. **Ações**: Adicionar botões ou gestos (ex: compartilhar, abrir detalhes, etc).
+4. **Lógica de favoritos**: Alterar como e quando o botão de favorito aparece ou funciona.
+5. **Acessibilidade**: Melhorar labels, descrições, navegação por VoiceOver.
+6. **Condições de exibição**: Mudar a lógica de quando mostrar certos elementos (ex: botão de favorito só para certos tipos de card).
+7. **Animações**: Adicionar animações de entrada, saída ou interação.
+8. **Performance**: Otimizar para listas grandes, lazy loading de imagens, etc.
+
+## Exemplos de mudanças comuns
+- Exibir o título do card abaixo da imagem.
+- Mostrar a categoria do card.
+- Adicionar um botão para compartilhar o card.
+- Alterar o tamanho da imagem ou o formato do card.
+- Mudar a lógica de favoritos para permitir favoritar cards de vocabulário.
+- Adicionar uma borda colorida para cards favoritos.
+- Exibir uma descrição curta do card.
+
+---
+
+# MiniaturaModels
+
+O arquivo **MiniaturaModels.swift** é o modelo de dados central para os “cards” (miniaturas) do app Wonders. Ele define:
+
+- **Estruturas de dados**: Modelos como `MiniaturaCard` e `MiniaturaCardTranslation`, que representam cada card e suas traduções.
+- **Mock de dados**: Gera listas de cards de diferentes categorias (Monumentos, Natureza, Gastronomia, Popular, Igrejas, Museus, Sintra, Vocabulário/Vocabulary) para uso em testes, protótipos ou como dados estáticos.
+- **Funções utilitárias**: Permite buscar todos os cards, cards por categoria, e todas as categorias disponíveis.
+- **Lógica de filtragem**: Implementa a separação correta dos cards de vocabulário por idioma (português/inglês).
+- **Normalização de strings**: Facilita comparações robustas entre nomes de categorias, ignorando acentos e maiúsculas/minúsculas.
+
+Em resumo, MiniaturaModels.swift é o **coração dos dados de cards** do app, servindo tanto para testes quanto para alimentar a interface do usuário com informações organizadas e filtradas.
+
+---
+
+## O que se pode mudar em MiniaturaModels.swift?
+
+Você pode alterar ou expandir MiniaturaModels.swift de várias formas:
+
+### a) Adicionar ou editar cards
+- Incluir novos cards em qualquer categoria.
+- Corrigir, atualizar ou expandir textos, imagens, traduções, localização, etc.
+
+### b) Adicionar novas categorias
+- Criar novas categorias (ex: “Eventos”, “Personagens”, “Curiosidades”).
+- Adicionar lógica para gerar cards dessas novas categorias.
+
+### c) Melhorar a estrutura dos dados
+- Adicionar novos campos ao MiniaturaCard ou MiniaturaCardTranslation (ex: tags, links, imagens extras, vídeos).
+- Tornar os modelos mais flexíveis para futuras expansões.
+
+### d) Aprimorar a lógica de filtragem
+- Permitir filtros mais avançados (ex: por localização, favoritos, data de criação).
+- Implementar busca por texto ou outros critérios.
+
+### e) Internacionalização
+- Adicionar suporte para mais idiomas nas traduções.
+- Permitir que o app funcione em outros idiomas além de português e inglês.
+
+### f) Performance e organização
+- Otimizar a geração dos mocks para grandes volumes de dados.
+- Separar os mocks em arquivos diferentes para facilitar manutenção.
+
+### g) Integração com backend
+- Adaptar o modelo para receber dados de uma API ou banco de dados real, em vez de mocks.
+
+### h) Testes
+- Adicionar funções de teste para garantir que os dados estão corretos e bem estruturados.
+
+---
+
+# MiniaturasCategoryView
+
+O arquivo **MiniaturasCategoryView.swift** define a View responsável por exibir todas as miniaturas (cards) de uma categoria específica do app Wonders, de acordo com o idioma selecionado. Ele é usado para mostrar uma lista de cards filtrados por categoria (ex: Monumentos, Natureza, Gastronomia, Vocabulary, etc.), permitindo ao usuário visualizar, navegar e interagir com os cards dessa categoria.
+
+Principais funções e responsabilidades:
+- Recebe a categoria e o idioma como parâmetros.
+- Exibe o slogan da categoria, adaptado ao idioma.
+- Filtra e mostra os cards da categoria correta, usando MiniaturaCard.mockCards(for:).
+- Permite abrir detalhes do card (CardsDeckPage) ao clicar em uma miniatura.
+- Exibe informações resumidas de cada card (título, descrição).
+- Mostra botão para abrir o mapa com as localizações dos cards (exceto para Vocabulary).
+- Gera as localizações dos cards para o mapa, incluindo localizações extras.
+- Adapta a interface para cards de vocabulário em português, desabilitando a navegação para detalhes.
+
+Em resumo, MiniaturasCategoryView.swift é a tela que apresenta todos os cards de uma categoria, com navegação, mapa e adaptação ao idioma.
+
+---
+
+## O que se pode mudar em MiniaturasCategoryView.swift?
+
+Você pode alterar ou expandir MiniaturasCategoryView.swift de várias formas:
+
+### a) Layout visual
+- Mudar o design, espaçamento, fontes, cores, bordas, animações, etc.
+- Alterar a disposição dos cards (grid, lista, carrossel).
+
+### b) Conteúdo exibido
+- Mostrar mais ou menos informações do card (ex: imagens extras, tags, categoria, data).
+- Exibir outros campos do card, como localização, favoritos, etc.
+
+### c) Interatividade
+- Permitir ações extras nos cards (ex: compartilhar, favoritar, marcar como visto).
+- Adicionar gestos (arrastar, swipe, long press).
+
+### d) Lógica de filtragem
+- Permitir filtros dinâmicos (ex: por localização, favoritos, busca por texto).
+- Adicionar ordenação dos cards (por nome, data, proximidade).
+
+### e) Mapa
+- Exibir o mapa para todas as categorias, inclusive Vocabulary.
+- Permitir seleção múltipla de cards no mapa.
+- Adicionar rotas ou agrupamento de localizações.
+
+### f) Acessibilidade
+- Melhorar labels, navegação por VoiceOver, contraste, tamanhos dinâmicos.
+
+### g) Internacionalização
+- Adicionar suporte para mais idiomas.
+- Permitir troca dinâmica de idioma na tela.
+
+### h) Performance
+- Otimizar para listas grandes (lazy loading, virtualização).
+- Carregar imagens de forma assíncrona.
+
+### i) Testes e debug
+- Adicionar logs, indicadores de loading, tratamento de erros.
+
+---
+
+## Exemplos práticos de mudanças
+- Exibir os cards em formato de grid ao invés de lista.
+- Adicionar botão de favorito em cada card.
+- Permitir busca por texto dentro da categoria.
+- Exibir o mapa também para a categoria Vocabulary.
+- Adicionar animação ao abrir CardsDeckPage.
+- Mostrar tags ou categorias secundárias nos cards.
+- Permitir filtrar cards por proximidade geográfica.
+- Adicionar campo de busca no topo da tela.
+
+---
+
+# MiniaturasMapView
+
+O arquivo **MiniaturasMapView.swift** define a View responsável por exibir um mapa interativo com as localizações dos cards (miniaturas) de uma categoria do app Wonders. Ele utiliza o framework MapKit para mostrar pinos (anotações) no mapa, cada um representando um local relevante para os cards exibidos.
+
+Principais funções e responsabilidades:
+- Recebe uma lista de localizações (MiniaturaLocation), cada uma com título, latitude, longitude e ordem.
+- Centraliza o mapa na primeira localização da lista, ou em Lisboa caso a lista esteja vazia.
+- Exibe pinos numerados para cada localização, mostrando o título e a ordem.
+- Permite abrir direções no Apple Maps ao clicar em um pino.
+- Mostra o título do mapa no topo da tela.
+- Exibe mensagem de ausência de localizações caso a lista esteja vazia.
+- Permite fechar o mapa com um botão no topo.
+
+Em resumo, MiniaturasMapView.swift é a tela que apresenta visualmente, em formato de mapa, os locais associados aos cards de uma categoria, facilitando a navegação geográfica e a interação do usuário.
+
+---
+
+## O que se pode mudar em MiniaturasMapView.swift?
+
+Você pode alterar ou expandir MiniaturasMapView.swift de várias formas:
+
+### a) Layout visual
+- Mudar o design do topo, cores, fontes, espaçamento, bordas, animações.
+- Personalizar o visual dos pinos (cores, ícones, tamanhos).
+
+### b) Conteúdo exibido
+- Exibir informações extras nos pinos (ex: imagens, descrições, links).
+- Mostrar mais detalhes do local ao clicar no pino (sheet, modal, popover).
+
+### c) Interatividade
+- Permitir seleção múltipla de pinos.
+- Adicionar gestos (zoom, arrastar, long press).
+- Permitir marcar locais como favoritos diretamente no mapa.
+
+### d) Lógica de centralização
+- Centralizar o mapa em outra localização (ex: localização do usuário).
+- Permitir que o usuário escolha o centro do mapa.
+
+### e) Filtros e busca
+- Adicionar campo de busca para filtrar locais por nome ou categoria.
+- Permitir filtrar locais por proximidade, favoritos, etc.
+
+### f) Integração com outros mapas
+- Permitir abrir direções em outros apps de mapas (Google Maps, Waze).
+- Exibir rotas entre os locais.
+
+### g) Acessibilidade
+- Melhorar labels, navegação por VoiceOver, contraste, tamanhos dinâmicos.
+
+### h) Internacionalização
+- Traduzir textos exibidos no mapa para outros idiomas.
+
+### i) Performance
+- Otimizar para listas grandes de locais (clusterização de pinos).
+- Carregar mapas e pinos de forma assíncrona.
+
+### j) Testes e debug
+- Adicionar logs, indicadores de loading, tratamento de erros.
+
+---
+
+## Exemplos práticos de mudanças
+- Personalizar o ícone dos pinos para cada categoria.
+- Exibir uma imagem do local ao clicar no pino.
+- Adicionar botão para centralizar o mapa na localização do usuário.
+- Permitir filtrar locais por proximidade.
+- Exibir rotas entre os locais no mapa.
+- Adicionar campo de busca no topo do mapa.
+- Clusterizar pinos quando há muitos locais próximos.
+- Traduzir o texto “No locations available” para o idioma do app.
+
+---
+
+# MiniaturasView
+
+O arquivo **MiniaturasView.swift** define a View principal que apresenta ao usuário as categorias de miniaturas (cards) disponíveis no app Wonders. É a tela inicial do módulo de miniaturas, funcionando como um menu ou hub visual para navegar entre as diferentes categorias de cards.
+
+Principais funções e responsabilidades:
+- Exibe todas as categorias de miniaturas (ex: Monumentos, Natureza, Gastronomia, Popular, Igrejas, Museus, Sintra, Vocabulário/Vocabulary).
+- Mostra cada categoria como um botão ou card visual, geralmente com imagem, nome e breve descrição.
+- Permite ao usuário selecionar uma categoria, navegando para a MiniaturasCategoryView correspondente.
+- Adapta a interface ao idioma selecionado, mostrando nomes e descrições traduzidas.
+- Pode exibir informações adicionais como número de cards por categoria, favoritos, ou destaques.
+- Serve como ponto de entrada para explorar o conteúdo do app de forma organizada e intuitiva.
+
+Em resumo, MiniaturasView.swift é a tela que apresenta todas as categorias de miniaturas, permitindo ao usuário escolher qual deseja explorar.
+
+---
+
+## O que se pode mudar em MiniaturasView.swift?
+
+Você pode alterar ou expandir MiniaturasView.swift de várias formas:
+
+### a) Layout visual
+- Mudar o design dos cards de categoria (cores, imagens, fontes, espaçamento, bordas, animações).
+- Alterar a disposição das categorias (grid, lista, carrossel, mosaico).
+
+### b) Conteúdo exibido
+- Mostrar mais informações em cada categoria (ex: número de cards, favoritos, descrição longa).
+- Exibir ícones, imagens ou vídeos representativos de cada categoria.
+
+### c) Interatividade
+- Permitir ações extras nos cards de categoria (ex: favoritar, compartilhar, marcar como explorada).
+- Adicionar gestos (arrastar, swipe, long press).
+
+### d) Lógica de navegação
+- Permitir navegação direta para subcategorias ou filtros específicos.
+- Adicionar animações de transição ao abrir uma categoria.
+
+### e) Filtros e busca
+- Adicionar campo de busca para filtrar categorias por nome ou tipo.
+- Permitir filtros dinâmicos (ex: mostrar só categorias com cards favoritos).
+
+### f) Acessibilidade
+- Melhorar labels, navegação por VoiceOver, contraste, tamanhos dinâmicos.
+
+### g) Internacionalização
+- Traduzir todos os textos exibidos para outros idiomas.
+- Permitir troca dinâmica de idioma na tela.
+
+### h) Performance
+- Otimizar para listas grandes de categorias (lazy loading, virtualização).
+- Carregar imagens de forma assíncrona.
+
+### i) Testes e debug
+- Adicionar logs, indicadores de loading, tratamento de erros.
+
+---
+
+## Exemplos práticos de mudanças
+- Exibir as categorias em formato de carrossel horizontal.
+- Mostrar o número de cards favoritos em cada categoria.
+- Adicionar animação ao selecionar uma categoria.
+- Permitir busca por nome de categoria.
+- Exibir uma imagem de fundo diferente para cada categoria.
+- Adicionar botão para filtrar categorias por tipo (ex: culturais, naturais).
+- Traduzir os nomes das categorias conforme o idioma do app.
+- Adicionar campo de busca no topo da tela.
+
+---
+
+# Lista de ficheiros Wonders/Wonders
+
+Abaixo está a lista dos ficheiros principais do diretório Wonders/Wonders, com um resumo de até 30 palavras sobre a função de cada um na app:
+
+- **AppDelegate.swift**: Gerencia ciclo de vida e configuração inicial do app.
+- **AppleAuthHelper.h / AppleAuthHelper.m**: Integração com autenticação Apple (Objective-C bridging).
+- **Assets.xcassets/**: Armazena imagens e cores usadas na interface.
+- **CardsDeckPage.swift**: Exibe detalhes e navegação de um deck de cards.
+- **ContentView.swift**: Ponto de entrada principal das views SwiftUI.
+- **FavoritesManager.swift**: Gerencia os cards favoritos do usuário.
+- **FavoritesView.swift**: Mostra a lista de cards favoritos do usuário.
+- **ForgotPasswordView.swift**: Tela de recuperação de senha.
+- **GoogleService-Info.plist**: Configuração para serviços Google/Firebase.
+- **HomeView.swift**: Tela principal inicial do app.
+- **Info.plist**: Metadados e configurações do app.
+- **InstructionsView.swift**: Exibe instruções ou ajuda ao usuário.
+- **LanguageSettings.swift**: Gerencia idioma e localização do app.
+- **LoginView.swift**: Tela de login do usuário.
+- **LottieView.swift**: Exibe animações Lottie.
+- **MainTabView.swift**: Navegação principal por abas.
+- **MiniaturaCardView.swift**: Exibe visualmente um card individual.
+- **MiniaturaModels.swift**: Modelos de dados e mocks dos cards.
+- **MiniaturasCategoryView.swift**: Exibe todos os cards de uma categoria.
+- **MiniaturasMapView.swift**: Mostra localizações dos cards em um mapa.
+- **MiniaturasView.swift**: Menu principal para navegar entre categorias de cards.
+- **NOTAS_DADOS.txt**: Notas e dados para referência de desenvolvimento.
+- **Notification+Names.swift**: Define nomes de notificações para eventos do app.
+- **ProfileView.swift**: Tela de perfil do usuário.
+- **SearchView.swift**: Interface de busca de cards ou conteúdo.
+- **SignupView.swift**: Tela de cadastro de novo usuário.
+- **Translations.swift**: Gerencia traduções e strings localizadas.
+- **Wonders.entitlements**: Permissões e recursos do sistema para o app.
+- **WondersApp.swift**: Estrutura principal do app SwiftUI.
+- **WondersTextField.swift**: Componente customizado de campo de texto.
+- **exemplo.txt**: Documentação e notas sobre componentes do app.
+- **welcome_animation.json**: Arquivo de animação Lottie para tela de boas-vindas.
+
+Se precisar de detalhes sobre algum ficheiro específico, peça!

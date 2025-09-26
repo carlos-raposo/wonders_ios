@@ -26,7 +26,7 @@ struct MiniaturasCategoryView: View {
             "Churches": "Espiritualidade e arte em harmonia.",
             "Museums": "O passado ao alcance das mãos.",
             "Sintra": "Encanto entre palácios e florestas.",
-            "Vocabulary": "Palavras que aproximam culturas."
+            "Vocabulary": "Palavras que são diferentes em Portugal e no Brasil"
         ]
     ]
     

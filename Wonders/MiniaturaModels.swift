@@ -1523,7 +1523,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Telémovel",
-                            shortDescription: "Palavra portuguesa para celular (Brasil) ou mobile phone (UK).",
+                            shortDescription: "Celular",
                             usage: "Posso ligar para o seu telémovel?",
                             pronunciation: "teh-leh-MOH-vel"
                         )
@@ -1540,7 +1540,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Comboio",
-                            shortDescription: "Trem (Brasil) ou train (UK/US).",
+                            shortDescription: "Trem",
                             usage: "O comboio parte às 8h.",
                             pronunciation: "kom-BOY-oo"
                         )
@@ -1557,7 +1557,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Autocarro",
-                            shortDescription: "Ônibus (Brasil) ou bus (UK/US).",
+                            shortDescription: "Ônibus",
                             usage: "Vou apanhar o autocarro para o trabalho.",
                             pronunciation: "ow-toh-KAH-roo"
                         )
@@ -1574,7 +1574,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Eléctrico",
-                            shortDescription: "Bonde (Brasil) ou tram (UK).",
+                            shortDescription: "Bonde",
                             usage: "O eléctrico 28 é famoso em Lisboa.",
                             pronunciation: "eh-LEK-tree-ko"
                         )
@@ -1591,7 +1591,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Bicha",
-                            shortDescription: "Fila (Brasil) ou queue (UK). Atenção: tem outro significado no Brasil!",
+                            shortDescription: "Fila",
                             usage: "Há uma grande bicha para comprar bilhetes.",
                             pronunciation: "BEE-sha"
                         )
@@ -1608,7 +1608,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Pequeno-almoço",
-                            shortDescription: "Café da manhã (Brasil) ou breakfast (UK/US).",
+                            shortDescription: "Café da manhã",
                             usage: "O pequeno-almoço é servido até às 10h.",
                             pronunciation: "peh-KEN-oo al-MOH-soo"
                         )
@@ -1625,7 +1625,7 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Casa de banho",
-                            shortDescription: "Banheiro (Brasil) ou bathroom/restroom (UK/US).",
+                            shortDescription: "Banheiro",
                             usage: "Onde fica a casa de banho?",
                             pronunciation: "KAH-za deh BAH-nyoo"
                         )
@@ -1647,9 +1647,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "Hi",
-                            shortDescription: "Word for cell phone (US) or mobile phone (UK).",
-                            usage: "Can I call your mobile phone?",
-                            pronunciation: "MOH-bil fone"
+                            shortDescription: "\"Olá\" is the most common way to say \"Hello!\" or \"Hi!\"in Portuguese, used in both formal and informal situations.",
+                            description: "It is a friendly and welcoming greeting that can be used with people of all ages and social backgrounds. When meeting someone for the first time, it is polite to say \"Olá\" and introduce yourself, followed by a handshake or a smile. \"Olá\" can also be used to get someone's attention or to start a conversation.",
+                            usage: "\"Olá\" is a versatile greeting that can be used in a variety of situations, such as: Meeting someone for the first time: Olá, eu sou o João. Prazer em conhecê-lo. (Hello, I'm João. Nice to meet you.) Greeting friends and family: Olá, como estás? (Hello, how are you?) Answering the phone: Olá, quem fala? (Hello, who's calling?) Getting someone's attention: Olá, desculpe incomodar. (Hello, sorry to bother you.) Starting a conversation: Olá, tudo bem contigo? (Hello, how are you doing?)",
+                            pronunciation: "\"Olá\" is pronounced as oh-lah, with the stress on the second syllable. The first syllable is pronounced as the English letter 'o' and the second syllable as the English word 'la.' The 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'l' sound is pronounced as a clear 'l' sound, similar to the English letter 'l.'"
                         )
                     ],
                     latitude: nil,
@@ -1664,9 +1665,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "Please",
-                            shortDescription: "Word for trem (Brasil) or train (UK/US).",
-                            usage: "The train leaves at 8 am.",
-                            pronunciation: "tray-n"
+                            shortDescription: "\"Por favor\" or \"Se faz favor\" are polite expressions used to make requests, ask for help, or show consideration for others.",
+                            description: "It is a versatile word that can be used in a variety of situations, from ordering food in a restaurant to asking for directions on the street. Por favor is a simple and effective way to show respect and courtesy to others.",
+                            usage: "\"Por favor\" is a versatile expression that can be used in a variety of situations, such as: Asking for something: Por favor, pode passar-me o sal? (Please, can you pass me the salt?) Making a request: Por favor, pode dizer-me onde fica a estação de comboios? (Please, can you tell me where the train station is?) Ordering food: Por favor, um café e um pastel de nata. (Please, a coffee and a custard tart.) Asking for help: Por favor, pode ajudar-me a encontrar o meu hotel? (Please, can you help me find o meu hotel?) Showing consideration: Por favor, desculpe o atraso. (Please, excuse the delay.) Expressing gratitude: Muito obrigado por tudo. Por favor, aceite este presente. (Thank you very much for everything. Please, accept this gift.)",
+                            pronunciation: "Por favor is pronounced as poor fah-vohr, with the stress on the second syllable. The first syllable is pronounced as the English word 'poor' without the 'r' sound, and the second syllable is pronounced as the English word 'fah-vohr.' The 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'r' sound is pronounced as a soft 'r' sound, similar to the 'r' in the English word 'car."
                         )
                     ],
                     latitude: nil,
@@ -1681,9 +1683,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "Yes/No",
-                            shortDescription: "Word for ônibus (Brasil) or bus (UK/US).",
-                            usage: "I'm taking the bus to work.",
-                            pronunciation: "buhs"
+                            shortDescription: "\"Sim\" and \"Não\" are simple and effective words used to express agreement or disagreement, answer questions, or make decisions.",
+                            description: "They are versatile words that can be used in a variety of situations, from confirming an appointment to expressing your opinion on a topic. \"Sim\" and \"Não\" are essential words in any conversation, allowing you to communicate clearly and effectively.",
+                            usage: "\"Sim\" and \"Não\" are simple and effective words that can be used in a variety of situations, such as: Answering questions: \"Sim, eu gostaria de um café.\" (Yes, I would like a coffee.) Expressing agreement: \"Sim, concordo com a tua opinião.\" (Yes, I agree with your opinion.) Making decisions: \"Sim, vou aceitar o emprego.\" (Yes, I will take the job.) Confirming appointments: \"Sim, estarei lá às 10 horas.\" (Yes, I will be there at 10 o'clock.) Expressing disagreement: \"Não, não concordo com essa ideia.\" (No, I don't agree with that idea.) Declining invitations: \"Não, não posso ir à festa.\" (No, I can't go to the party.",
+                            pronunciation: "\"Sim\" is pronounced as seem, with the stress on the first syllable. The 's' sound is pronounced as the English 's' sound, and the 'i' sound is similar to the 'ee' in the English word 'see.' \"Não\" is pronounced as now, with the stress on the first syllable. The 'n' sound is pronounced as the English 'n' sound, and the 'ã' sound is similar to the 'ow' in the English word 'now.'"
                         )
                     ],
                     latitude: nil,
@@ -1698,9 +1701,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "Thank you",
-                            shortDescription: "Word for bonde (Brasil) or tram (UK).",
-                            usage: "The tram 28 is famous in Lisbon.",
-                            pronunciation: "tram"
+                            shortDescription: "\"Obrigado\" is a polite and friendly expression used to express gratitude, appreciation, and recognition for a favor, gift, or kind gesture.",
+                            description: "It is a versatile word that can be used in a variety of situations, from thanking someone for holding the door open to expressing your appreciation for a thoughtful gift. \"Obrigado\" is a simple and effective way to show gratitude and goodwill to others.",
+                            usage: "\"Obrigado\" is a versatile expression that can be used in a variety of situations, such as: Thanking someone: Obrigado pela ajuda. (Thank you for the help.) Expressing gratitude: Obrigado pela prenda. (Thank you for the gift.) Showing appreciation: Obrigado pela hospitalidade. (Thank you for the hospitality.) Acknowledging a favor: Obrigado por me ouvires. (Thank you for listening to me.) Responding to a compliment: Obrigado pelo elogio. (Thank you for the compliment.) Expressing recognition: Obrigado pelo apoio. (Thank you for the support.)",
+                            pronunciation: "\"Obrigado\" is pronounced as oh-bree-gah-doo, with the stress on the second syllable. The 'o' sound is similar to the 'o' in the English word 'go,' the 'b' sound is pronounced as the English 'b' sound, and the 'r' sound is pronounced as a soft 'r' sound. The 'i' sound is similar to the 'ee' in the English word 'see,' the 'g' sound is pronounced as the English 'g' sound, the 'a' sound is similar to the 'a' in the English word 'la,' and the 'd' sound is pronounced as the English 'd' sound."
                         )
                     ],
                     latitude: nil,
@@ -1715,9 +1719,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "Bom Dia/ Boa Noite",
-                            shortDescription: "Word for fila (Brasil) or queue (UK). Warning: has another meaning in Brazil!",
-                            usage: "There's a long queue to buy tickets.",
-                            pronunciation: "kyoo"
+                            shortDescription: "\"Bom dia\" and \"Bom dia\" are polite and friendly expressions used to greet someone in the morning or wish them a good day or night.",
+                            description: "They are versatile phrases that can be used in a variety of situations, from greeting friends and family to addressing colleagues and strangers. \"Bom dia\" and \"Boa noite\" are essential phrases in any conversation, allowing you to communicate clearly and effectively.",
+                            usage: "\"Bom dia\" and \"Boa noite\" are versatile expressions that can be used in a variety of situations, such as: Greeting someone in the morning: Bom dia, como estás? (Good morning, how are you?) Wishing someone a good day: Bom dia, que tenhas um dia maravilhoso. (Good morning, may you have a wonderful day.) Saying good night: Boa noite, dorme bem. (Good night, sleep well.) Wishing someone sweet dreams: Boa noite, sonhos doces. (Good night, sweet dreams.) Saying goodbye in the evening: Boa noite, até amanhã. (Good night, see you tomorrow.) Ending a phone call: Boa noite, falo contigo amanhã. (Good night, I'll talk to you tomorrow.",
+                            pronunciation: "\"Bom dia\" is pronounced as bohng dee-ah, with the stress on the first syllable. The 'b' sound is pronounced as the English 'b' sound, the 'o' sound is similar to the 'o' in the English word 'go,' and the 'm' sound is pronounced as the English 'm' sound. The 'd' sound is pronounced as the English 'd' sound, the 'i' sound is similar to the 'ee' in the English word 'see,' and the 'a' sound is similar to the 'a' in the English word 'la.' \"Boa noite\" is pronounced as boh-ah noy-tchee, with the stress on the first syllable. The 'b' sound is pronounced as the English 'b' sound, the 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'n' sound is pronounced as the English 'n' sound, the 't' sound is pronounced as the English 't' sound, the 'ch' sound is pronounced as the English 'ch' sound, and the 'ee' sound is similar to the 'ee' in the English word 'see'."
                         )
                     ],
                     latitude: nil,
@@ -1732,9 +1737,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "I´m sorry",
-                            shortDescription: "Word for café da manhã (Brasil) or breakfast (UK/US).",
-                            usage: "Breakfast is served until 10 am.",
-                            pronunciation: "BREK-fuhst"
+                            shortDescription: "\"Desculpe\" is a polite and friendly expression used to apologize, ask for forgiveness, or get someone's attention.",
+                            description: "It is a versatile word that can be used in a variety of situations, from bumping into someone on the street to interrupting a conversation. \"Desculpe\" is a simple and effective way to show respect and consideration for others.",
+                            usage: "\"Desculpe\" is a versatile expression that can be used in a variety of situations, such as: Apologizing: Desculpe pelo atraso. (Excuse me for being late.) Asking for forgiveness: Desculpe se o ofendi. (Excuse me if I offended you.) Getting someone's attention: Desculpe, pode ajudar-me? (Excuse me, can you help me?) Interrupting a conversation: Desculpe interromper, mas tenho uma pergunta. (Excuse me for interrupting, but I have a question.) Passing through a crowded place: Desculpe, com licença. (Excuse me, excuse me.) Correcting a mistake: Desculpe, enganei-me no número. (Excuse me, I got the number wrong.)",
+                            pronunciation: "\"Desculpe\" is pronounced as dehs-kool-peh, with the stress on the second syllable. The 'd' sound is pronounced as the English 'd' sound, the 'e' sound is similar to the 'e' in the English word 'bed,' the 's' sound is pronounced as the English 's' sound, and the 'c' sound is pronounced as the English 'k' sound. The 'u' sound is similar to the 'oo' in the English word 'food,' the 'l' sound is pronounced as the English 'l' sound, and the 'p' sound is pronounced as the English 'p' sound."
                         )
                     ],
                     latitude: nil,
@@ -1749,9 +1755,10 @@ extension MiniaturaCard {
                     translations: [
                         "en": MiniaturaCardTranslation(
                             titulo: "Goodbye",
-                            shortDescription: "Word for banheiro (Brasil) or bathroom/restroom (UK/US).",
-                            usage: "Where is the bathroom?",
-                            pronunciation: "BATH-room"
+                            shortDescription: "\"Adeus\" is a formal and polite way to say goodbye, parting   with respect, goodwill, and best wishes.",
+                            description: "It is a versatile word that can be used in a variety of situations, from saying goodbye to friends and family to ending a business meeting. \"Adeus\" is a simple and effective way to show appreciation and respect for others.",
+                            usage: "\"Adeus\" is a versatile expression that can be used in a variety of situations, such as: Saying goodbye to someone: Adeus, até à próxima. (Goodbye, see you next time.) Parting with respect: Adeus, foi um prazer conhecê-lo. (Goodbye, it was a pleasure to meet you.) Ending a conversation: Adeus, tenha um bom dia. (Goodbye, have a good day.) Wishing someone well: Adeus, que tudo corra bem. (Goodbye, may everything go well.) Saying farewell to a friend: Adeus, até breve. (Goodbye, see you soon.) Ending a phone call: Adeus, falo contigo mais tarde. (Goodbye, I'll talk to you later.)",
+                            pronunciation: "\"Adeus\" is pronounced as ah-deh-oosh, with the stress on the second syllable. The 'a' sound is similar to the 'a' in the English word 'father,' the 'd' sound is pronounced as the English 'd' sound, the 'e' sound is similar to the 'e' in the English word 'bed,' and the 'u' sound is similar to the 'oo' in the English word 'food.' The 's' sound is pronounced as the English 's' sound."
                         )
                     ],
                     latitude: nil,
