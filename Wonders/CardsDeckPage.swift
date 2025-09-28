@@ -143,7 +143,8 @@ struct CardsDeckPage: View, Identifiable {
         .sheet(isPresented: $showMapSheet) {
             MiniaturasMapView(
                 locations: mapLocations,
-                mapTitle: (language == "pt" ? "Mapa da miniatura: " : "Item map: ") + translation.titulo
+                mapTitle: (language == "pt" ? "Mapa da miniatura: " : "Item map: ") + translation.titulo,
+                showNumbers: true
             )
         }
     }

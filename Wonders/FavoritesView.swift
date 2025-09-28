@@ -88,7 +88,7 @@ struct FavoritesView: View {
                                                         .foregroundColor(.black)
                                                         .multilineTextAlignment(.center)
                                                         .padding(.horizontal, 8)
-                                                        .padding(.bottom, 18)
+                                                        .padding(.bottom, 2)
                                                         .shadow(color: Color.white.opacity(0.7), radius: 4, y: 1)
                                                 }
                                                 .frame(width: itemWidth, height: itemWidth)
@@ -160,7 +160,7 @@ struct FavoritesView: View {
                     }
                     return nil
                 }
-                MiniaturasMapView(locations: locations, mapTitle: languageSettings.language == "pt" ? "Mapa dos favoritos" : "Favorites Map")
+                MiniaturasMapView(locations: locations, mapTitle: languageSettings.language == "pt" ? "Mapa dos favoritos" : "Favorites Map", showNumbers: false)
             }
             .sheet(item: $selectedCard) { card in
                 CardsDeckPage(card: card, language: languageSettings.language)

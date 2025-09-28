@@ -12,6 +12,7 @@ struct MiniaturaLocation: Identifiable {
 struct MiniaturasMapView: View {
     let locations: [MiniaturaLocation]
     let mapTitle: String
+    let showNumbers: Bool // NEW: controls whether to show numbers in markers
     @Environment(\.presentationMode) var presentationMode
 
     // Center map on first location, or Lisbon if none
@@ -67,10 +68,12 @@ struct MiniaturasMapView: View {
                                     Circle()
                                         .frame(width: 32, height: 32)
                                         .foregroundColor(.red)
-                                    Text("\(loc.ordem)")
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white)
+                                    if showNumbers {
+                                        Text("\(loc.ordem)")
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                    }
                                 }
                             }
                             .buttonStyle(PlainButtonStyle())

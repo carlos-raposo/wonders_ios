@@ -39,8 +39,12 @@ struct SearchView: View {
                 TextField("", text: $searchText)
                     .font(.system(size: 18))
                     .padding(.horizontal, 16)
-                    .foregroundColor(placeholderTextColor) // Aplica cor customizada ao texto digitado
-                    .accentColor(placeholderTextColor) // Cursor color
+                    .foregroundColor(placeholderTextColor)
+                    .accentColor(placeholderTextColor)
+                    .onSubmit {
+                        hideKeyboard()
+                    }
+                    .submitLabel(.search)
                 if searchText.isEmpty {
                     HStack {
                         Text(languageSettings.language == "pt" ? "Pesquisar..." : "Search...")
@@ -98,3 +102,12 @@ struct SearchView_Previews: PreviewProvider {
         SearchView().environmentObject(LanguageSettings())
     }
 }
+
+// Helper para esconder o teclado
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif

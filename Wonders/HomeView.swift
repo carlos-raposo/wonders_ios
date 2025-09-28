@@ -81,7 +81,7 @@ struct HomeView: View {
                                             .foregroundColor(.black)
                                             .multilineTextAlignment(.center)
                                             .padding(.horizontal, 8)
-                                            .padding(.bottom, 18)
+                                            .padding(.bottom, 8)
                                             .shadow(color: Color.white.opacity(0.7), radius: 4, y: 1)
                                     }
                                     .frame(width: itemWidth, height: itemWidth)

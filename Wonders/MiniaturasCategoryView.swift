@@ -146,7 +146,11 @@ struct MiniaturasCategoryView: View {
             }
         }
         .sheet(isPresented: $showMapSheet) {
-            MiniaturasMapView(locations: mapLocations, mapTitle: Translations.shared.t("map_category_title", lang: language) + ": " + category)
+            MiniaturasMapView(
+                locations: mapLocations,
+                mapTitle: Translations.shared.t("map_category_title", lang: language) + ": " + category,
+                showNumbers: true // Show numbers for category maps
+            )
         }
         .sheet(item: $showDeckPage) { card in
             CardsDeckPage(card: card, language: language)
