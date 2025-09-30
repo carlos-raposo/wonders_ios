@@ -97,12 +97,6 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView().environmentObject(LanguageSettings())
-    }
-}
-
 // Helper para esconder o teclado
 #if canImport(UIKit)
 extension View {

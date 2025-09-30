@@ -65,9 +65,9 @@ struct MiniaturasCategoryView: View {
     }
     
     var body: some View {
-        let debugCategory = correctVocabularyCategory()
-        let debugCards = MiniaturaCard.mockCards(for: debugCategory)
-        let mapLocations: [MiniaturaLocation] = debugCards.flatMap { card in
+        // Use production data source and filter by category
+        let cards = MiniaturaCard.allCards().filter { $0.categoria == correctVocabularyCategory() }
+        let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
             var locations: [MiniaturaLocation] = []
             let t = card.translations[language] ?? card.translations.values.first!
             if let lat = card.latitude, let lon = card.longitude {
@@ -85,13 +85,13 @@ struct MiniaturasCategoryView: View {
                 VStack {
                     Text(sloganForCategory())
                         .font(.title2)
-                        .fontWeight(.semibold)
+                        .fontWeight(.regular)
                         .padding(.horizontal)
-                        .padding(.top, 16)
+                        .padding(.top, 12)
                         .padding(.bottom, 8)
                         .multilineTextAlignment(.center)
-                    VStack(spacing: 24) {
-                        ForEach(debugCards, id: \.id) { card in
+                    VStack(spacing: 8) {
+                        ForEach(cards, id: \.id) { card in
                             let t = card.translations[language] ?? card.translations.values.first!
                             VStack(spacing: 0) {
                                 if !isVocabularyPT() {
@@ -113,16 +113,13 @@ struct MiniaturasCategoryView: View {
                                         .foregroundColor(.secondary)
                                         .multilineTextAlignment(.center)
                                 }
-                                .padding(.horizontal, 8)
+                                .padding(.horizontal, 6)
                                 .padding(.top, 8)
-                                .padding(.bottom, 16)
+                                .padding(.bottom, 8)
                             }
                         }
                     }
                     .padding(.horizontal)
-                }
-                .onAppear {
-                    print("DEBUG: category=\(category), language=\(language), correctCategory=\(debugCategory), cardsCount=\(debugCards.count)")
                 }
             }
             if category != "Vocabulary" {
@@ -142,7 +139,7 @@ struct MiniaturasCategoryView: View {
                     .accessibilityLabel("\(Translations.shared.t("open_map", lang: language)) \(category)")
                     Spacer()
                 }
-                .padding(.bottom, 24)
+                .padding(.bottom, 12)
             }
         }
         .sheet(isPresented: $showMapSheet) {

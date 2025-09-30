@@ -267,7 +267,3 @@ extension CardButton where Trailing == EmptyView {
         self.init(icon: icon, text: text, trailing: EmptyView(), isDestructive: isDestructive, action: action)
     }
 }
-
-#Preview {
-    SettingsView(selectedTab: .constant(1))
-}

@@ -3,7 +3,6 @@ import SwiftUI
 struct HomeView: View {
     let categories: [(title: String, color: Color)]
     let imageNames: [String]
-    let columns: [GridItem]
     @Binding var showMiniaturas: Bool
     @Binding var selectedCategoryIndex: Int?
     @Binding var selectedTab: Int
@@ -38,8 +37,13 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { geometry in
             let horizontalPadding: CGFloat = 6
-            let spacing: CGFloat = 10
-            let totalSpacing = spacing + horizontalPadding * 2
+            let gridSpacing: CGFloat = 8
+            let cardRadius: CGFloat = 8
+            let columns = [
+                GridItem(.flexible(), spacing: gridSpacing),
+                GridItem(.flexible(), spacing: gridSpacing)
+            ]
+            let totalSpacing = gridSpacing + horizontalPadding * 2
             let itemWidth = (geometry.size.width - totalSpacing) / 2
             let enumeratedCategories = Array(categories.enumerated())
             let enumeratedImageNames = imageNames
@@ -51,7 +55,7 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.bottom, 12)
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: spacing) {
+                    LazyVGrid(columns: columns, spacing: gridSpacing) {
                         ForEach(enumeratedCategories, id: \.offset) { (i, category) in
                             let imageName = enumeratedImageNames[i]
                             Button(action: {
@@ -59,7 +63,7 @@ struct HomeView: View {
                                 showMiniaturas = true
                             }) {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                    RoundedRectangle(cornerRadius: cardRadius, style: .continuous)
                                         .fill(category.color)
                                         .frame(width: itemWidth, height: itemWidth)
                                     VStack(spacing: 0) {
@@ -70,7 +74,7 @@ struct HomeView: View {
                                             .scaledToFill()
                                             .frame(width: itemWidth, height: itemWidth)
                                             .clipped()
-                                            .cornerRadius(18)
+                                            .cornerRadius(cardRadius)
                                         Spacer(minLength: 0)
                                     }
                                     .frame(width: itemWidth, height: itemWidth)

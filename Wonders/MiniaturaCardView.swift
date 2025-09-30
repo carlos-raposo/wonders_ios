@@ -27,12 +27,12 @@ struct MiniaturaCardView: View {
                         .fill(Color.gray.opacity(0.8))
                         .frame(width: 32, height: 32)
                         .overlay(
-                            Text("\(card.ordem)")
+                            Text(card.ordem == 8 ? "+" : "\(card.ordem)")
                                 .font(.headline)
                                 .foregroundColor(.white)
                         )
                         .padding(8)
-                        .accessibilityLabel("Número da miniatura: \(card.ordem)")
+                        .accessibilityLabel("Número da miniatura: \(card.ordem == 8 ? "+" : String(card.ordem))")
                 }
                 if canFavorite {
                     Button(action: {

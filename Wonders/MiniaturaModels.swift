@@ -1768,7 +1768,6 @@ extension MiniaturaCard {
             ]
         }
         // Fallback logic for unknown categories
-        print("DEBUG: Unknown category '", categoria, "' passed to mockCardsRaw. Returning empty array.")
         return []
     }
     

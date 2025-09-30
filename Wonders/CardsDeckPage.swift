@@ -136,15 +136,15 @@ struct CardsDeckPage: View, Identifiable {
                         .accessibilityLabel(language == "pt" ? "Abrir mapa da miniatura" : "Open item map")
                         Spacer()
                     }
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 0)
                 }
             }
         }
         .sheet(isPresented: $showMapSheet) {
             MiniaturasMapView(
                 locations: mapLocations,
-                mapTitle: (language == "pt" ? "Mapa da miniatura: " : "Item map: ") + translation.titulo,
-                showNumbers: true
+                mapTitle: translation.titulo,
+                showNumbers: false
             )
         }
     }

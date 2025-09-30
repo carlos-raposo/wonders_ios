@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import FirebaseAuth
 import FirebaseFirestore
+import os
 
 class FavoritesManager: ObservableObject {
     @Published private(set) var favorites: Set<String> = []
@@ -59,6 +60,11 @@ class FavoritesManager: ObservableObject {
         let userRef = db.collection("users").document(uid)
         listener = userRef.addSnapshotListener { [weak self] snapshot, error in
             guard let self = self else { return }
+            if let error = error {
+                os_log("[FavoritesManager] Firestore listener error: %{public}@", log: .default, type: .error, error.localizedDescription)
+                self.favorites = []
+                return
+            }
             if let data = snapshot?.data(), let favs = data["favorites"] as? [String] {
                 self.favorites = Set(favs)
             } else {

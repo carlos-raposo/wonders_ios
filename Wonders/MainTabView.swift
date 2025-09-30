@@ -20,8 +20,8 @@ struct MainTabView: View {
         "monuments", "nature", "gastronomy", "popular", "churches", "museums", "sintra", "vocabulary"
     ]
     let columns = [
-        GridItem(.flexible(), spacing: 10),
-        GridItem(.flexible(), spacing: 10)
+        GridItem(.flexible(), spacing: 8),
+        GridItem(.flexible(), spacing: 8)
     ]
     
     var body: some View {
@@ -41,7 +41,6 @@ struct MainTabView: View {
                             HomeView(
                                 categories: categories,
                                 imageNames: imageNames,
-                                columns: columns,
                                 showMiniaturas: $showMiniaturas,
                                 selectedCategoryIndex: $selectedCategoryIndex,
                                 selectedTab: $selectedTab

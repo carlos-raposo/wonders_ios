@@ -54,34 +54,44 @@ struct MiniaturasView: View {
                         .foregroundColor(.primary)
                         .padding(.trailing, 8)
                         .padding(.leading, 8)
+                        .padding(.bottom, 14)
                 }
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 16) {
-                        ForEach(0..<categories.count, id: \.self) { idx in
-                            Button(action: {
-                                withAnimation {
-                                    selectedCategory = idx
-                                }
-                            }) {
-                                VStack {
-                                    Text(tCategory(categories[idx]))
-                                        .fontWeight(selectedCategory == idx ? .bold : .regular)
-                                        .foregroundColor(selectedCategory == idx ? .blue : .primary)
-                                    if selectedCategory == idx {
-                                        Capsule()
-                                            .fill(Color.blue)
-                                            .frame(height: 3)
-                                            .matchedGeometryEffect(id: "underline", in: underline)
-                                    } else {
-                                        Capsule()
-                                            .fill(Color.clear)
-                                            .frame(height: 3)
+                ScrollViewReader { scrollProxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(0..<categories.count, id: \.self) { idx in
+                                Button(action: {
+                                    withAnimation {
+                                        selectedCategory = idx
+                                        scrollProxy.scrollTo(idx, anchor: .center)
+                                    }
+                                }) {
+                                    VStack {
+                                        Text(tCategory(categories[idx]))
+                                            .fontWeight(selectedCategory == idx ? .bold : .regular)
+                                            .foregroundColor(selectedCategory == idx ? .blue : .primary)
+                                        if selectedCategory == idx {
+                                            Capsule()
+                                                .fill(Color.blue)
+                                                .frame(height: 3)
+                                                .matchedGeometryEffect(id: "underline", in: underline)
+                                        } else {
+                                            Capsule()
+                                                .fill(Color.clear)
+                                                .frame(height: 3)
+                                        }
                                     }
                                 }
+                                .id(idx)
                             }
+                            .padding(.vertical, 8)
                         }
                     }
-                    .padding(.vertical, 8)
+                    .onChange(of: selectedCategory) { idx in
+                        withAnimation {
+                            scrollProxy.scrollTo(idx, anchor: .center)
+                        }
+                    }
                 }
             }
             .background(Color(.systemBackground))
@@ -95,16 +105,6 @@ struct MiniaturasView: View {
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-        }
-    }
-}
-
-struct MiniaturasView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            MiniaturasView(categories: [
-                "Monuments", "Nature", "Gastronomy", "Popular", "Churches", "Museums", "Sintra", "Vocabulary"
-            ], initialCategory: 0, selectedTab: .constant(0), showMiniaturas: .constant(true))
         }
     }
 }
