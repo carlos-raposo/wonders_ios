@@ -44,7 +44,8 @@ struct HomeView: View {
                 GridItem(.flexible(), spacing: gridSpacing)
             ]
             let totalSpacing = gridSpacing + horizontalPadding * 2
-            let itemWidth = (geometry.size.width - totalSpacing) / 2
+            let rawItemWidth = (geometry.size.width - totalSpacing) / 2
+            let itemWidth = max(rawItemWidth, 80) // Ensure minimum width to avoid negative/non-finite
             let enumeratedCategories = Array(categories.enumerated())
             let enumeratedImageNames = imageNames
             VStack(spacing: 0) {

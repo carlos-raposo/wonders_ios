@@ -87,9 +87,9 @@ struct MiniaturasView: View {
                             .padding(.vertical, 8)
                         }
                     }
-                    .onChange(of: selectedCategory) { idx in
+                    .onChange(of: selectedCategory) { oldValue, newValue in
                         withAnimation {
-                            scrollProxy.scrollTo(idx, anchor: .center)
+                            scrollProxy.scrollTo(newValue, anchor: .center)
                         }
                     }
                 }

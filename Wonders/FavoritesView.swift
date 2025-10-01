@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
@@ -44,135 +45,148 @@ struct FavoritesView: View {
             let horizontalPadding: CGFloat = 6
             let spacing: CGFloat = 8
             let totalSpacing = spacing + horizontalPadding * 2
-            let itemWidth = (geometry.size.width - totalSpacing) / 2
-            let favoriteCards = getFavoriteCards()
-            ZStack(alignment: .bottom) {
-                VStack(spacing: 0) {
-                    Text(languageSettings.language == "pt" ? "Favoritos" : "Favorites")
-                        .font(.system(size: 24, weight: .bold))
-                        .foregroundColor(.black)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.bottom, 12)
-                    if favoriteCards.isEmpty {
-                        Spacer()
-                        Text(languageSettings.language == "pt" ? "Nenhum favorito ainda" : "No favorites yet")
-                            .font(.title3)
-                            .foregroundColor(.secondary)
-                            .padding()
-                            .accessibilityLabel(languageSettings.language == "pt" ? "Nenhum favorito ainda" : "No favorites yet")
-                        Spacer()
-                    } else {
-                        ScrollView {
-                            VStack(spacing: 0) {
-                                LazyVGrid(columns: columns, spacing: spacing) {
-                                    ForEach(favoriteCards, id: \.key) { (favKey, card, translation) in
-                                        Button(action: { selectedCard = card }) {
-                                            ZStack(alignment: .topTrailing) {
-                                                ZStack {
-                                                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                                        .fill(Color(.systemGray6))
-                                                        .frame(width: itemWidth, height: itemWidth)
-                                                    VStack(spacing: 0) {
-                                                        Image(imageName(for: card))
-                                                            .resizable()
-                                                            .scaledToFill()
+            if geometry.size.width.isFinite, geometry.size.width > totalSpacing {
+                let itemWidth = max((geometry.size.width - totalSpacing) / 2, 1)
+                let favoriteCards = getFavoriteCards()
+                ZStack(alignment: .bottom) {
+                    VStack(spacing: 0) {
+                        Text(languageSettings.language == "pt" ? "Favoritos" : "Favorites")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.bottom, 12)
+                        if favoriteCards.isEmpty {
+                            Spacer()
+                            Text(languageSettings.language == "pt" ? "Nenhum favorito ainda" : "No favorites yet")
+                                .font(.title3)
+                                .foregroundColor(.secondary)
+                                .padding()
+                                .accessibilityLabel(languageSettings.language == "pt" ? "Nenhum favorito ainda" : "No favorites yet")
+                            Spacer()
+                        } else {
+                            ScrollView {
+                                VStack(spacing: 0) {
+                                    LazyVGrid(columns: columns, spacing: spacing) {
+                                        ForEach(favoriteCards, id: \.key) { (favKey, card, translation) in
+                                            Button(action: { selectedCard = card }) {
+                                                ZStack(alignment: .topTrailing) {
+                                                    ZStack {
+                                                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                                            .fill(Color(.systemGray6))
                                                             .frame(width: itemWidth, height: itemWidth)
-                                                            .clipped()
-                                                            .cornerRadius(8)
-                                                        Spacer(minLength: 0)
+                                                        VStack(spacing: 0) {
+                                                            Image(imageName(for: card))
+                                                                .resizable()
+                                                                .scaledToFill()
+                                                                .frame(width: itemWidth, height: itemWidth)
+                                                                .clipped()
+                                                                .cornerRadius(8)
+                                                            Spacer(minLength: 0)
+                                                        }
+                                                        .frame(width: itemWidth, height: itemWidth)
+                                                        VStack {
+                                                            Spacer()
+                                                            ZStack {
+                                                                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                                                                    .fill(Color.white.opacity(0.5))
+                                                                    .shadow(color: Color.black.opacity(0.15), radius: 6, y: -2)
+                                                                
+                                                                Text(translation.titulo)
+                                                                    .font(.system(size: 20, weight: .regular))
+                                                                    .foregroundColor(.black)
+                                                                    .multilineTextAlignment(.center)
+                                                                    .padding(.horizontal, 0)
+                                                                    .padding(.bottom, 0)
+                                                                    
+                                                            }
+                                                            .frame(height: 24)
+                                                            .padding(.horizontal, 0)
+                                                            .padding(.bottom, 0)
+                                                        }
+                                                        .frame(width: itemWidth, height: itemWidth)
                                                     }
-                                                    .frame(width: itemWidth, height: itemWidth)
-                                                    VStack {
-                                                        Spacer()
-                                                        Text(translation.titulo)
-                                                            .font(.system(size: 20, weight: .regular))
-                                                            .foregroundColor(.black)
-                                                            .multilineTextAlignment(.center)
-                                                            .padding(.horizontal, 8)
-                                                            .padding(.bottom, 2)
-                                                            .shadow(color: Color.white.opacity(0.7), radius: 4, y: 1)
+                                                    Button(action: {
+                                                        favoritesManager.toggleFavorite(card: card)
+                                                    }) {
+                                                        Image(systemName: "heart.fill")
+                                                            .foregroundColor(.red)
+                                                            .padding(8)
+                                                            .background(Color.white.opacity(0.7))
+                                                            .clipShape(Circle())
                                                     }
-                                                    .frame(width: itemWidth, height: itemWidth)
+                                                    .padding(8)
+                                                    .accessibilityLabel(languageSettings.language == "pt" ? "Remover dos favoritos" : "Remove from favorites")
                                                 }
-                                                Button(action: {
-                                                    favoritesManager.toggleFavorite(card: card)
-                                                }) {
-                                                    Image(systemName: "heart.fill")
-                                                        .foregroundColor(.red)
-                                                        .padding(8)
-                                                        .background(Color.white.opacity(0.7))
-                                                        .clipShape(Circle())
-                                                }
-                                                .padding(8)
-                                                .accessibilityLabel(languageSettings.language == "pt" ? "Remover dos favoritos" : "Remove from favorites")
                                             }
+                                            .buttonStyle(PlainButtonStyle())
                                         }
-                                        .buttonStyle(PlainButtonStyle())
                                     }
+                                    .padding(.horizontal, horizontalPadding)
+                                    .padding(.bottom, 80)
                                 }
-                                .padding(.horizontal, horizontalPadding)
-                                .padding(.bottom, 80)
                             }
                         }
+                        Spacer(minLength: 0)
                     }
-                    Spacer(minLength: 0)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                .background(Color(.systemBackground))
-                .ignoresSafeArea(edges: .bottom)
-                HStack {
-                    Spacer()
-                    Button(action: { showMapSheet = true }) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "map")
-                                .frame(height: 24)
-                            Text(languageSettings.language == "pt" ? "Mapa" : "Map")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    .background(Color(.systemBackground))
+                    .ignoresSafeArea(edges: .bottom)
+                    HStack {
+                        Spacer()
+                        Button(action: { showMapSheet = true }) {
+                            HStack {
+                                Image(systemName: "map")
+                                Text(languageSettings.language == "pt" ? "Mapa" : "Map")
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(.ultraThinMaterial)
+                            .clipShape(Capsule())
+                            .shadow(radius: 4)
                         }
-                        .frame(minWidth: 120, maxHeight: 40)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(.ultraThinMaterial)
-                        .clipShape(Capsule())
-                        .shadow(radius: 4)
-                    }
-                    .accessibilityLabel(languageSettings.language == "pt" ? "Abrir mapa dos favoritos" : "Open favorites map")
-                    Spacer()
-                    Button(action: { showShareSheet = true }) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "square.and.arrow.up")
-                                .frame(height: 24)
-                            Text(languageSettings.language == "pt" ? "Partilhar" : "Share")
+                        .accessibilityLabel(languageSettings.language == "pt" ? "Abrir mapa dos favoritos" : "Open favorites map")
+                        Spacer()
+                        Button(action: { showShareSheet = true }) {
+                            HStack {
+                                Image(systemName: "square.and.arrow.up")
+                                Text(languageSettings.language == "pt" ? "Partilhar" : "Share")
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(.ultraThinMaterial)
+                            .clipShape(Capsule())
+                            .shadow(radius: 4)
                         }
-                        .frame(minWidth: 120, maxHeight: 40)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(.ultraThinMaterial)
-                        .clipShape(Capsule())
-                        .shadow(radius: 4)
+                        .accessibilityLabel(languageSettings.language == "pt" ? "Partilhar favoritos" : "Share favorites")
+                        Spacer()
                     }
-                    .accessibilityLabel(languageSettings.language == "pt" ? "Partilhar favoritos" : "Share favorites")
-                    Spacer()
+                    .padding(.bottom, 12)
                 }
-                .padding(.bottom, 12)
-            }
-            .sheet(isPresented: $showMapSheet) {
-                let locations: [MiniaturaLocation] = favoriteCards.compactMap { (_, card, translation) in
-                    if let lat = card.latitude, let lon = card.longitude {
-                        return MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem)
+                .sheet(isPresented: $showMapSheet) {
+                    let locations: [MiniaturaLocation] = favoriteCards.compactMap { (_, card, translation) in
+                        if let lat = card.latitude, let lon = card.longitude {
+                            return MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem)
+                        }
+                        return nil
                     }
-                    return nil
+                    MiniaturasMapView(
+                        locations: locations,
+                        mapTitle: languageSettings.language == "pt" ? "Mapa dos favoritos" : "Favorites Map",
+                        showNumbers: false
+                    )
                 }
-                MiniaturasMapView(locations: locations, mapTitle: languageSettings.language == "pt" ? "Mapa dos favoritos" : "Favorites Map", showNumbers: false)
-            }
-            .sheet(item: $selectedCard) { card in
-                CardsDeckPage(card: card, language: languageSettings.language)
-                    .presentationDetents([.large])
-                    .interactiveDismissDisabled(false)
-                    .presentationDragIndicator(.visible)
-            }
-            .sheet(isPresented: $showShareSheet) {
-                let favoritesList = favoriteCards.map { "• " + $0.2.titulo }.joined(separator: "\n")
-                ActivityView(activityItems: [favoritesList])
+                .sheet(item: $selectedCard) { card in
+                    CardsDeckPage(card: card, language: languageSettings.language)
+                        .presentationDetents([.large])
+                        .interactiveDismissDisabled(false)
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $showShareSheet) {
+                    let favoritesList = favoriteCards.map { "• " + $0.2.titulo }.joined(separator: "\n")
+                    ActivityView(activityItems: [favoritesList])
+                }
+            } else {
+                Color.clear
             }
         }
     }
@@ -196,7 +210,10 @@ fileprivate struct RoundedCorner: Shape {
 
 // Helper for safe area top
 fileprivate func safeAreaTop() -> CGFloat {
-    UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+    // Modern iOS 15+ approach
+    let scenes = UIApplication.shared.connectedScenes
+    let windowScene = scenes.first(where: { $0 is UIWindowScene }) as? UIWindowScene
+    return windowScene?.keyWindow?.safeAreaInsets.top ?? 0
 }
 
 // Helper for share sheet

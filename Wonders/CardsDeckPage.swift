@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct CardsDeckPage: View, Identifiable {
     let id = UUID()
@@ -144,7 +145,7 @@ struct CardsDeckPage: View, Identifiable {
             MiniaturasMapView(
                 locations: mapLocations,
                 mapTitle: translation.titulo,
-                showNumbers: false
+                showNumbers: true
             )
         }
     }

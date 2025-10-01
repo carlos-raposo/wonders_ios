@@ -192,8 +192,8 @@ extension MiniaturaCard {
                             adress: "R. do Ouro, 1150-060 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.713909,
-                    longitude: -9.139506,
+                    latitude: 38.712130,
+                    longitude: -9.139343,
                     extraLocations: nil
                 ),
                 MiniaturaCard(
@@ -232,19 +232,21 @@ extension MiniaturaCard {
                             shortDescription: "The two bridges connect the south with the north, the past with the future.",
                             description: "Lisbon is known for its iconic bridges that span the Tagus River, connecting the city with the south bank. The most famous bridges are the 25 de Abril Bridge, a suspension bridge reminiscent of the Golden Gate Bridge in San Francisco, and the Vasco da Gama Bridge, one of the longest bridges in Europe. These bridges are not only essential transportation links but also architectural landmarks that contribute to the city's skyline.",
                             history: "The construction of the Lisbon bridges was a significant engineering challenge, given the width and depth of the Tagus River. The 25 de Abril Bridge, originally named the Salazar Bridge, was inaugurated in 1966 and was the longest suspension bridge in Europe at the time. It was later renamed to commemorate the Carnation Revolution of 1974. The Vasco da Gama Bridge, inaugurated in 1998, was built to relieve traffic congestion on the 25 de Abril Bridge and is one of the longest bridges in Europe. Both bridges are essential transportation links for the city and have become iconic symbols of Lisbon.",
-                            adress: "Lisbon, Portugal"
+                            adress: "Ponte 25 de Abril\nPonte Vasco da Gama\nLisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
                             titulo: "Pontes de Lisboa",
                             shortDescription: "As duas pontes ligam o sul com o norte, o passado com o futuro.",
                             description: "Lisboa é conhecida por suas pontes icônicas que atravessam o Rio Tejo, conectando a cidade com a margem sul. As pontes mais famosas são a Ponte 25 de Abril, uma ponte suspensa que lembra a Ponte Golden Gate em São Francisco, e a Ponte Vasco da Gama, uma das pontes mais longas da Europa. Essas pontes não são apenas ligações de transporte essenciais, mas também marcos arquitetônicos que contribuem para a linha do horizonte da cidade.",
                             history: "A construção das pontes de Lisboa foi um desafio significativo de engenharia, dada a largura e profundidade do Rio Tejo. A Ponte 25 de Abril, originalmente chamada de Ponte Salazar, foi inaugurada em 1966 e foi a ponte suspensa mais longa da Europa na época. Posteriormente, foi renomeada para comemorar a Revolução dos Cravos de 1974. A Ponte Vasco da Gama, inaugurada em 1998, foi construída para aliviar o congestionamento de tráfego na Ponte 25 de Abril e é uma das pontes mais longas da Europa. Ambas as pontes são ligações de transporte essenciais para a cidade e se tornaram símbolos icônicos de Lisboa.",
-                            adress: "Lisboa, Portugal"
+                            adress: "Ponte 25 de Abril\nPonte Vasco da Gama\nLisboa, Portugal"
                         )
                     ],
                     latitude: 38.689167,
                     longitude: -9.177778,
-                    extraLocations: nil
+                    extraLocations: [
+                        (38.762303, -9.043198)
+                    ]
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -267,9 +269,13 @@ extension MiniaturaCard {
                             adress: nil
                         )
                     ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil
+                    latitude: 38.707403,
+                    longitude: -9.198642,
+                    extraLocations: [
+                        (38.750397, -9.257947),
+                        (38.787605, -9.390496),
+                        (38.787605, -9.390496)
+                    ]
                 )
             ]
         }
@@ -1317,7 +1323,7 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Palácio da Pena",
+                            titulo: "Pena Palace",
                             shortDescription: "A colorful Romanticist palace on a hilltop, symbol of Sintra.",
                             description: "The National Palace of Pena is a 19th-century Romantic palace made of stone and stucco, situated on the top of the Sintra Mountains. It stands out for its eclectic style, with neo-Gothic, neo-Manueline, and Moorish elements, and for its vibrant colors, visible from the entire surrounding area. The palace is a testament to the king's passion for art and history, combining elements from various periods and cultures.",
                             history: "The Pena Palace was built on the site of an old monastery that was destroyed during the 1755 earthquake. King Ferdinand II acquired the land in 1838 and began construction of the palace in 1842. The palace was completed in 1854 and became the summer residence of the Portuguese royal family. After the fall of the monarchy in 1910, the palace was converted into a museum and opened to the public. The main architect responsible for transforming the monastery into a palace was Baron von Eschwege.",
@@ -1342,7 +1348,7 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Travesseiros & Queijadas",
+                            titulo: "Travesseiros and Queijadas",
                             shortDescription: "Traditional Sintra pastries, sweet and unique.",
                             description: "Queijadas and travesseiros are two of Sintra's most traditional sweets, made with puff pastry, almonds, eggs, and sugar. Queijadas are small puff pastry tarts filled with a cheese cream, while travesseiros are puff pastry pillows filled with an almond sweet. Both are handcrafted, following centuries-old recipes, and can be found in traditional Sintra pastry shops, such as Piriquita and Casa da Queijada. In Lisbon and surrounding areas, travesseiros and queijadas are sold in various pastry shops and supermarkets.",
                             history: "The creation of Travesseiros dates back to the 1940s, at the Piriquita pastry shop, by Constância Cunha, while Queijadas originated in the 13th century, being produced by the nuns of the Penha Longa Convent. An interesting fact about Queijadas is that they were used as a form of payment for rents and taxes in medieval times.",
@@ -1367,7 +1373,7 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Castelo dos Mouros",
+                            titulo: "Moorish Castle",
                             shortDescription: "Ancient Moorish castle with panoramic views.",
                             description: "It is a medieval military fortification, built in stone, located at the top of the Sintra Mountains. Dating from the 8th century, during the period of Muslim occupation of the Iberian Peninsula, the castle offers panoramic views of the town of Sintra and the surrounding region. Its walls wind through the mountains, integrating into the natural landscape.",
                             history: "It was built by the Moors to protect the Sintra region, a strategic defense point. In 1147, King Afonso Henriques conquered the castle from the Moors, integrating it into the Kingdom of Portugal. Over the centuries, the castle underwent several renovations and expansions, being restored in the 19th century by King Ferdinand II, who restored its romantic appearance. One of the curiosities is that during the Christian reconquest, the castle was taken by assault during the night, after a long siege.",
@@ -1417,7 +1423,7 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Parque de Monserrate",
+                            titulo: "Monserrate Park",
                             shortDescription: "Exotic gardens and a unique palace in Sintra.",
                             description: "It is a 19th-century romantic garden, with an eclectic style palace with neo-Gothic, Moorish, Indian, and romantic influences. The park features a unique botanical collection, with plants from around the world including palms, cacti, ferns, and orchids. Its lakes, waterfalls, and ruins create a magical and mysterious environment.",
                             history: "The creation of Monserrate Park was initiated by Francis Cook, a wealthy English merchant, in the 19th century, between 1858 and 1863, to be his summer residence. Architect James Knowles Jr. was responsible for the palace project and landscape architect William Stockdale designed the park. The park was the scene of various parties and high society events of the time. One of the curious facts is that the park was built on the ruins of an old estate, which belonged to Gerard de Visme, an English merchant from the 18th century.",
@@ -1442,7 +1448,7 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Convento dos Capuchos",
+                            titulo: " Convent of the Capuchin",
                             shortDescription: "A humble and historic convent surrounded by nature.",
                             description: "It is a 16th-century Franciscan convent, built in stone and integrated into the landscape of the Sintra Mountains. It stands out for its austere architecture, with small cells carved into the rock and lined with cork. It is located in an isolated and densely wooded area, providing an environment of seclusion. The convent is a testament to monastic life and Franciscan spirituality, and is now a place of pilgrimage and meditation.",
                             history: "The construction of the convent was initiated in 1560 by D. Álvaro de Castro, to serve as a retreat for the Franciscan friars of the Order of Capuchos. The convent was designed to promote a life of prayer and penance, with great emphasis on poverty and isolation. One of the curious facts is that the small dimensions of the cells and the use of cork on the walls reflect the friars' ideal of simplicity and detachment.",
@@ -1492,7 +1498,7 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Mais Sintra",
+                            titulo: "More Sintra",
                             shortDescription: "Discover even more wonders in Sintra!",
                             description: "When we talk about Sintra, we may be referring to the Town or the Municipality. The Town of Sintra is a magical place, with a romantic atmosphere and a unique cultural and natural heritage. The Municipality of Sintra is a diverse region, ranging from the Atlantic coast to the mountains of the Sintra Range, with a rich history and breathtaking landscape. In addition to the 7 wonders already mentioned, here are some other emblematic and enchanting places in the region that deserve to be visited and explored.",
                             history: "Cabo da Roca: It is the westernmost point of continental Europe, with 140-meter-high cliffs and breathtaking views over the ocean. Cruz Alta: It is the highest point of the Sintra Mountains, at 528 meters altitude, from where you can see the most beautiful views over Lisbon and Cascais to the south, the Atlantic Ocean to the west, and the rural region to the north. Adraga Beach: It is one of the most beautiful beaches in the region, with an extensive sandy area, imposing cliffs, and crystal-clear waters. Praia Grande: It is one of the most popular beaches in the region, with an extensive sandy area, good waves for surfing, and a relaxed atmosphere. Maçãs Beach: It is a picturesque beach, with a small fishing port, a lively promenade, and a family-friendly atmosphere. Ursa Beach: It is a wild and isolated beach, with steep cliffs, golden sand, and crystal-clear waters. Aguda Beach: It is a quiet and isolated beach, with an extensive sandy area, calm waters, and a relaxing atmosphere.",

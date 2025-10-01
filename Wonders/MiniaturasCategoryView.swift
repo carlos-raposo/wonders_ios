@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct MiniaturasCategoryView: View {
     let category: String
@@ -7,6 +8,7 @@ struct MiniaturasCategoryView: View {
     @State private var showMapSheet = false
     
     // Slogans por categoria e idioma
+    /*
     private let slogans: [String: [String: String]] = [
         "en": [
             "Monuments": "History in every stone.",
@@ -35,6 +37,7 @@ struct MiniaturasCategoryView: View {
         let key = category
         return slogans[lang]?[key] ?? slogans["en"]?[key] ?? ""
     }
+    */
     
     // Adiciona função para garantir categoria original
     private func originalCategoryName(for input: String) -> String {
@@ -43,10 +46,7 @@ struct MiniaturasCategoryView: View {
             case "nature", "natureza": return "Natureza"
             case "gastronomy", "gastronomia": return "Gastronomia"
             case "popular", "populare": return "Popular"
-            case "beaches", "praias": return "Praias"
             case "museums", "museus": return "Museus"
-            case "parks", "parques": return "Parques"
-            case "traditions", "tradições": return "Tradições"
             case "vocabulary": return "Vocabulary"
             default: return input
         }
@@ -66,7 +66,7 @@ struct MiniaturasCategoryView: View {
     
     var body: some View {
         // Use production data source and filter by category
-        let cards = MiniaturaCard.allCards().filter { $0.categoria == correctVocabularyCategory() }
+        let cards = MiniaturaCard.allCards().filter { $0.categoria.normalized == correctVocabularyCategory().normalized }
         let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
             var locations: [MiniaturaLocation] = []
             let t = card.translations[language] ?? card.translations.values.first!
@@ -83,13 +83,13 @@ struct MiniaturasCategoryView: View {
         ZStack(alignment: .bottom) {
             ScrollView {
                 VStack {
-                    Text(sloganForCategory())
+                    /*Text(sloganForCategory())
                         .font(.title2)
                         .fontWeight(.regular)
                         .padding(.horizontal)
                         .padding(.top, 12)
                         .padding(.bottom, 8)
-                        .multilineTextAlignment(.center)
+                        .multilineTextAlignment(.center)*/
                     VStack(spacing: 8) {
                         ForEach(cards, id: \.id) { card in
                             let t = card.translations[language] ?? card.translations.values.first!
@@ -103,19 +103,21 @@ struct MiniaturasCategoryView: View {
                                 } else {
                                     MiniaturaCardView(card: card, translation: t)
                                 }
-                                VStack(spacing: 4) {
-                                    Text(t.titulo)
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                        .multilineTextAlignment(.center)
-                                    Text(t.shortDescription)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                        .multilineTextAlignment(.center)
-                                }
-                                .padding(.horizontal, 6)
+                                // Replace the HStack with a single Text view using AttributedString for mixed styles
+                                Text({
+                                    var attributed = AttributedString(t.titulo + ": ")
+                                    attributed.font = .system(size: 22, weight: .bold)
+                                    attributed.foregroundColor = .primary
+                                    var desc = AttributedString(t.shortDescription)
+                                    desc.font = .system(size: 20, weight: .regular)
+                                    desc.foregroundColor = .secondary
+                                    attributed.append(desc)
+                                    return attributed
+                                }())
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 0)
                                 .padding(.top, 8)
-                                .padding(.bottom, 8)
+                                .padding(.bottom, 16)
                             }
                         }
                     }
@@ -146,7 +148,7 @@ struct MiniaturasCategoryView: View {
             MiniaturasMapView(
                 locations: mapLocations,
                 mapTitle: Translations.shared.t("map_category_title", lang: language) + ": " + category,
-                showNumbers: true // Show numbers for category maps
+                showNumbers: true
             )
         }
         .sheet(item: $showDeckPage) { card in

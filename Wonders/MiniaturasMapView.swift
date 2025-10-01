@@ -7,12 +7,15 @@ struct MiniaturaLocation: Identifiable {
     let latitude: Double
     let longitude: Double
     let ordem: Int
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
 }
 
 struct MiniaturasMapView: View {
     let locations: [MiniaturaLocation]
     let mapTitle: String
-    let showNumbers: Bool // NEW: controls whether to show numbers in markers
+    let showNumbers: Bool // controls whether to show numbers in markers
     @Environment(\.presentationMode) var presentationMode
 
     // Center map on first location, or Lisbon if none
@@ -20,12 +23,12 @@ struct MiniaturasMapView: View {
         if let first = locations.first {
             return MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: first.latitude, longitude: first.longitude),
-                span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
+                span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
             )
         } else {
             return MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: 38.7223, longitude: -9.1393), // Lisbon
-                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
             )
         }
     }
@@ -55,8 +58,8 @@ struct MiniaturasMapView: View {
                     .padding()
                 Spacer()
             } else {
-                Map(coordinateRegion: .constant(region), annotationItems: locations) { loc in
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)) {
+                Map(coordinateRegion: .constant(region), interactionModes: .all, showsUserLocation: false, annotationItems: locations) { loc in
+                    MapAnnotation(coordinate: loc.coordinate) {
                         VStack(spacing: 2) {
                             Button(action: {
                                 let urlString = "http://maps.apple.com/?daddr=\(loc.latitude),\(loc.longitude)"
