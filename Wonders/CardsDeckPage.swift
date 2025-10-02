@@ -8,6 +8,7 @@ struct CardsDeckPage: View, Identifiable {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var languageSettings: LanguageSettings
     @State private var showMapSheet = false
+    @Environment(\.colorScheme) var colorScheme
     var translation: MiniaturaCardTranslation { card.translations[language] ?? card.translations["en"]! }
     // Helper to build locations for the map
     var mapLocations: [MiniaturaLocation] {
@@ -126,13 +127,18 @@ struct CardsDeckPage: View, Identifiable {
                         Button(action: { showMapSheet = true }) {
                             HStack {
                                 Image(systemName: "map")
+                                    .foregroundColor(.primary)
                                 Text(language == "pt" ? "Mapa" : "Map")
+                                    .foregroundColor(.primary)
                             }
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
-                            .background(.ultraThinMaterial)
+                            .background(.regularMaterial)
                             .clipShape(Capsule())
-                            .shadow(radius: 4)
+                            .overlay(
+                                Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1)
+                            )
+                            .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.6 : 0.15), radius: 4)
                         }
                         .accessibilityLabel(language == "pt" ? "Abrir mapa da miniatura" : "Open item map")
                         Spacer()
@@ -145,7 +151,9 @@ struct CardsDeckPage: View, Identifiable {
             MiniaturasMapView(
                 locations: mapLocations,
                 mapTitle: translation.titulo,
-                showNumbers: true
+                showNumbers: true,
+                zoomSpan: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04),
+                customCenter: mapLocations.first?.coordinate
             )
         }
     }

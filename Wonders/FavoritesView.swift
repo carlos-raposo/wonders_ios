@@ -42,16 +42,29 @@ struct FavoritesView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            @Environment(\.colorScheme) var colorScheme
             let horizontalPadding: CGFloat = 6
             let spacing: CGFloat = 8
             let totalSpacing = spacing + horizontalPadding * 2
             if geometry.size.width.isFinite, geometry.size.width > totalSpacing {
                 let itemWidth = max((geometry.size.width - totalSpacing) / 2, 1)
+                let columns = [GridItem(.fixed(itemWidth), spacing: spacing), GridItem(.fixed(itemWidth), spacing: spacing)]
                 let favoriteCards = getFavoriteCards()
+                // Fix: Define mapLocations and mapTitle for use in sheet
+                let mapLocations: [MiniaturaLocation] = favoriteCards.compactMap { (_, card, translation) in
+                    if let lat = card.latitude, let lon = card.longitude {
+                        MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem)
+                    } else {
+                        nil
+                    }
+                }
+                let mapTitle: String = languageSettings.language == "pt"
+                    ? "Mapa de Favoritos"
+                    : "Favorites Map"
                 ZStack(alignment: .bottom) {
                     VStack(spacing: 0) {
                         Text(languageSettings.language == "pt" ? "Favoritos" : "Favorites")
-                            .font(.system(size: 24, weight: .bold))
+                            .font(.system(size: 26, weight: .regular))
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(.bottom, 12)
@@ -90,14 +103,12 @@ struct FavoritesView: View {
                                                                 RoundedRectangle(cornerRadius: 0, style: .continuous)
                                                                     .fill(Color.white.opacity(0.5))
                                                                     .shadow(color: Color.black.opacity(0.15), radius: 6, y: -2)
-                                                                
                                                                 Text(translation.titulo)
                                                                     .font(.system(size: 20, weight: .regular))
                                                                     .foregroundColor(.black)
                                                                     .multilineTextAlignment(.center)
                                                                     .padding(.horizontal, 0)
                                                                     .padding(.bottom, 0)
-                                                                    
                                                             }
                                                             .frame(height: 24)
                                                             .padding(.horizontal, 0)
@@ -114,10 +125,14 @@ struct FavoritesView: View {
                                                             .background(Color.white.opacity(0.7))
                                                             .clipShape(Circle())
                                                     }
+                                                    .frame(width: 40, height: 40)
+                                                    .contentShape(Circle())
                                                     .padding(8)
                                                     .accessibilityLabel(languageSettings.language == "pt" ? "Remover dos favoritos" : "Remove from favorites")
                                                 }
                                             }
+                                            .frame(width: itemWidth, height: itemWidth)
+                                            .contentShape(Rectangle())
                                             .buttonStyle(PlainButtonStyle())
                                         }
                                     }
@@ -136,26 +151,36 @@ struct FavoritesView: View {
                         Button(action: { showMapSheet = true }) {
                             HStack {
                                 Image(systemName: "map")
+                                    .foregroundColor(.primary)
                                 Text(languageSettings.language == "pt" ? "Mapa" : "Map")
+                                    .foregroundColor(.primary)
                             }
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
-                            .background(.ultraThinMaterial)
+                            .background(.regularMaterial)
                             .clipShape(Capsule())
-                            .shadow(radius: 4)
+                            .overlay(
+                                Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1)
+                            )
+                            .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.6 : 0.15), radius: 4)
                         }
                         .accessibilityLabel(languageSettings.language == "pt" ? "Abrir mapa dos favoritos" : "Open favorites map")
                         Spacer()
                         Button(action: { showShareSheet = true }) {
                             HStack {
                                 Image(systemName: "square.and.arrow.up")
+                                    .foregroundColor(.primary)
                                 Text(languageSettings.language == "pt" ? "Partilhar" : "Share")
+                                    .foregroundColor(.primary)
                             }
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
-                            .background(.ultraThinMaterial)
+                            .background(.regularMaterial)
                             .clipShape(Capsule())
-                            .shadow(radius: 4)
+                            .overlay(
+                                Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1)
+                            )
+                            .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.6 : 0.15), radius: 4)
                         }
                         .accessibilityLabel(languageSettings.language == "pt" ? "Partilhar favoritos" : "Share favorites")
                         Spacer()
@@ -163,16 +188,12 @@ struct FavoritesView: View {
                     .padding(.bottom, 12)
                 }
                 .sheet(isPresented: $showMapSheet) {
-                    let locations: [MiniaturaLocation] = favoriteCards.compactMap { (_, card, translation) in
-                        if let lat = card.latitude, let lon = card.longitude {
-                            return MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem)
-                        }
-                        return nil
-                    }
                     MiniaturasMapView(
-                        locations: locations,
-                        mapTitle: languageSettings.language == "pt" ? "Mapa dos favoritos" : "Favorites Map",
-                        showNumbers: false
+                        locations: mapLocations,
+                        mapTitle: mapTitle,
+                        showNumbers: false,
+                        zoomSpan: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04),
+                        customCenter: mapLocations.first?.coordinate
                     )
                 }
                 .sheet(item: $selectedCard) { card in

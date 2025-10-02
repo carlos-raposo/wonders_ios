@@ -2,6 +2,7 @@ import SwiftUI
 import MapKit
 
 struct MiniaturasCategoryView: View {
+    @Environment(\.colorScheme) var colorScheme
     let category: String
     let language: String
     @State private var showDeckPage: MiniaturaCard? = nil
@@ -64,6 +65,71 @@ struct MiniaturasCategoryView: View {
         return originalCategoryName(for: category)
     }
     
+    // Custom zoom per category
+    private func zoomSpanForCategory(_ category: String) -> MKCoordinateSpan {
+        let normalized = category.normalized
+        switch normalized {
+        case "monumentos", "monuments":
+            return MKCoordinateSpan(latitudeDelta: 0.75, longitudeDelta: 0.75)
+        case "natureza", "nature":
+            return MKCoordinateSpan(latitudeDelta: 0.99, longitudeDelta: 0.99)
+        case "gastronomia", "gastronomy":
+            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "popular":
+            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "igrejas", "churches":
+            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "museus", "museums":
+            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "sintra":
+            return MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+        case "vocabulário", "vocabulario", "vocabulary":
+            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        default:
+            return MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
+        }
+    }
+
+    // Custom center per category
+    private func centerForCategory(_ category: String) -> CLLocationCoordinate2D? {
+        let normalized = category.normalized
+        switch normalized {
+        case "monumentos", "monuments":
+            return CLLocationCoordinate2D(latitude: 38.760144, longitude: -9.236019) // Amadora
+        case "natureza", "nature":
+            return CLLocationCoordinate2D(latitude: 39.091149, longitude: -9.258869) // Torres Vedras
+        case "gastronomia", "gastronomy":
+            return CLLocationCoordinate2D(latitude: 38.720843, longitude: -9.192982) // Monsanto
+        case "popular":
+            return CLLocationCoordinate2D(latitude: 38.725268, longitude: -9.150002) // Marques de Pombal
+        case "igrejas", "churches":
+            return CLLocationCoordinate2D(latitude: 38.7074, longitude: -9.160447) // Basilica da Estrela
+        case "museus", "museums":
+            return CLLocationCoordinate2D(latitude: 38.7231, longitude: -9.1702) // Museu Arte Antiga
+        case "sintra":
+            return CLLocationCoordinate2D(latitude: 38.777640, longitude: -9.425583) // Parque Sintra Cascais
+        case "vocabulário", "vocabulario", "vocabulary":
+            return nil // Sem centro definido
+        default:
+            return nil
+        }
+    }
+    
+    // Helper to get canonical category key for translation
+    private func canonicalCategoryKey(_ input: String) -> String {
+        switch input.lowercased() {
+            case "monuments", "monumentos": return "Monuments"
+            case "nature", "natureza": return "Nature"
+            case "gastronomy", "gastronomia": return "Gastronomy"
+            case "popular": return "Popular"
+            case "churches", "igrejas": return "Churches"
+            case "museums", "museus": return "Museums"
+            case "sintra": return "Sintra"
+            case "vocabulary", "vocabulário", "vocabulario": return "Vocabulary"
+            default: return input
+        }
+    }
+    
     var body: some View {
         // Use production data source and filter by category
         let cards = MiniaturaCard.allCards().filter { $0.categoria.normalized == correctVocabularyCategory().normalized }
@@ -122,6 +188,7 @@ struct MiniaturasCategoryView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.bottom, 46)
                 }
             }
             if category != "Vocabulary" {
@@ -130,15 +197,20 @@ struct MiniaturasCategoryView: View {
                     Button(action: { showMapSheet = true }) {
                         HStack {
                             Image(systemName: "map")
+                                .foregroundColor(.primary)
                             Text(Translations.shared.t("map", lang: language))
+                                .foregroundColor(.primary)
                         }
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(.ultraThinMaterial)
+                        .background(.regularMaterial)
                         .clipShape(Capsule())
-                        .shadow(radius: 4)
+                        .overlay(
+                            Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1)
+                        )
+                        .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.6 : 0.15), radius: 4)
                     }
-                    .accessibilityLabel("\(Translations.shared.t("open_map", lang: language)) \(category)")
+                    .accessibilityLabel(Translations.shared.t("open_map", lang: language) + " " + category)
                     Spacer()
                 }
                 .padding(.bottom, 12)
@@ -147,8 +219,12 @@ struct MiniaturasCategoryView: View {
         .sheet(isPresented: $showMapSheet) {
             MiniaturasMapView(
                 locations: mapLocations,
-                mapTitle: Translations.shared.t("map_category_title", lang: language) + ": " + category,
-                showNumbers: true
+                mapTitle: language == "pt"
+                    ? Translations.shared.t("map_category_title", lang: language) + " " + Translations.shared.t(canonicalCategoryKey(category), lang: language)
+                    : Translations.shared.t(canonicalCategoryKey(category), lang: language) + " " + Translations.shared.t("map_category_title", lang: language),
+                showNumbers: true,
+                zoomSpan: zoomSpanForCategory(category),
+                customCenter: centerForCategory(category)
             )
         }
         .sheet(item: $showDeckPage) { card in

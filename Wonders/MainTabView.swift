@@ -90,7 +90,11 @@ struct MiniaturasTabBar: View {
             }) {
                 VStack {
                     Image(systemName: "house.fill")
+                        .font(.system(size: 24))
+                        .opacity(selectedTab == 0 ? 1.0 : 0.7)
                     Text(t(0))
+                        .font(.system(size: 14))
+                        .opacity(selectedTab == 0 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 0 ? .blue : .primary)
             }
@@ -98,7 +102,11 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 1 }) {
                 VStack {
                     Image(systemName: "heart")
+                        .font(.system(size: 24))
+                        .opacity(selectedTab == 1 ? 1.0 : 0.7)
                     Text(t(1))
+                        .font(.system(size: 14))
+                        .opacity(selectedTab == 1 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 1 ? .blue : .primary)
             }
@@ -106,7 +114,11 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 2 }) {
                 VStack {
                     Image(systemName: "magnifyingglass")
+                        .font(.system(size: 24))
+                        .opacity(selectedTab == 2 ? 1.0 : 0.7)
                     Text(t(2))
+                        .font(.system(size: 14))
+                        .opacity(selectedTab == 2 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 2 ? .blue : .primary)
             }
@@ -114,7 +126,12 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 3 }) {
                 VStack {
                     Image(systemName: "gearshape")
+                        .font(.system(size: 24))
+                        .opacity(selectedTab == 3 ? 1.0 : 0.7)
                     Text(t(3))
+                       // .fontWeight(selectedTab == 3 ? .bold : .thin)
+                        .font(.system(size: 14))
+                        .opacity(selectedTab == 3 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 3 ? .blue : .primary)
             }

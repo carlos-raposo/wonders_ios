@@ -51,8 +51,8 @@ struct HomeView: View {
             VStack(spacing: 0) {
                 Spacer().frame(height: safeAreaTop() + 4)
                 Text(t("choose_category"))
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(.black)
+                    .font(.system(size: 24, weight: .regular))
+                    .foregroundColor(Color.primary)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.bottom, 12)
                 ScrollView {

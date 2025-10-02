@@ -274,7 +274,7 @@ extension MiniaturaCard {
                     extraLocations: [
                         (38.750397, -9.257947),
                         (38.787605, -9.390496),
-                        (38.787605, -9.390496)
+                        (38.936972, -9.326943)
                     ]
                 )
             ]
@@ -407,9 +407,12 @@ extension MiniaturaCard {
                             adress: "Costa da Caparica, Carcavelos, Estoril"
                         )
                     ],
-                    latitude: 38.6517,
-                    longitude: -9.2333,
-                    extraLocations: nil
+                    latitude: 38.639270,  // Caparica
+                    longitude: -9.230581,
+                    extraLocations: [
+                        (38.703130, -9.399608),  // Praia Tamariz
+                        (38.827308, -9.463803), // Praia Maçaa
+                    ]
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -482,9 +485,11 @@ extension MiniaturaCard {
                             adress: "Various locations in Portugal"
                         )
                     ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil
+                    latitude: 38.537618,
+                    longitude: -9.007129,    // Arrabida
+                    extraLocations: [
+                        (39.417097, -9.506463), // Ilhas Berlengas
+                    ]
                 )
             ]
         }
@@ -852,7 +857,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7633,
                     longitude: -9.1847,
-                    extraLocations: nil
+                    extraLocations: [
+                        (38.761198, -9.160803)
+                    ]
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -1029,8 +1036,8 @@ extension MiniaturaCard {
                             adress: "Praça da Estrela, 1200-667 Lisboa"
                         )
                     ],
-                    latitude: 38.7162,
-                    longitude: -9.1604,
+                    latitude: 38.713384,
+                    longitude: -9.160447,
                     extraLocations: nil
                 ),
                 MiniaturaCard(

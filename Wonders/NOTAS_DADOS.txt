@@ -29,6 +29,10 @@ Este arquivo serve para anotar onde modificar os dados principais do app Wonders
 
 ---
 
+
+MiniaturasCategoryView
+- coordenadas, zoom e centro para o mapa das Categorias.
+
 ## [OUTROS DADOS MOCK]
 
 - **MiniaturaModels.swift**

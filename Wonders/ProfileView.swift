@@ -30,6 +30,7 @@ struct SettingsView: View {
             "logout": "Logout",
             "delete_account": "Delete Account",
             "switch_dark": "Switch to dark mode",
+            "switch_light": "Switch to light mode",
             "language": "Language",
             "tutorial": "Tutorial",
             "contact": "Contact",
@@ -47,7 +48,8 @@ struct SettingsView: View {
             "help": "Ajuda",
             "logout": "Sair",
             "delete_account": "Excluir Conta",
-            "switch_dark": "Alternar modo escuro",
+            "switch_dark": "Alternar para modo escuro",
+            "switch_light": "Alternar para modo claro",
             "language": "Idioma",
             "tutorial": "Tutorial",
             "contact": "Contato",
@@ -122,7 +124,7 @@ struct SettingsView: View {
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
                         .foregroundColor(.primary)
-                    CardButton(icon: "moon.fill", text: t("switch_dark"), isDestructive: false) {
+                    CardButton(icon: isDarkMode ? "sun.max.fill" : "moon.fill", text: t(isDarkMode ? "switch_light" : "switch_dark"), isDestructive: false) {
                         isDarkMode.toggle()
                     }
                     CardButton(icon: "globe", text: t("language"), trailing: Text(languageDisplayName).foregroundColor(.gray)) {

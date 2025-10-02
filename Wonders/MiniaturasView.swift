@@ -68,18 +68,12 @@ struct MiniaturasView: View {
                                 }) {
                                     VStack {
                                         Text(tCategory(categories[idx]))
-                                            .fontWeight(selectedCategory == idx ? .bold : .regular)
+                                            .fontWeight(selectedCategory == idx ? .bold : .thin)
                                             .foregroundColor(selectedCategory == idx ? .blue : .primary)
-                                        if selectedCategory == idx {
-                                            Capsule()
-                                                .fill(Color.blue)
-                                                .frame(height: 3)
-                                                .matchedGeometryEffect(id: "underline", in: underline)
-                                        } else {
-                                            Capsule()
-                                                .fill(Color.clear)
-                                                .frame(height: 3)
-                                        }
+                                            .opacity(selectedCategory == idx ? 1.0 : 0.8)
+                                        Capsule()
+                                            .fill(Color.clear)
+                                            .frame(height: 3)
                                     }
                                 }
                                 .id(idx)

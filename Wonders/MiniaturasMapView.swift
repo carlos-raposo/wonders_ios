@@ -16,19 +16,23 @@ struct MiniaturasMapView: View {
     let locations: [MiniaturaLocation]
     let mapTitle: String
     let showNumbers: Bool // controls whether to show numbers in markers
+    let zoomSpan: MKCoordinateSpan // NEW: allows custom zoom per map
+    let customCenter: CLLocationCoordinate2D? // Corrigido: sem valor default
     @Environment(\.presentationMode) var presentationMode
 
-    // Center map on first location, or Lisbon if none
+    // Center map on customCenter, first location, or Lisbon if none
     var region: MKCoordinateRegion {
-        if let first = locations.first {
+        if let custom = customCenter {
+            return MKCoordinateRegion(center: custom, span: zoomSpan)
+        } else if let first = locations.first {
             return MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: first.latitude, longitude: first.longitude),
-                span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
+                span: zoomSpan
             )
         } else {
             return MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: 38.7223, longitude: -9.1393), // Lisbon
-                span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
+                span: zoomSpan
             )
         }
     }
@@ -72,10 +76,17 @@ struct MiniaturasMapView: View {
                                         .frame(width: 32, height: 32)
                                         .foregroundColor(.red)
                                     if showNumbers {
-                                        Text("\(loc.ordem)")
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.white)
+                                        if loc.ordem == 8 {
+                                            Text("+")
+                                                .font(.headline)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                        } else {
+                                            Text("\(loc.ordem)")
+                                                .font(.headline)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                        }
                                     }
                                 }
                             }
