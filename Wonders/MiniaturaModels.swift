@@ -6,9 +6,7 @@ struct MiniaturaCard: Identifiable {
     let categoria: String
     let ordem: Int
     let translations: [String: MiniaturaCardTranslation]
-    let latitude: Double?
-    let longitude: Double?
-    let extraLocations: [(name: String, latitude: Double, longitude: Double)]?
+    let locations: [(name: String, latitude: Double, longitude: Double)]? // lista de localizações
     // Custom zoom and center for map
     let zoomSpan: (latitudeDelta: Double, longitudeDelta: Double)?
     let customCenter: (latitude: Double, longitude: Double)?
@@ -68,9 +66,7 @@ extension MiniaturaCard {
                     categoria: cat,
                     ordem: card.ordem,
                     translations: card.translations,
-                    latitude: card.latitude,
-                    longitude: card.longitude,
-                    extraLocations: card.extraLocations,
+                    locations: card.locations, // new unified locations
                     zoomSpan: card.zoomSpan, // Adicionado explicitamente
                     customCenter: card.customCenter // Adicionado explicitamente
                 )
@@ -106,9 +102,9 @@ extension MiniaturaCard {
                             adress: "Rua de Santa Cruz do Castelo, 1100-129 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.713909,
-                    longitude: -9.133476,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "São Jorge Castle", latitude: 38.713909, longitude: -9.133476)
+                    ],
                     zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
                     customCenter: nil
                 ),
@@ -133,9 +129,9 @@ extension MiniaturaCard {
                             adress: "Av. Brasília, 1400-038 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.691584,
-                    longitude: -9.215821,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Belém Tower", latitude: 38.691584, longitude: -9.215821)
+                    ],
                     zoomSpan: (latitudeDelta: 0.5, longitudeDelta: 0.5),
                     customCenter: nil
                 ),
@@ -160,9 +156,9 @@ extension MiniaturaCard {
                             adress: "Calçada da Quintinha 6, 1070-225 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.72660,
-                    longitude: -9.16623,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Águas Livres Aqueduct", latitude: 38.72660, longitude: -9.16623)
+                    ],
                     zoomSpan: (latitudeDelta: 0.08, longitudeDelta: 0.08),
                     customCenter: nil
                 ),
@@ -187,9 +183,9 @@ extension MiniaturaCard {
                             adress: "Praça do Comércio, 1100-148 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.707750,
-                    longitude: -9.136592,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Comércio Square", latitude: 38.707750, longitude: -9.136592)
+                    ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
                 ),
@@ -214,9 +210,9 @@ extension MiniaturaCard {
                             adress: "R. do Ouro, 1150-060 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.712130,
-                    longitude: -9.139343,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Santa Justa Elevator", latitude: 38.712130, longitude: -9.139343)
+                    ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
                 ),
@@ -241,9 +237,9 @@ extension MiniaturaCard {
                             adress: "Av. Brasília, 1400-038 Lisboa, Portugal"
                         )
                     ],
-                    latitude: 38.693056,
-                    longitude: -9.205556,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Discoveries Monument", latitude: 38.693056, longitude: -9.205556)
+                    ],
                     zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
                     customCenter: nil
                 ),
@@ -268,10 +264,9 @@ extension MiniaturaCard {
                             adress: "Ponte 25 de Abril\nPonte Vasco da Gama\nLisboa, Portugal"
                         )
                     ],
-                    latitude: 38.689167,
-                    longitude: -9.177778,
-                    extraLocations: [
-                        (name: "Vasco da Gama Bridge", latitude: 38.762303, longitude: -9.043198)
+                    locations: [
+                        (name: "Ponte 25 de Abril", latitude: 38.689167, longitude: -9.177778),
+                        (name: "Ponte Vasco da Gama", latitude: 38.762303, longitude: -9.043198)
                     ],
                     zoomSpan: (latitudeDelta: 0.45, longitudeDelta: 0.45),
                     customCenter: nil
@@ -297,9 +292,8 @@ extension MiniaturaCard {
                             adress: nil
                         )
                     ],
-                    latitude: 38.707403,   /// Palácio Nacional da Ajuda
-                    longitude: -9.198642,
-                    extraLocations: [
+                    locations: [
+                        (name: "Palácio de Ajuda", latitude: 38.707403, longitude: -9.198642),
                         (name: "Palácio de Queluz", latitude: 38.750397, longitude: -9.257947),
                         (name: "Palácio da Pena", latitude: 38.787605, longitude: -9.390496),
                         (name: "Palácio de Mafra", latitude: 38.936972, longitude: -9.326943)
@@ -332,9 +326,9 @@ extension MiniaturaCard {
                             adress: "Lisbon, Portugal"
                         )
                     ],
-                    latitude: 38.835068,
-                    longitude: -9.011688,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Rio Tejo", latitude: 38.835068, longitude: -9.011688)
+                    ],
                     zoomSpan: (latitudeDelta: 0.9, longitudeDelta: 0.9),
                     customCenter: nil
                 ),
@@ -349,7 +343,7 @@ extension MiniaturaCard {
                             shortDescription: "Pontos altos de Lisboa com vistas deslumbrantes sobre a cidade e o rio.",
                             description: "Os miradouros de Lisboa são conhecidos pelas suas vistas panorâmicas da cidade e do Rio Tejo. A partir destes pontos elevados, os visitantes podem admirar os bairros históricos da cidade, os telhados vermelhos e os marcos icônicos. Alguns dos miradouros mais populares de Lisboa incluem o Miradouro da Senhora do Monte, o Miradouro de Santa Catarina e o Miradouro de São Pedro de Alcântara.",
                             history: "Os Miradouros em Lisboa têm uma longa história, remontando à ocupação mourisca da cidade. Os pontos de vista elevados eram originalmente usados para fins defensivos, proporcionando uma vantagem estratégica para monitorar a cidade e seus arredores. Ao longo dos séculos, os miradouros tornaram-se locais de encontro populares para moradores e visitantes, oferecendo um refúgio do agito da cidade. Hoje, os miradouros são uma característica adorada da paisagem urbana de Lisboa, proporcionando vistas deslumbrantes e uma sensação de tranquilidade em meio aos bairros históricos da cidade.",
-                            adress: "- Miradouro da Senhora do Monte\n- Miradouro de Santa Catarina (Adamastor)\n- Miradouro de São Pedro de Alcântara"
+                            adress: "- Miradouro da Senhora do Monte\n- Miradouro de Santa Catarina (Adamastor)\n- Miradouro de São Pedro de Alcântara\n- Miradouro das Portas do Sol"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Viewpoints",
@@ -360,12 +354,15 @@ extension MiniaturaCard {
                             adress: "- Miradouro da Senhora do Monte\n- Miradouro de Santa Catarina (Adamastor)\n- Miradouro de São Pedro de Alcântara"
                         )
                     ],
-                    latitude: 38.7138,
-                    longitude: -9.1335,
-                    extraLocations: [
+                    locations: [
+                        (name: "Miradouro do Castelo de São Jorge", latitude: 38.712585, longitude: -9.133726),
                         (name: "Miradouro da Senhora do Monte", latitude: 38.7181, longitude: -9.1336),
                         (name: "Miradouro de Santa Catarina", latitude: 38.7132, longitude: -9.1393),
-                        (name: "Miradouro de São Pedro de Alcântara", latitude: 38.7147, longitude: -9.1371)
+                        (name: "Miradouro de São Pedro de Alcântara", latitude: 38.7147, longitude: -9.1371),
+                        (name: "Miradouro das Portas do Sol", latitude: 38.711929, longitude: -9.129969),
+                        (name: "Miradouro de Graça", latitude: 38.716373, longitude: -9.131520),
+                        (name: "Miradouro dE Santa Luzia", latitude: 38.711706, longitude: -9.130202)
+                        
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: nil
@@ -391,9 +388,8 @@ extension MiniaturaCard {
                             adress:"- Jardim da Estrela \n- Parque Eduardo VII \n- Parque Monsanto"
                         )
                     ],
-                    latitude: 38.7262,
-                    longitude: -9.1506,
-                    extraLocations: [
+                    locations: [
+                        (name: "Jardins e Parques", latitude: 38.7262, longitude: -9.1506),
                         (name: "Jardim da Estrela", latitude: 38.714713, longitude: -9.159183),
                         (name: "Parque Monsanto", latitude: 38.727683, longitude: -9.190777)
                     ],
@@ -421,9 +417,9 @@ extension MiniaturaCard {
                             adress: "Sintra, Portugal"
                         )
                     ],
-                    latitude: 38.7939,
-                    longitude: -9.3907,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Serra de Sintra", latitude: 38.7939, longitude: -9.3907)
+                    ],
                     zoomSpan: (latitudeDelta: 0.8, longitudeDelta: 0.8),
                     customCenter: nil
                 ),
@@ -448,9 +444,8 @@ extension MiniaturaCard {
                             adress: "Costa da Caparica, Carcavelos, Estoril"
                         )
                     ],
-                    latitude: 38.552982, // Caparica
-                    longitude: -9.188481,
-                    extraLocations: [
+                    locations: [
+                        (name: "Praias de Lisboa", latitude: 38.552982, longitude: -9.188481),
                         (name: "Praia Tamariz", latitude: 38.703130, longitude: -9.399608),
                         (name: "Praia Maçã", latitude: 38.827308, longitude: -9.463803)
                     ],
@@ -478,11 +473,12 @@ extension MiniaturaCard {
                             adress: "Estrada do Cabo da Roca, Colares, Sintra"
                         )
                     ],
-                    latitude: 38.7804,
-                    longitude: -9.4989,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Cabo da Roca", latitude: 38.7804, longitude: -9.4989)
+                    ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
-                    customCenter: (38.789711, -9.304144),                ),
+                    customCenter: (38.789711, -9.304144)
+                ),
                 MiniaturaCard(
                     id: 7,
                     imagem: "onda_nazare",
@@ -504,11 +500,11 @@ extension MiniaturaCard {
                             adress: "Praia do Norte, Nazaré"   //39.019635, -9.151986
                         )
                     ],
-                    latitude: 39.6102,
-                    longitude: -9.0856,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Ondas da Nazaré", latitude: 39.6102, longitude: -9.0856)
+                    ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
-                    customCenter: (39.019635, -9.151986),
+                    customCenter: (39.019635, -9.151986)
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -519,7 +515,7 @@ extension MiniaturaCard {
                         "pt": MiniaturaCardTranslation(
                             titulo: "Mais Natureza",
                             shortDescription: "Descubra mais das maravilhas naturais de Portugal.",
-                            description: "Além das 7 maravilhas naturais que mencionamos, existem outros locais próximos a Lisboa que vale a pena destacar. \n\nSerra da Arrábida destaca-se pela sua vegetação mediterrânica densa e bem preservada, que confere à serra uma notável riqueza botânica, com espécies endémicas e outras de grande valor ecológico. As praias da Arrábida, com suas areias brancas e águas cristalinas, são consideradas algumas das mais belas de Portugal, oferecendo um contraste harmonioso entre as montanhas e o mar. \n\nAs Ilhas Berlengas (na foto), por sua vez, constituem um arquipélago de alto valor ecolológico, localizado a cerca de 10 quilómetros da costa de Peniche. A Berlenga Grande, a ilha principal, é a única habitada e aberta a visitantes, oferecendo cenários naturais preservados e uma rica história. O arquipélago é renomado pela sua biodiversidade marinha, com uma ampla variedade de espécies de peixes, crustáceos e moluscos. A avifauna das Berlengas também é notável, com várias espécies de aves marinhas nidificando nas ilhas.",
+                            description: "Além das 7 maravilhas naturais que mencionamos, existem outros locais próximos a Lisboa que vale a pena destacar. \n\nSerra da Arrábida destaca-se pela sua vegetação mediterrânica densa e bem preservada, que confere à serra uma notável riqueza botânica, com espécies endémicas e outras de grande valor ecológico. As praias da Arrábida, com suas areias brancas e águas cristalinas, são consideradas algumas das mais belas de Portugal, oferecendo um contraste harmonioso entre as montanhas e o mar. \n\nAs Ilhas Berlengas (na foto), por sua vez, constituem um arquipélago de alto valor ecológico, localizado a cerca de 10 quilómetros da costa de Peniche. A Berlenga Grande, a ilha principal, é a única habitada e aberta a visitantes, oferecendo cenários naturais preservados e uma rica história. O arquipélago é renomado pela sua biodiversidade marinha, com uma ampla variedade de espécies de peixes, crustáceos e moluscos. A avifauna das Berlengas também é notável, com várias espécies de aves marinhas nidificando nas ilhas.",
                             history: "A Serra da Arrábida oferece inúmeros trilhos para caminhadas, com diferentes níveis de dificuldade, que permitem explorar sua paisagem diversificada e desfrutar de vistas panorâmicas. As águas da Arrábida são ideais para mergulho e snorkeling, devido à sua clareza e rica biodiversidade marinha. A observação de aves é outra atividade popular nas montanhas, que abrigam várias espécies de aves marinhas e terrestres. \n\nO mergulho é uma das principais atividades nas Ilhas Berlengas, devido à clareza das águas e à riqueza da vida marinha. Os passeios de barco permitem explorar as grutas e enseadas da ilha, bem como observar a fauna marinha e as aves marinhas. Uma visita ao Forte de São João Baptista, uma fortificação histórica localizada na ilha, é outra atração popular. A observação da natureza permite observar a fauna e flora locais.",
                             adress: "- Serra da Arrábida\n- Ilhas Berlengas"
                         ),
@@ -531,13 +527,12 @@ extension MiniaturaCard {
                             adress: "- Serra da Arrábida\n- Ilhas Berlengas"
                         )
                     ],
-                    latitude: 38.537618,
-                    longitude: -9.007129,    //  Serra da Arrábida
-                    extraLocations: [
+                    locations: [
+                        (name: "Serra da Arrábida", latitude: 38.537618, longitude: -9.007129),
                         (name: "Ilhas Berlengas", latitude: 39.417097, longitude: -9.506463)
                     ],
                     zoomSpan: (latitudeDelta: 2, longitudeDelta: 2),
-                    customCenter: (39.014298, -9.168949),
+                    customCenter: (39.014298, -9.168949)
                 )
             ]
         }
@@ -564,9 +559,9 @@ extension MiniaturaCard {
                             adress: "Pastéis de Belém, Rua de Belém 84-92, Lisbon"
                         )
                     ],
-                    latitude: 38.6972, // Pastéis de Belém
-                    longitude: -9.2036,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Pastéis de Nata", latitude: 38.6972, longitude: -9.2036)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -591,11 +586,10 @@ extension MiniaturaCard {
                             adress: "The Bairro Alto and Baixa areas are known for their number of good restaurants. But you will find cod in any restaurant with Portuguese cuisine."
                         )
                     ],
-                    latitude: 38.711793,// Bairro Alto 38.711793, -9.144885
-                    longitude: -9.144885,
-                    extraLocations:  [
+                    locations: [
+                        (name: "Bacalhau", latitude: 38.711793, longitude: -9.144885),
                         (name: "Baixa", latitude: 38.7079, longitude: -9.1366)
-                    ],  //acrescentar Baixa (38.7079, -9.1366
+                    ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (38.711187, -9.137893)
                 ),
@@ -610,18 +604,19 @@ extension MiniaturaCard {
                             shortDescription: "A Ginjinha é um licor popular português feito de ginjas.",
                             description: "A Ginjinha, também conhecida como ginja, é um licor tradicional português feito a partir da maceração de ginjas, um tipo de cereja amarga, em aguardente, com a adição de açúcar e especiarias como canela. Este processo de maceração confere à ginjinha a sua cor rubi intensa, sabor doce e aroma frutado. Tradicionalmente, a pessoa que serve a ginjinha pergunta se \"quer com ou sem ela\", para que o cliente possa dizer se quer ou não um pouco de fruta no copo.",
                             history: "A ginjinha é uma bebida tradicional portuguesa com origens antigas. Provavelmente foram os monges os primeiros a produzir licor de ginja para fins medicinais. Mais tarde, foi vendida em farmácias como um remédio para problemas estomacais. Com o tempo, a ginjinha tornou-se popular entre a população, sendo consumida como aperitivo ou digestivo. Hoje em dia, a ginjinha é uma das bebidas mais populares em Portugal, servida em bares e pubs por todo o país. Existem várias variações da receita original, com diferentes tipos de ginjas e especiarias, que conferem à bebida um sabor único e característico.",
-                            adress: "A Ginjinha, Largo de São Domingos 8, Lisboa",                   ),
+                            adress: "A Ginjinha, Largo de São Domingos 8, Lisboa"
+                        ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Ginjinha",
                             shortDescription: "Lisbon's traditional cherry liqueur, served in a small glass.",
-                            description: "Ginginha, also known as ginja, is a traditional Portuguese liqueur made from the maceration of ginja, a type of bitter cherry, in brandy, with the addition of sugar and spices such as cinnamon. This maceration process gives the ginginha its intense ruby color, sweet flavor and fruity aroma. Traditionally, the person serving the ginjinha asks if \"ou want it with or without it\" so the customer can say whether they want some fruit in the glass or not.",
+                            description: "Ginginha, also known as ginja, is a traditional Portuguese liqueur made from the maceration of ginja, a type of bitter cherry, in brandy, with the addition of sugar and spices such as cinnamon. This maceration process gives the ginginha its intense ruby color, sweet flavor and fruity aroma. Traditionally, the person serving the ginjinha asks if you want it with or without it so the customer can say whether they want some fruit in the glass or not.",
                             history: "A ginjinha é uma bebida tradicional portuguesa com origens antigas. Provavelmente foram os monges os primeiros a produzir licor de ginja para fins medicinais. Mais tarde, foi vendida em farmácias como um remédio para problemas estomacais. Com o tempo, a ginjinha tornou-se popular entre a população, sendo consumida como aperitivo ou digestivo. Hoje em dia, a ginjinha é uma das bebidas mais populares em Portugal, servida em bares e pubs por todo o país. Existem várias variações da receita original, com diferentes tipos de ginjas e especiarias, que conferem à bebida um sabor único e característico.",
-                            adress: "A Ginjinha, Largo de São Domingos 8, Lisbon",
+                            adress: "A Ginjinha, Largo de São Domingos 8, Lisbon"
                         )
                     ],
-                    latitude: 38.714720, // A Ginjinha
-                    longitude: -9.139076,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Ginjinha", latitude: 38.714720, longitude: -9.139076)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -646,11 +641,10 @@ extension MiniaturaCard {
                             adress: "Areas of the city with many options for seafood o\n - Bairro Alto \n- Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.717779, // portas de santo antao
-                    longitude: -9.141762,
-                    extraLocations:  [
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    locations: [
+                        (name: "Peixe", latitude: 38.717779, longitude: -9.141762),
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -676,11 +670,10 @@ extension MiniaturaCard {
                             adress: "Areas of the city with many options for meat\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.717779, // portas de santo antao
-                    longitude: -9.141762,
-                    extraLocations:  [
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    locations: [
+                        (name: "Carne", latitude: 38.717779, longitude: -9.141762),
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -706,11 +699,10 @@ extension MiniaturaCard {
                             adress: "Areas of the city with many options for soup: \n- Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.717779, // portas de santo antao
-                    longitude: -9.141762,
-                    extraLocations:  [
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    locations: [
+                        (name: "Sopa", latitude: 38.717779, longitude: -9.141762),
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -736,11 +728,10 @@ extension MiniaturaCard {
                             adress: "Areas of the city with many options for wine tasting:\n- Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.717779, // portas de santo antao
-                    longitude: -9.141762,
-                    extraLocations:  [
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    locations: [
+                        (name: "Vinho", latitude: 38.717779, longitude: -9.141762),
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -768,13 +759,13 @@ extension MiniaturaCard {
                             adress: "These confections can be found in some places in Lisbon. The following addresses are of houses that produce some of the most famous recipes:\n\n - Travesseiros de Sintra: Piriquita, R. das Padarias 1-7, Sintra \n\n- Queijadas de Sintra: Volta do Duche 12, Sintra \n\n- Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão"
                         )
                     ],
-                    latitude: 38.796666, // piriquita
-                    longitude: -9.390446,
-                    extraLocations:  [
-                        (name: "Azeitão", latitude: 38.522477, longitude: -9.012010)   // Azeitao
+                    locations: [
+                        (name: "Piriquita (Travesseiros)", latitude: 38.7971, longitude: -9.3907),
+                        (name: "Queijadas de Sintra", latitude: 38.750397, longitude: -9.257947),
+                        (name: "Tortas de Azeitão", latitude: 38.936972, longitude: -9.326943)
                     ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
-                    customCenter: (38.676952, -9.121034),
+                    customCenter: (38.676952, -9.121034)
                     ),
             ]
         }
@@ -801,13 +792,12 @@ extension MiniaturaCard {
                             adress: "In almost every street and neighborhood in the city such as, for example:\n- Bairro Alto\n- Alfama\n- Baixa\n- Chiado\n- Tiles Museum."
                         )
                     ],
-                    latitude: 38.712566,  //alfama
-                    longitude: -9.127686,
-                    extraLocations:  [
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391),   //Bairro Alto
-                        (name: "Chiado", latitude: 38.710668, longitude: -9.141654),  //Chiado
-                        (name: "Museu do Azulejo", latitude: 38.724933, longitude: -9.113530)   //museu do azulejo
+                    locations: [
+                        (name: "Azulejos", latitude: 38.712566, longitude: -9.127686),
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391),
+                        (name: "Chiado", latitude: 38.710668, longitude: -9.141654),
+                        (name: "Museu do Azulejo", latitude: 38.724933, longitude: -9.113530)
                     ],
                     zoomSpan: (latitudeDelta: 0.06, longitudeDelta: 0.06),
                     customCenter: (nil)
@@ -833,11 +823,10 @@ extension MiniaturaCard {
                             adress: "Fado houses are concentrated in the Alfama and Bairro Alto neighborhoods."
                         )
                     ],
-                    latitude: 38.712566,  //alfama
-                    longitude: -9.127686,
-                    extraLocations:  [
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)  //Bairro Alto
-                    ],   //Bairro Alto
+                    locations: [
+                        (name: "Fado", latitude: 38.712566, longitude: -9.127686),
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
+                    ],
                     zoomSpan: (latitudeDelta: 0.04, longitudeDelta: 0.04),
                     customCenter: (38.711894, -9.137578)
                 ),
@@ -862,19 +851,18 @@ extension MiniaturaCard {
                             adress: nil
                         )
                     ],
-                    latitude: 38.713223,  //Praça São Joao Bosco
-                    longitude: -9.169070,
-                    extraLocations:  [
-                        (name: "Estrela", latitude: 38.713576, longitude: -9.159786),   // Estrela
-                        (name: "Sao Bento", latitude: 38.709898, longitude: -9.151561),   //Sao Bento
-                        (name: "Camoes", latitude: 38.710445, longitude: -9.143795),   //Camoes
-                        (name: "Baixa", latitude: 38.709630, longitude: -9.137041),  //Baixa
-                        (name: "Portas do Sol", latitude: 38.711874, longitude: -9.130478),   //Portas do Sol
-                        (name: "Igreja Sao Vicente", latitude: 38.714634, longitude: -9.128605),  //Igreja Sao Vicente
-                        (name: "Portas do Sol", latitude: 38.719335, longitude: -9.129800),   //Portas do Sol
+                    locations: [
+                        (name: "Eléctrico 28", latitude: 38.713223, longitude: -9.169070),
+                        (name: "Estrela", latitude: 38.713576, longitude: -9.159786),
+                        (name: "Sao Bento", latitude: 38.709898, longitude: -9.151561),
+                        (name: "Camoes", latitude: 38.710445, longitude: -9.143795),
+                        (name: "Baixa", latitude: 38.709630, longitude: -9.137041),
+                        (name: "Portas do Sol", latitude: 38.711874, longitude: -9.130478),
+                        (name: "Igreja Sao Vicente", latitude: 38.714634, longitude: -9.128605),
+                        (name: "Portas do Sol", latitude: 38.719335, longitude: -9.129800),
                         (name: "Unknown", latitude: 38.723647, longitude: -9.131794),
-                        (name: "Ramiro", latitude: 38.720326, longitude: -9.135708),  //Ramiro
-                        (name: "Matim Moniz", latitude: 38.715025, longitude: -9.136684)  //Matim Moniz
+                        (name: "Ramiro", latitude: 38.720326, longitude: -9.135708),
+                        (name: "Matim Moniz", latitude: 38.715025, longitude: -9.136684)
                     ],
                     zoomSpan: (latitudeDelta: 0.07, longitudeDelta: 0.07),
                     customCenter: (38.715079, -9.153965)
@@ -900,10 +888,9 @@ extension MiniaturaCard {
                             adress: "Areas of the city with some options for tascas\n- Alfama \n- Mouraria"
                         )
                     ],
-                    latitude: 38.712467, //alfama
-                    longitude: -9.131527,
-                    extraLocations:  [
-                        (name: "Mouraria", latitude: 38.714171, longitude: -9.135225)  // mouraria
+                    locations: [
+                        (name: "Tascas", latitude: 38.712467, longitude: -9.131527),
+                        (name: "Mouraria", latitude: 38.714171, longitude: -9.135225)
                     ],
                     zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
                     customCenter: (38.713922, -9.133472)
@@ -929,9 +916,9 @@ extension MiniaturaCard {
                             adress: "Campo de Santa Clara, Alfama, Lisbon"
                         )
                     ],
-                    latitude: 38.715615,
-                    longitude: -9.1246,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Feira da Ladra", latitude: 38.715615, longitude: -9.1246)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -956,9 +943,8 @@ extension MiniaturaCard {
                             adress: "- Estádio da Luz (Benfica)\n- Estádio de Alvalade (Sporting)"
                         )
                     ],
-                    latitude: 38.7633,
-                    longitude: -9.1847,
-                    extraLocations: [
+                    locations: [
+                        (name: "Futebol", latitude: 38.7633, longitude: -9.1847),
                         (name: "Estádio de Alvalade", latitude: 38.761198, longitude: -9.160803)
                     ],
                     zoomSpan: (latitudeDelta: 0.09, longitudeDelta: 0.09),
@@ -985,12 +971,11 @@ extension MiniaturaCard {
                             adress: "The best parties, called \"arraiais\", are held in the oldest neighborhoods of Lisbon.\n- Alfama\n- Bairro Alto\n- Mouraria\n- Graça"
                         )
                     ],
-                    latitude: 38.712566,  //alfama
-                    longitude: -9.127686,
-                    extraLocations: [
-                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),  //Bairro alto
-                        (name: "Mouraria", latitude: 38.716143, longitude: -9.133062),  //Mouraria
-                        (name: "Graça", latitude: 38.718483, longitude: -9.129862)  //Graça
+                    locations: [
+                        (name: "Santos Populares", latitude: 38.712566, longitude: -9.127686),
+                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),
+                        (name: "Mouraria", latitude: 38.716143, longitude: -9.133062),
+                        (name: "Graça", latitude: 38.718483, longitude: -9.129862)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (38.713573, -9.136948)
@@ -1016,11 +1001,10 @@ extension MiniaturaCard {
                             adress: "- Bairro Alto: metro Baixa-Chiado\n- Cais do Sodré: metro Cais do Sodré\n- The Docks:Between Cais do Sodré and the Belém neighborhood. There is no subway. Access is by Taxi, Uber or your own car."
                         )
                     ],
-                    latitude: 38.707529,  //Cais do Sodré
-                    longitude: -9.145839,
-                    extraLocations: [
-                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),  //Bairro alto
-                        (name: "Graça", latitude: 38.700258, longitude: -9.177473)  //Graça
+                    locations: [
+                        (name: "Cais do Sodré", latitude: 38.707529, longitude: -9.145839),
+                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),
+                        (name: "Graça", latitude: 38.700258, longitude: -9.177473)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: (38.706827, -9.157535)
@@ -1050,9 +1034,9 @@ extension MiniaturaCard {
                             adress: "Largo da Sé, 1100-585 Lisboa'"
                         )
                     ],
-                    latitude: 38.7108,
-                    longitude: -9.1332,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Sé Catedral", latitude: 38.7108, longitude: -9.1332)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1077,9 +1061,9 @@ extension MiniaturaCard {
                             adress: "Praça do Império 1400-206 Lisboa'"
                         )
                     ],
-                    latitude: 38.6978,
-                    longitude: -9.2065,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Mosteiro dos Jerónimos", latitude: 38.6978, longitude: -9.2065)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1104,9 +1088,9 @@ extension MiniaturaCard {
                             adress: "Largo de São Domingos 1, 1150-320 Lisboa'"
                         )
                     ],
-                    latitude: 38.7142,
-                    longitude: -9.1392,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "São Domingos", latitude: 38.7142, longitude: -9.1392)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1131,9 +1115,9 @@ extension MiniaturaCard {
                             adress: "Largo Trindade Coelho, 1200-470 Lisboa"
                         )
                     ],
-                    latitude: 38.7147,
-                    longitude: -9.1441,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "São Roque", latitude: 38.7147, longitude: -9.1441)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1158,9 +1142,9 @@ extension MiniaturaCard {
                             adress: "Praça da Estrela, 1200-667 Lisboa"
                         )
                     ],
-                    latitude: 38.713384,
-                    longitude: -9.160447,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Basílica da Estrela", latitude: 38.713384, longitude: -9.160447)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1185,9 +1169,9 @@ extension MiniaturaCard {
                             adress: "Largo do Carmo, 1200-092 Lisboa"
                         )
                     ],
-                    latitude: 38.7126,
-                    longitude: -9.1416,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Carmo", latitude: 38.7126, longitude: -9.1416)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1212,9 +1196,9 @@ extension MiniaturaCard {
                             adress: "Av. Cristo Rei, 2800-058 Almada"
                         )
                     ],
-                    latitude: 38.6781,
-                    longitude: -9.1776,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Cristo-Rei", latitude: 38.6781, longitude: -9.1776)
+                    ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
                 ),
@@ -1239,9 +1223,9 @@ extension MiniaturaCard {
                             adress: "The Sanctuary of Fátima is located in the town of Fátima, about 130 kilometers north of Lisbon. The easiest way to get there is by car or bus, with regular services from Lisbon to Fátima. The sanctuary is open year-round and welcomes visitors of all faiths to pray, reflect, and experience the spiritual atmosphere of this sacred place."
                         )
                     ],
-                    latitude: 39.6325,
-                    longitude: -8.6718,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Santuário de Fátima", latitude: 39.6325, longitude: -8.6718)
+                    ],
                     zoomSpan: (latitudeDelta: 2, longitudeDelta: 2),
                     customCenter: (39.265545, -8.792261)
                 )
@@ -1270,9 +1254,9 @@ extension MiniaturaCard {
                             adress: "Rua da Madre de Deus, 4, 1900-312 Lisbon"
                         )
                     ],
-                    latitude: 38.7231,
-                    longitude: -9.1156,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Museu dos Azulejos", latitude: 38.7231, longitude: -9.1156)
+                    ],
                     zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
                     customCenter: nil
                 ),
@@ -1297,9 +1281,9 @@ extension MiniaturaCard {
                             adress: "Av. de Berna 45A, 1067-001 Lisbon"
                         )
                     ],
-                    latitude: 38.7371,
-                    longitude: -9.1527,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Museu Gulbenkian", latitude: 38.7371, longitude: -9.1527)
+                    ],
                     zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
                     customCenter: nil
                 ),
@@ -1324,9 +1308,9 @@ extension MiniaturaCard {
                             adress: "Praça Afonso de Albuquerque, 1300-004 Lisbon"
                         )
                     ],
-                    latitude: 38.6973,
-                    longitude: -9.1976,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Museu dos Coches", latitude: 38.6973, longitude: -9.1976)
+                    ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: nil
                 ),
@@ -1351,9 +1335,9 @@ extension MiniaturaCard {
                             adress: "Largo do Chafariz de Dentro, 1, 1100-139 Lisbon"
                         )
                     ],
-                    latitude: 38.7132,
-                    longitude: -9.1296,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Museu do Fado", latitude: 38.7132, longitude: -9.1296)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1378,9 +1362,9 @@ extension MiniaturaCard {
                             adress: "R. das Janelas Verdes, 1249-017 Lisboa"
                         )
                     ],
-                    latitude: 38.7074,
-                    longitude: -9.1702,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Museu de Arte Antiga", latitude: 38.7074, longitude: -9.1702)
+                    ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: nil
                 ),
@@ -1393,7 +1377,7 @@ extension MiniaturaCard {
                         "pt": MiniaturaCardTranslation(
                             titulo: "CCB",
                             shortDescription: "Centro Cultural de Belém: exposições, concertos e arte contemporânea.",
-                            description: "O CCB (Centro Cultural de Belém) é uma das mais importantes instituições culturais de Lisboa, abrigando uma impressionante coleção de arte contemporânea e design. O museu apresenta obras de alguns dos maiores artistas da história, incluindo Andy Warhol, Ai Weiwei, Olafur Eliasson e Anish Kapoor. Os visitantes podem explorar a extensa coleção do museu de pinturas, esculturas e instalações, bem como os seus belos jardins e sala de concertos.",
+                            description: "O CCB (Centro Cultural de Belém) é uma das mais importantes instituições culturais de Lisboa, abrigando uma impressionante coleção de arte contemporânea e design. O museu apresenta obras de alguns dos maiores artistas da história, incluindo Andy Warhol, Ai Weiwei, Olafur Eliasson e Anish Kapoor. Os visitantes podem explorar a extensa coleção do museu de pinturas, esculturase instalações, bem como os seus belos jardins e sala de concertos.",
                             history: "Os destaques do museu incluem obras de alguns dos maiores artistas da história, como Andy Warhol, Ai Weiwei, Olafur Eliasson e Anish Kapoor, bem como pinturas, esculturas e instalações. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes, para além dos seus belos jardins e sala de concertos.",
                             adress: "Praça do Império, 1449-003 Lisboa"
                         ),
@@ -1405,9 +1389,9 @@ extension MiniaturaCard {
                             adress: "Praça do Império, 1449-003 Lisboa"
                         )
                     ],
-                    latitude: 38.6956,
-                    longitude: -9.2070,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "CCB", latitude: 38.6956, longitude: -9.2070)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1432,9 +1416,9 @@ extension MiniaturaCard {
                             adress: "Av. Brasília, 1300-598 Lisbon"
                         )
                     ],
-                    latitude: 38.6952,
-                    longitude: -9.1970,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "MAAT", latitude: 38.6952, longitude: -9.1970)
+                    ],
                     zoomSpan: nil,
                     customCenter: nil
                 ),
@@ -1459,15 +1443,14 @@ extension MiniaturaCard {
                             adress: "Various locations in Lisbon'"
                         )
                     ],
-                    latitude: 38.697070,  //quake
-                    longitude:  -9.196989,
-                    extraLocations:  [
-                        (name: "MNAC", latitude: 38.708404, longitude: -9.141254),   // mnac
-                        (name: "Museu de História Natural", latitude: 38.717759, longitude: -9.150756),   //historia natural
-                        (name: "Museu do Oriente", latitude: 38.702849, longitude: -9.170761),   //oriente
-                        (name: "Museu da Marioneta", latitude: 38.707945, longitude: -9.155775),   //marioneta
-                        (name: "Museu da Farmácia", latitude: 38.710158, longitude: -9.147348),  //farmacia
-                        (name: "Museu do Oriente", latitude: 38.711874, longitude: -9.130478)   //oriente
+                    locations: [
+                        (name: "Museu do Terramoto", latitude: 38.697070, longitude:  -9.196989),
+                        (name: "MNAC", latitude: 38.708404, longitude: -9.141254),
+                        (name: "Museu de História Natural", latitude: 38.717759, longitude: -9.150756),
+                        (name: "Museu do Oriente", latitude: 38.702849, longitude: -9.170761),
+                        (name: "Museu da Marioneta", latitude: 38.707945, longitude: -9.155775),
+                        (name: "Museu da Farmácia", latitude: 38.710158, longitude: -9.147348),
+                        (name: "Museu do Oriente", latitude: 38.711874, longitude: -9.130478)
                     ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: (38.702849, -9.170761)
@@ -1497,9 +1480,9 @@ extension MiniaturaCard {
                             adress: "Estrada da Pena, 2710-609 Sintra"
                         )
                     ],
-                    latitude: 38.7876, // Palácio da Pena
-                    longitude: -9.3904,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Palácio da Pena", latitude: 38.7876, longitude: -9.3904)
+                    ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
                     customCenter: (38.755108, -9.300003)
                 ),
@@ -1524,9 +1507,11 @@ extension MiniaturaCard {
                             adress: "Várias pastelarias em Sintra"
                         )
                     ],
-                    latitude: 38.7971, // Piriquita (Travesseiros)
-                    longitude: -9.3907,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Piriquita (Travesseiros)", latitude: 38.7971, longitude: -9.3907),
+                        (name: "Queijadas de Sintra", latitude: 38.750397, longitude: -9.257947),
+                        (name: "Tortas de Azeitão", latitude: 38.936972, longitude: -9.326943)
+                    ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: (nil)
                 ),
@@ -1551,9 +1536,9 @@ extension MiniaturaCard {
                             adress: "Estrada da Pena, 2710-609 Sintra"
                         )
                     ],
-                    latitude: 38.7925, // Castelo dos Mouros
-                    longitude: -9.3867,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Castelo dos Mouros", latitude: 38.7925, longitude: -9.3867)
+                    ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
                 ),
@@ -1578,9 +1563,9 @@ extension MiniaturaCard {
                             adress: "2710-567 Sintra"
                         )
                     ],
-                    latitude: 38.7976, // Quinta da Regaleira
-                    longitude: -9.3964,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Quinta da Regaleira", latitude: 38.7976, longitude: -9.3964)
+                    ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
                 ),
@@ -1605,9 +1590,9 @@ extension MiniaturaCard {
                             adress: "Serra de Sintra"
                         )
                     ],
-                    latitude: 38.7952, // Parque de Monserrate
-                    longitude: -9.4056,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Parque de Monserrate", latitude: 38.7952, longitude: -9.4056)
+                    ],
                     zoomSpan: (latitudeDelta: 0.09, longitudeDelta: 0.09),
                     customCenter: (38.793324, -9.400668)
                 ),
@@ -1632,9 +1617,9 @@ extension MiniaturaCard {
                             adress: "Serra de Sintra"
                         )
                     ],
-                    latitude: 38.7857, // Convento dos Capuchos
-                    longitude: -9.4302,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Convento dos Capuchos", latitude: 38.7857, longitude: -9.4302)
+                    ],
                     zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
                     customCenter: (38.785855, -9.425590)
                 ),
@@ -1659,9 +1644,9 @@ extension MiniaturaCard {
                             adress: "Vila de Sintra"
                         )
                     ],
-                    latitude: 38.7972, // Palácio Nacional de Sintra
-                    longitude: -9.3907,
-                    extraLocations: nil,
+                    locations: [
+                        (name: "Palácio da Vila", latitude: 38.7972, longitude: -9.3907)
+                    ],
                     zoomSpan: (latitudeDelta: 0.02, longitudeDelta: 0.02),
                     customCenter: nil
                 ),
@@ -1682,305 +1667,19 @@ extension MiniaturaCard {
                             description: "Quando falamos de Sintra, podemos estar a referir-nos à Vila ou ao Concelho. A Vila de Sintra é um lugar mágico, com uma atmosfera romântica e um património cultural e natural único. O Concelho de Sintra é uma região diversa, que vai desde a costa atlântica até às montanhas da Serra de Sintra, com uma rica história e paisagem deslumbrante. Além das 7 maravilhas já mencionadas, aqui estão alguns outros lugares emblemáticos e encantadores da região que merecem ser visitados e explorados.\n\n- Cabo da Roca: É o ponto mais ocidental da Europa continental, com falésias de 140 metros de altura e vistas deslumbrantes sobre o oceano.\n- Cruz Alta: É o ponto mais alto da Serra de Sintra, com 528 metros de altitude, de onde se podem ver as vistas mais bonitas sobre Lisboa e Cascais a sul, o Oceano Atlântico a oeste, e a região rural a norte.\n- Praia da Adraga: É uma das praias mais bonitas da região, com uma extensa área de areia, falésias imponentes e águas cristalinas.\n- Praia Grande: É uma das praias mais populares da região, com uma extensa área de areia, boas ondas para surf e uma atmosfera descontraída.\n- Praia das Maçãs: É uma praia pitoresca, com um pequeno porto de pesca, um passeio animado e uma atmosfera familiar.\n- Praia da Ursa: É uma praia selvagem e isolada, com falésias íngremes, areia dourada e águas cristalinas.\n- Praia da Aguda: É uma praia tranquila e isolada, com uma extensa área de areia, águas calmas e uma atmosfera relaxante."
                         )
                     ],
-                    latitude: 38.782053,   //cruz alta
-                    longitude: -9.391371,
-                    extraLocations: [
-                        (name: "Cabo da Roca", latitude: 38.780413, longitude: -9.498850),  //roca
-                        (name: "Praia da Adraga", latitude: 38.803232, longitude: -9.484940),  //adraga
-                        (name: "Praia Grande", latitude: 38.811687, longitude: -9.477119),   // grande
-                        (name: "Praia das Maçãs", latitude: 38.827308, longitude: -9.463803),  // maças
-                        (name: "Praia da Ursa", latitude: 38.790529, longitude: -9.492918),   //ursa
-                        (name: "Praia da Aguda", latitude: 38.850993, longitude: -9.455793)   //aguda
-                      ],
+                    locations: [
+                        (name: "Cabo da Roca", latitude: 38.780413, longitude: -9.498850),
+                        (name: "Praia da Adraga", latitude: 38.803232, longitude: -9.484940),
+                        (name: "Praia Grande", latitude: 38.811687, longitude: -9.477119),
+                        (name: "Praia das Maçãs", latitude: 38.827308, longitude: -9.463803),
+                        (name: "Praia da Ursa", latitude: 38.790529, longitude: -9.492918),
+                        (name: "Praia da Aguda", latitude: 38.850993, longitude: -9.455793)
+                    ],
                     zoomSpan: (latitudeDelta: 0.16, longitudeDelta: 0.16),
                     customCenter: (38.783298, -9.446859)
                 )
             ]
         }
-        if cat == "vocabulario" || cat == "vocabulário" {
-            // Return only cards with Portuguese translations
-            return [
-                MiniaturaCard(
-                    id: 1,
-                    imagem: "telemovel",
-                    categoria: "Vocabulário",
-                    ordem: 1,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Telémovel",
-                            shortDescription: "Celular",
-                            usage: "Posso ligar para o seu telémovel?",
-                            pronunciation: "teh-leh-MOH-vel"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 2,
-                    imagem: "comboio",
-                    categoria: "Vocabulário",
-                    ordem: 2,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Comboio",
-                            shortDescription: "Trem",
-                            usage: "O comboio parte às 8h.",
-                            pronunciation: "kom-BOY-oo"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 3,
-                    imagem: "autocarro",
-                    categoria: "Vocabulário",
-                    ordem: 3,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Autocarro",
-                            shortDescription: "Ônibus",
-                            usage: "Vou apanhar o autocarro para o trabalho.",
-                            pronunciation: "ow-toh-KAH-roo"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 4,
-                    imagem: "tram28",
-                    categoria: "Vocabulário",
-                    ordem: 4,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Eléctrico",
-                            shortDescription: "Bonde",
-                            usage: "O eléctrico 28 é famoso em Lisboa.",
-                            pronunciation: "eh-LEK-tree-ko"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 5,
-                    imagem: "bicha",
-                    categoria: "Vocabulário",
-                    ordem: 5,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Bicha",
-                            shortDescription: "Fila",
-                            usage: "Há uma grande bicha para comprar bilhetes.",
-                            pronunciation: "BEE-sha"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 6,
-                    imagem: "pequenoAlmoco",
-                    categoria: "Vocabulário",
-                    ordem: 6,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Pequeno-almoço",
-                            shortDescription: "Café da manhã",
-                            usage: "O pequeno-almoço é servido até às 10h.",
-                            pronunciation: "peh-KEN-oo al-MOH-soo"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 7,
-                    imagem: "casaBanho",
-                    categoria: "Vocabulário",
-                    ordem: 7,
-                    translations: [
-                        "pt": MiniaturaCardTranslation(
-                            titulo: "Casa de banho",
-                            shortDescription: "Banheiro",
-                            usage: "Onde fica a casa de banho?",
-                            pronunciation: "KAH-za deh BAH-nyoo"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                )
-            ]
-        }
-        if cat == "vocabulary" {
-            // Return only cards with English translations
-            return [
-                MiniaturaCard(
-                    id: 1,
-                    imagem: "vocabulary_en_64",
-                    categoria: "Vocabulary",
-                    ordem: 1,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "Hi",
-                            shortDescription: "\"Olá\" is the most common way to say \"Hello!\" or \"Hi!\"in Portuguese, used in both formal and informal situations.",
-                            description: "It is a friendly and welcoming greeting that can be used with people of all ages and social backgrounds. When meeting someone for the first time, it is polite to say \"Olá\" and introduce yourself, followed by a handshake or a smile. \"Olá\" can also be used to get someone's attention or to start a conversation.",
-                            usage: "\"Olá\" is a versatile greeting that can be used in a variety of situations, such as: Meeting someone for the first time: Olá, eu sou o João. Prazer em conhecê-lo. (Hello, I'm João. Nice to meet you.) Greeting friends and family: Olá, como estás? (Hello, how are you?) Answering the phone: Olá, quem fala? (Hello, who's calling?) Getting someone's attention: Olá, desculpe incomodar. (Hello, sorry to bother you.) Starting a conversation: Olá, tudo bem contigo? (Hello, how are you doing?)",
-                            pronunciation: "\"Olá\" is pronounced as oh-lah, with the stress on the second syllable. The first syllable is pronounced as the English letter 'o' and the second syllable as the English word 'la.' The 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'l' sound is pronounced as a clear 'l' sound, similar to the English letter 'l.'"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 2,
-                    imagem: "vocabulary_en_65",
-                    categoria: "Vocabulary",
-                    ordem: 2,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "Please",
-                            shortDescription: "\"Por favor\" or \"Se faz favor\" are polite expressions used to make requests, ask for help, or show consideration for others.",
-                            description: "It is a versatile word that can be used in a variety of situations, from ordering food in a restaurant to asking for directions on the street. Por favor is a simple and effective way to show respect and courtesy to others.",
-                            usage: "\"Por favor\" is a versatile expression that can be used in a variety of situations, such as: Asking for something: Por favor, pode passar-me o sal? (Please, can you pass me the salt?) Making a request: Por favor, pode dizer-me onde fica a estação de comboios? (Please, can you tell me where the train station is?) Ordering food: Por favor, um café e um pastel de nata. (Please, a coffee and a custard tart.) Asking for help: Por favor, pode ajudar-me a encontrar o meu hotel? (Please, can you help me find o meu hotel?) Showing consideration: Por favor, desculpe o atraso. (Thank you very much for everything. Please, accept this gift.)",
-                            pronunciation: "Por favor is pronounced as poor fah-vohr, with the stress on the second syllable. The first syllable is pronounced as the English word 'poor' without the 'r' sound, and the second syllable is pronounced as the English word 'fah-vohr.' The 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'r' sound is pronounced as a soft 'r' sound, similar to the 'r' in the English word 'car."
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 3,
-                    imagem: "vocabulary_en_66",
-                    categoria: "Vocabulary",
-                    ordem: 3,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "Yes/No",
-                            shortDescription: "\"Sim\" and \"Não\" are simple and effective words used to express agreement or disagreement, answer questions, or make decisions.",
-                            description: "They are versatile words that can be used in a variety of situations, from confirming an appointment to expressing your opinion on a topic. \"Sim\" and \"Não\" are essential words in any conversation, allowing you to communicate clearly and effectively.",
-                            usage: "\"Sim\" and \"Não\" are simple and effective words that can be used in a variety of situations, such as: Answering questions: \"Sim, eu gostaria de um café.\" (Yes, I would like a coffee.) Expressing agreement: \"Sim, concordo com a tua opinião.\" (Yes, I agree with your opinion.) Making decisions: \"Sim, vou aceitar o emprego.\" (Yes, I will take the job.) Confirming appointments: \"Sim, estarei lá às 10 horas.\" (Yes, I will be there at 10 o'clock.) Expressing disagreement: \"Não, não concordo com essa ideia.\" (No, I don't agree with that idea.) Declining invitations: \"Não, não posso ir à festa.\" (No, I can't go to the party.",
-                            pronunciation: "\"Sim\" is pronounced as seem, with the stress on the first syllable. The 's' sound is pronounced as the English 's' sound, and the 'i' sound is similar to the 'ee' in the English word 'see.' \"Não\" is pronounced as now, with the stress on the first syllable. The 'n' sound is pronounced as the English 'n' sound, and the 'ã' sound is similar to the 'ow' in the English word 'now.'"
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 4,
-                    imagem: "vocabulary_en_67",
-                    categoria: "Vocabulary",
-                    ordem: 4,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "Thank you",
-                            shortDescription: "\"Obrigado\" is a polite and friendly expression used to express gratitude, appreciation, and recognition for a favor, gift, or kind gesture.",
-                            description: "It is a versatile word that can be used in a variety of situations, from thanking someone for holding the door open to expressing your appreciation for a thoughtful gift. \"Obrigado\" is a simple and effective way to show gratitude and goodwill to others.",
-                            usage: "\"Obrigado\" is a versatile expression that can be used in a variety of situations, such as: Thanking someone: Obrigado pela ajuda. (Thank you for the help.) Expressing gratitude: Obrigado pela prenda. (Thank you for the gift.) Showing appreciation: Obrigado pela hospitalidade. (Thank you for the hospitality.) Acknowledging a favor: Obrigado por me ouvires. (Thank you for listening to me.) Responding to a compliment: Obrigado pelo elogio. (Thank you for the compliment.) Expressing recognition: Obrigado pelo apoio. (Thank you for the support.)",
-                            pronunciation: "\"Obrigado\" is pronounced as oh-bree-gah-doo, with the stress on the second syllable. The 'o' sound is similar to the 'o' in the English word 'go,' the 'b' sound is pronounced as the English 'b' sound, and the 'r' sound is pronounced as a soft 'r' sound. The 'i' sound is similar to the 'ee' in the English word 'see,' the 'g' sound is pronounced as the English 'g' sound, the 'a' sound is similar to the 'a' in the English word 'la,' and the 'd' sound is pronounced as the English 'd' sound."
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 5,
-                    imagem: "vocabulary_en_68",
-                    categoria: "Vocabulary",
-                    ordem: 5,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "Bom Dia/ Boa Noite",
-                            shortDescription: "\"Bom dia\" and \"Bom dia\" are polite and friendly expressions used to greet someone in the morning or wish them a good day or night.",
-                            description: "They are versatile phrases that can be used in a variety of situations, from greeting friends and family to addressing colleagues and strangers. \"Bom dia\" and \"Boa noite\" are essential phrases in any conversation, allowing you to communicate clearly and effectively.",
-                            usage: "\"Bom dia\" and \"Boa noite\" are versatile expressions that can be used in a variety of situations, such as: Greeting someone in the morning: Bom dia, como estás? (Good morning, how are you?) Wishing someone a good day: Bom dia, que tenhas um dia maravilhoso. (Good morning, may you have a wonderful day.) Saying good night: Boa noite, dorme bem. (Good night, sleep well.) Wishing someone sweet dreams: Boa noite, sonhos doces. (Good night, sweet dreams.) Saying goodbye in the evening: Boa noite, até amanhã. (Good night, see you tomorrow.) Ending a phone call: Boa noite, falo contigo amanhã. (Good night, I'll talk to you tomorrow.",
-                            pronunciation: "\"Bom dia\" is pronounced as bohng dee-ah, with the stress on the first syllable. The 'b' sound is pronounced as the English 'b' sound, the 'o' sound is similar to the 'o' in the English word 'go,' and the 'm' sound is pronounced as the English 'm' sound. The 'd' sound is pronounced as the English 'd' sound, the 'i' sound is similar to the 'ee' in the English word 'see,' and the 'a' sound is similar to the 'a' in the English word 'la.' \"Boa noite\" is pronounced as boh-ah noy-tchee, with the stress on the first syllable. The 'b' sound is pronounced as the English 'b' sound, the 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'n' sound is pronounced as the English 'n' sound, the 't' sound is pronounced as the English 't' sound, the 'ch' sound is pronounced as the English 'ch' sound, and the 'ee' sound is similar to the 'ee' in the English word 'see'."
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 6,
-                    imagem: "vocabulary_en_69",
-                    categoria: "Vocabulary",
-                    ordem: 6,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "I´m sorry",
-                            shortDescription: "\"Desculpe\" is a polite and friendly expression used to apologize, ask for forgiveness, or get someone's attention.",
-                            description: "It is a versatile word that can be used in a variety of situations, from bumping into someone on the street to interrupting a conversation. \"Desculpe\" is a simple and effective way to show respect and consideration for others.",
-                            usage: "\"Desculpe\" is a versatile expression that can be used in a variety of situations, such as: Apologizing: Desculpe pelo atraso. (Excuse me for being late.) Asking for forgiveness: Desculpe se o ofendi. (Excuse me if I offended you.) Getting someone's attention: Desculpe, pode ajudar-me? (Excuse me, can you help me?) Interrupting a conversation: Desculpe interromper, mas tenho uma pergunta. (Excuse me for interrupting, but I have a question.) Passing through a crowded place: Desculpe, com licença. (Excuse me, excuse me.) Correcting a mistake: Desculpe, enganei-me no número. (Excuse me, I got the number wrong.)",
-                            pronunciation: "\"Desculpe\" is pronounced as dehs-kool-peh, with the stress on the second syllable. The 'd' sound is pronounced as the English 'd' sound, the 'e' sound is similar to the 'e' in the English word 'bed,' the 's' sound is pronounced as the English 's' sound, and the 'c' sound is pronounced as the English 'k' sound. The 'u' sound is similar to the 'oo' in the English word 'food,' the 'l' sound is pronounced as the English 'l' sound, and the 'p' sound is pronounced as the English 'p' sound."
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                ),
-                MiniaturaCard(
-                    id: 7,
-                    imagem: "vocabulary_en_70",
-                    categoria: "Vocabulary",
-                    ordem: 7,
-                    translations: [
-                        "en": MiniaturaCardTranslation(
-                            titulo: "Goodbye",
-                            shortDescription: "\"Adeus\" is a formal and polite way to say goodbye, parting   with respect, goodwill, and best wishes.",
-                            description: "It is a versatile word that can be used in a variety of situations, from saying goodbye to friends and family to ending a business meeting. \"Adeus\" is a simple and effective way to show appreciation and respect for others.",
-                            usage: "\"Adeus\" is a versatile expression that can be used in a variety of situations, such as: Saying goodbye to someone: Adeus, até à próxima. (Goodbye, see you next time.) Parting with respect: Adeus, foi um prazer conhecê-lo. (Goodbye, it was a pleasure to meet you.) Ending a conversation: Adeus, tenha um bom dia. (Goodbye, have a good day.) Wishing someone well: Adeus, que tudo corra bem. (Goodbye, may everything go well.) Saying farewell to a friend: Adeus, até breve. (Goodbye, see you soon.) Ending a phone call: Adeus, falo contigo mais tarde. (Goodbye, I'll talk to you later.)",
-                            pronunciation: "\"Adeus\" is pronounced as ah-deh-oosh, with the stress on the second syllable. The 'a' sound is similar to the 'a' in the English word 'father,' the 'd' sound is pronounced as the English 'd' sound, the 'e' sound is similar to the 'e' in the English word 'bed,' and the 'u' sound is similar to the 'oo' in the English word 'food.' The 's' sound is pronounced as the English 's' sound."
-                        )
-                    ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil,
-                    zoomSpan: nil,
-                    customCenter: nil
-                )
-            ]
-        }
-        // Fallback logic for unknown categories
         return []
     }
     
