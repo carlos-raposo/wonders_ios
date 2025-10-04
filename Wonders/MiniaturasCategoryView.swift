@@ -134,16 +134,9 @@ struct MiniaturasCategoryView: View {
         // Use production data source and filter by category
         let cards = MiniaturaCard.allCards().filter { $0.categoria.normalized == correctVocabularyCategory().normalized }
         let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
-            var locations: [MiniaturaLocation] = []
-            if let lat = card.latitude, let lon = card.longitude {
-                locations.append(MiniaturaLocation(title: card.translations[language]?.titulo ?? card.translations.values.first?.titulo ?? "", latitude: lat, longitude: lon, ordem: card.ordem))
-            }
-            if let extras = card.extraLocations {
-                for (name, lat, lon) in extras {
-                    locations.append(MiniaturaLocation(title: name, latitude: lat, longitude: lon, ordem: card.ordem))
-                }
-            }
-            return locations
+            card.locations?.map { loc in
+                MiniaturaLocation(title: loc.name, latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem)
+            } ?? []
         }
         ZStack(alignment: .bottom) {
             ScrollView {

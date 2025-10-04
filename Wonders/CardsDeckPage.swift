@@ -13,13 +13,8 @@ struct CardsDeckPage: View, Identifiable {
     // Helper to build locations for the map
     var mapLocations: [MiniaturaLocation] {
         var locations: [MiniaturaLocation] = []
-        if let lat = card.latitude, let lon = card.longitude {
-            locations.append(MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem))
-        }
-        if let extras = card.extraLocations {
-            for (name, lat, lon) in extras {
-                locations.append(MiniaturaLocation(title: name, latitude: lat, longitude: lon, ordem: card.ordem))
-            }
+        for loc in card.locations ?? [] {
+            locations.append(MiniaturaLocation(title: loc.name, latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem))
         }
         return locations
     }
