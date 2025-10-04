@@ -51,12 +51,17 @@ struct FavoritesView: View {
                 let columns = [GridItem(.fixed(itemWidth), spacing: spacing), GridItem(.fixed(itemWidth), spacing: spacing)]
                 let favoriteCards = getFavoriteCards()
                 // Fix: Define mapLocations and mapTitle for use in sheet
-                let mapLocations: [MiniaturaLocation] = favoriteCards.compactMap { (_, card, translation) in
+                let mapLocations: [MiniaturaLocation] = favoriteCards.flatMap { (_, card, translation) in
+                    var locations: [MiniaturaLocation] = []
                     if let lat = card.latitude, let lon = card.longitude {
-                        MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem)
-                    } else {
-                        nil
+                        locations.append(MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem))
                     }
+                    if let extras = card.extraLocations {
+                        for (name, lat, lon) in extras {
+                            locations.append(MiniaturaLocation(title: name, latitude: lat, longitude: lon, ordem: card.ordem))
+                        }
+                    }
+                    return locations
                 }
                 let mapTitle: String = languageSettings.language == "pt"
                     ? "Mapa de Favoritos"

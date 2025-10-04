@@ -74,18 +74,18 @@ struct MiniaturasMapView: View {
                                 ZStack {
                                     Circle()
                                         .frame(width: 32, height: 32)
-                                        .foregroundColor(.red)
+                                        .foregroundColor(.red) // Red circle marker
                                     if showNumbers {
                                         if loc.ordem == 8 {
                                             Text("+")
                                                 .font(.headline)
                                                 .fontWeight(.bold)
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.white) // White number
                                         } else {
                                             Text("\(loc.ordem)")
                                                 .font(.headline)
                                                 .fontWeight(.bold)
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.white) // White number
                                         }
                                     }
                                 }

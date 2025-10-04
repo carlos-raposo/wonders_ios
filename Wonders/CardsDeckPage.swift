@@ -17,8 +17,8 @@ struct CardsDeckPage: View, Identifiable {
             locations.append(MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem))
         }
         if let extras = card.extraLocations {
-            for (lat, lon) in extras {
-                locations.append(MiniaturaLocation(title: translation.titulo, latitude: lat, longitude: lon, ordem: card.ordem))
+            for (name, lat, lon) in extras {
+                locations.append(MiniaturaLocation(title: name, latitude: lat, longitude: lon, ordem: card.ordem))
             }
         }
         return locations
@@ -148,12 +148,17 @@ struct CardsDeckPage: View, Identifiable {
             }
         }
         .sheet(isPresented: $showMapSheet) {
+            // Prepare locations for the selected card
+            let allLocations = mapLocations
+            // Use custom zoom/center if present, else default
+            let zoomSpan = card.zoomSpan != nil ? MKCoordinateSpan(latitudeDelta: card.zoomSpan!.latitudeDelta, longitudeDelta: card.zoomSpan!.longitudeDelta) : MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let customCenter = card.customCenter != nil ? CLLocationCoordinate2D(latitude: card.customCenter!.latitude, longitude: card.customCenter!.longitude) : (allLocations.first?.coordinate ?? CLLocationCoordinate2D(latitude: 38.7223, longitude: -9.1393))
             MiniaturasMapView(
-                locations: mapLocations,
+                locations: allLocations,
                 mapTitle: translation.titulo,
                 showNumbers: true,
-                zoomSpan: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04),
-                customCenter: mapLocations.first?.coordinate
+                zoomSpan: zoomSpan,
+                customCenter: customCenter
             )
         }
     }

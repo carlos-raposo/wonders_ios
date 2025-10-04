@@ -135,13 +135,12 @@ struct MiniaturasCategoryView: View {
         let cards = MiniaturaCard.allCards().filter { $0.categoria.normalized == correctVocabularyCategory().normalized }
         let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
             var locations: [MiniaturaLocation] = []
-            let t = card.translations[language] ?? card.translations.values.first!
             if let lat = card.latitude, let lon = card.longitude {
-                locations.append(MiniaturaLocation(title: t.titulo, latitude: lat, longitude: lon, ordem: card.ordem))
+                locations.append(MiniaturaLocation(title: card.translations[language]?.titulo ?? card.translations.values.first?.titulo ?? "", latitude: lat, longitude: lon, ordem: card.ordem))
             }
             if let extras = card.extraLocations {
-                for (lat, lon) in extras {
-                    locations.append(MiniaturaLocation(title: t.titulo, latitude: lat, longitude: lon, ordem: card.ordem))
+                for (name, lat, lon) in extras {
+                    locations.append(MiniaturaLocation(title: name, latitude: lat, longitude: lon, ordem: card.ordem))
                 }
             }
             return locations
@@ -163,6 +162,7 @@ struct MiniaturasCategoryView: View {
                                 if !isVocabularyPT() {
                                     Button(action: { showDeckPage = card }) {
                                         MiniaturaCardView(card: card, translation: t)
+                                            .contentShape(Rectangle()) // Ensure full area is tappable
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                     .accessibilityLabel("Miniatura número \(card.ordem): \(t.titulo)")

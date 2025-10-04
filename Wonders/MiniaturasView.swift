@@ -81,6 +81,10 @@ struct MiniaturasView: View {
                             .padding(.vertical, 8)
                         }
                     }
+                    .onAppear {
+                        // Center the selected category when view appears
+                        scrollProxy.scrollTo(selectedCategory, anchor: .center)
+                    }
                     .onChange(of: selectedCategory) { oldValue, newValue in
                         withAnimation {
                             scrollProxy.scrollTo(newValue, anchor: .center)

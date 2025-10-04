@@ -8,7 +8,10 @@ struct MiniaturaCard: Identifiable {
     let translations: [String: MiniaturaCardTranslation]
     let latitude: Double?
     let longitude: Double?
-    let extraLocations: [(latitude: Double, longitude: Double)]?
+    let extraLocations: [(name: String, latitude: Double, longitude: Double)]?
+    // Custom zoom and center for map
+    let zoomSpan: (latitudeDelta: Double, longitudeDelta: Double)?
+    let customCenter: (latitude: Double, longitude: Double)?
 }
 
 struct MiniaturaCardTranslation {
@@ -59,7 +62,18 @@ extension MiniaturaCard {
         for cat in categories {
             let mocks = mockCardsRaw(for: cat)
             for card in mocks {
-                let uniqueCard = MiniaturaCard(id: globalId, imagem: card.imagem, categoria: cat, ordem: card.ordem, translations: card.translations, latitude: card.latitude, longitude: card.longitude, extraLocations: card.extraLocations)
+                let uniqueCard = MiniaturaCard(
+                    id: globalId,
+                    imagem: card.imagem,
+                    categoria: cat,
+                    ordem: card.ordem,
+                    translations: card.translations,
+                    latitude: card.latitude,
+                    longitude: card.longitude,
+                    extraLocations: card.extraLocations,
+                    zoomSpan: card.zoomSpan, // Adicionado explicitamente
+                    customCenter: card.customCenter // Adicionado explicitamente
+                )
                 cards.append(uniqueCard)
                 globalId += 1
             }
@@ -94,7 +108,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.713909,
                     longitude: -9.133476,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -119,7 +135,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.691584,
                     longitude: -9.215821,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.5, longitudeDelta: 0.5),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -144,7 +162,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.72660,
                     longitude: -9.16623,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.08, longitudeDelta: 0.08),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -169,7 +189,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.707750,
                     longitude: -9.136592,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -194,7 +216,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.712130,
                     longitude: -9.139343,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -219,7 +243,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.693056,
                     longitude: -9.205556,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -245,8 +271,10 @@ extension MiniaturaCard {
                     latitude: 38.689167,
                     longitude: -9.177778,
                     extraLocations: [
-                        (38.762303, -9.043198)
-                    ]
+                        (name: "Vasco da Gama Bridge", latitude: 38.762303, longitude: -9.043198)
+                    ],
+                    zoomSpan: (latitudeDelta: 0.45, longitudeDelta: 0.45),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -269,13 +297,15 @@ extension MiniaturaCard {
                             adress: nil
                         )
                     ],
-                    latitude: 38.707403,
+                    latitude: 38.707403,   /// Palácio Nacional da Ajuda
                     longitude: -9.198642,
                     extraLocations: [
-                        (38.750397, -9.257947),
-                        (38.787605, -9.390496),
-                        (38.936972, -9.326943)
-                    ]
+                        (name: "Palácio de Queluz", latitude: 38.750397, longitude: -9.257947),
+                        (name: "Palácio da Pena", latitude: 38.787605, longitude: -9.390496),
+                        (name: "Palácio de Mafra", latitude: 38.936972, longitude: -9.326943)
+                    ],
+                    zoomSpan: (latitudeDelta: 0.9, longitudeDelta: 0.9),
+                    customCenter: nil
                 )
             ]
         }
@@ -302,9 +332,11 @@ extension MiniaturaCard {
                             adress: "Lisbon, Portugal"
                         )
                     ],
-                    latitude: 38.7071,
-                    longitude: -9.1366,
-                    extraLocations: nil
+                    latitude: 38.835068,
+                    longitude: -9.011688,
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.9, longitudeDelta: 0.9),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -317,7 +349,7 @@ extension MiniaturaCard {
                             shortDescription: "Pontos altos de Lisboa com vistas deslumbrantes sobre a cidade e o rio.",
                             description: "Os miradouros de Lisboa são conhecidos pelas suas vistas panorâmicas da cidade e do Rio Tejo. A partir destes pontos elevados, os visitantes podem admirar os bairros históricos da cidade, os telhados vermelhos e os marcos icônicos. Alguns dos miradouros mais populares de Lisboa incluem o Miradouro da Senhora do Monte, o Miradouro de Santa Catarina e o Miradouro de São Pedro de Alcântara.",
                             history: "Os Miradouros em Lisboa têm uma longa história, remontando à ocupação mourisca da cidade. Os pontos de vista elevados eram originalmente usados para fins defensivos, proporcionando uma vantagem estratégica para monitorar a cidade e seus arredores. Ao longo dos séculos, os miradouros tornaram-se locais de encontro populares para moradores e visitantes, oferecendo um refúgio do agito da cidade. Hoje, os miradouros são uma característica adorada da paisagem urbana de Lisboa, proporcionando vistas deslumbrantes e uma sensação de tranquilidade em meio aos bairros históricos da cidade.",
-                            adress: "Vários locais em Lisboa"
+                            adress: "- Miradouro da Senhora do Monte\n- Miradouro de Santa Catarina (Adamastor)\n- Miradouro de São Pedro de Alcântara"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Viewpoints",
@@ -325,16 +357,18 @@ extension MiniaturaCard {
                             description: "Lisbon is known for its stunning viewpoints, or miradouros, which offer panoramic views of the city and the Tagus River. From these elevated vantage points, visitors can admire the city's historic neighborhoods, red-tiled rooftops, and iconic landmarks. Some of the most popular viewpoints in Lisbon include the Miradouro da Senhora do Monte, the Miradouro de Santa Catarina, and the Miradouro de São Pedro de Alcântara.",
                         
                             history: "The miradouros in Lisbon have a long history, dating back to the Moorish occupation of the city. The elevated viewpoints were originally used for defensive purposes, providing a strategic advantage for monitoring the city and its surroundings. Over the centuries, the miradouros became popular gathering places for locals and visitors, offering a respite from the city's hustle and bustle. Today, the miradouros are a beloved feature of Lisbon's urban landscape, providing stunning views and a sense of tranquility amidst the city's historic neighborhoods.",
-                            adress: "Various locations in Lisbon"
+                            adress: "- Miradouro da Senhora do Monte\n- Miradouro de Santa Catarina (Adamastor)\n- Miradouro de São Pedro de Alcântara"
                         )
                     ],
                     latitude: 38.7138,
                     longitude: -9.1335,
                     extraLocations: [
-                        (38.7181, -9.1336), // Miradouro da Senhora do Monte
-                        (38.7132, -9.1393), // Miradouro de Santa Catarina
-                        (38.7147, -9.1371)  // Miradouro de São Pedro de Alcântara
-                    ]
+                        (name: "Miradouro da Senhora do Monte", latitude: 38.7181, longitude: -9.1336),
+                        (name: "Miradouro de Santa Catarina", latitude: 38.7132, longitude: -9.1393),
+                        (name: "Miradouro de São Pedro de Alcântara", latitude: 38.7147, longitude: -9.1371)
+                    ],
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -347,19 +381,24 @@ extension MiniaturaCard {
                             shortDescription: "Os jardins e parques de Lisboa proporcionam autênticos oásis verdes na cidade",
                             description: "Lisboa é dotada de uma coleção diversificada de jardins e parques. Visitar os jardins de Lisboa é uma maneira maravilhosa de se conectar com a natureza, apreciar a beleza da cidade e desfrutar de momentos de paz e tranquilidade.",
                             history: "Alguns jardins remontam ao século XVIII, criados para a realeza e abertos ao público ao longo dos séculos. \n\nParque Monsanto: Considerado o pulmão de Lisboa é uma vasta área verde com trilhos, áreas de lazer e vistas panorâmicas da cidade. \n\n Jardim da Estrela: Localizado no coração do bairro da Estrela, este charmoso jardim oferece um ambiente relaxante, com um coreto, um lago e uma variedade de plantas e flores. \n\nEstufa Fria: Um espaço único em Lisboa, a Estufa Fria abriga uma exuberante coleção de plantas exóticas de todo o mundo, criando um ambiente mágico e tropical. - Jardim do Príncipe Real: Este charmoso jardim é um ponto de encontro para moradores e turistas, com um quiosque, um lago e uma vista deslumbrante sobre a cidade. \n\nAlém destes, Lisboa possui muitos outros jardins e parques encantadores, como o Jardim Botânico da Ajuda, o Parque Eduardo VII e os Jardins da Fundação Calouste Gulbenkian.",
-                            adress: "Ex: Jardim da Estrela, Parque Eduardo VII, Lisboa"
+                            adress:"- Jardim da Estrela \n- Parque Eduardo VII \n- Parque Monsanto"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Gardens and Parks",
                             shortDescription: "Green spaces perfect for relaxing, strolling, and enjoying urban nature.",
                             description: "Lisbon is endowed with a diverse collection of gardens and parks. Visiting the gardens of Lisbon is a wonderful way to connect with nature, appreciate the beauty of the city, and enjoy moments of peace and tranquility.",
                             history: "Some gardens date back to the 18th century, created for royalty and opened to the public over the centuries. \n\nMonsanto Park: Considered the lung of Lisbon it's a vast green area with trails, leisure areas, and panoramic views of the city. \n\n Estrela Garden: Located in the heart of the Estrela neighborhood, this charming garden offers a relaxing environment, with a bandstand, a lake, and a variety of plants and flowers. \n\nEstufa Fria: A unique space in Lisbon, the Estufa Fria houses an exuberant collection of exotic plants from all over the world, creating a magical and tropical environment. \n\nJardim do Príncipe Real: This charming garden is a meeting point for locals and tourists, with a kiosk, a lake, and a stunning view over the city. \n\nIn addition to these, Lisbon has many other charming gardens and parks, such as the Jardim Botânico da Ajuda, the Parque Eduardo VII, and the Gardens of the Calouste Gulbenkian.",
-                            adress: "e.g., Jardim da Estrela, Eduardo VII Park, Lisbon"
+                            adress:"- Jardim da Estrela \n- Parque Eduardo VII \n- Parque Monsanto"
                         )
                     ],
                     latitude: 38.7262,
                     longitude: -9.1506,
-                    extraLocations: nil
+                    extraLocations: [
+                        (name: "Jardim da Estrela", latitude: 38.714713, longitude: -9.159183),
+                        (name: "Parque Monsanto", latitude: 38.727683, longitude: -9.190777)
+                    ],
+                    zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -384,7 +423,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7939,
                     longitude: -9.3907,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.8, longitudeDelta: 0.8),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -407,12 +448,14 @@ extension MiniaturaCard {
                             adress: "Costa da Caparica, Carcavelos, Estoril"
                         )
                     ],
-                    latitude: 38.639270,  // Caparica
-                    longitude: -9.230581,
+                    latitude: 38.552982, // Caparica
+                    longitude: -9.188481,
                     extraLocations: [
-                        (38.703130, -9.399608),  // Praia Tamariz
-                        (38.827308, -9.463803), // Praia Maçaa
-                    ]
+                        (name: "Praia Tamariz", latitude: 38.703130, longitude: -9.399608),
+                        (name: "Praia Maçã", latitude: 38.827308, longitude: -9.463803)
+                    ],
+                    zoomSpan: (latitudeDelta: 0.8, longitudeDelta: 0.8),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -437,8 +480,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7804,
                     longitude: -9.4989,
-                    extraLocations: nil
-                ),
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
+                    customCenter: (38.789711, -9.304144),                ),
                 MiniaturaCard(
                     id: 7,
                     imagem: "onda_nazare",
@@ -457,12 +501,14 @@ extension MiniaturaCard {
                             shortDescription: "Famous for the biggest surfed waves in the world, attracting international surfers.",
                             description: "Nazaré is a fishing village known for its giant waves, which attract surfers from around the world. The waves at Praia do Norte can reach heights of over 100 feet, making them some of the biggest in the world. The unique underwater topography and weather conditions off the coast of Nazaré create the perfect conditions for these massive waves.",
                             history: "The giant waves at Nazaré have been a natural phenomenon for centuries, but it was only in recent years that they gained international fame. The waves are created by a combination of factors, including the Nazaré Canyon, an underwater chasm that funnels and amplifies the swell, and the North Atlantic Ocean, which produces powerful storms and swells. In 2011, Hawaiian surfer Garrett McNamara set a world record by riding a 78-foot wave at Praia do Norte, putting Nazaré on the map as a premier big wave surfing destination. Since then, the village has become a mecca for surfers and spectators, who come to witness the awe-inspiring waves and the daring surfers who ride them.",
-                            adress: "Praia do Norte, Nazaré"
+                            adress: "Praia do Norte, Nazaré"   //39.019635, -9.151986
                         )
                     ],
                     latitude: 39.6102,
                     longitude: -9.0856,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
+                    customCenter: (39.019635, -9.151986),
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -473,23 +519,25 @@ extension MiniaturaCard {
                         "pt": MiniaturaCardTranslation(
                             titulo: "Mais Natureza",
                             shortDescription: "Descubra mais das maravilhas naturais de Portugal.",
-                            description: "Além das 7 maravilhas naturais que mencionamos, existem outros locais próximos a Lisboa que vale a pena destacar. \n\nSerra da Arrábida destaca-se pela sua vegetação mediterrânica densa e bem preservada, que confere à serra uma notável riqueza botânica, com espécies endémicas e outras de grande valor ecológico. As praias da Arrábida, com suas areias brancas e águas cristalinas, são consideradas algumas das mais belas de Portugal, oferecendo um contraste harmonioso entre as montanhas e o mar. \n\nAs Ilhas Berlengas (na foto), por sua vez, constituem um arquipélago de alto valor ecológico, localizado a cerca de 10 quilómetros da costa de Peniche. A Berlenga Grande, a ilha principal, é a única habitada e aberta a visitantes, oferecendo cenários naturais preservados e uma rica história. O arquipélago é renomado pela sua biodiversidade marinha, com uma ampla variedade de espécies de peixes, crustáceos e moluscos. A avifauna das Berlengas também é notável, com várias espécies de aves marinhas nidificando nas ilhas.",
+                            description: "Além das 7 maravilhas naturais que mencionamos, existem outros locais próximos a Lisboa que vale a pena destacar. \n\nSerra da Arrábida destaca-se pela sua vegetação mediterrânica densa e bem preservada, que confere à serra uma notável riqueza botânica, com espécies endémicas e outras de grande valor ecológico. As praias da Arrábida, com suas areias brancas e águas cristalinas, são consideradas algumas das mais belas de Portugal, oferecendo um contraste harmonioso entre as montanhas e o mar. \n\nAs Ilhas Berlengas (na foto), por sua vez, constituem um arquipélago de alto valor ecolológico, localizado a cerca de 10 quilómetros da costa de Peniche. A Berlenga Grande, a ilha principal, é a única habitada e aberta a visitantes, oferecendo cenários naturais preservados e uma rica história. O arquipélago é renomado pela sua biodiversidade marinha, com uma ampla variedade de espécies de peixes, crustáceos e moluscos. A avifauna das Berlengas também é notável, com várias espécies de aves marinhas nidificando nas ilhas.",
                             history: "A Serra da Arrábida oferece inúmeros trilhos para caminhadas, com diferentes níveis de dificuldade, que permitem explorar sua paisagem diversificada e desfrutar de vistas panorâmicas. As águas da Arrábida são ideais para mergulho e snorkeling, devido à sua clareza e rica biodiversidade marinha. A observação de aves é outra atividade popular nas montanhas, que abrigam várias espécies de aves marinhas e terrestres. \n\nO mergulho é uma das principais atividades nas Ilhas Berlengas, devido à clareza das águas e à riqueza da vida marinha. Os passeios de barco permitem explorar as grutas e enseadas da ilha, bem como observar a fauna marinha e as aves marinhas. Uma visita ao Forte de São João Baptista, uma fortificação histórica localizada na ilha, é outra atração popular. A observação da natureza permite observar a fauna e flora locais.",
-                            adress: "Diversos locais em Portugal"
+                            adress: "- Serra da Arrábida\n- Ilhas Berlengas"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "More Nature",
                             shortDescription: "Discover even more natural wonders in Portugal and around Lisbon.",
                             description: "In addition to the 7 natural wonders we mentioned, there are other places close to Lisbon that are worth mentioning. \n\nSerra da Arrábida stands out for its dense and well-preserved Mediterranean vegetation, which gives the mountain range a remarkable botanical richness, with endemic species and others of great ecological value. The beaches of Arrábida, with their white sands and crystal-clear waters, are considered some of the most beautiful in Portugal, offering a harmonious contrast between the mountains and the sea. \n\n Berlengas Islands (in the picture), in turn, constitute an archipelago of high ecological value, located about 10 kilometres off the coast of Peniche. Berlenga Grande, the main island, is the only one that is inhabited and open to visitors, offering preserved natural scenery and a rich history. The archipelago is renowned for its marine biodiversity, with a wide variety of species of fish, crustaceans and molluscs. The birdlife of the Berlengas is also notable, with several species of seabirds nesting on the islands.",
                             history: "The Serra da Arrábida offers numerous hiking trails, with different levels of difficulty, which allow you to explore its diverse landscape and enjoy panoramic views. The waters of Arrábida are ideal for diving and snorkeling, due to their clarity and rich marine biodiversity. Birdwatching is another popular activity in the mountains, which are home to several species of sea and land birds. \n\nDiving is one of the main activities in the Berlengas Islands, due to the clarity of the waters and the richness of marine life. Boat trips allow you to explore the island's caves and coves, as well as observe marine fauna and seabirds. A visit to Forte de São João Baptista, a historic fortification located on the island, is another popular attraction. Nature observation allows you to observe the local fauna and flora.",
-                            adress: "Various locations in Portugal"
+                            adress: "- Serra da Arrábida\n- Ilhas Berlengas"
                         )
                     ],
                     latitude: 38.537618,
-                    longitude: -9.007129,    // Arrabida
+                    longitude: -9.007129,    //  Serra da Arrábida
                     extraLocations: [
-                        (39.417097, -9.506463), // Ilhas Berlengas
-                    ]
+                        (name: "Ilhas Berlengas", latitude: 39.417097, longitude: -9.506463)
+                    ],
+                    zoomSpan: (latitudeDelta: 2, longitudeDelta: 2),
+                    customCenter: (39.014298, -9.168949),
                 )
             ]
         }
@@ -518,7 +566,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.6972, // Pastéis de Belém
                     longitude: -9.2036,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -541,11 +591,13 @@ extension MiniaturaCard {
                             adress: "The Bairro Alto and Baixa areas are known for their number of good restaurants. But you will find cod in any restaurant with Portuguese cuisine."
                         )
                     ],
-                    latitude: 38.7138, // Bairro Alto
-                    longitude: -9.1335,
+                    latitude: 38.711793,// Bairro Alto 38.711793, -9.144885
+                    longitude: -9.144885,
                     extraLocations:  [
-                        (38.7079, -9.1366)
-                    ]  //acrescentar Baixa (38.7079, -9.1366
+                        (name: "Baixa", latitude: 38.7079, longitude: -9.1366)
+                    ],  //acrescentar Baixa (38.7079, -9.1366
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: (38.711187, -9.137893)
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -558,25 +610,20 @@ extension MiniaturaCard {
                             shortDescription: "A Ginjinha é um licor popular português feito de ginjas.",
                             description: "A Ginjinha, também conhecida como ginja, é um licor tradicional português feito a partir da maceração de ginjas, um tipo de cereja amarga, em aguardente, com a adição de açúcar e especiarias como canela. Este processo de maceração confere à ginjinha a sua cor rubi intensa, sabor doce e aroma frutado. Tradicionalmente, a pessoa que serve a ginjinha pergunta se \"quer com ou sem ela\", para que o cliente possa dizer se quer ou não um pouco de fruta no copo.",
                             history: "A ginjinha é uma bebida tradicional portuguesa com origens antigas. Provavelmente foram os monges os primeiros a produzir licor de ginja para fins medicinais. Mais tarde, foi vendida em farmácias como um remédio para problemas estomacais. Com o tempo, a ginjinha tornou-se popular entre a população, sendo consumida como aperitivo ou digestivo. Hoje em dia, a ginjinha é uma das bebidas mais populares em Portugal, servida em bares e pubs por todo o país. Existem várias variações da receita original, com diferentes tipos de ginjas e especiarias, que conferem à bebida um sabor único e característico.",
-                            destaques: nil,
-                            adress: "A Ginjinha, Largo de São Domingos 8, Lisboa",
-                            usage: nil,
-                            pronunciation: nil
-                        ),
+                            adress: "A Ginjinha, Largo de São Domingos 8, Lisboa",                   ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Ginjinha",
                             shortDescription: "Lisbon's traditional cherry liqueur, served in a small glass.",
-                            description: "Ginginha, also known as ginja, is a traditional Portuguese liqueur made from the maceration of ginja, a type of bitter cherry, in brandy, with the addition of sugar and spices such as cinnamon. This maceration process gives the ginginha its intense ruby color, sweet flavor and fruity aroma. Traditionally, the person serving the ginjinha asks if \"you want it with or without it\" so the customer can say whether they want some fruit in the glass or not.",
-                            history: "Ginjinha is a traditional Portuguese drink with ancient origins. Monks were probably the first to produce cherry liqueur for medicinal purposes. Later it was sold in pharmacies as a remedy for stomach problems. Over time, ginjinha became popular among the population, being consumed as an aperitif or digestive. Today, ginjinha is one of the most popular drinks in Portugal, served in bars and pubs throughout the country. There are several variations of the original recipe, with different types of cherries and spices, which give the drink a unique and characteristic flavor.",
-                            destaques: nil,
+                            description: "Ginginha, also known as ginja, is a traditional Portuguese liqueur made from the maceration of ginja, a type of bitter cherry, in brandy, with the addition of sugar and spices such as cinnamon. This maceration process gives the ginginha its intense ruby color, sweet flavor and fruity aroma. Traditionally, the person serving the ginjinha asks if \"ou want it with or without it\" so the customer can say whether they want some fruit in the glass or not.",
+                            history: "A ginjinha é uma bebida tradicional portuguesa com origens antigas. Provavelmente foram os monges os primeiros a produzir licor de ginja para fins medicinais. Mais tarde, foi vendida em farmácias como um remédio para problemas estomacais. Com o tempo, a ginjinha tornou-se popular entre a população, sendo consumida como aperitivo ou digestivo. Hoje em dia, a ginjinha é uma das bebidas mais populares em Portugal, servida em bares e pubs por todo o país. Existem várias variações da receita original, com diferentes tipos de ginjas e especiarias, que conferem à bebida um sabor único e característico.",
                             adress: "A Ginjinha, Largo de São Domingos 8, Lisbon",
-                            usage: nil,
-                            pronunciation: nil
                         )
                     ],
-                    latitude: 38.7146, // A Ginjinha
-                    longitude: -9.1396,
-                    extraLocations: nil
+                    latitude: 38.714720, // A Ginjinha
+                    longitude: -9.139076,
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -589,19 +636,24 @@ extension MiniaturaCard {
                             shortDescription: "A culinária portuguesa apresenta uma variedade de pratos de peixe fresco.", // L10n_slogan20
                             description: "Portugal é conhecido pela sua culinária baseada em peixe fresco, com uma grande variedade de espécies e formas de prepará-lo. Desde o tradicional bacalhau, ao saboroso robalo, às suculentas sardinhas, o peixe é um ingrediente essencial na cozinha portuguesa. Os pratos de peixe são geralmente simples e saudáveis, preparados com azeite, alho, ervas e legumes frescos.",
                             history: "A pesca é uma atividade antiga em Portugal, com uma longa tradição de captura e consumo de peixe fresco. A localização geográfica do país, próximo ao Oceano Atlântico, proporciona uma grande diversidade de espécies marinhas, que são pescadas ao longo da costa e nos rios. O peixe fresco é um dos pilares da culinária portuguesa, consumido em todo o país, desde as aldeias piscatórias até aos restaurantes de luxo. Os portugueses têm uma relação especial com o peixe, que é apreciado pela sua frescura, sabor e versatilidade.",
-                            adress: "Cervejaria Ramiro, Av. Almirante Reis 1, Lisboa"
+                            adress: "Zonas da cidade com muitas opções para peixe\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Fish",
                             shortDescription: "Fresh Atlantic fish are the base of typical Portuguese dishes.",
                             description: "Portugal is known for its cuisine based on fresh fish, with a wide variety of species and ways of preparing it. From traditional cod, to tasty sea bass, to succulent sardines, fish is an essential ingredient in Portuguese cuisine. Fish dishes are generally simple and healthy, cooked with olive oil, garlic, herbs and fresh vegetables.",
                             history: "Fishing is an ancient activity in Portugal, with a long tradition of catching and consuming fresh fish. The country's geographical location, close to the Atlantic Ocean, provides a great diversity of marine species, which are fished along the coast and in the rivers. Fresh fish is one of the pillars of Portuguese cuisine, consumed throughout the country, from fishing villages to luxury restaurants. The Portuguese have a special relationship with fish, which is appreciated for its freshness, flavor and versatility.",
-                            adress: "Ramiro Seafood, Av. Almirante Reis 1, Lisbon"
+                            adress: "Areas of the city with many options for seafood o\n - Bairro Alto \n- Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.7223, // Ramiro
-                    longitude: -9.1355,
-                    extraLocations: nil
+                    latitude: 38.717779, // portas de santo antao
+                    longitude: -9.141762,
+                    extraLocations:  [
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    ],
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: (nil)
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -612,21 +664,26 @@ extension MiniaturaCard {
                         "pt": MiniaturaCardTranslation(
                             titulo: "Carne",
                             shortDescription: "A culinária portuguesa inclui uma variedade de deliciosos pratos de carne.", // L10n_slogan21
-                            description: "Cozido à portuguesa reúne carnes, enchidos e legumes num prato reconfortante.",
-                            history: "Receitas de carne refletem influências rurais e festividades tradicionais.",
-                            adress: "Solar dos Presuntos, Rua das Portas de Santo Antão 150, Lisboa"
+                            description: "A carne é um ingrediente essencial na culinária portuguesa, com uma grande variedade de pratos tradicionais e regionais. Desde o saboroso cozido à portuguesa, ao picante arroz de cabidela, ao suculento leitão assado, a carne é apreciada em todas as regiões do país. Os pratos de carne são geralmente acompanhados por batatas, arroz, vegetais e saladas, e temperados com ervas aromáticas e especiarias.",
+                            history: "A carne é um ingrediente importante na culinária portuguesa, com uma longa tradição de consumo e preparação.A carne de porco é uma das carnes mais populares e é usada numa variedade de pratos típicos, como o leitão assado, a feijoada à transmontana e o cozido à portuguesa. A carne de vaca, o borrego e as aves também são populares. A carne é tipicamente marinada numa mistura de azeite, alho e especiarias e depois é grelhada, assada no forno, estufada ou frita e servida com batatas, arroz ou salada, acompanhada por um copo de vinho tinto.",
+                            adress: "Zonas da cidade com muitas opções para carne\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Meat",
                             shortDescription: "Meat dishes like cozido and roast suckling pig are icons of national cuisine.",
                             description: "Meat is an essential ingredient in Portuguese cuisine, with a wide variety of traditional and regional dishes. From the tasty Portuguese stew, to the spicy arroz de cabidela, to the succulent roast suckling pig, meat is enjoyed in all regions of the country. Meat dishes are usually accompanied by potatoes, rice, vegetables and salads, and seasoned with aromatic herbs and spices.",
                             history: "Meat is an important ingredient in Portuguese cuisine, with a long tradition of consumption and preparation. Pork is one of the most popular meats, and is used in a variety of typical dishes, such as roast suckling pig, feijoada à transmontana and cozido à portuguesa. Beef, lamb and poultry are also popular. The meat is typically marinated in a mixture of olive oil, garlic, and spices then are grilled, baked in the oven, stewed or fried and served with potatoes, rice, or salad, accompanied by a glass of red wine.",
-                            adress: "Solar dos Presuntos, Rua das Portas de Santo Antão 150, Lisbon"
+                            adress: "Areas of the city with many options for meat\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.7157, // Solar dos Presuntos
-                    longitude: -9.1402,
-                    extraLocations: nil
+                    latitude: 38.717779, // portas de santo antao
+                    longitude: -9.141762,
+                    extraLocations:  [
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    ],
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: (nil)
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -639,19 +696,24 @@ extension MiniaturaCard {
                             shortDescription: "As sopas portuguesas são substanciais e saborosas.", // L10n_slogan22
                             description: "É um pilar da culinária portuguesa, com uma grande variedade de receitas e sabores. Algumas das sopas mais populares em Portugal incluem o caldo verde, uma sopa substanciosa feita com couve, batatas e chouriço; a sopa de peixe, uma rica sopa de peixe com vegetais e ervas; e a canja de galinha, uma reconfortante sopa de galinha com arroz. As sopas são essenciais às refeições portuguesas, apreciadas durante todo o ano.",
                             history: "As sopas fazem parte da culinária portuguesa há séculos, refletindo as tradições agrícolas e o património culinário do país. A tradição de fazer sopas com ingredientes locais, como vegetais, leguminosas e carnes, remonta a tempos antigos, quando as sopas eram um alimento básico para camponeses e nobreza. Em Portugal, as sopas são apreciadas durante todo o ano, com diferentes receitas para cada estação e ocasião. As sopas são frequentemente servidas como primeiro prato, acompanhadas de pão, azeitonas e queijo, e são consideradas um símbolo da hospitalidade e convivialidade portuguesas.",
-                            adress: "Zé dos Cornos, Beco dos Surradores 5, Lisboa"
+                            adress: "Zonas da cidade com muitas opções pra sopa\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Soup",
                             shortDescription: "Soups like caldo verde warm and nourish in any season.",
                             description: "It's a staple of Portuguese cuisine, with a wide variety of recipes and flavors. Some of the most popular soups in Portugal include caldo verde, a hearty soup made with kale, potatoes, and chorizo; sopa de peixe, a rich fish soup with vegetables and herbs; and canja de galinha, a comforting chicken soup with rice. Soups are an essential part of Portuguese meals, enjoyed year-round.",
                             history: "Soups have been a part of Portuguese cuisine for centuries, reflecting the country's agricultural traditions and culinary heritage. The tradition of making soups with local ingredients, such as vegetables, legumes, and meats, dates back to ancient times when soups were a staple food for peasants and nobility alike. In Portugal, soups are enjoyed year-round, with different recipes for each season and occasion. Soups are often served as a first course, accompanied by bread, olives, and cheese, and are considered a symbol of Portuguese hospitality and conviviality.",
-                            adress: "Zé dos Cornos, Beco dos Surradores 5, Lisbon"
+                            adress: "Areas of the city with many options for soup: \n- Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.7152, // Zé dos Cornos
-                    longitude: -9.1377,
-                    extraLocations: nil
+                    latitude: 38.717779, // portas de santo antao
+                    longitude: -9.141762,
+                    extraLocations:  [
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    ],
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: (nil)
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -664,19 +726,24 @@ extension MiniaturaCard {
                             shortDescription: "Portugal é conhecido pelos seus excelentes vinhos.", // L10n_slogan23
                             description: "Portugal é conhecido pela sua rica cultura vinícola, com uma longa história de produção de vinho e uma diversidade de variedades de uvas. Alguns dos vinhos portugueses mais famosos incluem o Vinho do Porto, um vinho fortificado do Vale do Douro; o Vinho Verde, um vinho leve e refrescante da região do Minho; e o Madeira, um vinho doce e complexo das Ilhas da Madeira. Os vinhos portugueses são apreciados em todo o mundo pela sua qualidade, variedade e sabores únicos.",
                             history: "Portugal tem uma longa e rica história de produção de vinho, que remonta aos tempos antigos, quando os romanos introduziram a viticultura na Península Ibérica. O clima, o solo e as variedades de uvas diversificadas do país contribuíram para o desenvolvimento de uma ampla gama de vinhos, cada um com suas características e sabores únicos. Os vinhos portugueses são conhecidos pela sua qualidade, autenticidade, e tradição, com muitas regiões produzindo vinhos distintos que refletem o terroir e a cultura da área. O Vale do Douro, o Vinho Verde e o Alentejo são algumas das regiões vinícolas mais famosas de Portugal, cada uma oferecendo uma experiência vinícola diferente.",
-                            adress: "Solar do Vinho do Porto, Rua de São Pedro de Alcântara 45, Lisboa"
+                            adress: "Zonas da cidade com muitas opções para provas de vinho\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Wine",
                             shortDescription: "Portugal is renowned for its excellent wines.",
                             description: "Portugal is known for its rich wine culture, with a long history of winemaking and a diverse range of grape varieties. Some of the most famous Portuguese wines include Port, a fortified wine from the Douro Valley; Vinho Verde, a light and refreshing wine from the Minho region; and Madeira, a sweet and complex wine from the Madeira Islands. Portuguese wines are enjoyed worldwide for their quality, variety, and unique flavors.",
                             history: "Portugal has a long and storied history of winemaking, dating back to ancient times when the Romans introduced viticulture to the Iberian Peninsula. The country's diverse climate, soil, and grape varieties have contributed to the development of a wide range of wines, each with its unique characteristics and flavors. Portuguese wines are known for their quality, authenticity, and tradition, with many regions producing distinctive wines that reflect the terroir and culture of the area. The Douro Valley, Vinho Verde, and Alentejo are some of the most famous wine regions in Portugal, each offering a different wine experience.",
-                            adress: "Solar do Vinho do Porto, Rua de São Pedro de Alcântara 45, Lisbon"
+                            adress: "Areas of the city with many options for wine tasting:\n- Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         )
                     ],
-                    latitude: 38.7150, // Solar do Vinho do Porto
-                    longitude: -9.1432,
-                    extraLocations: nil
+                    latitude: 38.717779, // portas de santo antao
+                    longitude: -9.141762,
+                    extraLocations:  [
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)   //Bairro Alto
+                    ],
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: (nil)
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -688,23 +755,27 @@ extension MiniaturaCard {
                             titulo: "Mais Gastronomia",
                             shortDescription: "Explore mais da deliciosa culinária de Portugal em Lisboa.", // L10n_slogan24
                             description: "Além das 7 maravilhas gastronômicas mencionadas, reservamos um espaço especial para 3 confeitos de pastelaria que, embora não sejam da cidade de Lisboa, vêm de locais muito próximos à cidade. - Travesseiros de Sintra (na foto): feitos com massa folhada, gemas de ovo, amêndoas e açúcar e são universalmente reconhecidos como uma das maiores iguarias de Sintra. - Queijadas de Sintra: farinha, queijo fresco, açúcar, gema de ovo e canela para o recheio são os ingredientes das crocantes e crocantes queijadas de Sintra, que adoçam o paladar e a alma. - Tortas de Azeitão: é um doce tradicional de Azeitão, região do município de Setúbal e é um dos ícones representativos desta região. Com um leve sabor a limão e canela, são um exemplo da pastelaria tradicional portuguesa. A torta de Azeitão é feita com ovos moles, gema de ovo, açúcar e água.",
-                            history: "Estes confeitos podem ser encontrados em alguns locais de Lisboa. Os seguintes endereços são de casas que produzem algumas das receitas mais famosas: - Travesseiros de Sintra: Piriquita, R. das Padarias 1/7, Sintra - Queijadas de Sintra: Volta do Duche 12, Sintra - Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão",
-                            destaques: "These confections can be found in some places in Lisbon. The following addresses are of houses that produce some of the most famous recipes: - Travesseiros de Sintra: Piriquita, R. das Padarias 1/7, Sintra - Queijadas de Sintra: Volta do Duche 12, Sintra - Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão",
-                            adress: "Diversos restaurantes e tascas em Portugal"
+                            history: nil,
+                            destaques: nil,
+                            adress: "Estes doces podem ser encontrados em alguns lugares de Lisboa mas os originais estão em:\n\n- Travesseiros de Sintra: Piriquita, R. das Padarias 1/7, Sintra \n- Queijadas de Sintra: Volta do Duche 12, Sintra \n- Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "More Gastronomy",
                             shortDescription: "Explore more of Portugal's delicious cuisine in Lisbon.",
-                            description: "In addition to the 7 gastronomic wonders mentioned, we have reserved a special space for 3 bakers' confections that, although they are not from the city of Lisbon, come from places very close to the city.\n\n  - Travesseiros de Sintra (in the picture): made with puff pastry, egg yolks, almonds and sugar and are universally recognized as one of the greatest delicacies of Sintra.\n\n - Queijadas de Sintra: flour, fresh cheese, sugar, egg yolk and cinnamon for the filling are the ingredients of the crispy and crunchy queijadas de Sintra, which sweeten the palate and the soul.\n\n - Tortas de Azeitão: it is a traditional confections from Azeitão, a region of the municipality of Setúbal and is one of the representative icons of this region. With a light lemon and cinnamon flavor, they are an example of traditional Portuguese Confectionery. The Azeitão pie is made with soft eggs, egg yolk, sugar and water.",
+                            description: "In addition to the 7 gastronomic wonders mentioned, we have reserved a special space for 3 bakers' confections that, although they are not from the city of Lisbon, come from places very close to the city.\n\n- Travesseiros de Sintra (in the picture): made with puff pastry, egg yolks, almonds and sugar and are universally recognized as one of the greatest delicacies of Sintra.\n\n - Queijadas de Sintra: flour, fresh cheese, sugar, egg yolk and cinnamon for the filling are the ingredients of the crispy and crunchy queijadas de Sintra, which sweeten the palate and the soul.\n\n - Tortas de Azeitão: it is a traditional confections from Azeitão, a region of the municipality of Setúbal and is one of the representative icons of this region. With a light lemon and cinnamon flavor, they are an example of traditional Portuguese Confectionery. The Azeitão pie is made with soft eggs, egg yolk, sugar and water.",
                             history: nil,
                             destaques: nil,
-                            adress: "These confections can be found in some places in Lisbon. The following addresses are of houses that produce some of the most famous recipes:\n\n - Travesseiros de Sintra: Piriquita, R. das Padarias 1-7, Sintra \n\n - Queijadas de Sintra: Volta do Duche 12, Sintra \n\n  - Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão"
+                            adress: "These confections can be found in some places in Lisbon. The following addresses are of houses that produce some of the most famous recipes:\n\n - Travesseiros de Sintra: Piriquita, R. das Padarias 1-7, Sintra \n\n- Queijadas de Sintra: Volta do Duche 12, Sintra \n\n- Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão"
                         )
                     ],
-                    latitude: 38.7225, // Arbitrário, pode ser alterado
-                    longitude: -9.1390,
-                    extraLocations: nil
-                )
+                    latitude: 38.796666, // piriquita
+                    longitude: -9.390446,
+                    extraLocations:  [
+                        (name: "Azeitão", latitude: 38.522477, longitude: -9.012010)   // Azeitao
+                    ],
+                    zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
+                    customCenter: (38.676952, -9.121034),
+                    ),
             ]
         }
         if cat == "popular" {
@@ -718,21 +789,28 @@ extension MiniaturaCard {
                         "pt": MiniaturaCardTranslation(
                             titulo: "Azulejos",
                             shortDescription: "A arte colorida que cobre fachadas e conta histórias em Lisboa.",
-                            description: "São azulejos tradicionais portugueses, conhecidos pelos seus padrões intrincados, cores vibrantes e significado histórico. Os azulejos são usados para decorar edifícios, paredes e pisos, criando impressionantes obras de arte que refletem a herança cultural e as tradições artísticas do país. As telhas são um símbolo do artesanato e da criatividade de Portugal.",
+                            description: "São azulejos tradicionais portugueses, conhecidos pelos seus padrões intrincados, cores vibrantes e significado histórico. Os azulejos são usados para decorar edifícios, paredes e pisos, criando impressionantes obras de arte que refletem a herança cultural e as tradições artísticas do país. Os azulejos são um símbolo do artesanato e da criatividade de Portugal.",
                             history: "A tradição dos azulejos remonta ao século XV, quando os mouros introduziram a arte dos azulejos cerâmicos vidrados em Portugal. A palavra \"azulejo\" vem da palavra árabe \"al zuleycha\", que significa \"pedra polida\". Ao longo dos séculos, os azulejos tornaram-se parte integrante da arquitetura portuguesa, sendo usados para decorar palácios, igrejas e edifícios públicos. Os azulejos são conhecidos pelos seus padrões geométricos, motivos florais e cenas históricas, refletindo a herança cultural e artística do país. Hoje em dia, os azulejos são um símbolo da identidade portuguesa e uma lembrança popular para os visitantes de Portugal.",
-                            adress: "Em quase todas as ruas e bairros da cidade."
+                            adress: "Em quase todas as ruas e bairros da cidade como, por exemplo:\n- Bairro Alto\n- Alfama\n- Baixa\n- Chiado\n- Museu do Azulejo."
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Azulejos",
                             shortDescription: "The colorful art that covers facades and tells stories in Lisbon.",
                             description: "They are traditional Portuguese ceramic tiles, known for their intricate patterns, vibrant colors, and historical significance. Azulejos are used to decorate buildings, walls, and floors, creating stunning works of art that reflect the country's cultural heritage and artistic traditions. The tiles are a symbol of Portugal's craftsmanship and creativity.",
                             history: "The tradition of azulejos dates back to the 15th century when the Moors introduced the art of glazed ceramic tiles to Portugal. The word \"azulejo \" comes from the Arabic word  \"al zuleycha, \" meaning  \"polished stone. \" Over the centuries, azulejos became an integral part of Portuguese architecture, used to decorate palaces, churches, and public buildings. The tiles are known for their geometric patterns, floral motifs, and historical scenes, reflecting the country's cultural and artistic heritage. Today, azulejos are a symbol of Portuguese identity and a popular souvenir for visitors to Portugal.",
-                            adress: "In almost every street and neighborhood in the city."
+                            adress: "In almost every street and neighborhood in the city such as, for example:\n- Bairro Alto\n- Alfama\n- Baixa\n- Chiado\n- Tiles Museum."
                         )
                     ],
-                    latitude: 38.7139,
-                    longitude: -9.1162,
-                    extraLocations: nil
+                    latitude: 38.712566,  //alfama
+                    longitude: -9.127686,
+                    extraLocations:  [
+                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),   // Baixa
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391),   //Bairro Alto
+                        (name: "Chiado", latitude: 38.710668, longitude: -9.141654),  //Chiado
+                        (name: "Museu do Azulejo", latitude: 38.724933, longitude: -9.113530)   //museu do azulejo
+                    ],
+                    zoomSpan: (latitudeDelta: 0.06, longitudeDelta: 0.06),
+                    customCenter: (nil)
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -745,19 +823,23 @@ extension MiniaturaCard {
                             shortDescription: "O Fado é um gênero musical tradicional português conhecido por suas melodias melancólicas e sentimentais.",
                             description: "É um gênero musical português caracterizado por letras melancólicas e melodias sentimentais, geralmente acompanhadas por guitarra portuguesa e viola. O fadista, o intérprete, é o protagonista, expressando emoções como saudade, amor e desilusão. O fado é um patrimônio cultural imaterial da humanidade, reconhecido pela UNESCO.",
                             history: "As origens exatas do fado são desconhecidas, mas acredita-se que tenha surgido nos bairros populares de Lisboa no final do século XIX. Suas raízes estão na música popular urbana, influenciada por várias culturas, como a árabe, africana e brasileira. O fado era cantado em tabernas e casas de fado por pessoas comuns, expressando seus sentimentos e experiências através da música. Ao longo dos anos, o fado evoluiu e tornou-se um símbolo da identidade nacional portuguesa, apreciado em todo o mundo.",
-                            adress: "As casas de fado estão concentradas nos bairros de Alfama e Bairro Alto em Lisboa."
+                            adress: "As casas de fado estão concentradas nos bairros de Alfama e Bairro Alto."
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Fado",
                             shortDescription: "The nostalgic music that echoes through the city’s alleys.",
                             description: "It's a Portuguese musical genre characterized by melancholic lyrics and sentimental melodies, typically accompanied by Portuguese guitar and viola. The fadista, the performer, is the protagonist, expressing emotions such as longing, love, and disillusionment. Fado is an intangible cultural heritage of humanity, recognized by UNESCO.",
                             history: "The exact origins of fado are unknown, but it is believed to have emerged in the popular neighborhoods of Lisbon in the late 19th century. Its roots lie in urban popular music, influenced by various cultures such as Arab, African, and Brazilian. Fado was sung in taverns and fado houses by ordinary people, expressing their feelings and experiences through music. Over the years, fado evolved and became a symbol of Portuguese national identity, appreciated worldwide.",
-                            adress: "Fado houses are concentrated in the Alfama and Bairro Alto neighborhoods in Lisbon."
+                            adress: "Fado houses are concentrated in the Alfama and Bairro Alto neighborhoods."
                         )
                     ],
-                    latitude: 38.7132,
-                    longitude: -9.1296,
-                    extraLocations: nil
+                    latitude: 38.712566,  //alfama
+                    longitude: -9.127686,
+                    extraLocations:  [
+                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)  //Bairro Alto
+                    ],   //Bairro Alto
+                    zoomSpan: (latitudeDelta: 0.04, longitudeDelta: 0.04),
+                    customCenter: (38.711894, -9.137578)
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -780,9 +862,22 @@ extension MiniaturaCard {
                             adress: nil
                         )
                     ],
-                    latitude: 38.7167,
-                    longitude: -9.1356,
-                    extraLocations: nil
+                    latitude: 38.713223,  //Praça São Joao Bosco
+                    longitude: -9.169070,
+                    extraLocations:  [
+                        (name: "Estrela", latitude: 38.713576, longitude: -9.159786),   // Estrela
+                        (name: "Sao Bento", latitude: 38.709898, longitude: -9.151561),   //Sao Bento
+                        (name: "Camoes", latitude: 38.710445, longitude: -9.143795),   //Camoes
+                        (name: "Baixa", latitude: 38.709630, longitude: -9.137041),  //Baixa
+                        (name: "Portas do Sol", latitude: 38.711874, longitude: -9.130478),   //Portas do Sol
+                        (name: "Igreja Sao Vicente", latitude: 38.714634, longitude: -9.128605),  //Igreja Sao Vicente
+                        (name: "Portas do Sol", latitude: 38.719335, longitude: -9.129800),   //Portas do Sol
+                        (name: "Unknown", latitude: 38.723647, longitude: -9.131794),
+                        (name: "Ramiro", latitude: 38.720326, longitude: -9.135708),  //Ramiro
+                        (name: "Matim Moniz", latitude: 38.715025, longitude: -9.136684)  //Matim Moniz
+                    ],
+                    zoomSpan: (latitudeDelta: 0.07, longitudeDelta: 0.07),
+                    customCenter: (38.715079, -9.153965)
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -795,19 +890,23 @@ extension MiniaturaCard {
                             shortDescription: "As tascas são tabernas tradicionais portuguesas conhecidas pelo seu ambiente acolhedor e comida deliciosa.",
                             description: "São tabernas ou restaurantes típicos portugueses, conhecidos pelo seu ambiente casual, comida caseira e preços acessíveis. As tascas servem uma variedade de pratos, como petiscos, pequenas porções de aperitivos; bifanas, sanduíches de porco; e \"caldo verde\", sopa de couve. As tascas são uma opção popular de refeição para locais e visitantes que procuram experimentar a autêntica cozinha portuguesa.",
                             history: "As tascas são uma tradição antiga em Portugal, remontando ao século XIX, quando eram frequentadas por marinheiros, trabalhadores e estudantes. Com o tempo, as tascas tornaram-se locais de convívio para pessoas de todas as classes sociais, que apreciavam a comida caseira, o ambiente acolhedor e os preços acessíveis. As tascas são conhecidas pela sua simplicidade e autenticidade, servindo pratos tradicionais portugueses, como bacalhau à brás, feijoada, cozido à portuguesa, entre outros. Hoje em dia, as tascas são pontos populares entre locais e turistas, que procuram uma experiência gastronómica autêntica e genuína.",
-                            adress: nil
+                            adress: "Zonas da cidade com algumas opções para tascas\n- Alfama \n- Mouraria"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Tascas",
                             shortDescription: "Small typical restaurants, full of flavor and tradition.",
                             description: "They are traditional Portuguese taverns or eateries, known for their casual atmosphere, hearty food, and affordable prices. Tascas serve a variety of dishes, such as petiscos, small plates of appetizers; bifanas, pork sandwiches; and \"caldo verde\", kale soup. Tascas are a popular dining option for locals and visitors looking to experience authentic Portuguese cuisine.",
                             history: "Tascas are an ancient tradition in Portugal, dating back to the 19th century, when they were frequented by sailors, workers and students. Over time, bars became places for people from all social classes to socialize and eat, who enjoyed home-cooked food, a cozy atmosphere and affordable prices. The taverns are known for their simplicity and authenticity, serving traditional Portuguese dishes, such as bacalhau à brás, feijoada, cozido à portuguesa, among others. Today, taverns are popular spots among locals and tourists alike, seeking an authentic and genuine dining experience.",
-                            adress: nil
+                            adress: "Areas of the city with some options for tascas\n- Alfama \n- Mouraria"
                         )
                     ],
-                    latitude: 38.7135,
-                    longitude: -9.1460,
-                    extraLocations: nil
+                    latitude: 38.712467, //alfama
+                    longitude: -9.131527,
+                    extraLocations:  [
+                        (name: "Mouraria", latitude: 38.714171, longitude: -9.135225)  // mouraria
+                    ],
+                    zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
+                    customCenter: (38.713922, -9.133472)
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -830,9 +929,11 @@ extension MiniaturaCard {
                             adress: "Campo de Santa Clara, Alfama, Lisbon"
                         )
                     ],
-                    latitude: 38.7172,
+                    latitude: 38.715615,
                     longitude: -9.1246,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -858,8 +959,10 @@ extension MiniaturaCard {
                     latitude: 38.7633,
                     longitude: -9.1847,
                     extraLocations: [
-                        (38.761198, -9.160803)
-                    ]
+                        (name: "Estádio de Alvalade", latitude: 38.761198, longitude: -9.160803)
+                    ],
+                    zoomSpan: (latitudeDelta: 0.09, longitudeDelta: 0.09),
+                    customCenter: (38.730049, -9.175494)
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -872,19 +975,25 @@ extension MiniaturaCard {
                             shortDescription: "Os Santos Populares são festas tradicionais portuguesas que celebram santos populares com música, dança e comida.",
                             description: "Os Santos Populares são festas tradicionais que acontecem em Portugal, durante o mês de junho, em honra a três santos católicos: Santo António, São João e São Pedro. A noite de Santo António é o ponto alto das festividades, pois Lisboa é a cidade natal do santo. As festividades incluem desfiles, marchas populares, danças, fogueiras, sardinhas assadas, manjericos e muita diversão.",
                             history: "Os Santos Populares são uma tradição antiga em Portugal, que remonta ao século XVIII, quando eram celebrados em honra a santos católicos. As festividades incluem desfiles, marchas populares, danças, fogueiras, sardinhas assadas, manjericos e muita diversão. É um momento de celebração e convívio, quando as ruas se enchem de cor e alegria, e as pessoas se reúnem para celebrar a vida e a amizade.",
-                            adress: "As melhores festas, chamadas \"arraiais\", são realizadas nos bairros mais antigos de Lisboa."
+                            adress: "As melhores festas, chamadas \"arraiais\", são realizadas nos bairros mais antigos de Lisboa.\n- Alfama\n- Bairro Alto\n- Mouraria\n- Graça"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Santos Populares",
                             shortDescription: "Lively street festivals with music, sardines, and joy.",
                             description: "The Popular Saints are traditional festivals that take place in Portugal, during the month of June, in honor of three Catholic saints: Saint Anthony, Saint John and Saint Peter. The night of Saint Anthony is the highlight of the festivities as Lisbon is the saint's birthplace. The festivities include parades, popular marches, dances, bonfires, grilled sardines, basil and lots of fun.",
                             history: "Popular Saints are an ancient tradition in Portugal, dating back to the 18th century, when they were celebrated in honor of Catholic saints. The festivities include parades, popular marches, dances, bonfires, grilled sardines, basil and lots of fun. It is a time of celebration and socializing, when the streets are filled with color and joy, and people come together to celebrate life and friendship.",
-                            adress: "The best parties, called \"arraiais\", are held in the oldest neighborhoods of Lisbon."
+                            adress: "The best parties, called \"arraiais\", are held in the oldest neighborhoods of Lisbon.\n- Alfama\n- Bairro Alto\n- Mouraria\n- Graça"
                         )
                     ],
-                    latitude: 38.7131,
-                    longitude: -9.1449,
-                    extraLocations: nil
+                    latitude: 38.712566,  //alfama
+                    longitude: -9.127686,
+                    extraLocations: [
+                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),  //Bairro alto
+                        (name: "Mouraria", latitude: 38.716143, longitude: -9.133062),  //Mouraria
+                        (name: "Graça", latitude: 38.718483, longitude: -9.129862)  //Graça
+                    ],
+                    zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
+                    customCenter: (38.713573, -9.136948)
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -897,7 +1006,7 @@ extension MiniaturaCard {
                             shortDescription: "Explore mais da rica herança cultural de Portugal.",
                             description: "Vida Noturna: A cidade ganha vida à noite, oferecendo uma variedade de opções para todos os gostos. Aqui estão alguns destaques da vida noturna de Lisboa: - Bairro Alto: um dos bairros mais animados de Lisboa, conhecido pelas suas ruas estreitas cheias de bares; - Cais do Sodré (na foto): uma antiga zona portuária que se tornou um ponto quente da vida noturna com muitos restaurantes e bares. Aqui você encontrará a Rua Cor-de-Rosa - famosa por sua rua pintada de rosa e guarda-chuvas coloridos pendurados nela; - Os Docks: Uma área à beira do rio com bares e clubes.",
                             history: nil,
-                            adress: "- Bairro Alto: metro Baixa-Chiado\n- Cais do Sodré: metro Cais do Sodré\n- Os Docks:Entre o Cais do Sodré e o bairro de Belém. Não há metro. O acesso é de Táxi, Uber ou carro próprio."
+                            adress: "- Bairro Alto: metro Baixa-Chiado\n- Cais do Sodré: metro Cais do Sodré\n- As Docks:Entre o Cais do Sodré e o bairro de Belém. Não há metro. O acesso é de Táxi, Uber ou carro próprio."
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "More Traditions",
@@ -907,9 +1016,14 @@ extension MiniaturaCard {
                             adress: "- Bairro Alto: metro Baixa-Chiado\n- Cais do Sodré: metro Cais do Sodré\n- The Docks:Between Cais do Sodré and the Belém neighborhood. There is no subway. Access is by Taxi, Uber or your own car."
                         )
                     ],
-                    latitude: 38.7200,
-                    longitude: -9.1400,
-                    extraLocations: nil
+                    latitude: 38.707529,  //Cais do Sodré
+                    longitude: -9.145839,
+                    extraLocations: [
+                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),  //Bairro alto
+                        (name: "Graça", latitude: 38.700258, longitude: -9.177473)  //Graça
+                    ],
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: (38.706827, -9.157535)
                 )
             ]
         }
@@ -938,7 +1052,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7108,
                     longitude: -9.1332,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -963,7 +1079,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.6978,
                     longitude: -9.2065,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -988,7 +1106,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7142,
                     longitude: -9.1392,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -1013,7 +1133,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7147,
                     longitude: -9.1441,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -1038,7 +1160,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.713384,
                     longitude: -9.160447,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -1063,7 +1187,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7126,
                     longitude: -9.1416,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -1088,7 +1214,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.6781,
                     longitude: -9.1776,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -1113,7 +1241,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 39.6325,
                     longitude: -8.6718,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 2, longitudeDelta: 2),
+                    customCenter: (39.265545, -8.792261)
                 )
             ]
         }
@@ -1142,7 +1272,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7231,
                     longitude: -9.1156,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -1167,7 +1299,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7371,
                     longitude: -9.1527,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -1192,7 +1326,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.6973,
                     longitude: -9.1976,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -1217,7 +1353,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7132,
                     longitude: -9.1296,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -1226,14 +1364,14 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Museu de Arte Antiga",
+                            titulo: "Museu de Arte Antiga\nEncerrado para obras",
                             shortDescription: "Museu Nacional de Arte Antiga de Portugal, abrigando as mais refinadas coleções de arte portuguesa e europeia.",
                             description: "O Museu de Arte Antiga é o principal museu de arte de Portugal, com uma coleção abrangente que cobre pintura, escultura, artes decorativas e artes aplicadas. Fundado em 1884, o museu é conhecido pela sua coleção de arte portuguesa e europeia, abrangendo desde a Idade Média até ao século XIX.",
                             history: "Os destaques do museu incluem pinturas de artistas como Hieronymus Bosch, Albrecht Dürer, Pieter Bruegel, Rembrandt, Rubens e Velázquez, bem como esculturas, cerâmicas, têxteis e mobiliário. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes.",
                             adress: "R. das Janelas Verdes, 1249-017 Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Ancient Art Museum",
+                            titulo: "Ancient Art Museum\nClosed for renovation",
                             shortDescription: "Masterpieces of Portuguese and European art from the 12th to 19th centuries.",
                             description: "The Museum of Ancient Art (Portuguese: Museu Nacional de Arte Antiga) is Portugal's main art museum, with a comprehensive collection covering painting, sculpture, decorative arts, and applied arts. Founded in 1884, the museum is known for its collection of Portuguese and European art, spanning from the Middle Ages to the 19th century.",
                             history: "The museum's highlights include paintings by artists such as Hieronymus Bosch, Albrecht Dürer, Pieter Bruegel, Rembrandt, Rubens, and Velázquez, as well as sculptures, ceramics, textiles, and furniture. The museum also houses temporary exhibitions, concerts, and cultural events that enrich the visitors' experience.",
@@ -1242,7 +1380,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7074,
                     longitude: -9.1702,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -1267,7 +1407,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.6956,
                     longitude: -9.2070,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -1292,7 +1434,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.6952,
                     longitude: -9.1970,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -1315,9 +1459,18 @@ extension MiniaturaCard {
                             adress: "Various locations in Lisbon'"
                         )
                     ],
-                    latitude: 38.7200,
-                    longitude: -9.1400,
-                    extraLocations: nil
+                    latitude: 38.697070,  //quake
+                    longitude:  -9.196989,
+                    extraLocations:  [
+                        (name: "MNAC", latitude: 38.708404, longitude: -9.141254),   // mnac
+                        (name: "Museu de História Natural", latitude: 38.717759, longitude: -9.150756),   //historia natural
+                        (name: "Museu do Oriente", latitude: 38.702849, longitude: -9.170761),   //oriente
+                        (name: "Museu da Marioneta", latitude: 38.707945, longitude: -9.155775),   //marioneta
+                        (name: "Museu da Farmácia", latitude: 38.710158, longitude: -9.147348),  //farmacia
+                        (name: "Museu do Oriente", latitude: 38.711874, longitude: -9.130478)   //oriente
+                    ],
+                    zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
+                    customCenter: (38.702849, -9.170761)
                 )
             ]
         }
@@ -1346,7 +1499,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7876, // Palácio da Pena
                     longitude: -9.3904,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
+                    customCenter: (38.755108, -9.300003)
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -1371,7 +1526,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7971, // Piriquita (Travesseiros)
                     longitude: -9.3907,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: (nil)
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -1396,7 +1553,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7925, // Castelo dos Mouros
                     longitude: -9.3867,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -1421,7 +1580,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7976, // Quinta da Regaleira
                     longitude: -9.3964,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -1446,7 +1607,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7952, // Parque de Monserrate
                     longitude: -9.4056,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.09, longitudeDelta: 0.09),
+                    customCenter: (38.793324, -9.400668)
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -1471,7 +1634,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7857, // Convento dos Capuchos
                     longitude: -9.4302,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
+                    customCenter: (38.785855, -9.425590)
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -1496,7 +1661,9 @@ extension MiniaturaCard {
                     ],
                     latitude: 38.7972, // Palácio Nacional de Sintra
                     longitude: -9.3907,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: (latitudeDelta: 0.02, longitudeDelta: 0.02),
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 8,
@@ -1507,21 +1674,26 @@ extension MiniaturaCard {
                         "en": MiniaturaCardTranslation(
                             titulo: "More Sintra",
                             shortDescription: "Discover even more wonders in Sintra!",
-                            description: "When we talk about Sintra, we may be referring to the Town or the Municipality. The Town of Sintra is a magical place, with a romantic atmosphere and a unique cultural and natural heritage. The Municipality of Sintra is a diverse region, ranging from the Atlantic coast to the mountains of the Sintra Range, with a rich history and breathtaking landscape. In addition to the 7 wonders already mentioned, here are some other emblematic and enchanting places in the region that deserve to be visited and explored.",
-                            history: "Cabo da Roca: It is the westernmost point of continental Europe, with 140-meter-high cliffs and breathtaking views over the ocean. Cruz Alta: It is the highest point of the Sintra Mountains, at 528 meters altitude, from where you can see the most beautiful views over Lisbon and Cascais to the south, the Atlantic Ocean to the west, and the rural region to the north. Adraga Beach: It is one of the most beautiful beaches in the region, with an extensive sandy area, imposing cliffs, and crystal-clear waters. Praia Grande: It is one of the most popular beaches in the region, with an extensive sandy area, good waves for surfing, and a relaxed atmosphere. Maçãs Beach: It is a picturesque beach, with a small fishing port, a lively promenade, and a family-friendly atmosphere. Ursa Beach: It is a wild and isolated beach, with steep cliffs, golden sand, and crystal-clear waters. Aguda Beach: It is a quiet and isolated beach, with an extensive sandy area, calm waters, and a relaxing atmosphere.",
-                            adress: "Diversos locais em Sintra"
+                            description: "When we talk about Sintra, we may be referring to the Town or the Municipality. The Town of Sintra is a magical place, with a romantic atmosphere and a unique cultural and natural heritage. The Municipality of Sintra is a diverse region, ranging from the Atlantic coast to the mountains of the Sintra Range, with a rich history and breathtaking landscape. In addition to the 7 wonders already mentioned, here are some other emblematic and enchanting places in the region that deserve to be visited and explored.\n- Cabo da Roca: It is the westernmost point of continental Europe, with 140-meter-high cliffs and breathtaking views over the ocean.\n-  Cruz Alta: It is the highest point of the Sintra Mountains, at 528 meters altitude, from where you can see the most beautiful views over Lisbon and Cascais to the south, the Atlantic Ocean to the west, and the rural region to the north.\n-  Adraga Beach: It is one of the most beautiful beaches in the region, with an extensive sandy area, imposing cliffs, and crystal-clear waters.\n-  Praia Grande: It is one of the most popular beaches in the region, with an extensive sandy area, good waves for surfing, and a relaxed atmosphere.\n-  Maçãs Beach: It is a picturesque beach, with a small fishing port, a lively promenade, and a family-friendly atmosphere.\n-  Ursa Beach: It is a wild and isolated beach, with steep cliffs, golden sand, and crystal-clear waters. Aguda Beach: It is a quiet and isolated beach, with an extensive sandy area, calm waters, and a relaxing atmosphere."
                         ),
                         "pt": MiniaturaCardTranslation(
                             titulo: "Mais Sintra",
                             shortDescription: "Descubra ainda mais maravilhas em Sintra!",
-                            description: "Quando falamos de Sintra, podemos estar a referir-nos à Vila ou ao Concelho. A Vila de Sintra é um lugar mágico, com uma atmosfera romântica e um património cultural e natural único. O Concelho de Sintra é uma região diversa, que vai desde a costa atlântica até às montanhas da Serra de Sintra, com uma rica história e paisagem deslumbrante. Além das 7 maravilhas já mencionadas, aqui estão alguns outros lugares emblemáticos e encantadores da região que merecem ser visitados e explorados.",
-                            history: "Cabo da Roca: É o ponto mais ocidental da Europa continental, com falésias de 140 metros de altura e vistas deslumbrantes sobre o oceano. Cruz Alta: É o ponto mais alto da Serra de Sintra, com 528 metros de altitude, de onde se podem ver as vistas mais bonitas sobre Lisboa e Cascais a sul, o Oceano Atlântico a oeste, e a região rural a norte. Praia da Adraga: É uma das praias mais bonitas da região, com uma extensa área de areia, falésias imponentes e águas cristalinas. Praia Grande: É uma das praias mais populares da região, com uma extensa área de areia, boas ondas para surf e uma atmosfera descontraída. Praia das Maçãs: É uma praia pitoresca, com um pequeno porto de pesca, um passeio animado e uma atmosfera familiar. Praia da Ursa: É uma praia selvagem e isolada, com falésias íngremes, areia dourada e águas cristalinas. Praia da Aguda: É uma praia tranquila e isolada, com uma extensa área de areia, águas calmas e uma atmosfera relaxante.",
-                            adress: "Vários locais em Sintra"
+                            description: "Quando falamos de Sintra, podemos estar a referir-nos à Vila ou ao Concelho. A Vila de Sintra é um lugar mágico, com uma atmosfera romântica e um património cultural e natural único. O Concelho de Sintra é uma região diversa, que vai desde a costa atlântica até às montanhas da Serra de Sintra, com uma rica história e paisagem deslumbrante. Além das 7 maravilhas já mencionadas, aqui estão alguns outros lugares emblemáticos e encantadores da região que merecem ser visitados e explorados.\n\n- Cabo da Roca: É o ponto mais ocidental da Europa continental, com falésias de 140 metros de altura e vistas deslumbrantes sobre o oceano.\n- Cruz Alta: É o ponto mais alto da Serra de Sintra, com 528 metros de altitude, de onde se podem ver as vistas mais bonitas sobre Lisboa e Cascais a sul, o Oceano Atlântico a oeste, e a região rural a norte.\n- Praia da Adraga: É uma das praias mais bonitas da região, com uma extensa área de areia, falésias imponentes e águas cristalinas.\n- Praia Grande: É uma das praias mais populares da região, com uma extensa área de areia, boas ondas para surf e uma atmosfera descontraída.\n- Praia das Maçãs: É uma praia pitoresca, com um pequeno porto de pesca, um passeio animado e uma atmosfera familiar.\n- Praia da Ursa: É uma praia selvagem e isolada, com falésias íngremes, areia dourada e águas cristalinas.\n- Praia da Aguda: É uma praia tranquila e isolada, com uma extensa área de areia, águas calmas e uma atmosfera relaxante."
                         )
                     ],
-                    latitude: nil,
-                    longitude: nil,
-                    extraLocations: nil
+                    latitude: 38.782053,   //cruz alta
+                    longitude: -9.391371,
+                    extraLocations: [
+                        (name: "Cabo da Roca", latitude: 38.780413, longitude: -9.498850),  //roca
+                        (name: "Praia da Adraga", latitude: 38.803232, longitude: -9.484940),  //adraga
+                        (name: "Praia Grande", latitude: 38.811687, longitude: -9.477119),   // grande
+                        (name: "Praia das Maçãs", latitude: 38.827308, longitude: -9.463803),  // maças
+                        (name: "Praia da Ursa", latitude: 38.790529, longitude: -9.492918),   //ursa
+                        (name: "Praia da Aguda", latitude: 38.850993, longitude: -9.455793)   //aguda
+                      ],
+                    zoomSpan: (latitudeDelta: 0.16, longitudeDelta: 0.16),
+                    customCenter: (38.783298, -9.446859)
                 )
             ]
         }
@@ -1543,7 +1715,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -1560,7 +1734,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -1577,7 +1753,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -1594,7 +1772,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -1611,7 +1791,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -1628,7 +1810,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -1645,7 +1829,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 )
             ]
         }
@@ -1668,7 +1854,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 2,
@@ -1680,13 +1868,15 @@ extension MiniaturaCard {
                             titulo: "Please",
                             shortDescription: "\"Por favor\" or \"Se faz favor\" are polite expressions used to make requests, ask for help, or show consideration for others.",
                             description: "It is a versatile word that can be used in a variety of situations, from ordering food in a restaurant to asking for directions on the street. Por favor is a simple and effective way to show respect and courtesy to others.",
-                            usage: "\"Por favor\" is a versatile expression that can be used in a variety of situations, such as: Asking for something: Por favor, pode passar-me o sal? (Please, can you pass me the salt?) Making a request: Por favor, pode dizer-me onde fica a estação de comboios? (Please, can you tell me where the train station is?) Ordering food: Por favor, um café e um pastel de nata. (Please, a coffee and a custard tart.) Asking for help: Por favor, pode ajudar-me a encontrar o meu hotel? (Please, can you help me find o meu hotel?) Showing consideration: Por favor, desculpe o atraso. (Please, excuse the delay.) Expressing gratitude: Muito obrigado por tudo. Por favor, aceite este presente. (Thank you very much for everything. Please, accept this gift.)",
+                            usage: "\"Por favor\" is a versatile expression that can be used in a variety of situations, such as: Asking for something: Por favor, pode passar-me o sal? (Please, can you pass me the salt?) Making a request: Por favor, pode dizer-me onde fica a estação de comboios? (Please, can you tell me where the train station is?) Ordering food: Por favor, um café e um pastel de nata. (Please, a coffee and a custard tart.) Asking for help: Por favor, pode ajudar-me a encontrar o meu hotel? (Please, can you help me find o meu hotel?) Showing consideration: Por favor, desculpe o atraso. (Thank you very much for everything. Please, accept this gift.)",
                             pronunciation: "Por favor is pronounced as poor fah-vohr, with the stress on the second syllable. The first syllable is pronounced as the English word 'poor' without the 'r' sound, and the second syllable is pronounced as the English word 'fah-vohr.' The 'o' sound is similar to the 'o' in the English word 'go,' and the 'a' sound is similar to the 'a' in the English word 'la.' The 'r' sound is pronounced as a soft 'r' sound, similar to the 'r' in the English word 'car."
                         )
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 3,
@@ -1704,7 +1894,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 4,
@@ -1722,7 +1914,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 5,
@@ -1740,7 +1934,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 6,
@@ -1758,7 +1954,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 ),
                 MiniaturaCard(
                     id: 7,
@@ -1776,7 +1974,9 @@ extension MiniaturaCard {
                     ],
                     latitude: nil,
                     longitude: nil,
-                    extraLocations: nil
+                    extraLocations: nil,
+                    zoomSpan: nil,
+                    customCenter: nil
                 )
             ]
         }
