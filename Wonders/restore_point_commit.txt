@@ -1,0 +1,16 @@
+Restore point commit for MiniaturaModels.swift
+
+- Corrigido erro de 'Missing return in static method expected to return [MiniaturaCard]' na função mockCardsRaw.
+- Adicionado 'return []' ao final da função para garantir retorno válido.
+- Este commit serve como ponto de restauração seguro para futuras alterações.
+
+Data: 2025-10-04
+Autor: Assistente Wonders
+
+---
+
+Arquivo afetado: MiniaturaModels.swift
+
+Resumo:
+- Garantia de compilação sem erros.
+- Código pronto para futuras modificações.

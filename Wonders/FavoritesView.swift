@@ -53,7 +53,7 @@ struct FavoritesView: View {
                 // Fix: Define mapLocations and mapTitle for use in sheet
                 let mapLocations: [MiniaturaLocation] = favoriteCards.flatMap { (_, card, _) in
                     card.locations?.map { loc in
-                        MiniaturaLocation(title: loc.name, latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem)
+                        MiniaturaLocation(title: MiniaturaCard.localizedLocationName(loc.name, lang: languageSettings.language), latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem)
                     } ?? []
                 }
                 let mapTitle: String = languageSettings.language == "pt"

@@ -135,7 +135,12 @@ struct MiniaturasCategoryView: View {
         let cards = MiniaturaCard.allCards().filter { $0.categoria.normalized == correctVocabularyCategory().normalized }
         let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
             card.locations?.map { loc in
-                MiniaturaLocation(title: loc.name, latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem)
+                MiniaturaLocation(
+                    title: MiniaturaCard.localizedLocationName(loc.name, lang: language),
+                    latitude: loc.latitude,
+                    longitude: loc.longitude,
+                    ordem: card.ordem
+                )
             } ?? []
         }
         ZStack(alignment: .bottom) {

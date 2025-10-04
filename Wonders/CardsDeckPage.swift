@@ -14,7 +14,7 @@ struct CardsDeckPage: View, Identifiable {
     var mapLocations: [MiniaturaLocation] {
         var locations: [MiniaturaLocation] = []
         for loc in card.locations ?? [] {
-            locations.append(MiniaturaLocation(title: loc.name, latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem))
+            locations.append(MiniaturaLocation(title: MiniaturaCard.localizedLocationName(loc.name, lang: languageSettings.language), latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem))
         }
         return locations
     }

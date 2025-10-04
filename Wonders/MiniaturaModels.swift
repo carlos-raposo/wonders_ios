@@ -6,7 +6,7 @@ struct MiniaturaCard: Identifiable {
     let categoria: String
     let ordem: Int
     let translations: [String: MiniaturaCardTranslation]
-    let locations: [(name: String, latitude: Double, longitude: Double)]? // lista de localizações
+    let locations: [(name: [String: String], latitude: Double, longitude: Double)]? // lista de localizações multi-idioma
     // Custom zoom and center for map
     let zoomSpan: (latitudeDelta: Double, longitudeDelta: Double)?
     let customCenter: (latitude: Double, longitude: Double)?
@@ -103,7 +103,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "São Jorge Castle", latitude: 38.713909, longitude: -9.133476)
+                        (name: ["en": "São Jorge Castle", "pt": "Castelo de São Jorge"], latitude: 38.713909, longitude: -9.133476)
                     ],
                     zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
                     customCenter: nil
@@ -130,7 +130,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Belém Tower", latitude: 38.691584, longitude: -9.215821)
+                        (name: ["en": "Belém Tower", "pt": "Torre de Belém"], latitude: 38.691584, longitude: -9.215821)
                     ],
                     zoomSpan: (latitudeDelta: 0.5, longitudeDelta: 0.5),
                     customCenter: nil
@@ -157,7 +157,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Águas Livres Aqueduct", latitude: 38.72660, longitude: -9.16623)
+                        (name: ["en": "Águas Livres Aqueduct", "pt": "Aqueduto das Águas Livres"], latitude: 38.72660, longitude: -9.16623)
                     ],
                     zoomSpan: (latitudeDelta: 0.08, longitudeDelta: 0.08),
                     customCenter: nil
@@ -184,7 +184,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Comércio Square", latitude: 38.707750, longitude: -9.136592)
+                        (name: ["en": "Comércio Square", "pt": "Praça do Comércio"], latitude: 38.707750, longitude: -9.136592)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
@@ -211,7 +211,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Santa Justa Elevator", latitude: 38.712130, longitude: -9.139343)
+                        (name: ["en": "Santa Justa Elevator", "pt": "Elevador de Santa Justa"], latitude: 38.712130, longitude: -9.139343)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
@@ -238,7 +238,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Discoveries Monument", latitude: 38.693056, longitude: -9.205556)
+                        (name: ["en": "Discoveries Monument", "pt": "Padrão dos Descobrimentos"], latitude: 38.693056, longitude: -9.205556)
                     ],
                     zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
                     customCenter: nil
@@ -265,8 +265,8 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Ponte 25 de Abril", latitude: 38.689167, longitude: -9.177778),
-                        (name: "Ponte Vasco da Gama", latitude: 38.762303, longitude: -9.043198)
+                        (name: ["en": "25 de Abril Bridge", "pt": "Ponte 25 de Abril"], latitude: 38.689167, longitude: -9.177778),
+                        (name: ["en": "Vasco da Gama Bridge", "pt": "Ponte Vasco da Gama"], latitude: 38.762303, longitude: -9.043198)
                     ],
                     zoomSpan: (latitudeDelta: 0.45, longitudeDelta: 0.45),
                     customCenter: nil
@@ -282,21 +282,21 @@ extension MiniaturaCard {
                             shortDescription: "Explore more incredible monuments in Lisbon!",
                             description: "For those interested in exploring more monumental wonders, these four palaces are worth considering. \n\nPalácio de Ajuda: Situated on top of the Ajuda hill, with stunning views over the river, this magnificent palace in Lisbon preserves the layout and decoration of its rooms in the style of the 19th century, notably the monarchs' apartments and the Throne Room. A neoclassical building from the first half of the 19th century, it was the official residence of the Portuguese royal family from the reign of D. Luís I (1861-89) until the end of the Monarchy in 1910. \n\nPalácio de Queluz (in the picture): Located between Lisbon and Sintra, this 18th-century palace is one of the finest examples of the Rococo style in Portugal, with its sumptuous halls, ornate tiles and lush gardens. Built as a summer retreat for D. Pedro de Bragança, it became the official residence of the Portuguese royal family from the reign of D. Maria I, who transformed it into a royal palace. Its royal apartments, the Throne Room and the meticulously manicured gardens transport visitors to the golden age of the Portuguese monarchy. \n\nPena Palace:- Perched atop the Sintra Mountains, with panoramic views of the surrounding landscape, Pena Palace is a vibrant testament to 19th-century Romanticism. This unique palace, with its eclectic mix of architectural styles, from neo-Gothic to neo-Manueline, is one of the most visited in Portugal. Once the residence of the Portuguese royal family, Pena Palace has been masterfully restored to its original glory, offering visitors a fascinating glimpse into the life of Portuguese royalty in the 19th century.\n\nMafra Palace: - This UNESCO World Heritage-listed complex of palace, basilica and convent is one of the largest royal buildings in Europe, with over 1,200 rooms and an impressive façade that dominates the landscape. \nInside, visitors can marvel at the richness of detail, from the sumptuous library, with its collection of thousands of ancient books, to the impressive basilica, with its six historic organs and two carillons. The richly decorated royal apartments offer a glimpse into the life of the Portuguese royal family in the 18th century.",
                             history: "The palaces of Ajuda, Queluz, Pena, and Mafra are architectural gems that reflect the grandeur and opulence of the Portuguese monarchy. These palaces were built during different periods of Portuguese history, from the 18th to the 19th centuries, and each has its unique style and character. The Palácio de Ajuda is a neoclassical masterpiece, with elegant interiors and stunning views over the river. The Palácio de Queluz is a Rococo jewel, with sumptuous halls and lush gardens. The Pena Palace is a vibrant testament to Romanticism, with its eclectic mix of architectural styles. The Mafra Palace is a UNESCO World Heritage site, with over 1,200 rooms and a richly decorated basilica. Together, these palaces offer a fascinating glimpse into the history and culture of Portugal.",
-                            adress: nil
+                            adress: "- Palácio da Ajuda\n- Palácio de Queluz\n- Palácio de Pena\n- Palácio de Mafra"
                         ),
                         "pt": MiniaturaCardTranslation(
                             titulo: "Mais Monumentos",
                             shortDescription: "Explore mais dos deslumbrantes monumentos de Lisboa.",
                             description: " Para quem deseja explorar mais maravilhas monumentais, estes quatro palácios valem a pena ser considerados. \n\nPalácio de Ajuda: Situado no topo da colina da Ajuda, com vistas deslumbrantes sobre o rio, este magnífico palácio em Lisboa preserva a disposição e decoração de seus aposentos no estilo do século XIX, notadamente os aposentos dos monarcas e o Salão do Trono. Um edifício neoclássico da primeira metade do século XIX, foi a residência oficial da família real portuguesa desde o reinado de D. Luís I (1861-89) até o fim da Monarquia em 1910. \n\nPalácio de Queluz (na foto): Localizado entre Lisboa e Sintra, este palácio do século XVIII é um dos melhores exemplos do estilo rococó em Portugal, com seus salões suntuosos, azulejos ornamentados e jardins exuberantes. Construído como um retiro de verão para D. Pedro de Bragança, tornou-se a residência oficial da família real portuguesa desde o reinado de D. Maria I, que o transformou em um palácio real. Seus aposentos reais, o Salão do Trono e os jardins meticulosamente cuidados transportam os visitantes para a era dourada da monarquia portuguesa. \n\nPalácio da Pena:- Empoleirado no topo das Montanhas de Sintra, com vistas panorâmicas da paisagem circundante, o Palácio da Pena é um vibrante testemunho do Romantismo do século XIX. Este palácio único, com sua mistura eclética de estilos arquitetônicos, do neogótico ao neo-manuelino, é um dos mais visitados em Portugal. Uma vez residência da família real portuguesa, o Palácio da Pena foi magistralmente restaurado à sua glória original, oferecendo aos visitantes um vislumbre fascinante da vida da realeza portuguesa no século XIX.\n\nPalácio de Mafra: - Este complexo listado como Patrimônio Mundial pela UNESCO, composto por palácio, basílica e convento, é um dos maiores edifícios reais da Europa, com mais de 1.200 quartos e uma impressionante fachada que domina a paisagem.\nDentro, os visitantes podem admirar a riqueza de detalhes, desde a suntuosa biblioteca, com sua coleção de milhares de livros antigos, até a impressionante basílica, com seus seis órgãos históricos e duas carrilhões. Os aposentos reais ricamente decorados oferecem um vislumbre da vida da família real portuguesa no século XVIII.",
                             history: "Os palácios de Ajuda, Queluz, Pena e Mafra são joias arquitetônicas que refletem a grandiosidade e opulência da monarquia portuguesa. Esses palácios foram construídos em diferentes períodos da história de Portugal, do século XVIII ao século XIX, e cada um possui seu estilo e caráter únicos. O Palácio de Ajuda é uma obra-prima neoclássica, com interiores elegantes e vistas deslumbrantes sobre o rio. O Palácio de Queluz é uma joia rococó, com salões suntuosos e jardins exuberantes. O Palácio da Pena é um vibrante testemunho do Romantismo, com sua mistura eclética de estilos arquitetônicos. O Palácio de Mafra é um sítio do Patrimônio Mundial da UNESCO, com mais de 1.200 quartos e uma basílica ricamente decorada. Juntos, esses palácios oferecem um vislumbre fascinante da história e cultura de Portugal.",
-                            adress: nil
+                            adress: "- Palácio da Ajuda\n- Palácio de Queluz\n- Palácio da Pena\n- Palácio de Mafra"
                         )
                     ],
                     locations: [
-                        (name: "Palácio de Ajuda", latitude: 38.707403, longitude: -9.198642),
-                        (name: "Palácio de Queluz", latitude: 38.750397, longitude: -9.257947),
-                        (name: "Palácio da Pena", latitude: 38.787605, longitude: -9.390496),
-                        (name: "Palácio de Mafra", latitude: 38.936972, longitude: -9.326943)
+                        (name: ["en": "Palácio de Ajuda", "pt": "Palácio de Ajuda"], latitude: 38.707403, longitude: -9.198642),
+                        (name: ["en": "Palácio de Queluz", "pt": "Palácio de Queluz"], latitude: 38.750397, longitude: -9.257947),
+                        (name: ["en": "Palácio da Pena", "pt": "Palácio da Pena"], latitude: 38.787605, longitude: -9.390496),
+                        (name: ["en": "Palácio de Mafra", "pt": "Palácio de Mafra"], latitude: 38.936972, longitude: -9.326943)
                     ],
                     zoomSpan: (latitudeDelta: 0.9, longitudeDelta: 0.9),
                     customCenter: nil
@@ -327,7 +327,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Rio Tejo", latitude: 38.835068, longitude: -9.011688)
+                        (name: ["en": "Tejo River", "pt": "Rio Tejo"], latitude: 38.835068, longitude: -9.011688)
                     ],
                     zoomSpan: (latitudeDelta: 0.9, longitudeDelta: 0.9),
                     customCenter: nil
@@ -355,13 +355,13 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Miradouro do Castelo de São Jorge", latitude: 38.712585, longitude: -9.133726),
-                        (name: "Miradouro da Senhora do Monte", latitude: 38.7181, longitude: -9.1336),
-                        (name: "Miradouro de Santa Catarina", latitude: 38.7132, longitude: -9.1393),
-                        (name: "Miradouro de São Pedro de Alcântara", latitude: 38.7147, longitude: -9.1371),
-                        (name: "Miradouro das Portas do Sol", latitude: 38.711929, longitude: -9.129969),
-                        (name: "Miradouro de Graça", latitude: 38.716373, longitude: -9.131520),
-                        (name: "Miradouro dE Santa Luzia", latitude: 38.711706, longitude: -9.130202)
+                        (name: ["en": "São Jorge Castle Viewpoint", "pt": "Miradouro do Castelo de São Jorge"], latitude: 38.712585, longitude: -9.133726),
+                        (name: ["en": "Senhora do Monte Viewpoint", "pt": "Miradouro da Senhora do Monte"], latitude: 38.7181, longitude: -9.1336),
+                        (name: ["en": "Santa Catarina Viewpoint", "pt": "Miradouro de Santa Catarina"], latitude: 38.7132, longitude: -9.1393),
+                        (name: ["en": "São Pedro de Alcântara Viewpoint", "pt": "Miradouro de São Pedro de Alcântara"], latitude: 38.7147, longitude: -9.1371),
+                        (name: ["en": "Portas do Sol Viewpoint", "pt": "Miradouro das Portas do Sol"], latitude: 38.711929, longitude: -9.129969),
+                        (name: ["en": "Graça Viewpoint", "pt": "Miradouro de Graça"], latitude: 38.716373, longitude: -9.131520),
+                        (name: ["en": "Santa Luzia Viewpoint", "pt": "Miradouro dE Santa Luzia"], latitude: 38.711706, longitude: -9.1397)
                         
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
@@ -389,9 +389,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Jardins e Parques", latitude: 38.7262, longitude: -9.1506),
-                        (name: "Jardim da Estrela", latitude: 38.714713, longitude: -9.159183),
-                        (name: "Parque Monsanto", latitude: 38.727683, longitude: -9.190777)
+                        (name: ["en": "Eduardo VII Park", "pt": "Parque Eduardo VII"], latitude: 38.7262, longitude: -9.1506),
+                        (name: ["en": "Estrela Garden", "pt": "Jardim da Estrela"], latitude: 38.714713, longitude: -9.159183),
+                        (name: ["en": "Monsanto Park", "pt": "Parque Monsanto"], latitude: 38.727683, longitude: -9.190777)
                     ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: nil
@@ -418,7 +418,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Serra de Sintra", latitude: 38.7939, longitude: -9.3907)
+                        (name: ["en": "Serra de Sintra", "pt": "Serra de Sintra"], latitude: 38.7939, longitude: -9.3907)
                     ],
                     zoomSpan: (latitudeDelta: 0.8, longitudeDelta: 0.8),
                     customCenter: nil
@@ -445,9 +445,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Praias de Lisboa", latitude: 38.552982, longitude: -9.188481),
-                        (name: "Praia Tamariz", latitude: 38.703130, longitude: -9.399608),
-                        (name: "Praia Maçã", latitude: 38.827308, longitude: -9.463803)
+                        (name: ["en": "Praias de Lisboa", "pt": "Praias de Lisboa"], latitude: 38.552982, longitude: -9.188481),
+                        (name: ["en": "Praia Tamariz", "pt": "Praia Tamariz"], latitude: 38.703130, longitude: -9.399608),
+                        (name: ["en": "Praia Maçã", "pt": "Praia Maçã"], latitude: 38.827308, longitude: -9.463803)
                     ],
                     zoomSpan: (latitudeDelta: 0.8, longitudeDelta: 0.8),
                     customCenter: nil
@@ -474,7 +474,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Cabo da Roca", latitude: 38.7804, longitude: -9.4989)
+                        (name: ["en": "Cabo da Roca", "pt": "Cabo da Roca"], latitude: 38.7804, longitude: -9.4989)
                     ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
                     customCenter: (38.789711, -9.304144)
@@ -501,7 +501,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Ondas da Nazaré", latitude: 39.6102, longitude: -9.0856)
+                        (name: ["en": "Ondas da Nazaré", "pt": "Ondas da Nazaré"], latitude: 39.6102, longitude: -9.0856)
                     ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
                     customCenter: (39.019635, -9.151986)
@@ -528,8 +528,8 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Serra da Arrábida", latitude: 38.537618, longitude: -9.007129),
-                        (name: "Ilhas Berlengas", latitude: 39.417097, longitude: -9.506463)
+                        (name: ["en": "Serra da Arrábida", "pt": "Serra da Arrábida"], latitude: 38.537618, longitude: -9.007129),
+                        (name: ["en": "Ilhas Berlengas", "pt": "Ilhas Berlengas"], latitude: 39.417097, longitude: -9.506463)
                     ],
                     zoomSpan: (latitudeDelta: 2, longitudeDelta: 2),
                     customCenter: (39.014298, -9.168949)
@@ -560,7 +560,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Pastéis de Nata", latitude: 38.6972, longitude: -9.2036)
+                        (name: ["en": "Pastéis de Nata", "pt": "Pastéis de Nata"], latitude: 38.6972, longitude: -9.2036)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -587,8 +587,8 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Bacalhau", latitude: 38.711793, longitude: -9.144885),
-                        (name: "Baixa", latitude: 38.7079, longitude: -9.1366)
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.711793, longitude: -9.144885),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.7079, longitude: -9.1366)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (38.711187, -9.137893)
@@ -615,7 +615,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Ginjinha", latitude: 38.714720, longitude: -9.139076)
+                        (name: ["en": "Ginjinha", "pt": "Ginjinha"], latitude: 38.714720, longitude: -9.139076)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -642,9 +642,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Peixe", latitude: 38.717779, longitude: -9.141762),
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
+                        (name: ["en": "Peixe", "pt": "Peixe"], latitude: 38.717779, longitude: -9.141762),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.709554, longitude: -9.137325),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -671,9 +671,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Carne", latitude: 38.717779, longitude: -9.141762),
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
+                        (name: ["en": "Carne", "pt": "Carne"], latitude: 38.717779, longitude: -9.141762),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.709554, longitude: -9.137325),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -700,9 +700,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Sopa", latitude: 38.717779, longitude: -9.141762),
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
+                        (name: ["en": "Sopa", "pt": "Sopa"], latitude: 38.717779, longitude: -9.141762),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.709554, longitude: -9.137325),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -729,9 +729,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Vinho", latitude: 38.717779, longitude: -9.141762),
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
+                        (name: ["en": "Vinho", "pt": "Vinho"], latitude: 38.717779, longitude: -9.141762),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.709554, longitude: -9.137325),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (nil)
@@ -760,9 +760,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Piriquita (Travesseiros)", latitude: 38.7971, longitude: -9.3907),
-                        (name: "Queijadas de Sintra", latitude: 38.750397, longitude: -9.257947),
-                        (name: "Tortas de Azeitão", latitude: 38.936972, longitude: -9.326943)
+                        (name: ["en": "Piriquita (Travesseiros)", "pt": "Piriquita (Travesseiros)"], latitude: 38.7971, longitude: -9.3907),
+                        (name: ["en": "Queijadas de Sintra", "pt": "Queijadas de Sintra"], latitude: 38.750397, longitude: -9.257947),
+                        (name: ["en": "Tortas de Azeitão", "pt": "Tortas de Azeitão"], latitude: 38.936972, longitude: -9.326943)
                     ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
                     customCenter: (38.676952, -9.121034)
@@ -793,11 +793,11 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Azulejos", latitude: 38.712566, longitude: -9.127686),
-                        (name: "Baixa", latitude: 38.709554, longitude: -9.137325),
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391),
-                        (name: "Chiado", latitude: 38.710668, longitude: -9.141654),
-                        (name: "Museu do Azulejo", latitude: 38.724933, longitude: -9.113530)
+                        (name: ["en": "Azulejos", "pt": "Azulejos"], latitude: 38.712566, longitude: -9.127686),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.709554, longitude: -9.137325),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.712380, longitude: -9.143391),
+                        (name: ["en": "Chiado", "pt": "Chiado"], latitude: 38.710668, longitude: -9.141654),
+                        (name: ["en": "Museu do Azulejo", "pt": "Museu do Azulejo"], latitude: 38.724933, longitude: -9.113530)
                     ],
                     zoomSpan: (latitudeDelta: 0.06, longitudeDelta: 0.06),
                     customCenter: (nil)
@@ -824,8 +824,8 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Fado", latitude: 38.712566, longitude: -9.127686),
-                        (name: "Bairro Alto", latitude: 38.712380, longitude: -9.143391)
+                        (name: ["en": "Fado", "pt": "Fado"], latitude: 38.712566, longitude: -9.127686),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.712380, longitude: -9.143391)
                     ],
                     zoomSpan: (latitudeDelta: 0.04, longitudeDelta: 0.04),
                     customCenter: (38.711894, -9.137578)
@@ -852,17 +852,17 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Eléctrico 28", latitude: 38.713223, longitude: -9.169070),
-                        (name: "Estrela", latitude: 38.713576, longitude: -9.159786),
-                        (name: "Sao Bento", latitude: 38.709898, longitude: -9.151561),
-                        (name: "Camoes", latitude: 38.710445, longitude: -9.143795),
-                        (name: "Baixa", latitude: 38.709630, longitude: -9.137041),
-                        (name: "Portas do Sol", latitude: 38.711874, longitude: -9.130478),
-                        (name: "Igreja Sao Vicente", latitude: 38.714634, longitude: -9.128605),
-                        (name: "Portas do Sol", latitude: 38.719335, longitude: -9.129800),
-                        (name: "Unknown", latitude: 38.723647, longitude: -9.131794),
-                        (name: "Ramiro", latitude: 38.720326, longitude: -9.135708),
-                        (name: "Matim Moniz", latitude: 38.715025, longitude: -9.136684)
+                        (name: ["en": "Eléctrico 28", "pt": "Eléctrico 28"], latitude: 38.713223, longitude: -9.169070),
+                        (name: ["en": "Estrela", "pt": "Estrela"], latitude: 38.713576, longitude: -9.159786),
+                        (name: ["en": "Sao Bento", "pt": "Sao Bento"], latitude: 38.709898, longitude: -9.151561),
+                        (name: ["en": "Camoes", "pt": "Camoes"], latitude: 38.710445, longitude: -9.143795),
+                        (name: ["en": "Baixa", "pt": "Baixa"], latitude: 38.709630, longitude: -9.137041),
+                        (name: ["en": "Portas do Sol", "pt": "Portas do Sol"], latitude: 38.711874, longitude: -9.130478),
+                        (name: ["en": "Igreja Sao Vicente", "pt": "Igreja Sao Vicente"], latitude: 38.714634, longitude: -9.128605),
+                        (name: ["en": "Portas do Sol", "pt": "Portas do Sol"], latitude: 38.719335, longitude: -9.129800),
+                        (name: ["en": "Unknown", "pt": "Desconhecido"], latitude: 38.723647, longitude: -9.131794),
+                        (name: ["en": "Ramiro", "pt": "Ramiro"], latitude: 38.720326, longitude: -9.135708),
+                        (name: ["en": "Matim Moniz", "pt": "Martim Moniz"], latitude: 38.715025, longitude: -9.136684)
                     ],
                     zoomSpan: (latitudeDelta: 0.07, longitudeDelta: 0.07),
                     customCenter: (38.715079, -9.153965)
@@ -889,8 +889,8 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Tascas", latitude: 38.712467, longitude: -9.131527),
-                        (name: "Mouraria", latitude: 38.714171, longitude: -9.135225)
+                        (name: ["en": "Tascas", "pt": "Tascas"], latitude: 38.712467, longitude: -9.131527),
+                        (name: ["en": "Mouraria", "pt": "Mouraria"], latitude: 38.714171, longitude: -9.135225)
                     ],
                     zoomSpan: (latitudeDelta: 0.01, longitudeDelta: 0.01),
                     customCenter: (38.713922, -9.133472)
@@ -917,7 +917,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Feira da Ladra", latitude: 38.715615, longitude: -9.1246)
+                        (name: ["en": "Feira da Ladra", "pt": "Feira da Ladra"], latitude: 38.715615, longitude: -9.1246)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -944,8 +944,8 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Futebol", latitude: 38.7633, longitude: -9.1847),
-                        (name: "Estádio de Alvalade", latitude: 38.761198, longitude: -9.160803)
+                        (name: ["en": "Futebol", "pt": "Futebol"], latitude: 38.7633, longitude: -9.1847),
+                        (name: ["en": "Estádio de Alvalade", "pt": "Estádio de Alvalade"], latitude: 38.761198, longitude: -9.160803)
                     ],
                     zoomSpan: (latitudeDelta: 0.09, longitudeDelta: 0.09),
                     customCenter: (38.730049, -9.175494)
@@ -972,10 +972,10 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Santos Populares", latitude: 38.712566, longitude: -9.127686),
-                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),
-                        (name: "Mouraria", latitude: 38.716143, longitude: -9.133062),
-                        (name: "Graça", latitude: 38.718483, longitude: -9.129862)
+                        (name: ["en": "Santos Populares", "pt": "Santos Populares"], latitude: 38.712566, longitude: -9.127686),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.709200, longitude: -9.146127),
+                        (name: ["en": "Mouraria", "pt": "Mouraria"], latitude: 38.716143, longitude: -9.133062),
+                        (name: ["en": "Graça", "pt": "Graça"], latitude: 38.718483, longitude: -9.129862)
                     ],
                     zoomSpan: (latitudeDelta: 0.03, longitudeDelta: 0.03),
                     customCenter: (38.713573, -9.136948)
@@ -1002,9 +1002,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Cais do Sodré", latitude: 38.707529, longitude: -9.145839),
-                        (name: "Bairro Alto", latitude: 38.709200, longitude: -9.146127),
-                        (name: "Graça", latitude: 38.700258, longitude: -9.177473)
+                        (name: ["en": "Cais do Sodré", "pt": "Cais do Sodré"], latitude: 38.707529, longitude: -9.145839),
+                        (name: ["en": "Bairro Alto", "pt": "Bairro Alto"], latitude: 38.709200, longitude: -9.146127),
+                        (name: ["en": "Graça", "pt": "Graça"], latitude: 38.700258, longitude: -9.177473)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: (38.706827, -9.157535)
@@ -1035,7 +1035,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Sé Catedral", latitude: 38.7108, longitude: -9.1332)
+                        (name: ["en": "Sé Catedral", "pt": "Sé Catedral"], latitude: 38.7108, longitude: -9.1332)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1062,7 +1062,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Mosteiro dos Jerónimos", latitude: 38.6978, longitude: -9.2065)
+                        (name: ["en": "Mosteiro dos Jerónimos", "pt": "Mosteiro dos Jerónimos"], latitude: 38.6978, longitude: -9.2065)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1089,7 +1089,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "São Domingos", latitude: 38.7142, longitude: -9.1392)
+                        (name: ["en": "São Domingos", "pt": "São Domingos"], latitude: 38.7142, longitude: -9.1392)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1116,7 +1116,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "São Roque", latitude: 38.7147, longitude: -9.1441)
+                        (name: ["en": "São Roque", "pt": "São Roque"], latitude: 38.7147, longitude: -9.1441)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1143,7 +1143,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Basílica da Estrela", latitude: 38.713384, longitude: -9.160447)
+                        (name: ["en": "Basílica da Estrela", "pt": "Basílica da Estrela"], latitude: 38.713384, longitude: -9.160447)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1170,7 +1170,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Carmo", latitude: 38.7126, longitude: -9.1416)
+                        (name: ["en": "Carmo", "pt": "Carmo"], latitude: 38.7126, longitude: -9.1416)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1197,7 +1197,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Cristo-Rei", latitude: 38.6781, longitude: -9.1776)
+                        (name: ["en": "Cristo-Rei", "pt": "Cristo-Rei"], latitude: 38.6781, longitude: -9.1776)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
@@ -1224,7 +1224,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Santuário de Fátima", latitude: 39.6325, longitude: -8.6718)
+                        (name: ["en": "Santuário de Fátima", "pt": "Santuário de Fátima"], latitude: 39.6325, longitude: -8.6718)
                     ],
                     zoomSpan: (latitudeDelta: 2, longitudeDelta: 2),
                     customCenter: (39.265545, -8.792261)
@@ -1255,7 +1255,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Museu dos Azulejos", latitude: 38.7231, longitude: -9.1156)
+                        (name: ["en": "Museu dos Azulejos", "pt": "Museu dos Azulejos"], latitude: 38.7231, longitude: -9.1156)
                     ],
                     zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
                     customCenter: nil
@@ -1282,7 +1282,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Museu Gulbenkian", latitude: 38.7371, longitude: -9.1527)
+                        (name: ["en": "Museu Gulbenkian", "pt": "Museu Gulbenkian"], latitude: 38.7371, longitude: -9.1527)
                     ],
                     zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
                     customCenter: nil
@@ -1309,7 +1309,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Museu dos Coches", latitude: 38.6973, longitude: -9.1976)
+                        (name: ["en": "Museu dos Coches", "pt": "Museu dos Coches"], latitude: 38.6973, longitude: -9.1976)
                     ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: nil
@@ -1336,7 +1336,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Museu do Fado", latitude: 38.7132, longitude: -9.1296)
+                        (name: ["en": "Museu do Fado", "pt": "Museu do Fado"], latitude: 38.7132, longitude: -9.1296)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1363,7 +1363,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Museu de Arte Antiga", latitude: 38.7074, longitude: -9.1702)
+                        (name: ["en": "Museu de Arte Antiga", "pt": "Museu de Arte Antiga"], latitude: 38.7074, longitude: -9.1702)
                     ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: nil
@@ -1390,7 +1390,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "CCB", latitude: 38.6956, longitude: -9.2070)
+                        (name: ["en": "CCB", "pt": "CCB"], latitude: 38.6956, longitude: -9.2070)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1417,7 +1417,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "MAAT", latitude: 38.6952, longitude: -9.1970)
+                        (name: ["en": "MAAT", "pt": "MAAT"], latitude: 38.6952, longitude: -9.1970)
                     ],
                     zoomSpan: nil,
                     customCenter: nil
@@ -1444,13 +1444,13 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Museu do Terramoto", latitude: 38.697070, longitude:  -9.196989),
-                        (name: "MNAC", latitude: 38.708404, longitude: -9.141254),
-                        (name: "Museu de História Natural", latitude: 38.717759, longitude: -9.150756),
-                        (name: "Museu do Oriente", latitude: 38.702849, longitude: -9.170761),
-                        (name: "Museu da Marioneta", latitude: 38.707945, longitude: -9.155775),
-                        (name: "Museu da Farmácia", latitude: 38.710158, longitude: -9.147348),
-                        (name: "Museu do Oriente", latitude: 38.711874, longitude: -9.130478)
+                        (name: ["en": "Museu do Terramoto", "pt": "Museu do Terramoto"], latitude: 38.697070, longitude:  -9.196989),
+                        (name: ["en": "MNAC", "pt": "MNAC"], latitude: 38.708404, longitude: -9.141254),
+                        (name: ["en": "Museu de História Natural", "pt": "Museu de História Natural"], latitude: 38.717759, longitude: -9.150756),
+                        (name: ["en": "Museu do Oriente", "pt": "Museu do Oriente"], latitude: 38.702849, longitude: -9.170761),
+                        (name: ["en": "Museu da Marioneta", "pt": "Museu da Marioneta"], latitude: 38.707945, longitude: -9.155775),
+                        (name: ["en": "Museu da Farmácia", "pt": "Museu da Farmácia"], latitude: 38.710158, longitude: -9.147348),
+                        (name: ["en": "Museu do Oriente", "pt": "Museu do Oriente"], latitude: 38.711874, longitude: -9.130478)
                     ],
                     zoomSpan: (latitudeDelta: 0.1, longitudeDelta: 0.1),
                     customCenter: (38.702849, -9.170761)
@@ -1481,7 +1481,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Palácio da Pena", latitude: 38.7876, longitude: -9.3904)
+                        (name: ["en": "Palácio da Pena", "pt": "Palácio da Pena"], latitude: 38.7876, longitude: -9.3904)
                     ],
                     zoomSpan: (latitudeDelta: 1, longitudeDelta: 1),
                     customCenter: (38.755108, -9.300003)
@@ -1508,9 +1508,9 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Piriquita (Travesseiros)", latitude: 38.7971, longitude: -9.3907),
-                        (name: "Queijadas de Sintra", latitude: 38.750397, longitude: -9.257947),
-                        (name: "Tortas de Azeitão", latitude: 38.936972, longitude: -9.326943)
+                        (name: ["en": "Piriquita (Travesseiros)", "pt": "Piriquita (Travesseiros)"], latitude: 38.7971, longitude: -9.3907),
+                        (name: ["en": "Queijadas de Sintra", "pt": "Queijadas de Sintra"], latitude: 38.750397, longitude: -9.257947),
+                        (name: ["en": "Tortas de Azeitão", "pt": "Tortas de Azeitão"], latitude: 38.936972, longitude: -9.326943)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: (nil)
@@ -1537,7 +1537,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Castelo dos Mouros", latitude: 38.7925, longitude: -9.3867)
+                        (name: ["en": "Castelo dos Mouros", "pt": "Castelo dos Mouros"], latitude: 38.7925, longitude: -9.3867)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
@@ -1564,7 +1564,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Quinta da Regaleira", latitude: 38.7976, longitude: -9.3964)
+                        (name: ["en": "Quinta da Regaleira", "pt": "Quinta da Regaleira"], latitude: 38.7976, longitude: -9.3964)
                     ],
                     zoomSpan: (latitudeDelta: 0.05, longitudeDelta: 0.05),
                     customCenter: nil
@@ -1591,7 +1591,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Parque de Monserrate", latitude: 38.7952, longitude: -9.4056)
+                        (name: ["en": "Parque de Monserrate", "pt": "Parque de Monserrate"], latitude: 38.7952, longitude: -9.4056)
                     ],
                     zoomSpan: (latitudeDelta: 0.09, longitudeDelta: 0.09),
                     customCenter: (38.793324, -9.400668)
@@ -1618,7 +1618,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Convento dos Capuchos", latitude: 38.7857, longitude: -9.4302)
+                        (name: ["en": "Convento dos Capuchos", "pt": "Convento dos Capuchos"], latitude: 38.7857, longitude: -9.4302)
                     ],
                     zoomSpan: (latitudeDelta: 0.2, longitudeDelta: 0.2),
                     customCenter: (38.785855, -9.425590)
@@ -1645,7 +1645,7 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Palácio da Vila", latitude: 38.7972, longitude: -9.3907)
+                        (name: ["en": "Palácio da Vila", "pt": "Palácio da Vila"], latitude: 38.7972, longitude: -9.3907)
                     ],
                     zoomSpan: (latitudeDelta: 0.02, longitudeDelta: 0.02),
                     customCenter: nil
@@ -1668,12 +1668,12 @@ extension MiniaturaCard {
                         )
                     ],
                     locations: [
-                        (name: "Cabo da Roca", latitude: 38.780413, longitude: -9.498850),
-                        (name: "Praia da Adraga", latitude: 38.803232, longitude: -9.484940),
-                        (name: "Praia Grande", latitude: 38.811687, longitude: -9.477119),
-                        (name: "Praia das Maçãs", latitude: 38.827308, longitude: -9.463803),
-                        (name: "Praia da Ursa", latitude: 38.790529, longitude: -9.492918),
-                        (name: "Praia da Aguda", latitude: 38.850993, longitude: -9.455793)
+                        (name: ["en": "Cabo da Roca", "pt": "Cabo da Roca"], latitude: 38.780413, longitude: -9.498850),
+                        (name: ["en": "Praia da Adraga", "pt": "Praia da Adraga"], latitude: 38.803232, longitude: -9.484940),
+                        (name: ["en": "Praia Grande", "pt": "Praia Grande"], latitude: 38.811687, longitude: -9.477119),
+                        (name: ["en": "Praia das Maçãs", "pt": "Praia das Maçãs"], latitude: 38.827308, longitude: -9.463803),
+                        (name: ["en": "Praia da Ursa", "pt": "Praia da Ursa"], latitude: 38.790529, longitude: -9.492918),
+                        (name: ["en": "Praia da Aguda", "pt": "Praia da Aguda"], latitude: 38.850993, longitude: -9.455793)
                     ],
                     zoomSpan: (latitudeDelta: 0.16, longitudeDelta: 0.16),
                     customCenter: (38.783298, -9.446859)
@@ -1709,5 +1709,12 @@ extension MiniaturaCard {
             return mockCardsRaw(for: "Vocabulary")
         }
         return allCards().filter { $0.categoria.normalized == normalizedCategoria || $0.categoria == categoria }
+    }
+}
+
+extension MiniaturaCard {
+    static func localizedLocationName(_ nameDict: [String: String], lang: String? = nil) -> String {
+        let language = lang ?? Locale.current.languageCode ?? "pt"
+        return nameDict[language] ?? nameDict["pt"] ?? nameDict.values.first ?? ""
     }
 }
