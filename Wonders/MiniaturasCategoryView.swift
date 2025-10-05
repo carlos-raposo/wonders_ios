@@ -132,7 +132,8 @@ struct MiniaturasCategoryView: View {
     
     var body: some View {
         // Use production data source and filter by category
-        let cards = MiniaturaCard.allCards().filter { $0.categoria.normalized == correctVocabularyCategory().normalized }
+        let isVocab = correctVocabularyCategory().normalized == "vocabulary"
+        let cards = MiniaturaCard.allCards().filter { isVocab ? ($0.categoria.normalized == "vocabulary" || $0.categoria.normalized == "vocabulário") : $0.categoria.normalized == correctVocabularyCategory().normalized }
         let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
             card.locations?.map { loc in
                 MiniaturaLocation(
