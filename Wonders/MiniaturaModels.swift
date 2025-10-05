@@ -88,15 +88,15 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "São Jorge Castle",
-                            shortDescription: "Founded in the 10th by the Moors and conquered by the first king of Portugal in 1147.",
+                            titulo: "São Jorge Castle ⛫ ",
+                            shortDescription: "Founded in the 10th by the Moors and conquered by the first king of 🇵🇹 Portugal in 1147.",
                             description: "An imposing medieval fortification in the Gothic style stands on the highest hill in Lisbon, offering panoramic views over the Portuguese capital. Originally built in the 5th century, with Arab and Christian influences, the structure is made of limestone, with robust walls and defensive towers.\n A visit to this iconic monument is an immersion in the history of Portugal, with the opportunity to appreciate the stunning landscapes of the city and the Tagus River.",
                             history: "While its original construction dates back to the 5th century, the castle underwent several expansions and adaptations over the centuries, notably in the 11th and 12th centuries. Its initial purpose was to defend the city of Lisbon, protecting it from invasions and attacks. Later, the castle served as a royal residence and was the scene of important historical events. One of the most significant milestones in the city's history and the formation of Portugal was the conquest of the castle by D. Afonso Henriques from the Moors in 1147.",
                             adress: "Rua de Santa Cruz do Castelo, 1100-129 Lisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Castelo de São Jorge",
-                            shortDescription: "Fundado nos séculos X pelos mouros e conquistado pelo primeiro rei de Portugal em 1147.",
+                            titulo: "Castelo de São Jorge ⛫ ",
+                            shortDescription: "Fundado nos séculos X pelos mouros e conquistado pelo primeiro rei de 🇵🇹 Portugal em 1147.",
                             description: "Uma imponente fortificação medieval de estilo gótico situada na colina mais alta de Lisboa, oferecendo vistas panorâmicas sobre a capital portuguesa. Originalmente construído no século V, com influências árabes e cristãs, a estrutura é feita de calcário, com robustas muralhas e torres defensivas.\n A visita a este monumento icônico é uma imersão na história de Portugal, com a oportunidade de apreciar as paisagens deslumbrantes da cidade e do Rio Tejo.",
                             history: "Embora sua construção original remonte ao século V, o castelo passou por várias expansões e adaptações ao longo dos séculos, notavelmente nos séculos XI e XII. Seu propósito inicial era defender a cidade de Lisboa, protegendo-a de invasões e ataques. Posteriormente, o castelo serviu como residência real e foi palco de importantes eventos históricos. Um dos marcos mais significativos na história da cidade e na formação de Portugal foi a conquista do castelo por D. Afonso Henriques aos mouros em 1147.",
                             adress: "Rua de Santa Cruz do Castelo, 1100-129 Lisboa, Portugal"
@@ -115,14 +115,14 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Belém Tower",
+                            titulo: "Belém Tower ⛫ ",
                             shortDescription: "Built in the early 16th century, it is a portal to Portugal’s maritime past.",
                             description: "An emblematic 15th-century Manueline-style fortification, formerly the gateway to Lisbon. The structure is made of limestone, with ornate details and sculptures of maritime and nationalist themes.\n A must-see monument to learn about Portugal's maritime history, appreciate its unique architecture, and enjoy the views of the Tagus River.",
                             history: "The Manueline style is a unique and exuberant artistic style that flourished in Portugal during the reign of King Manuel I in the 16th century. This style is closely linked to the golden age of Portuguese maritime discoveries, a period of great prosperity and territorial expansion for the country. The tower was built at a time when Portugal was a maritime power, and its strategic location in the Tagus estuary made it a starting point for the great navigations. Construction was completed in 1519, with the function of defending the city. Later, it served as a customs house and lighthouse.\n It was classified as a UNESCO World Heritage Site in 1983, recognizing its historical and cultural importance.",
                             adress: "Av. Brasília, 1400-038 Lisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Torre de Belém",
+                            titulo: "Torre de Belém ⛫ ",
                             shortDescription: "Construído no início do século 16, é um portal para o passado marítimo de Portugal.",
                             description: "Uma emblemática fortificação de estilo manuelino do século XV, que antigamente servia como porta de entrada para Lisboa. A estrutura é feita de calcário, com detalhes ornamentais e esculturas de temas marítimos e nacionalistas.\n Um monumento imperdível para conhecer a história marítima de Portugal, apreciar sua arquitetura única e desfrutar das vistas do Rio Tejo.",
                             history: "O estilo manuelino é um estilo artístico único e exuberante que floresceu em Portugal durante o reinado do rei Manuel I no século XVI. Este estilo está intimamente ligado à era dourada das descobertas marítimas portuguesas, um período de grande prosperidade e expansão territorial para o país. A torre foi construída numa época em que Portugal era uma potência marítima, e sua localização estratégica na foz do Tejo a tornava um ponto de partida para as grandes navegações. A construção foi concluída em 1519, com a função de defender a cidade. Posteriormente, serviu como alfândega e farol.\n Foi classificada como Patrimônio Mundial da UNESCO em 1983, reconhecendo sua importância histórica e cultural.",
@@ -142,14 +142,14 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Águas Livres Aqueduct",
+                            titulo: "Águas Livres Aqueduct 💧 ",
                             shortDescription: "An 18th-century aqueduct that is a remarkable example of hydraulic engineering.",
                             description: "It´s a monumental hydraulic engineering work that supplied the city of Lisbon with potable water. Built in the 18th century, it is a remarkable example of Baroque architecture and a testament to the ingenuity and organizational capacity of the Portuguese people at the time. The aqueduct consists of an extensive network of channels and arches, with the most iconic part being the arcade that crosses the Alcântara valley with its 21 perfect round arches and 14 ogival arches",
                             history: "The construction of the Águas Livres Aqueduct was ordered by King João V in the early 18th century. The need to guarantee the water supply to the growing population of Lisbon, due to urban growth and the expansion of the city, motivatedhis grand work. Construction began in 1732 and continued for several decades, ending in 1799. The design and construction of the aqueduct involved Portuguese and foreign engineers and architects, who used innovative techniques for the time. The aqueduct is a testament to the importance of water for urban life and the ability of the Portuguese people to overcome complex technical challenges.",
                             adress: "Calçada da Quintinha 6, 1070-225 Lisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Aqueduto das Águas Livres",
+                            titulo: "Aqueduto das Águas Livres 💧 ",
                             shortDescription: "Um aqueduto do século 18 que é um exemplo notável de engenharia hidráulica.",
                             description: "É uma monumental obra de engenharia hidráulica que abasteceu a cidade de Lisboa com água potável. Construído no século XVIII, é um exemplo notável da arquitetura barroca e um testemunho da engenhosidade e capacidade organizacional do povo português na época. O aqueduto é composto por uma extensa rede de canais e arcos, sendo a parte mais icônica o arco que atravessa o vale de Alcântara com seus 21 arcos redondos perfeitos e 14 arcos ogivais.",
                             history: "A construção do Aqueduto das Águas Livres foi ordenada pelo rei João V no início do século XVIII. A necessidade de garantir o abastecimento de água à crescente população de Lisboa, devido ao crescimento urbano e à expansão da cidade, motivou esta grandiosa obra. A construção começou em 1732 e continuou por várias décadas, terminando em 1799. O projeto e a construção do aqueduto envolveram engenheiros e arquitetos portugueses e estrangeiros, que utilizaram técnicas inovadoras para a época. O aqueduto é um testemunho da importância da água para a vida urbana e da capacidade do povo português de superar desafios técnicos complexos.",
@@ -169,14 +169,14 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Comércio Square",
+                            titulo: "Comércio Square 𖼆 ",
                             shortDescription: "Conceived by the Marquis of Pombal in the 18th century, it is a majestic square that symbolizes Lisbon’s resilience.",
                             description: "It's one of Lisbon's most emblematic squares, located by the Tagus River. With its grand arcades, colorful buildings, and a monumental statue of King José I, the square is a symbol of the city's history and power. It has been the site of important events, such as royal receptions, political demonstrations, and public celebrations.",
                             history: "The Praça do Comércio has a long history, dating back to the reconstruction of Lisbon after the 1755 earthquake. The square was designed as a symbol of the city's rebirth and prosperity, with its grand architecture and open space facing the river. It was originally known as Terreiro do Paço, as it was the location of the royal palace before the earthquake. Over the years, the square has been the scene of important events, such as the assassination of King Carlos I in 1908 and the Carnation Revolution in 1974. Today, it is a vibrant public space, frequented by locals and tourists alike.",
                             adress: "Praça do Comércio, 1100-148 Lisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Praça do Comércio",
+                            titulo: "Praça do Comércio 𖼆 ",
                             shortDescription: "Concebida pelo Marquês de Pombal no século 18, é uma praça majestosa que simboliza a resiliência de Lisboa.",
                             description: "É uma das praças mais emblemáticas de Lisboa, localizada à beira do Rio Tejo. Com suas grandiosas arcadas, edifícios coloridos e uma estátua monumental do rei José I, a praça é um símbolo da história e do poder da cidade. Foi palco de eventos importantes, como recepções reais, manifestações políticas e celebrações públicas.",
                             history: "A Praça do Comércio tem uma longa história, remontando à reconstrução de Lisboa após o terremoto de 1755. A praça foi projetada como um símbolo do renascimento e da prosperidade da cidade, com sua arquitetura grandiosa e espaço aberto voltado para o rio. Originalmente era conhecida como Terreiro do Paço, pois foi o local do palácio real antes do terremoto. Ao longo dos anos, a praça foi cenário de eventos importantes, como o assassinato do rei Carlos I em 1908 e a Revolução dos Cravos em 1974. Hoje, é um espaço público vibrante, frequentado tanto por moradores quanto por turistas.",
@@ -196,14 +196,14 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Santa Justa Elevator",
+                            titulo: "Santa Justa Elevator 🛗 ",
                             shortDescription: "A wrought-iron wonder erected in 1902 blending historic charm and modern utility.",
                             description: "It's an iconic elevator in the heart of Lisbon, connecting the lower Baixa district with the upper Carmo Square. Designed by the Portuguese engineer Raoul Mesnier du Ponsard, it is a masterpiece of iron architecture, with a neo-Gothic style and intricate details. The elevator offers panoramic views of the city and is a popular attraction for tourists.",
                             history: "The Santa Justa Elevator, also known as the Carmo Lift, was inaugurated in 1902 as a way to connect the Baixa district with the Carmo Square and the ruins of the Carmo Convent. The elevator was designed to facilitate the movement of people between the lower and upper parts of the city, avoiding the steep hills and narrow streets. The iron structure of the elevator was inspired by the Eiffel Tower in Paris and is a testament to the industrial and technological progress of the time. Today, the Santa Justa Elevator is a popular tourist attraction, offering visitors a unique perspective of Lisbon.",
                             adress: "R. do Ouro, 1150-060 Lisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Elevador de Santa Justa",
+                            titulo: "Elevador de Santa Justa 🛗 ",
                             shortDescription: "Uma maravilha de ferro erguida em 1902 combina apelo histórico e moderno.",
                             description: "É um elevador icônico no coração de Lisboa, que conecta o bairro da Baixa, mais baixo, com a Praça do Carmo, mais alta. Projetado pelo engenheiro português Raoul Mesnier du Ponsard, é uma obra-prima da arquitetura em ferro, com um estilo neogótico e detalhes intrincados. O elevador oferece vistas panorâmicas da cidade e é uma atração popular para turistas.",
                             history: "O Elevador de Santa Justa, também conhecido como Elevador do Carmo, foi inaugurado em 1902 como uma forma de conectar o bairro da Baixa com a Praça do Carmo e as ruínas do Convento do Carmo. O elevador foi projetado para facilitar o movimento das pessoas entre as partes mais baixa e alta da cidade, evitando as colinas íngremes e ruas estreitas. A estrutura de ferro do elevador foi inspirada na Torre Eiffel em Paris e é um testemunho do progresso industrial e tecnológico da época. Hoje, o Elevador de Santa Justa é uma atração turística popular, oferecendo aos visitantes uma perspectiva única de Lisboa.",
@@ -223,14 +223,14 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Discoveries Monument",
+                            titulo: "Discoveries Monument ⛵︎ ",
                             shortDescription: "A tribute to the Portuguese Age of Discovery.",
                             description: "It's a monumental tribute to the Portuguese Age of Discovery, located on the banks of the Tagus River. Shaped like a caravel ship, the monument features statues of prominent figures from the era, such as explorers, cartographers, and royalty. The Discoveries Monument celebrates Portugal's maritime history and its role in the exploration of the world.",
                             history: "The Discoveries Monument was built in 1960 to commemorate the 500th anniversary of the death of Prince Henry the Navigator, a key figure in the Portuguese Age of Discovery. The monument was designed by architect Cottinelli Telmo and sculptor Leopoldo de Almeida, with the collaboration of other artists and craftsmen. The structure is shaped like a caravel ship, with a stylized prow pointing towards the sea. The monument features statues of prominent figures from the Age of Discovery, such as Vasco da Gama, Pedro Álvares Cabral, and Luís de Camões. The Discoveries Monument is a symbol of Portugal's maritime heritage and its contributions to world history.",
                             adress: "Av. Brasília, 1400-038 Lisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Padrão dos Descobrimentos",
+                            titulo: "Padrão dos Descobrimentos ⚓️ ",
                             shortDescription: "Uma homenagem à Era dos Descobrimentos de Portugal.",
                             description: "É uma homenagem monumental à Era dos Descobrimentos de Portugal, localizada às margens do Rio Tejo. Com a forma de uma caravela, o monumento apresenta estátuas de figuras proeminentes da época, como exploradores, cartógrafos e membros da realeza. O Padrão dos Descobrimentos celebra a história marítima de Portugal e seu papel na exploração do mundo.",
                             history: "O Padrão dos Descobrimentos foi construído em 1960 para comemorar o 500º aniversário da morte do Infante Dom Henrique, uma figura-chave na Era dos Descobrimentos de Portugal. O monumento foi projetado pelo arquiteto Cottinelli Telmo e pelo escultor Leopoldo de Almeida, com a colaboração de outros artistas e artesãos. A estrutura tem a forma de uma caravela, com uma proa estilizada apontando para o mar. O monumento apresenta estátuas de figuras proeminentes da Era dos Descobrimentos, como Vasco da Gama, Pedro Álvares Cabral e Luís de Camões. O Padrão dos Descobrimentos é um símbolo do patrimônio marítimo de Portugal e suas contribuições para a história mundial.",
@@ -250,14 +250,14 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Lisbon Bridges",
+                            titulo: "Lisbon Bridges 🌉 ",
                             shortDescription: "The two bridges connect the south with the north, the past with the future.",
                             description: "Lisbon is known for its iconic bridges that span the Tagus River, connecting the city with the south bank. The most famous bridges are the 25 de Abril Bridge, a suspension bridge reminiscent of the Golden Gate Bridge in San Francisco, and the Vasco da Gama Bridge, one of the longest bridges in Europe. These bridges are not only essential transportation links but also architectural landmarks that contribute to the city's skyline.",
                             history: "The construction of the Lisbon bridges was a significant engineering challenge, given the width and depth of the Tagus River. The 25 de Abril Bridge, originally named the Salazar Bridge, was inaugurated in 1966 and was the longest suspension bridge in Europe at the time. It was later renamed to commemorate the Carnation Revolution of 1974. The Vasco da Gama Bridge, inaugurated in 1998, was built to relieve traffic congestion on the 25 de Abril Bridge and is one of the longest bridges in Europe. Both bridges are essential transportation links for the city and have become iconic symbols of Lisbon.",
                             adress: "Ponte 25 de Abril\nPonte Vasco da Gama\nLisboa, Portugal"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Pontes de Lisboa",
+                            titulo: "Pontes de Lisboa 🌉 ",
                             shortDescription: "As duas pontes ligam o sul com o norte, o passado com o futuro.",
                             description: "Lisboa é conhecida por suas pontes icônicas que atravessam o Rio Tejo, conectando a cidade com a margem sul. As pontes mais famosas são a Ponte 25 de Abril, uma ponte suspensa que lembra a Ponte Golden Gate em São Francisco, e a Ponte Vasco da Gama, uma das pontes mais longas da Europa. Essas pontes não são apenas ligações de transporte essenciais, mas também marcos arquitetônicos que contribuem para a linha do horizonte da cidade.",
                             history: "A construção das pontes de Lisboa foi um desafio significativo de engenharia, dada a largura e profundidade do Rio Tejo. A Ponte 25 de Abril, originalmente chamada de Ponte Salazar, foi inaugurada em 1966 e foi a ponte suspensa mais longa da Europa na época. Posteriormente, foi renomeada para comemorar a Revolução dos Cravos de 1974. A Ponte Vasco da Gama, inaugurada em 1998, foi construída para aliviar o congestionamento de tráfego na Ponte 25 de Abril e é uma das pontes mais longas da Europa. Ambas as pontes são ligações de transporte essenciais para a cidade e se tornaram símbolos icônicos de Lisboa.",
@@ -278,14 +278,14 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Monuments",
+                            titulo: "More Monuments ✚ ",
                             shortDescription: "Explore more incredible monuments in Lisbon!",
                             description: "For those interested in exploring more monumental wonders, these four palaces are worth considering. \n\nPalácio de Ajuda: Situated on top of the Ajuda hill, with stunning views over the river, this magnificent palace in Lisbon preserves the layout and decoration of its rooms in the style of the 19th century, notably the monarchs' apartments and the Throne Room. A neoclassical building from the first half of the 19th century, it was the official residence of the Portuguese royal family from the reign of D. Luís I (1861-89) until the end of the Monarchy in 1910. \n\nPalácio de Queluz (in the picture): Located between Lisbon and Sintra, this 18th-century palace is one of the finest examples of the Rococo style in Portugal, with its sumptuous halls, ornate tiles and lush gardens. Built as a summer retreat for D. Pedro de Bragança, it became the official residence of the Portuguese royal family from the reign of D. Maria I, who transformed it into a royal palace. Its royal apartments, the Throne Room and the meticulously manicured gardens transport visitors to the golden age of the Portuguese monarchy. \n\nPena Palace:- Perched atop the Sintra Mountains, with panoramic views of the surrounding landscape, Pena Palace is a vibrant testament to 19th-century Romanticism. This unique palace, with its eclectic mix of architectural styles, from neo-Gothic to neo-Manueline, is one of the most visited in Portugal. Once the residence of the Portuguese royal family, Pena Palace has been masterfully restored to its original glory, offering visitors a fascinating glimpse into the life of Portuguese royalty in the 19th century.\n\nMafra Palace: - This UNESCO World Heritage-listed complex of palace, basilica and convent is one of the largest royal buildings in Europe, with over 1,200 rooms and an impressive façade that dominates the landscape. \nInside, visitors can marvel at the richness of detail, from the sumptuous library, with its collection of thousands of ancient books, to the impressive basilica, with its six historic organs and two carillons. The richly decorated royal apartments offer a glimpse into the life of the Portuguese royal family in the 18th century.",
                             history: "The palaces of Ajuda, Queluz, Pena, and Mafra are architectural gems that reflect the grandeur and opulence of the Portuguese monarchy. These palaces were built during different periods of Portuguese history, from the 18th to the 19th centuries, and each has its unique style and character. The Palácio de Ajuda is a neoclassical masterpiece, with elegant interiors and stunning views over the river. The Palácio de Queluz is a Rococo jewel, with sumptuous halls and lush gardens. The Pena Palace is a vibrant testament to Romanticism, with its eclectic mix of architectural styles. The Mafra Palace is a UNESCO World Heritage site, with over 1,200 rooms and a richly decorated basilica. Together, these palaces offer a fascinating glimpse into the history and culture of Portugal.",
                             adress: "- Palácio da Ajuda\n- Palácio de Queluz\n- Palácio de Pena\n- Palácio de Mafra"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Monumentos",
+                            titulo: "Mais Monumentos ✚ ",
                             shortDescription: "Explore mais dos deslumbrantes monumentos de Lisboa.",
                             description: " Para quem deseja explorar mais maravilhas monumentais, estes quatro palácios valem a pena ser considerados. \n\nPalácio de Ajuda: Situado no topo da colina da Ajuda, com vistas deslumbrantes sobre o rio, este magnífico palácio em Lisboa preserva a disposição e decoração de seus aposentos no estilo do século XIX, notadamente os aposentos dos monarcas e o Salão do Trono. Um edifício neoclássico da primeira metade do século XIX, foi a residência oficial da família real portuguesa desde o reinado de D. Luís I (1861-89) até o fim da Monarquia em 1910. \n\nPalácio de Queluz (na foto): Localizado entre Lisboa e Sintra, este palácio do século XVIII é um dos melhores exemplos do estilo rococó em Portugal, com seus salões suntuosos, azulejos ornamentados e jardins exuberantes. Construído como um retiro de verão para D. Pedro de Bragança, tornou-se a residência oficial da família real portuguesa desde o reinado de D. Maria I, que o transformou em um palácio real. Seus aposentos reais, o Salão do Trono e os jardins meticulosamente cuidados transportam os visitantes para a era dourada da monarquia portuguesa. \n\nPalácio da Pena:- Empoleirado no topo das Montanhas de Sintra, com vistas panorâmicas da paisagem circundante, o Palácio da Pena é um vibrante testemunho do Romantismo do século XIX. Este palácio único, com sua mistura eclética de estilos arquitetônicos, do neogótico ao neo-manuelino, é um dos mais visitados em Portugal. Uma vez residência da família real portuguesa, o Palácio da Pena foi magistralmente restaurado à sua glória original, oferecendo aos visitantes um vislumbre fascinante da vida da realeza portuguesa no século XIX.\n\nPalácio de Mafra: - Este complexo listado como Patrimônio Mundial pela UNESCO, composto por palácio, basílica e convento, é um dos maiores edifícios reais da Europa, com mais de 1.200 quartos e uma impressionante fachada que domina a paisagem.\nDentro, os visitantes podem admirar a riqueza de detalhes, desde a suntuosa biblioteca, com sua coleção de milhares de livros antigos, até a impressionante basílica, com seus seis órgãos históricos e duas carrilhões. Os aposentos reais ricamente decorados oferecem um vislumbre da vida da família real portuguesa no século XVIII.",
                             history: "Os palácios de Ajuda, Queluz, Pena e Mafra são joias arquitetônicas que refletem a grandiosidade e opulência da monarquia portuguesa. Esses palácios foram construídos em diferentes períodos da história de Portugal, do século XVIII ao século XIX, e cada um possui seu estilo e caráter únicos. O Palácio de Ajuda é uma obra-prima neoclássica, com interiores elegantes e vistas deslumbrantes sobre o rio. O Palácio de Queluz é uma joia rococó, com salões suntuosos e jardins exuberantes. O Palácio da Pena é um vibrante testemunho do Romantismo, com sua mistura eclética de estilos arquitetônicos. O Palácio de Mafra é um sítio do Patrimônio Mundial da UNESCO, com mais de 1.200 quartos e uma basílica ricamente decorada. Juntos, esses palácios oferecem um vislumbre fascinante da história e cultura de Portugal.",
@@ -312,15 +312,15 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Rio Tejo",
-                            shortDescription: "O maior rio da Península Ibérica nasce na Espanha e deságua no Oceano Atlântico em Lisboa.",
-                            description: "O Rio Tejo é o maior rio da Península Ibérica, com cerca de 1.000 km de comprimento. Nasce em Espanha, na Serra de Albarracín, e desagua no Oceano Atlântico, em Lisboa. O Tejo é um rio navegável, com uma extensa bacia hidrográfica, que desempenhou um papel importante na história de Portugal, como meio de transporte e comunicação entre o interior e a costa. Hoje, o Rio Tejo é um símbolo do património marítimo de Lisboa e um ponto focal para atividades de lazer, como passeios de barco, cruzeiros e passeios à beira-rio.",
+                            titulo: "Rio Tejo 🐟 ",
+                            shortDescription: "O maior rio da Península Ibérica nasce na Espanha e deságua no Oceano Atlântico em Lisboa. 🚣‍♀️",
+                            description: "O Rio Tejo é o maior rio da Península Ibérica, com cerca de 1.000 km de comprimento. Nasce em Espanha, na Serra de Albarracín, e desagua no Oceano Atlântico, em Lisboa. O Tejo é um rio navegável, com uma extensa bacia hidrográfica, que desempenhou um papel importante na história de Portugal, como meio de transporte e comunicação entre o interior e a costa. Hoje, o Rio Tejo é um símbolo do património marítimo de Lisboa e um ponto focal para atividades de lazer, como passeios de barco, cruzeiros e passeios à beira-rio. 🚣‍♀️",
                             history: "The Tagus River has a long history of human occupation, from prehistoric times to the present day. The river served as a natural harbor for Phoenician, Roman, and Moorish settlements and Portuguese explorers during the Age of Discovery. The Tagus was an important transport and trade route, providing connections between the interior and the coast of Portugal. Over the centuries, the river has been the scene of battles, maritime discoveries and historical events, playing a central role in the lives of the Portuguese.",
                             adress: "Lisboa, Portugal"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Tagus River",
-                            shortDescription: "The largest river in the Iberian Peninsula rises in Spain and flows into the Atlantic Ocean in Lisbon.",
+                            titulo: "Tagus River 🐟 ",
+                            shortDescription: "The largest river in the Iberian Peninsula rises in Spain and flows into the Atlantic Ocean in Lisbon. 🚣‍♀️",
                             description: "The Tagus River (Pt: Rio Tejo) is the largest river in the Iberian Peninsula, with a length of around 1,000 km. It rises in Spain, in the Albarracín Mountains, and flows into the Atlantic Ocean, in Lisbon. The Tagus is a navigable river, with an extensive river basin, which played an important role in the history of Portugal, as a means of transport and communication between the interior and the coast. Today, the Tagus River is a symbol of Lisbon's maritime heritage and a focal point for leisure activities, such as boat tours, cruises, and waterfront promenades.",
                             history: "O Rio Tejo tem uma longa história de ocupação humana, desde os tempos pré-históricos até os dias atuais. O rio serviu como um porto natural para assentamentos fenícios, romanos e mouros, bem como para exploradores portugueses durante a Era dos Descobrimentos. O Tejo foi uma importante rota de transporte e comércio, proporcionando conexões entre o interior e a costa de Portugal. Ao longo dos séculos, o rio foi palco de batalhas, descobertas marítimas e eventos históricos, desempenhando um papel central na vida dos portugueses.",
                             adress: "Lisbon, Portugal"
@@ -339,14 +339,14 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Miradouros",
+                            titulo: "Miradouros 😎 ",
                             shortDescription: "Pontos altos de Lisboa com vistas deslumbrantes sobre a cidade e o rio.",
                             description: "Os miradouros de Lisboa são conhecidos pelas suas vistas panorâmicas da cidade e do Rio Tejo. A partir destes pontos elevados, os visitantes podem admirar os bairros históricos da cidade, os telhados vermelhos e os marcos icônicos. Alguns dos miradouros mais populares de Lisboa incluem o Miradouro da Senhora do Monte, o Miradouro de Santa Catarina e o Miradouro de São Pedro de Alcântara.",
                             history: "Os Miradouros em Lisboa têm uma longa história, remontando à ocupação mourisca da cidade. Os pontos de vista elevados eram originalmente usados para fins defensivos, proporcionando uma vantagem estratégica para monitorar a cidade e seus arredores. Ao longo dos séculos, os miradouros tornaram-se locais de encontro populares para moradores e visitantes, oferecendo um refúgio do agito da cidade. Hoje, os miradouros são uma característica adorada da paisagem urbana de Lisboa, proporcionando vistas deslumbrantes e uma sensação de tranquilidade em meio aos bairros históricos da cidade.",
                             adress: "- Miradouro da Senhora do Monte\n- Miradouro de Santa Catarina (Adamastor)\n- Miradouro de São Pedro de Alcântara\n- Miradouro das Portas do Sol"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Viewpoints",
+                            titulo: "Viewpoints 😎 ",
                             shortDescription: "High points in Lisbon with breathtaking views over the city and river.",
                             description: "Lisbon is known for its stunning viewpoints, or miradouros, which offer panoramic views of the city and the Tagus River. From these elevated vantage points, visitors can admire the city's historic neighborhoods, red-tiled rooftops, and iconic landmarks. Some of the most popular viewpoints in Lisbon include the Miradouro da Senhora do Monte, the Miradouro de Santa Catarina, and the Miradouro de São Pedro de Alcântara.",
                         
@@ -374,15 +374,13 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Jardins e Parques",
-                            shortDescription: "Os jardins e parques de Lisboa proporcionam autênticos oásis verdes na cidade",
-                            description: "Lisboa é dotada de uma coleção diversificada de jardins e parques. Visitar os jardins de Lisboa é uma maneira maravilhosa de se conectar com a natureza, apreciar a beleza da cidade e desfrutar de momentos de paz e tranquilidade.",
-                            history: "Alguns jardins remontam ao século XVIII, criados para a realeza e abertos ao público ao longo dos séculos. \n\nParque Monsanto: Considerado o pulmão de Lisboa é uma vasta área verde com trilhos, áreas de lazer e vistas panorâmicas da cidade. \n\n Jardim da Estrela: Localizado no coração do bairro da Estrela, este charmoso jardim oferece um ambiente relaxante, com um coreto, um lago e uma variedade de plantas e flores. \n\nEstufa Fria: Um espaço único em Lisboa, a Estufa Fria abriga uma exuberante coleção de plantas exóticas de todo o mundo, criando um ambiente mágico e tropical. - Jardim do Príncipe Real: Este charmoso jardim é um ponto de encontro para moradores e turistas, com um quiosque, um lago e uma vista deslumbrante sobre a cidade. \n\nAlém destes, Lisboa possui muitos outros jardins e parques encantadores, como o Jardim Botânico da Ajuda, o Parque Eduardo VII e os Jardins da Fundação Calouste Gulbenkian.",
-                            adress:"- Jardim da Estrela \n- Parque Eduardo VII \n- Parque Monsanto"
+                            titulo: "Jardins e Parques 🌼 ",
+                            shortDescription: "Os jardins e parques de Lisboa proporcionam autênticos oásis verdes na cidade. 🌲🌲🌲",
+                            description: "Lisboa é dotada de uma coleção diversificada de jardins e parques. Visitar os jardins de Lisboa é uma maneira maravilhosa de se conectar com a natureza, apreciar a beleza da cidade e desfrutar de momentos de paz e tranquilidade.\nAlguns jardins remontam ao século XVIII, criados para a realeza e abertos ao público ao longo dos séculos. \n\n- Parque Monsanto: Considerado o pulmão de Lisboa é uma vasta área verde com trilhos, áreas de lazer e vistas panorâmicas da cidade. \n\n - Jardim da Estrela: Localizado no coração do bairro da Estrela, este charmoso jardim oferece um ambiente relaxante, com um coreto, um lago e uma variedade de plantas e flores. \n\n- Estufa Fria: Um espaço único em Lisboa, a Estufa Fria abriga uma exuberante coleção de plantas exóticas de todo o mundo, criando um ambiente mágico e tropical. \n\n- Jardim do Príncipe Real: Este charmoso jardim é um ponto de encontro para moradores e turistas, com um quiosque, um lago e uma vista deslumbrante sobre a cidade. \n\nAlém destes, Lisboa possui muitos outros jardins e parques encantadores, como o Jardim Botânico da Ajuda, o Parque Eduardo VII e os Jardins da Fundação Calouste Gulbenkian.\n- Jardim da Estrela \n- Parque Eduardo VII \n- Parque Monsanto"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Gardens and Parks",
-                            shortDescription: "Green spaces perfect for relaxing, strolling, and enjoying urban nature.",
+                            titulo: "Gardens and Parks 🌼 ",
+                            shortDescription: "Green spaces perfect for relaxing, strolling, and enjoying urban nature. 🌲🌲🌲",
                             description: "Lisbon is endowed with a diverse collection of gardens and parks. Visiting the gardens of Lisbon is a wonderful way to connect with nature, appreciate the beauty of the city, and enjoy moments of peace and tranquility.",
                             history: "Some gardens date back to the 18th century, created for royalty and opened to the public over the centuries. \n\nMonsanto Park: Considered the lung of Lisbon it's a vast green area with trails, leisure areas, and panoramic views of the city. \n\n Estrela Garden: Located in the heart of the Estrela neighborhood, this charming garden offers a relaxing environment, with a bandstand, a lake, and a variety of plants and flowers. \n\nEstufa Fria: A unique space in Lisbon, the Estufa Fria houses an exuberant collection of exotic plants from all over the world, creating a magical and tropical environment. \n\nJardim do Príncipe Real: This charming garden is a meeting point for locals and tourists, with a kiosk, a lake, and a stunning view over the city. \n\nIn addition to these, Lisbon has many other charming gardens and parks, such as the Jardim Botânico da Ajuda, the Parque Eduardo VII, and the Gardens of the Calouste Gulbenkian.",
                             adress:"- Jardim da Estrela \n- Parque Eduardo VII \n- Parque Monsanto"
@@ -403,14 +401,14 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Serra de Sintra",
+                            titulo: "Serra de Sintra ⛰ ",
                             shortDescription: "A Serra de Sintra é Patrimônio Mundial da UNESCO pelo seu conjunto natural e arquitectonico.",
                             description: "É uma cadeia montanhosa localizada perto da cidade de Sintra, um Patrimônio Mundial da UNESCO. As montanhas são conhecidas por sua vegetação exuberante, flora e fauna diversificadas e paisagens deslumbrantes, com vistas panorâmicas do Oceano Atlântico e do campo circundante. A Serra de Sintra é um destino popular para amantes da natureza, caminhantes e entusiastas de atividades ao ar livre.",
                             history: "Considerada sagrada pelos celtas e romanos, as montanhas foram palco de várias atividades religiosas e culturais ao longo dos séculos, com inúmeras capelas, santuários e eremitérios espalhados pela região. No século XIX, as montanhas tornaram-se um destino popular para a nobreza e artistas europeus, atraídos pelas paisagens românticas e pela atmosfera mística. Hoje, a Serra de Sintra é um parque natural protegido, oferecendo aos visitantes uma combinação única de beleza natural, patrimônio cultural e atividades ao ar livre.",
                             adress: "Sintra, Portugal"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Sintra Mountains",
+                            titulo: "Sintra Mountains ⛰ ",
                             shortDescription: "Mystical mountains covered in forest, palaces, and enchanting trails.",
                             description: "It's a mountain range located near the town of Sintra, a UNESCO World Heritage Site. The mountains are known for their lush vegetation, diverse flora and fauna, and stunning landscapes, with panoramic views of the Atlantic Ocean and the surrounding countryside. The Sintra Mountains are a popular destination for nature lovers, hikers, and outdoor enthusiasts.",
                             history: "Considered sacred by the Celts and Romans, the mountains have been the site of various religious and cultural activities over the centuries, with numerous chapels, shrines, and hermitages scattered throughout the region. In the 19th century, the mountains became a popular destination for European nobility and artists, who were drawn to the romantic landscapes and mystical atmosphere. Today, the Sintra Mountains are a protected natural park, offering visitors a unique combination of natural beauty, cultural heritage, and outdoor activities.",
@@ -430,18 +428,18 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Praias de Lisboa",
+                            titulo: "Praias de Lisboa ⛱️ ",
                             shortDescription: "Areias douradas e mar refrescante a poucos minutos do centro da cidade.",
                             description: "Lisboa é rodeada por belas praias ao longo da costa atlântica, oferecendo uma variedade de paisagens e oportunidades recreativas. Desde enseadas arenosas e falésias rochosas até ondas para surf e resorts à beira-mar, as praias próximas a Lisboa atendem a todos os gostos e preferências. Algumas das praias mais populares incluem Cascais, Estoril e Costa da Caparica, cada uma com seu charme e atrações únicas.",
                             history: "As praias próximas a Lisboa têm sido um destino popular para moradores e turistas há séculos, oferecendo um refúgio do agito da cidade. As cidades costeiras de Cascais e Estoril tornaram-se resorts da moda no século XIX, atraindo a realeza e aristocracia europeias. A Costa da Caparica, com suas longas praias de areia e vilarejos de pescadores tradicionais, tem sido um local favorito para os residentes de Lisboa que buscam sol, mar e frutos do mar frescos. Hoje, as praias próximas a Lisboa são um destino durante todo o ano, oferecendo uma ampla gama de atividades, desde banhos de sol e natação até surf e esportes aquáticos.",
-                            adress: "Costa da Caparica, Carcavelos, Estoril"
+                            adress: "⛱️ Costa da Caparica\n⛱️  Carcavelos\n⛱️  Estoril"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Lisbon Beaches",
+                            titulo: "Lisbon Beaches ⛱️ ",
                             shortDescription: "Golden sands and refreshing sea just minutes from the city center.",
                             description: "Lisbon is surrounded by beautiful beaches along the Atlantic coast, offering a variety of landscapes and recreational opportunities. From sandy coves and rocky cliffs to surf breaks and seaside resorts, the beaches near Lisbon cater to all tastes and preferences. Some of the most popular beaches include Cascais, Estoril, and Costa da Caparica, each with its unique charm and attractions.",
                             history: "The beaches near Lisbon have been a popular destination for locals and tourists for centuries, offering a respite from the city's hustle and bustle. The coastal towns of Cascais and Estoril became fashionable resorts in the 19th century, attracting European royalty and aristocracy. The Costa da Caparica, with its long sandy beaches and traditional fishing villages, has been a favorite spot for Lisbon residents seeking sun, sea, and fresh seafood. Today, the beaches near Lisbon are a year-round destination, offering a wide range of activities, from sunbathing and swimming to surfing and water sports.",
-                            adress: "Costa da Caparica, Carcavelos, Estoril"
+                            adress: "⛱️ Costa da Caparica\n⛱️  Carcavelos\n⛱️  Estoril"
                         )
                     ],
                     locations: [
@@ -459,14 +457,14 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Cabo da Roca",
+                            titulo: "Cabo da Roca 😮 ",
                             shortDescription: "Onde a terra acaba e o mar começa. O Cabo da Roca é o ponto mais ocidental da Europa continental.",
                             description: "É o ponto mais ocidental da Europa continental, localizado na costa acidentada de Sintra. O cabo é marcado por um farol e um monumento, oferecendo vistas deslumbrantes do Oceano Atlântico e das falésias circundantes. O Cabo da Roca é um destino popular para turistas e caminhantes, conhecido por suas paisagens dramáticas e pores do sol românticos.",
                             history: "O Cabo da Roca tem sido um ponto de referência para marinheiros e exploradores desde os tempos antigos, marcando o fim do mundo conhecido e o início do desconhecido. O cabo foi mencionado por geógrafos romanos e árabes como o ponto mais ocidental da massa terrestre eurasiática. No século XVI, exploradores portugueses partiram do Cabo da Roca em suas viagens de descoberta, abrindo novas rotas comerciais e estabelecendo Portugal como uma potência marítima. Hoje, o Cabo da Roca é uma atração turística popular, oferecendo aos visitantes um vislumbre da beleza natural e da importância histórica da região.",
                             adress: "Estrada do Cabo da Roca, Colares, Sintra"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Cape Roca",
+                            titulo: "Cape Roca 😮 ",
                             shortDescription: "The westernmost point of mainland Europe, with impressive cliffs.",
                             description: "It's the westernmost point of continental Europe, located on the rugged coastline of Sintra. The cape is marked by a lighthouse and a monument, offering breathtaking views of the Atlantic Ocean and the surrounding cliffs. Cabo da Roca is a popular destination for tourists and hikers, known for its dramatic landscapes and romantic sunsets.",
                             history: "Cabo da Roca has been a point of reference for sailors and explorers since ancient times, marking the end of the known world and the beginning of the unknown. The cape was mentioned by Roman and Arab geographers as the westernmost point of the Eurasian landmass. In the 16th century, Portuguese explorers set sail from Cabo da Roca on their voyages of discovery, opening up new trade routes and establishing Portugal as a maritime power. Today, Cabo da Roca is a popular tourist attraction, offering visitors a glimpse into the region's natural beauty and historical significance.",
@@ -486,15 +484,15 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Ondas da Nazaré",
-                            shortDescription: "As maiores ondas do mundo são surfadas na Nazaré.",
+                            titulo: "Ondas da Nazaré 🌊 ",
+                            shortDescription: "As maiores ondas do mundo são surfadas 🏄🏽‍♂️ na Nazaré.",
                             description: "A Nazaré é uma vila de pescadores conhecida pelas suas ondas gigantes, que atraem surfistas de todo o mundo. As ondas na Praia do Norte podem atingir alturas superiores a 30 metros, tornando-as algumas das maiores do mundo. A topografia submarina única e as condições meteorológicas ao largo da costa da Nazaré criam as condições perfeitas para estas ondas massivas.",
                             history: "As ondas gigantes na Nazaré são um fenómeno natural há séculos, mas foi apenas nos últimos anos que ganharam fama internacional. As ondas são criadas por uma combinação de fatores, incluindo o Canhão da Nazaré, um abismo subaquático que canaliza e amplifica a ondulação, e o Oceano Atlântico Norte, que produz tempestades e ondulações poderosas. Em 2011, o surfista havaiano Garrett McNamara estabeleceu um recorde mundial ao surfar uma onda de 23,77 metros na Praia do Norte, colocando a Nazaré no mapa como um destino de surf de ondas grandes de primeira linha. Desde então, a vila tornou-se um paraíso para surfistas e espetadores que vêm testemunhar as ondas impressionantes e os surfistas destemidos que as enfrentam.",
                             adress: "Praia do Norte, Nazaré"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Nazaré Waves",
-                            shortDescription: "Famous for the biggest surfed waves in the world, attracting international surfers.",
+                            titulo: "Nazaré Waves 🌊 ",
+                            shortDescription: "Famous for the biggest surfed waves 🏄🏽‍♂️ in the world, attracting international surfers.",
                             description: "Nazaré is a fishing village known for its giant waves, which attract surfers from around the world. The waves at Praia do Norte can reach heights of over 100 feet, making them some of the biggest in the world. The unique underwater topography and weather conditions off the coast of Nazaré create the perfect conditions for these massive waves.",
                             history: "The giant waves at Nazaré have been a natural phenomenon for centuries, but it was only in recent years that they gained international fame. The waves are created by a combination of factors, including the Nazaré Canyon, an underwater chasm that funnels and amplifies the swell, and the North Atlantic Ocean, which produces powerful storms and swells. In 2011, Hawaiian surfer Garrett McNamara set a world record by riding a 78-foot wave at Praia do Norte, putting Nazaré on the map as a premier big wave surfing destination. Since then, the village has become a mecca for surfers and spectators, who come to witness the awe-inspiring waves and the daring surfers who ride them.",
                             adress: "Praia do Norte, Nazaré"   //39.019635, -9.151986
@@ -513,14 +511,14 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Natureza",
+                            titulo: "Mais Natureza 🌿 ",
                             shortDescription: "Descubra mais das maravilhas naturais de Portugal.",
                             description: "Além das 7 maravilhas naturais que mencionamos, existem outros locais próximos a Lisboa que vale a pena destacar. \n\nSerra da Arrábida destaca-se pela sua vegetação mediterrânica densa e bem preservada, que confere à serra uma notável riqueza botânica, com espécies endémicas e outras de grande valor ecológico. As praias da Arrábida, com suas areias brancas e águas cristalinas, são consideradas algumas das mais belas de Portugal, oferecendo um contraste harmonioso entre as montanhas e o mar. \n\nAs Ilhas Berlengas (na foto), por sua vez, constituem um arquipélago de alto valor ecológico, localizado a cerca de 10 quilómetros da costa de Peniche. A Berlenga Grande, a ilha principal, é a única habitada e aberta a visitantes, oferecendo cenários naturais preservados e uma rica história. O arquipélago é renomado pela sua biodiversidade marinha, com uma ampla variedade de espécies de peixes, crustáceos e moluscos. A avifauna das Berlengas também é notável, com várias espécies de aves marinhas nidificando nas ilhas.",
                             history: "A Serra da Arrábida oferece inúmeros trilhos para caminhadas, com diferentes níveis de dificuldade, que permitem explorar sua paisagem diversificada e desfrutar de vistas panorâmicas. As águas da Arrábida são ideais para mergulho e snorkeling, devido à sua clareza e rica biodiversidade marinha. A observação de aves é outra atividade popular nas montanhas, que abrigam várias espécies de aves marinhas e terrestres. \n\nO mergulho é uma das principais atividades nas Ilhas Berlengas, devido à clareza das águas e à riqueza da vida marinha. Os passeios de barco permitem explorar as grutas e enseadas da ilha, bem como observar a fauna marinha e as aves marinhas. Uma visita ao Forte de São João Baptista, uma fortificação histórica localizada na ilha, é outra atração popular. A observação da natureza permite observar a fauna e flora locais.",
                             adress: "- Serra da Arrábida\n- Ilhas Berlengas"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Nature",
+                            titulo: "More Nature 🌿 ",
                             shortDescription: "Discover even more natural wonders in Portugal and around Lisbon.",
                             description: "In addition to the 7 natural wonders we mentioned, there are other places close to Lisbon that are worth mentioning. \n\nSerra da Arrábida stands out for its dense and well-preserved Mediterranean vegetation, which gives the mountain range a remarkable botanical richness, with endemic species and others of great ecological value. The beaches of Arrábida, with their white sands and crystal-clear waters, are considered some of the most beautiful in Portugal, offering a harmonious contrast between the mountains and the sea. \n\n Berlengas Islands (in the picture), in turn, constitute an archipelago of high ecological value, located about 10 kilometres off the coast of Peniche. Berlenga Grande, the main island, is the only one that is inhabited and open to visitors, offering preserved natural scenery and a rich history. The archipelago is renowned for its marine biodiversity, with a wide variety of species of fish, crustaceans and molluscs. The birdlife of the Berlengas is also notable, with several species of seabirds nesting on the islands.",
                             history: "The Serra da Arrábida offers numerous hiking trails, with different levels of difficulty, which allow you to explore its diverse landscape and enjoy panoramic views. The waters of Arrábida are ideal for diving and snorkeling, due to their clarity and rich marine biodiversity. Birdwatching is another popular activity in the mountains, which are home to several species of sea and land birds. \n\nDiving is one of the main activities in the Berlengas Islands, due to the clarity of the waters and the richness of marine life. Boat trips allow you to explore the island's caves and coves, as well as observe marine fauna and seabirds. A visit to Forte de São João Baptista, a historic fortification located on the island, is another popular attraction. Nature observation allows you to observe the local fauna and flora.",
@@ -545,14 +543,14 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Pastéis de Nata",
+                            titulo: "Pastéis de Nata 🥧 ",
                             shortDescription: "Os Pastéis de Nata são deliciosos pastéis de nata portugueses.",
                             description: "Os Pastéis de Nata, também conhecidos como Pastéis de Belém, são um pequeno milagre da pastelaria portuguesa, consistindo numa massa folhada crocante e um recheio cremoso de nata feito com ovos, leite, açúcar e canela. A sua textura delicada e sabor doce fazem deles uma das pastelarias mais populares do mundo.",
                             history: "A receita original foi desenvolvida pelos monges do Mosteiro dos Jerónimos na zona de Belém, provavelmente no século XVIII. Para angariar fundos para a restauração do mosteiro, os monges começaram a vender os pastéis numa padaria próxima, popularizando-os rapidamente. Hoje em dia, apenas os pastéis vendidos em Belém estão autorizados a usar o nome \"Pastéis de Belém\". Assim, todos os outros pastéis de nata são variações da receita original dos monges de Belém. A receita original permanece um segredo bem guardado, mas o Pastel de Nata tornou-se um símbolo da identidade culinária portuguesa e é agora apreciado em todo o mundo.",
                             adress: "Pastéis de Belém, Rua de Belém 84-92, Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Pastéis de Nata",
+                            titulo: "Pastéis de Nata 🥧 ",
                             shortDescription: "Portugal's most famous pastry, with creamy custard and crispy puff pastry.",
                             description: "\"Pastel de Nata\" also known as \"Pastel de Belém\" or \"Custard Tarts\" in english. It's a small Portuguese pastry marvel, consisting of a crispy puff pastry and a creamy custard filling made with eggs, milk, sugar, and cinnamon. Its delicate texture and sweet flavor make it one of the world's most popular pastries.",
                             history: "The original recipe was developed by the monks of the Jerónimos Monastery in the area of Belém, probably in the 18th century.To raise funds for the restoration of the monastery, the monks began selling the pastries in a nearby bakery, quickly popularizing them. Today, only pastries sold in Belém are authorized to use the name \"Pasteis de Belém\". Thus, all other pasteis de nata are variations of the original recipe from the monks of Belém. The original recipe remains a closely guarded secret, but the Pastel de Nata has become a symbol of Portuguese culinary identity and is now enjoyed worldwide.",
@@ -572,14 +570,14 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Bacalhau",
+                            titulo: "Bacalhau 🐟 ",
                             shortDescription: "O Bacalhau é um prato tradicional português feito com bacalhau salgado.", // L10n_slogan18
                             description: "Por poder ser conservado sem refrigeração e, portanto, estar disponível a qualquer momento, o bacalhau é chamado de \"o fiel amigo\" pelos portugueses. O bacalhau pode ser preparado de várias maneiras e é um peixe muito popular na culinária portuguesa. Existem várias espécies de bacalhau, mas as mais comuns em Portugal são o Gadus morhua e o Gadus macrocephalus. O bacalhau é pescado em águas frias do Atlântico Norte, salgado e seco para conservação. Em Portugal, o bacalhau é preparado de diferentes formas, como assado, cozido ou frito.",
                             history: " O bacalhau é um peixe de águas frias, abundante nos mares do Atlântico Norte, que foi introduzido na dieta portuguesa no século XV. Devido à sua capacidade de conservação, o bacalhau tornou-se um alimento essencial durante a Era dos Descobrimentos, sendo consumido pelos marinheiros durante longas viagens marítimas. Com o tempo, o bacalhau foi integrado na culinária portuguesa, dando origem a uma grande variedade de pratos típicos. Hoje em dia, o bacalhau é um dos símbolos da gastronomia nacional, apreciado tanto por portugueses como por estrangeiros. Algumas das receitas mais conhecidas com bacalhau são o Bacalhau à Brás, Bacalhau à Lagareiro, Bacalhau com Natas e Pastéis de Bacalhau.",
                             adress: "As zonas do Bairro Alto e da Baixa são conhecidas pelo número de bons restaurantes. Mas encontrará bacalhau em qualquer restaurante com cozinha portuguesa."
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Codfish",
+                            titulo: "Codfish 🐟 ",
                             shortDescription: "The most versatile fish in Portuguese cuisine, prepared in countless ways.",
                             description: "Because it can be preserved without refrigeration and can therefore be available at any time, cod is called \"the faithful friend\" by the Portuguese. Cod can be prepared in many ways and is a very popular fish used in Portuguese cuisine. There are several species of cod, but the most common in Portugal are Gadus morhua and Gadus macrocephalus. Cod is fished in cold waters of the North Atlantic, salted and dried for preservation. In Portugal, cod is prepared in different ways, such as baked, boiled or fried.",
                             history: "Cod is a cold-water fish, abundant in the North Atlantic seas, which was introduced into the Portuguese diet in the 15th century. Due to its ability to preserve, cod became an essential food during the Age of Discovery, being consumed by sailors during long sea voyages. Over time, cod was integrated into Portuguese cuisine, giving rise to a wide variety of typical dishes. Today, cod is one of the symbols of national gastronomy, appreciated by Portuguese and foreigners alike. Some of the best-known recipes with cod are Bacalhau à Brás, Bacalhau à Lagareiro, Bacalhau com Natas and Pastéis de Bacalhau",
@@ -600,14 +598,14 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Ginjinha",
+                            titulo: "Ginjinha 🍒 ",
                             shortDescription: "A Ginjinha é um licor popular português feito de ginjas.",
                             description: "A Ginjinha, também conhecida como ginja, é um licor tradicional português feito a partir da maceração de ginjas, um tipo de cereja amarga, em aguardente, com a adição de açúcar e especiarias como canela. Este processo de maceração confere à ginjinha a sua cor rubi intensa, sabor doce e aroma frutado. Tradicionalmente, a pessoa que serve a ginjinha pergunta se \"quer com ou sem ela\", para que o cliente possa dizer se quer ou não um pouco de fruta no copo.",
                             history: "A ginjinha é uma bebida tradicional portuguesa com origens antigas. Provavelmente foram os monges os primeiros a produzir licor de ginja para fins medicinais. Mais tarde, foi vendida em farmácias como um remédio para problemas estomacais. Com o tempo, a ginjinha tornou-se popular entre a população, sendo consumida como aperitivo ou digestivo. Hoje em dia, a ginjinha é uma das bebidas mais populares em Portugal, servida em bares e pubs por todo o país. Existem várias variações da receita original, com diferentes tipos de ginjas e especiarias, que conferem à bebida um sabor único e característico.",
                             adress: "A Ginjinha, Largo de São Domingos 8, Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Ginjinha",
+                            titulo: "Ginjinha 🍒 ",
                             shortDescription: "Lisbon's traditional cherry liqueur, served in a small glass.",
                             description: "Ginginha, also known as ginja, is a traditional Portuguese liqueur made from the maceration of ginja, a type of bitter cherry, in brandy, with the addition of sugar and spices such as cinnamon. This maceration process gives the ginginha its intense ruby color, sweet flavor and fruity aroma. Traditionally, the person serving the ginjinha asks if you want it with or without it so the customer can say whether they want some fruit in the glass or not.",
                             history: "A ginjinha é uma bebida tradicional portuguesa com origens antigas. Provavelmente foram os monges os primeiros a produzir licor de ginja para fins medicinais. Mais tarde, foi vendida em farmácias como um remédio para problemas estomacais. Com o tempo, a ginjinha tornou-se popular entre a população, sendo consumida como aperitivo ou digestivo. Hoje em dia, a ginjinha é uma das bebidas mais populares em Portugal, servida em bares e pubs por todo o país. Existem várias variações da receita original, com diferentes tipos de ginjas e especiarias, que conferem à bebida um sabor único e característico.",
@@ -627,14 +625,14 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Peixe",
+                            titulo: "Peixe 🐟 ",
                             shortDescription: "A culinária portuguesa apresenta uma variedade de pratos de peixe fresco.", // L10n_slogan20
                             description: "Portugal é conhecido pela sua culinária baseada em peixe fresco, com uma grande variedade de espécies e formas de prepará-lo. Desde o tradicional bacalhau, ao saboroso robalo, às suculentas sardinhas, o peixe é um ingrediente essencial na cozinha portuguesa. Os pratos de peixe são geralmente simples e saudáveis, preparados com azeite, alho, ervas e legumes frescos.",
                             history: "A pesca é uma atividade antiga em Portugal, com uma longa tradição de captura e consumo de peixe fresco. A localização geográfica do país, próximo ao Oceano Atlântico, proporciona uma grande diversidade de espécies marinhas, que são pescadas ao longo da costa e nos rios. O peixe fresco é um dos pilares da culinária portuguesa, consumido em todo o país, desde as aldeias piscatórias até aos restaurantes de luxo. Os portugueses têm uma relação especial com o peixe, que é apreciado pela sua frescura, sabor e versatilidade.",
                             adress: "Zonas da cidade com muitas opções para peixe\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Fish",
+                            titulo: "Fish 🐟 ",
                             shortDescription: "Fresh Atlantic fish are the base of typical Portuguese dishes.",
                             description: "Portugal is known for its cuisine based on fresh fish, with a wide variety of species and ways of preparing it. From traditional cod, to tasty sea bass, to succulent sardines, fish is an essential ingredient in Portuguese cuisine. Fish dishes are generally simple and healthy, cooked with olive oil, garlic, herbs and fresh vegetables.",
                             history: "Fishing is an ancient activity in Portugal, with a long tradition of catching and consuming fresh fish. The country's geographical location, close to the Atlantic Ocean, provides a great diversity of marine species, which are fished along the coast and in the rivers. Fresh fish is one of the pillars of Portuguese cuisine, consumed throughout the country, from fishing villages to luxury restaurants. The Portuguese have a special relationship with fish, which is appreciated for its freshness, flavor and versatility.",
@@ -656,14 +654,14 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Carne",
+                            titulo: "Carne 🥩 🍗 ",
                             shortDescription: "A culinária portuguesa inclui uma variedade de deliciosos pratos de carne.", // L10n_slogan21
                             description: "A carne é um ingrediente essencial na culinária portuguesa, com uma grande variedade de pratos tradicionais e regionais. Desde o saboroso cozido à portuguesa, ao picante arroz de cabidela, ao suculento leitão assado, a carne é apreciada em todas as regiões do país. Os pratos de carne são geralmente acompanhados por batatas, arroz, vegetais e saladas, e temperados com ervas aromáticas e especiarias.",
                             history: "A carne é um ingrediente importante na culinária portuguesa, com uma longa tradição de consumo e preparação.A carne de porco é uma das carnes mais populares e é usada numa variedade de pratos típicos, como o leitão assado, a feijoada à transmontana e o cozido à portuguesa. A carne de vaca, o borrego e as aves também são populares. A carne é tipicamente marinada numa mistura de azeite, alho e especiarias e depois é grelhada, assada no forno, estufada ou frita e servida com batatas, arroz ou salada, acompanhada por um copo de vinho tinto.",
                             adress: "Zonas da cidade com muitas opções para carne\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Meat",
+                            titulo: "Meat 🥩 🍗",
                             shortDescription: "Meat dishes like cozido and roast suckling pig are icons of national cuisine.",
                             description: "Meat is an essential ingredient in Portuguese cuisine, with a wide variety of traditional and regional dishes. From the tasty Portuguese stew, to the spicy arroz de cabidela, to the succulent roast suckling pig, meat is enjoyed in all regions of the country. Meat dishes are usually accompanied by potatoes, rice, vegetables and salads, and seasoned with aromatic herbs and spices.",
                             history: "Meat is an important ingredient in Portuguese cuisine, with a long tradition of consumption and preparation. Pork is one of the most popular meats, and is used in a variety of typical dishes, such as roast suckling pig, feijoada à transmontana and cozido à portuguesa. Beef, lamb and poultry are also popular. The meat is typically marinated in a mixture of olive oil, garlic, and spices then are grilled, baked in the oven, stewed or fried and served with potatoes, rice, or salad, accompanied by a glass of red wine.",
@@ -685,14 +683,14 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Sopa",
+                            titulo: "Sopa 🍲 ",
                             shortDescription: "As sopas portuguesas são substanciais e saborosas.", // L10n_slogan22
                             description: "É um pilar da culinária portuguesa, com uma grande variedade de receitas e sabores. Algumas das sopas mais populares em Portugal incluem o caldo verde, uma sopa substanciosa feita com couve, batatas e chouriço; a sopa de peixe, uma rica sopa de peixe com vegetais e ervas; e a canja de galinha, uma reconfortante sopa de galinha com arroz. As sopas são essenciais às refeições portuguesas, apreciadas durante todo o ano.",
                             history: "As sopas fazem parte da culinária portuguesa há séculos, refletindo as tradições agrícolas e o património culinário do país. A tradição de fazer sopas com ingredientes locais, como vegetais, leguminosas e carnes, remonta a tempos antigos, quando as sopas eram um alimento básico para camponeses e nobreza. Em Portugal, as sopas são apreciadas durante todo o ano, com diferentes receitas para cada estação e ocasião. As sopas são frequentemente servidas como primeiro prato, acompanhadas de pão, azeitonas e queijo, e são consideradas um símbolo da hospitalidade e convivialidade portuguesas.",
                             adress: "Zonas da cidade com muitas opções pra sopa\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Soup",
+                            titulo: "Soup 🍲 ",
                             shortDescription: "Soups like caldo verde warm and nourish in any season.",
                             description: "It's a staple of Portuguese cuisine, with a wide variety of recipes and flavors. Some of the most popular soups in Portugal include caldo verde, a hearty soup made with kale, potatoes, and chorizo; sopa de peixe, a rich fish soup with vegetables and herbs; and canja de galinha, a comforting chicken soup with rice. Soups are an essential part of Portuguese meals, enjoyed year-round.",
                             history: "Soups have been a part of Portuguese cuisine for centuries, reflecting the country's agricultural traditions and culinary heritage. The tradition of making soups with local ingredients, such as vegetables, legumes, and meats, dates back to ancient times when soups were a staple food for peasants and nobility alike. In Portugal, soups are enjoyed year-round, with different recipes for each season and occasion. Soups are often served as a first course, accompanied by bread, olives, and cheese, and are considered a symbol of Portuguese hospitality and conviviality.",
@@ -714,14 +712,14 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Vinho",
+                            titulo: "Vinho 🍷 ",
                             shortDescription: "Portugal é conhecido pelos seus excelentes vinhos.", // L10n_slogan23
                             description: "Portugal é conhecido pela sua rica cultura vinícola, com uma longa história de produção de vinho e uma diversidade de variedades de uvas. Alguns dos vinhos portugueses mais famosos incluem o Vinho do Porto, um vinho fortificado do Vale do Douro; o Vinho Verde, um vinho leve e refrescante da região do Minho; e o Madeira, um vinho doce e complexo das Ilhas da Madeira. Os vinhos portugueses são apreciados em todo o mundo pela sua qualidade, variedade e sabores únicos.",
                             history: "Portugal tem uma longa e rica história de produção de vinho, que remonta aos tempos antigos, quando os romanos introduziram a viticultura na Península Ibérica. O clima, o solo e as variedades de uvas diversificadas do país contribuíram para o desenvolvimento de uma ampla gama de vinhos, cada um com suas características e sabores únicos. Os vinhos portugueses são conhecidos pela sua qualidade, autenticidade, e tradição, com muitas regiões produzindo vinhos distintos que refletem o terroir e a cultura da área. O Vale do Douro, o Vinho Verde e o Alentejo são algumas das regiões vinícolas mais famosas de Portugal, cada uma oferecendo uma experiência vinícola diferente.",
                             adress: "Zonas da cidade com muitas opções para provas de vinho\n - Bairro Alto \n- Baixa \n- Rua das Portas de Santo Antão"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Wine",
+                            titulo: "Wine 🍷 ",
                             shortDescription: "Portugal is renowned for its excellent wines.",
                             description: "Portugal is known for its rich wine culture, with a long history of winemaking and a diverse range of grape varieties. Some of the most famous Portuguese wines include Port, a fortified wine from the Douro Valley; Vinho Verde, a light and refreshing wine from the Minho region; and Madeira, a sweet and complex wine from the Madeira Islands. Portuguese wines are enjoyed worldwide for their quality, variety, and unique flavors.",
                             history: "Portugal has a long and storied history of winemaking, dating back to ancient times when the Romans introduced viticulture to the Iberian Peninsula. The country's diverse climate, soil, and grape varieties have contributed to the development of a wide range of wines, each with its unique characteristics and flavors. Portuguese wines are known for their quality, authenticity, and tradition, with many regions producing distinctive wines that reflect the terroir and culture of the area. The Douro Valley, Vinho Verde, and Alentejo are some of the most famous wine regions in Portugal, each offering a different wine experience.",
@@ -743,7 +741,7 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Gastronomia",
+                            titulo: "Mais Gastronomia ➕ ",
                             shortDescription: "Explore mais da deliciosa culinária de Portugal em Lisboa.", // L10n_slogan24
                             description: "Além das 7 maravilhas gastronômicas mencionadas, reservamos um espaço especial para 3 confeitos de pastelaria que, embora não sejam da cidade de Lisboa, vêm de locais muito próximos à cidade. - Travesseiros de Sintra (na foto): feitos com massa folhada, gemas de ovo, amêndoas e açúcar e são universalmente reconhecidos como uma das maiores iguarias de Sintra. - Queijadas de Sintra: farinha, queijo fresco, açúcar, gema de ovo e canela para o recheio são os ingredientes das crocantes e crocantes queijadas de Sintra, que adoçam o paladar e a alma. - Tortas de Azeitão: é um doce tradicional de Azeitão, região do município de Setúbal e é um dos ícones representativos desta região. Com um leve sabor a limão e canela, são um exemplo da pastelaria tradicional portuguesa. A torta de Azeitão é feita com ovos moles, gema de ovo, açúcar e água.",
                             history: nil,
@@ -751,7 +749,7 @@ extension MiniaturaCard {
                             adress: "Estes doces podem ser encontrados em alguns lugares de Lisboa mas os originais estão em:\n\n- Travesseiros de Sintra: Piriquita, R. das Padarias 1/7, Sintra \n- Queijadas de Sintra: Volta do Duche 12, Sintra \n- Tortas de Azeitão: Casa das Tortas, R. José Augusto Coelho 11, Azeitão"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Gastronomy",
+                            titulo: "More Gastronomy ➕ ",
                             shortDescription: "Explore more of Portugal's delicious cuisine in Lisbon.",
                             description: "In addition to the 7 gastronomic wonders mentioned, we have reserved a special space for 3 bakers' confections that, although they are not from the city of Lisbon, come from places very close to the city.\n\n- Travesseiros de Sintra (in the picture): made with puff pastry, egg yolks, almonds and sugar and are universally recognized as one of the greatest delicacies of Sintra.\n\n - Queijadas de Sintra: flour, fresh cheese, sugar, egg yolk and cinnamon for the filling are the ingredients of the crispy and crunchy queijadas de Sintra, which sweeten the palate and the soul.\n\n - Tortas de Azeitão: it is a traditional confections from Azeitão, a region of the municipality of Setúbal and is one of the representative icons of this region. With a light lemon and cinnamon flavor, they are an example of traditional Portuguese Confectionery. The Azeitão pie is made with soft eggs, egg yolk, sugar and water.",
                             history: nil,
@@ -778,14 +776,14 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Azulejos",
+                            titulo: "Azulejos 🟦 ",
                             shortDescription: "A arte colorida que cobre fachadas e conta histórias em Lisboa.",
                             description: "São azulejos tradicionais portugueses, conhecidos pelos seus padrões intrincados, cores vibrantes e significado histórico. Os azulejos são usados para decorar edifícios, paredes e pisos, criando impressionantes obras de arte que refletem a herança cultural e as tradições artísticas do país. Os azulejos são um símbolo do artesanato e da criatividade de Portugal.",
                             history: "A tradição dos azulejos remonta ao século XV, quando os mouros introduziram a arte dos azulejos cerâmicos vidrados em Portugal. A palavra \"azulejo\" vem da palavra árabe \"al zuleycha\", que significa \"pedra polida\". Ao longo dos séculos, os azulejos tornaram-se parte integrante da arquitetura portuguesa, sendo usados para decorar palácios, igrejas e edifícios públicos. Os azulejos são conhecidos pelos seus padrões geométricos, motivos florais e cenas históricas, refletindo a herança cultural e artística do país. Hoje em dia, os azulejos são um símbolo da identidade portuguesa e uma lembrança popular para os visitantes de Portugal.",
                             adress: "Em quase todas as ruas e bairros da cidade como, por exemplo:\n- Bairro Alto\n- Alfama\n- Baixa\n- Chiado\n- Museu do Azulejo."
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Azulejos",
+                            titulo: "Azulejos 🟦 ",
                             shortDescription: "The colorful art that covers facades and tells stories in Lisbon.",
                             description: "They are traditional Portuguese ceramic tiles, known for their intricate patterns, vibrant colors, and historical significance. Azulejos are used to decorate buildings, walls, and floors, creating stunning works of art that reflect the country's cultural heritage and artistic traditions. The tiles are a symbol of Portugal's craftsmanship and creativity.",
                             history: "The tradition of azulejos dates back to the 15th century when the Moors introduced the art of glazed ceramic tiles to Portugal. The word \"azulejo \" comes from the Arabic word  \"al zuleycha, \" meaning  \"polished stone. \" Over the centuries, azulejos became an integral part of Portuguese architecture, used to decorate palaces, churches, and public buildings. The tiles are known for their geometric patterns, floral motifs, and historical scenes, reflecting the country's cultural and artistic heritage. Today, azulejos are a symbol of Portuguese identity and a popular souvenir for visitors to Portugal.",
@@ -809,14 +807,14 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Fado",
+                            titulo: "Fado 🎵 ",
                             shortDescription: "O Fado é um gênero musical tradicional português conhecido por suas melodias melancólicas e sentimentais.",
                             description: "É um gênero musical português caracterizado por letras melancólicas e melodias sentimentais, geralmente acompanhadas por guitarra portuguesa e viola. O fadista, o intérprete, é o protagonista, expressando emoções como saudade, amor e desilusão. O fado é um patrimônio cultural imaterial da humanidade, reconhecido pela UNESCO.",
                             history: "As origens exatas do fado são desconhecidas, mas acredita-se que tenha surgido nos bairros populares de Lisboa no final do século XIX. Suas raízes estão na música popular urbana, influenciada por várias culturas, como a árabe, africana e brasileira. O fado era cantado em tabernas e casas de fado por pessoas comuns, expressando seus sentimentos e experiências através da música. Ao longo dos anos, o fado evoluiu e tornou-se um símbolo da identidade nacional portuguesa, apreciado em todo o mundo.",
                             adress: "As casas de fado estão concentradas nos bairros de Alfama e Bairro Alto."
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Fado",
+                            titulo: "Fado 🎵 ",
                             shortDescription: "The nostalgic music that echoes through the city’s alleys.",
                             description: "It's a Portuguese musical genre characterized by melancholic lyrics and sentimental melodies, typically accompanied by Portuguese guitar and viola. The fadista, the performer, is the protagonist, expressing emotions such as longing, love, and disillusionment. Fado is an intangible cultural heritage of humanity, recognized by UNESCO.",
                             history: "The exact origins of fado are unknown, but it is believed to have emerged in the popular neighborhoods of Lisbon in the late 19th century. Its roots lie in urban popular music, influenced by various cultures such as Arab, African, and Brazilian. Fado was sung in taverns and fado houses by ordinary people, expressing their feelings and experiences through music. Over the years, fado evolved and became a symbol of Portuguese national identity, appreciated worldwide.",
@@ -837,14 +835,14 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Eléctrico 28",
+                            titulo: "Eléctrico 28 🚋 ",
                             shortDescription: "Uma atração imperdível por seu percurso pelos bairros históricos mais bonitos da cidade.",
                             description: "É uma linha de bonde histórico que percorre as estreitas ruas de Lisboa, ligando a Praça Martim Moniz ao bairro do Campo de Ourique. O Eléctrico 28 passa por alguns dos bairros e marcos mais icônicos da cidade, como Alfama, Baixa e Estrela, oferecendo aos passageiros um passeio panorâmico pelo centro histórico de Lisboa.",
                             history: "O Eléctrico 28 está em operação desde 1914, servindo como um importante meio de transporte para residentes e visitantes de Lisboa.O Eléctrico 28 segue um percurso panorâmico pelos bairros históricos de Lisboa, passando por marcos icônicos como a Sé Catedral, o Castelo de São Jorge e a Basílica da Estrela. Os carros de madeira vintage do bonde e os trilhos rangentes evocam uma sensação de nostalgia e charme, tornando-o uma experiência imperdível para os visitantes de Lisboa.",
                             adress: nil
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Tram 28",
+                            titulo: "Tram 28 🚋 ",
                             shortDescription: "Lisbon’s most famous tram, crossing historic neighborhoods.",
                             description: "It's a historic tram line that runs through the narrow streets of Lisbon, connecting the Martim Moniz Square with the Campo Ourique neighborhood. Tram 28 passes through some of the city's most iconic neighborhoods and landmarks, such as Alfama, Baixa, and Estrela, offering passengers a scenic tour of Lisbon's historic center.",
                             history: "Tram 28 has been in operation since 1914, serving as a vital transportation link for Lisbon residents and visitors.Tram 28 follows a scenic route through the historic neighborhoods of Lisbon, passing by iconic landmarks such as the Sé Cathedral, the São Jorge Castle, and the Estrela Basilica. The tram's vintage wooden cars and rattling tracks evoke a sense of nostalgia and charm, making it a must-do experience for visitors to Lisbon.",
@@ -874,14 +872,14 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Tascas",
+                            titulo: "Tascas 🍷 ",
                             shortDescription: "As tascas são tabernas tradicionais portuguesas conhecidas pelo seu ambiente acolhedor e comida deliciosa.",
                             description: "São tabernas ou restaurantes típicos portugueses, conhecidos pelo seu ambiente casual, comida caseira e preços acessíveis. As tascas servem uma variedade de pratos, como petiscos, pequenas porções de aperitivos; bifanas, sanduíches de porco; e \"caldo verde\", sopa de couve. As tascas são uma opção popular de refeição para locais e visitantes que procuram experimentar a autêntica cozinha portuguesa.",
                             history: "As tascas são uma tradição antiga em Portugal, remontando ao século XIX, quando eram frequentadas por marinheiros, trabalhadores e estudantes. Com o tempo, as tascas tornaram-se locais de convívio para pessoas de todas as classes sociais, que apreciavam a comida caseira, o ambiente acolhedor e os preços acessíveis. As tascas são conhecidas pela sua simplicidade e autenticidade, servindo pratos tradicionais portugueses, como bacalhau à brás, feijoada, cozido à portuguesa, entre outros. Hoje em dia, as tascas são pontos populares entre locais e turistas, que procuram uma experiência gastronómica autêntica e genuína.",
                             adress: "Zonas da cidade com algumas opções para tascas\n- Alfama \n- Mouraria"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Tascas",
+                            titulo: "Tascas 🍷 ",
                             shortDescription: "Small typical restaurants, full of flavor and tradition.",
                             description: "They are traditional Portuguese taverns or eateries, known for their casual atmosphere, hearty food, and affordable prices. Tascas serve a variety of dishes, such as petiscos, small plates of appetizers; bifanas, pork sandwiches; and \"caldo verde\", kale soup. Tascas are a popular dining option for locals and visitors looking to experience authentic Portuguese cuisine.",
                             history: "Tascas are an ancient tradition in Portugal, dating back to the 19th century, when they were frequented by sailors, workers and students. Over time, bars became places for people from all social classes to socialize and eat, who enjoyed home-cooked food, a cozy atmosphere and affordable prices. The taverns are known for their simplicity and authenticity, serving traditional Portuguese dishes, such as bacalhau à brás, feijoada, cozido à portuguesa, among others. Today, taverns are popular spots among locals and tourists alike, seeking an authentic and genuine dining experience.",
@@ -902,15 +900,15 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Feira da Ladra",
-                            shortDescription: "A Feira da Ladra é um popular mercado de pulgas em Lisboa, oferecendo uma grande variedade de itens únicos.",
+                            titulo: "Feira da Ladra ",
+                            shortDescription: "O mercado mais popular da cidade para artigos usados e antiguidade 👗 👢 🖼️.",
                             description: "É o mercado mais antigo de Lisboa, realizado todas as terças e sábados no bairro de Alfama. O mercado oferece uma grande variedade de itens, desde antiguidades e roupas vintage a artesanato e artigos de segunda mão. É um destino popular para locais e turistas, conhecido pela sua atmosfera animada e achados únicos.",
                             history: "A Feira da Ladra tem uma longa história, remontando ao século XIII, quando foi estabelecida como um local para a venda de bens roubados. Com o tempo, o mercado evoluiu para um local de comércio legítimo, atraindo vendedores e compradores de todas as classes sociais. O nome Feira da Ladra, que significa \"Mercado do Ladrão\", diz-se ter origem na venda de bens roubados no passado. Hoje em dia, o mercado é um centro cultural e social, oferecendo uma experiência de compras única e um vislumbre da vibrante vida de rua de Lisboa.",
                             adress: "Campo de Santa Clara, Alfama, Lisbon"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Feira da Ladra",
-                            shortDescription: "The most famous flea market for finds and antiques.",
+                            shortDescription: "The most famous flea market for finds and antiques.👗 👢 🖼️",
                             description: "It's Lisbon's oldest flea market, held every Tuesday and Saturday in the Alfama neighborhood. The market offers a wide variety of items, from antiques and vintage clothing to handicrafts and second-hand goods. It's a popular destination for locals and tourists alike, known for its lively atmosphere and unique finds.",
                             history: "The Feira da Ladra has a long history, dating back to the 13th century when it was established as a place for the sale of stolen goods. Over time, the market evolved into a legitimate trading place, attracting vendors and buyers from all walks of life. The name Feira da Ladra, which means \"Thief's Market\" is said to have originated from the sale of stolen goods in the past. Today, the market is a cultural and social hub, offering a unique shopping experience and a glimpse into Lisbon's vibrant street life.",
                             adress: "Campo de Santa Clara, Alfama, Lisbon"
@@ -929,18 +927,18 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Futebol",
+                            titulo: "Futebol ⚽ ",
                             shortDescription: "O futebol é um esporte amado em Portugal, com fãs apaixonados e clubes históricos.",
                             description: "O futebol é o esporte mais popular em Portugal, com uma longa história e uma base de fãs apaixonada. Os principais clubes de futebol da cidade são o Benfica e o Sporting. A seleção nacional portuguesa, conhecida como Seleção, também alcançou grande sucesso, vencendo o Campeonato Europeu da UEFA em 2016.",
                             history: "O Estádio da Luz é o maior estádio de Portugal e um dos maiores da Europa, com capacidade para mais de 65.000 espectadores. O Estádio de Alvalade é a casa do Sporting, um dos clubes mais antigos e prestigiados de Portugal. Ambos os estádios são locais de culto para os fãs de futebol, que se reúnem para apoiar suas equipes e celebrar sua paixão pelo esporte.",
-                            adress: "- Estádio da Luz (Benfica)\n- Estádio de Alvalade (Sporting)"
+                            adress: "⚽ Estádio da Luz (Benfica)\n⚽  Estádio de Alvalade (Sporting)"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Football",
+                            titulo: "Football ⚽ ",
                             shortDescription: "The national passion that brings crowds together in Lisbon.",
                             description: "Football is the most popular sport in Portugal, with a long history and passionate fan base. The city's top football clubs are Benfica and Sporting. The Portuguese national team, known as the Seleção, has also achieved great success, winning the UEFA European Championship in 2016.",
                             history: "Benfica Stadium is the largest stadium in Portugal and one of the largest in Europe, with a capacity for more than 65,000 spectators. Alvalade Stadium is home to Sporting, one of the oldest and most prestigious clubs in Portugal. Both stadiums are places of worship for football fans, who come together to support their teams and celebrate their passion for the sport.",
-                            adress: "- Estádio da Luz (Benfica)\n- Estádio de Alvalade (Sporting)"
+                            adress: "⚽ Estádio da Luz (Benfica)\n⚽  Estádio de Alvalade (Sporting)"
                         )
                     ],
                     locations: [
@@ -957,14 +955,14 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Santos Populares",
+                            titulo: "Santos Populares 🎉 ",
                             shortDescription: "Os Santos Populares são festas tradicionais portuguesas que celebram santos populares com música, dança e comida.",
                             description: "Os Santos Populares são festas tradicionais que acontecem em Portugal, durante o mês de junho, em honra a três santos católicos: Santo António, São João e São Pedro. A noite de Santo António é o ponto alto das festividades, pois Lisboa é a cidade natal do santo. As festividades incluem desfiles, marchas populares, danças, fogueiras, sardinhas assadas, manjericos e muita diversão.",
                             history: "Os Santos Populares são uma tradição antiga em Portugal, que remonta ao século XVIII, quando eram celebrados em honra a santos católicos. As festividades incluem desfiles, marchas populares, danças, fogueiras, sardinhas assadas, manjericos e muita diversão. É um momento de celebração e convívio, quando as ruas se enchem de cor e alegria, e as pessoas se reúnem para celebrar a vida e a amizade.",
                             adress: "As melhores festas, chamadas \"arraiais\", são realizadas nos bairros mais antigos de Lisboa.\n- Alfama\n- Bairro Alto\n- Mouraria\n- Graça"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Santos Populares",
+                            titulo: "Santos Populares 🎉 ",
                             shortDescription: "Lively street festivals with music, sardines, and joy.",
                             description: "The Popular Saints are traditional festivals that take place in Portugal, during the month of June, in honor of three Catholic saints: Saint Anthony, Saint John and Saint Peter. The night of Saint Anthony is the highlight of the festivities as Lisbon is the saint's birthplace. The festivities include parades, popular marches, dances, bonfires, grilled sardines, basil and lots of fun.",
                             history: "Popular Saints are an ancient tradition in Portugal, dating back to the 18th century, when they were celebrated in honor of Catholic saints. The festivities include parades, popular marches, dances, bonfires, grilled sardines, basil and lots of fun. It is a time of celebration and socializing, when the streets are filled with color and joy, and people come together to celebrate life and friendship.",
@@ -987,14 +985,14 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Tradições",
+                            titulo: "Mais Tradições ➕ ",
                             shortDescription: "Explore mais da rica herança cultural de Portugal.",
                             description: "Vida Noturna: A cidade ganha vida à noite, oferecendo uma variedade de opções para todos os gostos. Aqui estão alguns destaques da vida noturna de Lisboa: - Bairro Alto: um dos bairros mais animados de Lisboa, conhecido pelas suas ruas estreitas cheias de bares; - Cais do Sodré (na foto): uma antiga zona portuária que se tornou um ponto quente da vida noturna com muitos restaurantes e bares. Aqui você encontrará a Rua Cor-de-Rosa - famosa por sua rua pintada de rosa e guarda-chuvas coloridos pendurados nela; - Os Docks: Uma área à beira do rio com bares e clubes.",
                             history: nil,
                             adress: "- Bairro Alto: metro Baixa-Chiado\n- Cais do Sodré: metro Cais do Sodré\n- As Docks:Entre o Cais do Sodré e o bairro de Belém. Não há metro. O acesso é de Táxi, Uber ou carro próprio."
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Traditions",
+                            titulo: "More Traditions ➕ ",
                             shortDescription: "Discover other Lisbon traditions and customs.",
                             description: "Nightlife: The city comes to life at night, offering a variety of options to suit all tastes. Here are some highlights of Lisbon's nightlife: - Bairro Alto: one of Lisbon's liveliest neighborhoods, known for its narrow streets full of bars; - Cais do Sodré (in the picture): a former port area that has become a nightlife hotspot with many restaurants and bars. Here you will find Pink Street - famous for its pink painted street and colorful umbrellas hanging from it; - The Docks: A riverside area with bars and clubs.",
                             history: nil,
@@ -1020,14 +1018,14 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Sé Catedral",
+                            titulo: "Sé Catedral ⛪️ ",
                             shortDescription: "A catedral mais antiga de Lisboa, construída no século XII, exibindo uma mistura de estilos arquitetónicos.",
                             description: "A Sé Catedral de Lisboa, oficialmente a Catedral Patriarcal de Santa Maria Maior, é a igreja mais antiga da cidade. Construída no século XII, pouco depois da reconquista cristã da cidade aos mouros, combina elementos de arquitetura românica, gótica e barroca. A catedral sobreviveu a vários terremotos, incluindo o devastador terremoto de 1755, o que lhe confere a sua mistura única de estilos arquitetónicos.",
                             history: "A catedral foi construída no local de uma antiga mesquita, após a reconquista cristã da cidade pelo rei Afonso I em 1147. Ao longo dos séculos, sofreu inúmeras renovações e adições, com cada período deixando a sua marca na estrutura. Apesar dos danos causados pelo terremoto de 1755, a catedral manteve a sua importância religiosa e histórica como sede da Arquidiocese de Lisboa.",
                             adress: "Largo da Sé, 1100-585 Lisboa'"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Sé Cathedral",
+                            titulo: "Sé Cathedral ⛪️ ",
                             shortDescription: "Lisbon's oldest cathedral, a symbol of faith and the city's history.",
                             description: "The Sé Cathedral of Lisbon, officially the Patriarchal Cathedral of St. Mary Major, is the oldest church in the city. Built in the 12th century, shortly after the Christian reconquest of the city from the Moors, it combines elements of Romanesque, Gothic, and Baroque architecture. The cathedral has survived several earthquakes, including the devastating 1755 earthquake, which gives it its unique blend of architectural styles.",
                             history: "The cathedral was built on the site of a former mosque, following the Christian reconquest of the city by King Afonso I in 1147. Over the centuries, it has undergone numerous renovations and additions, with each period leaving its mark on the structure. Despite the damage caused by the 1755 earthquake, the cathedral has maintained its religious and historical significance as the seat of the Archdiocese of Lisbon.",
@@ -1047,14 +1045,14 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mosteiro dos Jerónimos",
+                            titulo: "Mosteiro dos Jerónimos ⛪️ ",
                             shortDescription: "Um patrimônio mundial da UNESCO que exemplifica o estilo arquitetónico manuelino ornamentado português.",
                             description: "O Mosteiro dos Jerónimos é uma obra-prima da arquitetura manuelina, simbolizando a Era dos Descobrimentos de Portugal. Construído no início do século XVI, foi encomendado pelo rei Manuel I para comemorar a bem-sucedida viagem de Vasco da Gama à Índia e para agradecer à Virgem Maria pelo seu sucesso. O mosteiro é notável pelos seus elaborados motivos marítimos, intrincadas esculturas em pedra e pelo seu design harmonioso.",
                             history: "A construção começou em 1501 e continuou por 100 anos. O mosteiro foi povoado por monges da Ordem de São Jerónimo, que tinham a tarefa de rezar pela alma do rei e fornecer assistência espiritual aos navegadores e marinheiros que partiam da praia próxima de Belém. O mosteiro abriga os túmulos de Vasco da Gama e do poeta Luís de Camões, entre outras figuras portuguesas notáveis. Foi classificado como Patrimônio Mundial da UNESCO em 1983.",
                             adress: "Praça do Império 1400-206 Lisboa'"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Jerónimos Monastery",
+                            titulo: "Jerónimos Monastery ",
                             shortDescription: "A Manueline masterpiece and UNESCO World Heritage Site.",
                             description: "The Jerónimos Monastery is a masterpiece of Manueline architecture, symbolizing Portugal's Age of Discoveries. Built in the early 16th century, it was commissioned by King Manuel I to commemorate Vasco da Gama's successful voyage to India and to thank the Virgin Mary for his success. The monastery is notable for its ornate maritime motifs, intricate stone carvings, and its harmonious design.",
                             history: "Construction began in 1501 and continued for 100 years. The monastery was populated by monks of the Order of Saint Jerome, who were tasked with praying for the king's soul and providing spiritual assistance to navigators and sailors who departed from the nearby beach of Belém. The monastery houses the tombs of Vasco da Gama and the poet Luís de Camões, among other notable Portuguese figures. It was classified as a UNESCO World Heritage Site in 1983.",
