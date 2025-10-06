@@ -42,10 +42,10 @@ struct FavoritesView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            @Environment(\.colorScheme) var colorScheme
             let horizontalPadding: CGFloat = 6
             let spacing: CGFloat = 8
             let totalSpacing = spacing + horizontalPadding * 2
+            let colorScheme = UITraitCollection.current.userInterfaceStyle == .dark ? ColorScheme.dark : ColorScheme.light
             if geometry.size.width.isFinite, geometry.size.width > totalSpacing {
                 let itemWidth = max((geometry.size.width - totalSpacing) / 2, 1)
                 let columns = [GridItem(.fixed(itemWidth), spacing: spacing), GridItem(.fixed(itemWidth), spacing: spacing)]
@@ -120,8 +120,6 @@ struct FavoritesView: View {
                                                         Image(systemName: "heart.fill")
                                                             .foregroundColor(.red)
                                                             .padding(8)
-                                                            .background(Color.white.opacity(0.7))
-                                                            .clipShape(Circle())
                                                     }
                                                     .frame(width: 40, height: 40)
                                                     .contentShape(Circle())

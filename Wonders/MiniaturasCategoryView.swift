@@ -175,7 +175,7 @@ struct MiniaturasCategoryView: View {
                                     attributed.foregroundColor = .primary
                                     var desc = AttributedString(t.shortDescription)
                                     desc.font = .system(size: 20, weight: .regular)
-                                    desc.foregroundColor = .secondary
+                                    desc.foregroundColor = .primary
                                     attributed.append(desc)
                                     return attributed
                                 }())

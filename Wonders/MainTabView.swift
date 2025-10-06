@@ -89,11 +89,11 @@ struct MiniaturasTabBar: View {
                 showMiniaturas?.wrappedValue = false
             }) {
                 VStack {
-                    Image(systemName: "house.fill")
-                        .font(.system(size: 24))
+                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
+                        .font(.system(size: 24, weight: .light))
                         .opacity(selectedTab == 0 ? 1.0 : 0.7)
                     Text(t(0))
-                        .font(.system(size: 14))
+                        .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 0 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 0 ? .blue : .primary)
@@ -101,11 +101,11 @@ struct MiniaturasTabBar: View {
             Spacer()
             Button(action: { selectedTab = 1 }) {
                 VStack {
-                    Image(systemName: "heart")
-                        .font(.system(size: 24))
+                    Image(systemName: selectedTab == 1 ? "heart.fill" : "heart")
+                        .font(.system(size: 24, weight: .light))
                         .opacity(selectedTab == 1 ? 1.0 : 0.7)
                     Text(t(1))
-                        .font(.system(size: 14))
+                        .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 1 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 1 ? .blue : .primary)
@@ -114,10 +114,10 @@ struct MiniaturasTabBar: View {
             Button(action: { selectedTab = 2 }) {
                 VStack {
                     Image(systemName: "magnifyingglass")
-                        .font(.system(size: 24))
+                        .font(.system(size: 24, weight: selectedTab == 2 ? .semibold : .light))
                         .opacity(selectedTab == 2 ? 1.0 : 0.7)
                     Text(t(2))
-                        .font(.system(size: 14))
+                        .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 2 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 2 ? .blue : .primary)
@@ -125,12 +125,11 @@ struct MiniaturasTabBar: View {
             Spacer()
             Button(action: { selectedTab = 3 }) {
                 VStack {
-                    Image(systemName: "gearshape")
-                        .font(.system(size: 24))
+                    Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
+                        .font(.system(size: 24, weight: .light))
                         .opacity(selectedTab == 3 ? 1.0 : 0.7)
                     Text(t(3))
-                       // .fontWeight(selectedTab == 3 ? .bold : .thin)
-                        .font(.system(size: 14))
+                        .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 3 ? 1.0 : 0.7)
                 }
                 .foregroundColor(selectedTab == 3 ? .blue : .primary)

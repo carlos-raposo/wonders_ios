@@ -1052,9 +1052,9 @@ extension MiniaturaCard {
                             adress: "Praça do Império 1400-206 Lisboa'"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Jerónimos Monastery ⛪️ ",
-                            shortDescription: "A Manueline masterpiece and UNESCO World Heritage Site.",
-                            description: "The Jerónimos Monastery is a masterpiece of Manueline architecture, symbolizing Portugal's Age of Discoveries. Built in the early 16th century, it was commissioned by King Manuel I to commemorate Vasco da Gama's successful voyage to India and to thank the Virgin Mary for his success. The monastery is notable for its ornate maritime motifs, intricate stone carvings, and its harmonious design.",
+                            titulo: "Jerónimos Monastery",
+                            shortDescription: "A Manueline masterpiece ⛪️ and UNESCO World Heritage Site.",
+                            description: "The Jerónimos Monastery is a masterpiece ⛪️ of Manueline architecture, symbolizing Portugal's Age of Discoveries. Built in the early 16th century, it was commissioned by King Manuel I to commemorate Vasco da Gama's successful voyage to India and to thank the Virgin Mary for his success. The monastery is notable for its ornate maritime motifs, intricate stone carvings, and its harmonious design.",
                             history: "Construction began in 1501 and continued for 100 years. The monastery was populated by monks of the Order of Saint Jerome, who were tasked with praying for the king's soul and providing spiritual assistance to navigators and sailors who departed from the nearby beach of Belém. The monastery houses the tombs of Vasco da Gama and the poet Luís de Camões, among other notable Portuguese figures. It was classified as a UNESCO World Heritage Site in 1983.",
                             adress: "Praça do Império 1400-206 Lisboa'"
                         )
@@ -1072,14 +1072,14 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "São Domingos",
-                            shortDescription: "Uma igreja histórica que sobreviveu ao terramoto de 1755 e apresenta belas obras de arte religiosa.",
+                            titulo: "São Domingos 🔥⛪️🔥",
+                            shortDescription: "Uma igreja histórica com as marcas do fogo 🔥🔥",
                             description: "A Igreja de São Domingos é uma das igrejas mais históricas de Lisboa, com uma história marcada pela resiliência e sobrevivência. Fundada em 1241, testemunhou casamentos reais, coroações e o infame Massacre de Lisboa de 1506. Apesar de ter sido severamente danificada por terremotos e incêndios, a igreja continua de pé e serve como um local de culto.",
                             history: "Ao longo da sua história, a igreja sobreviveu aos terremotos de 1531 e 1755, bem como a um devastador incêndio em 1959. Em vez de restaurar completamente a igreja após o incêndio, foi tomada a decisão de preservar os pilares e paredes marcados como um testemunho da resiliência da igreja. A igreja contém várias obras de arte valiosas e artefatos religiosos, incluindo um presépio do século XVIII e várias esculturas e pinturas.",
                             adress: "Largo de São Domingos 1, 1150-320 Lisboa'"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "São Domingos",
+                            titulo: "São Domingos 🔥⛪️🔥",
                             shortDescription: "A church marked by tragedies and reconstructions, full of history.",
                             description: "The Church of São Domingos is one of Lisbon's most historic churches, with a history marked by resilience and survival. Founded in 1241, it has witnessed royal weddings, coronations, and the infamous Lisbon Massacre of 1506. Despite being severely damaged by earthquakes and fires, the church continues to stand and serve as a place of worship",
                             history: "Throughout its history, the church has survived the 1531 and 1755 earthquakes, as well as a devastating fire in 1959. Rather than completely restoring the church after the fire, the decision was made to preserve the scarred pillars and walls as a testament to the church's resilience. The church contains several valuable artworks and religious artifacts, including an 18th-century nativity scene and various sculptures and paintings.",
@@ -1099,14 +1099,14 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "São Roque",
+                            titulo: "São Roque 🔔 ",
                             shortDescription: "Abriga capelas barrocas deslumbrantes e uma impressionante coleção de arte religiosa.",
                             description: "A Igreja de São Roque é uma das primeiras igrejas jesuítas do mundo e uma das mais belas de Portugal. Apesar do seu exterior relativamente simples, o interior é um tesouro de arte barroca, apresentando capelas ricamente decoradas, pinturas valiosas e uma impressionante coleção de relíquias.",
                             history: "Construída no século XVI, a igreja foi inicialmente erguida num local que havia sido um cemitério para vítimas da peste, onde um santuário a São Roque (Santo Roque, o santo padroeiro contra a peste) havia sido estabelecido. A igreja foi entregue aos jesuítas que procederam à construção de uma das primeiras igrejas jesuítas do mundo. A característica mais notável da igreja é a Capela de São João Batista, encomendada pelo rei João V no século XVIII. A capela foi projetada em Roma, abençoada pelo Papa e depois desmontada e enviada para Lisboa.",
                             adress: "Largo Trindade Coelho, 1200-470 Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "São Roque",
+                            titulo: "São Roque 🔔 ",
                             shortDescription: "One of the oldest Jesuit churches in the world, with a rich interior.",
                             description: "The Church of São Roque is one of the first Jesuit churches in the world and one of the most beautiful in Portugal. Despite its relatively plain exterior, the interior is a treasure trove of baroque art, featuring richly decorated chapels, valuable paintings, and an impressive collection of relics.",
                             history: "Built in the 16th century, the church was initially erected on a site that had been a cemetery for plague victims, where a shrine to São Roque (Saint Roch, the patron saint against plague) had been established. The church was given to the Jesuits who proceeded to build one of the first Jesuit churches in the world. The church's most remarkable feature is the Chapel of St. John the Baptist, commissioned by King João V in the 18th century. The chapel was designed in Rome, blessed by the Pope, and then dismantled and shipped to Lisbon.",
@@ -1126,14 +1126,14 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Basílica da Estrela",
+                            titulo: "Basílica da Estrela ⭐️ ",
                             shortDescription: "Uma magnífica basílica do século XVIII conhecida pela sua grande cúpula e arquitetura neoclássica.",
                             description: "A Basílica da Estrela é uma igreja neoclássica e barroca em Lisboa, conhecida pela sua grande cúpula e interior de mármore. Encomendada pela rainha Maria I para celebrar o nascimento do seu filho e herdeiro, a basílica é um testemunho da gratidão e devoção da rainha.",
                             history: " A basílica foi construída entre 1779 e 1790, cumprindo um voto feito pela rainha Maria I. Ironicamente, o seu filho morreu antes da conclusão da igreja, e a própria rainha começou a mostrar sinais de doença mental na altura da sua conclusão. A basílica é notável pelo seu interior de mármore, belos vitrais e um elaborado presépio composto por mais de 500 figuras de cortiça e terracota criadas por Joaquim Machado de Castro.",
                             adress: "Praça da Estrela, 1200-667 Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Estrela Basilica",
+                            titulo: "Estrela Basilica ⭐️ ",
                             shortDescription: "Imposing white-domed basilica, a landmark in Lisbon's skyline.",
                             description: "The Basilica da Estrela is a neoclassical and baroque church in Lisbon, known for its grand dome and marble interior. Commissioned by Queen Maria I to celebrate the birth of her son and heir, the basilica stands as a testament to the queen's gratitude and devotion.",
                             history: "The basilica was built between 1779 and 1790, fulfilling a vow made by Queen Maria I. Ironically, her son died before the church was completed, and the queen herself began showing signs of mental illness by the time of its completion. The basilica is notable for its marble interior, beautiful stained glass windows, and an elaborate nativity scene comprising more than 500 cork and terracotta figures created by Joaquim Machado de Castro.",
@@ -1153,14 +1153,14 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Carmo",
+                            titulo: "Carmo ⛪︎ ",
                             shortDescription: "As ruínas desta igreja gótica permanecem como uma lembrança comovente do terramoto de 1755.",
                             description: "As ruínas do Convento e Igreja do Carmo permanecem como um lembrete comovente do devastador terramoto de 1755 que destruiu grande parte de Lisboa. A igreja gótica, com a sua nave sem teto aberta ao céu, é agora um museu arqueológico que abriga uma coleção de artefatos e lápides.",
                             history: "Fundado em 1389 pelo cavaleiro português Nuno Álvares Pereira, o Convento do Carmo foi outrora a maior igreja de Lisboa. Foi quase completamente destruído pelo terramoto de 1755, que ocorreu no Dia de Todos os Santos, quando a igreja estava cheia de fiéis, resultando em muitas vítimas. Após o terramoto, a Revolução Liberal de 1834 e a dissolução das ordens religiosas em Portugal, as ruínas foram preservadas como uma memória do desastre. Em 1864, a Associação dos Arqueólogos Portugueses estabeleceu um museu nas ruínas, que continua a funcionar até hoje.",
                             adress: "Largo do Carmo, 1200-092 Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Carmo",
+                            titulo: "Carmo ⛪︎ ",
                             shortDescription: "Gothic ruins that bear witness to the great 1755 earthquake.",
                             description: "The ruins of the Carmo Convent and Church stand as a haunting reminder of the devastating 1755 earthquake that destroyed much of Lisbon. The Gothic church, with its roofless nave open to the sky, is now an archaeological museum housing a collection of artifacts and tombstones.",
                             history: "Fundado em 1389 pelo cavaleiro português Nuno Álvares Pereira, o Convento do Carmo já foi a maior igreja de Lisboa. Foi quase completamente destruído pelo terramoto de 1755, que atingiu a cidade no Dia de Todos os Santos, quando a igreja estava cheia de fiéis, resultando em muitas vítimas. Após o terramoto, a Revolução Liberal de 1834 e a dissolução das ordens religiosas em Portugal, as ruínas foram preservadas como uma memória do desastre. Em 1864, a Associação dos Arqueólogos Portugueses estabeleceu um museu nas ruínas, que continua a funcionar até hoje.",
@@ -1180,14 +1180,14 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Cristo-Rei",
+                            titulo: "Cristo-Rei ✝️ ",
                             shortDescription: "Uma estátua icónica de Cristo que observa a cidade do outro lado do rio Tejo.",
                             description: "Cristo-Rei, ou Cristo Rei, é um monumento e santuário católico que domina a cidade de Lisboa. Situado na margem sul do rio Tejo, na cidade de Almada, o monumento consiste numa estátua de Cristo com 28 metros de altura, com os braços levantados, em cima de um pedestal de 75 metros de altura.",
                             history: "Inspirado na estátua do Cristo Redentor no Rio de Janeiro, Brasil, o monumento Cristo-Rei foi construído como resposta a um apelo do Episcopado Português para que Deus poupasse Portugal aos horrores da Segunda Guerra Mundial. A construção começou em 1949 e foi concluída em 1959. O monumento oferece vistas panorâmicas de Lisboa e da Ponte 25 de Abril, que liga os dois lados do rio Tejo. Tornou-se um símbolo icónico de Lisboa e um importante local de peregrinação para os católicos.",
                             adress: "Av. Cristo Rei, 2800-058 Almada"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Cristo Rei",
+                            titulo: "Cristo Rei ✝️ ",
                             shortDescription: "Monumental statue with panoramic views over Lisbon and the Tagus.",
                             description: "Cristo-Rei, or Christ the King, is a Catholic monument and shrine overlooking the city of Lisbon. Standing on the southern bank of the Tagus River, in the city of Almada, the monument consists of a 28-meter-tall statue of Christ with arms raised, standing on a 75-meter-tall pedestal.",
                             history: "Inspired by the Christ the Redeemer statue in Rio de Janeiro, Brazil, the Cristo-Rei monument was built as a response to a plea from the Portuguese Episcopate for God to spare Portugal from the horrors of World War II. Construction began in 1949 and was completed in 1959. The monument offers panoramic views of Lisbon and the 25 de Abril Bridge, which connects the two sides of the Tagus River. It has become an iconic symbol of Lisbon and a significant pilgrimage site for Catholics.",
@@ -1207,14 +1207,14 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Igrejas",
+                            titulo: "Mais Igrejas ⛪️ ",
                             shortDescription: "Fátima: visite um dos maiores santuarios do mundo.",
                             description: "O Santuário de Fátima é um dos maiores santuários marianos do mundo, atraindo milhões de peregrinos todos os anos. Localizado na cidade de Fátima, a cerca de 130 km de Lisboa, o santuário é dedicado à Virgem Maria e às aparições que ocorreram em 1917. O santuário inclui a Basílica de Nossa Senhora do Rosário, a Capela das Aparições, a Basílica da Santíssima Trindade e a Casa de Retiros de Nossa Senhora do Carmo.",
                             history: "O santuário foi construído no local onde três crianças afirmaram ter visto a Virgem Maria em seis ocasiões entre maio e outubro de 1917. As aparições de Fátima foram declaradas autênticas pela Igreja Católica em 1930, e o local tornou-se um importante destino de peregrinação para católicos de todo o mundo. O santuário é especialmente popular durante as celebrações anuais de 13 de maio e 13 de outubro, que marcam as datas das aparições.",
                             adress: "O Santuário de Fátima está localizado na cidade de Fátima, a cerca de 130 quilômetros a norte de Lisboa. A maneira mais fácil de chegar lá é de carro ou autocarro, com serviços regulares de Lisboa para Fátima. O santuário está aberto durante todo o ano e acolhe visitantes de todas as fés para rezar, refletir e experienciar a atmosfera espiritual deste lugar sagrado."
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Churches",
+                            titulo: "More Churches ⛪️ ",
                             shortDescription: "Discover other historic churches and temples in Lisbon.",
                             description: "The Sanctuary of Fátima is one of the largest Marian sanctuaries in the world, attracting millions of pilgrims every year. Located in the city of Fátima, about 130 km from Lisbon, the sanctuary is dedicated to the Virgin Mary and the apparitions that occurred in 1917. The sanctuary includes the Basilica of Our Lady of the Rosary, the Chapel of the Apparitions, the Basilica of the Most Holy Trinity and the Retreat House of Our Lady of Mount Carmel.",
                             history: "The shrine was built on the site where three children claimed to have seen the Virgin Mary on six occasions between May and October 1917. The apparitions of Fátima were declared authentic by the Catholic Church in 1930, and the site has become a major pilgrimage destination for Catholics from around the world. The shrine is especially popular during the annual celebrations of May 13 and October 13, which mark the dates of the apparitions.",
@@ -1238,17 +1238,17 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Museu dos Azulejos",
+                            titulo: "Museu dos Azulejos 🔹🔹🔹",
                             shortDescription: "O Museu Nacional do Azulejo mostra cinco séculos de azulejos decorativos, uma forma de arte portuguesa.",
                             description: "O Museu Nacional do Azulejo é dedicado à arte do azulejo, uma forma de arte decorativa tradicional em Portugal. O museu exibe uma impressionante coleção de azulejos decorativos, datados desde meados do século XV até os dias de hoje, mostrando a evolução desta forma de arte ao longo dos séculos.",
-                            history: "Os destaques do museu incluem azulejos históricos de igrejas, palácios e edifícios públicos, bem como exemplos de azulejos de artistas contemporâneos. O museu também abriga exposições temporárias e programas educativos que exploram a história e a técnica do azulejo, bem como o seu papel na cultura portuguesa.",
+                            destaques: "Os destaques do museu incluem azulejos históricos de igrejas, palácios e edifícios públicos, bem como exemplos de azulejos de artistas contemporâneos. O museu também abriga exposições temporárias e programas educativos que exploram a história e a técnica do azulejo, bem como o seu papel na cultura portuguesa.",
                             adress: "Rua da Madre de Deus, 4, 1900-312 Lisbon"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Tile Museum",
+                            titulo: "Tile Museum 🔹🔹🔹",
                             shortDescription: "Celebrates the art of Portuguese tiles from the 15th century to today.",
                             description: "The Tile Museum (Portuguese: Museu Nacional do Azulejo) is dedicated to the art of azulejo, a traditional decorative art form in Portugal. The museum exhibits an impressive collection of decorative tiles, dating from the mid-15th century to the present day, showing the evolution of this art form over the centuries.",
-                            history: "The museum's highlights include historical tiles from churches, palaces, and public buildings, as well as examples of tiles by contemporary artists. The museum also houses temporary exhibitions and educational programs that explore the history and technique of azulejo, as well as its role in Portuguese culture.",
+                            destaques: "The museum's highlights include historical tiles from churches, palaces, and public buildings, as well as examples of tiles by contemporary artists. The museum also houses temporary exhibitions and educational programs that explore the history and technique of azulejo, as well as its role in Portuguese culture.",
                             adress: "Rua da Madre de Deus, 4, 1900-312 Lisbon"
                         )
                     ],
@@ -1265,17 +1265,17 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Museu Gulbenkian",
+                            titulo: "Museu Gulbenkian 🖼️ ",
                             shortDescription: "Um centro cultural que abriga coleções de arte excepcionais, desde a antiguidade até a era moderna.",
                             description: "O Museu Calouste Gulbenkian é um dos principais museus de arte em Lisboa, com uma coleção diversificada que abrange arte antiga, arte moderna e arte contemporânea. O museu foi fundado por Calouste Gulbenkian, um colecionador de arte e filantropo armênio, que doou sua coleção à nação portuguesa.",
-                            history: "Os destaques do museu incluem pinturas de artistas como Rembrandt, Rubens, Monet e Renoir, esculturas de Rodin e Degas, e arte decorativa de várias culturas. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes.",
+                            destaques: "Os destaques do museu incluem pinturas de artistas como Rembrandt, Rubens, Monet e Renoir, esculturas de Rodin e Degas, e arte decorativa de várias culturas. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes.",
                             adress: "Av. de Berna 45A, 1067-001 Lisbon"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Gulbenkian Museum",
+                            titulo: "Gulbenkian Museum ",
                             shortDescription: "World-class art collection, from Egypt to modern art.",
                             description: "Calouste Gulbenkian Museum is one of the main art museums in Lisbon, with a diverse collection spanning ancient art, modern art, and contemporary art. The museum was founded by Calouste Gulbenkian, an Armenian art collector and philanthropist, who donated his collection to the Portuguese nation.",
-                            history: "The museum's highlights include paintings by artists such as Rembrandt, Rubens, Monet, and Renoir, sculptures by Rodin and Degas, and decorative art from various cultures. The museum also houses temporary exhibitions, concerts, and cultural events that enrich visitors' experience.",
+                            destaques: "The museum's highlights include paintings by artists such as Rembrandt, Rubens, Monet, and Renoir, sculptures by Rodin and Degas, and decorative art from various cultures. The museum also houses temporary exhibitions, concerts, and cultural events that enrich visitors' experience.",
                             adress: "Av. de Berna 45A, 1067-001 Lisbon"
                         )
                     ],
@@ -1292,17 +1292,17 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Museu dos Coches",
+                            titulo: "Museu dos Coches 🎠 ",
                             shortDescription: "O Museu Nacional dos Coches exibe uma das mais requintadas coleções de carruagens históricas do mundo.",
                             description: "O Museu Nacional dos Coches é um museu dedicado à história das carruagens e cocheiras reais em Portugal. Fundado em 1905, o museu abriga uma das mais importantes coleções de carruagens históricas do mundo, incluindo veículos usados pela realeza portuguesa e outras figuras históricas.",
-                            history: "Os destaques do museu incluem carruagens reais dos séculos XVII ao XIX, incluindo a Carruagem do Rei João V, a Carruagem da Rainha Maria Pia e a Carruagem da Rainha Amélia. O museu também abriga exposições temporárias, oficinas e eventos educativos que exploram a história e a arte das cocheiras.",
+                            destaques: "Os destaques do museu incluem carruagens reais dos séculos XVII ao XIX, incluindo a Carruagem do Rei João V, a Carruagem da Rainha Maria Pia e a Carruagem da Rainha Amélia. O museu também abriga exposições temporárias, oficinas e eventos educativos que exploram a história e a arte das cocheiras.",
                             adress: "Praça Afonso de Albuquerque, 1300-004 Lisbon"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Coach Museum",
+                            titulo: "Coach Museum 🎠 ",
                             shortDescription: "The world's largest collection of royal coaches.",
                             description: "The Coach Museum (Portuguese: Museu Nacional dos Coches) is a museum dedicated to the history of royal coaches and carriages in Portugal. Founded in 1905, the museum houses one of the most important collections of historical carriages in the world, including vehicles used by Portuguese royalty and other historical figures.",
-                            history: "The museum's highlights include royal carriages from the 17th to the 19th century, including the Carriage of King João V, the Carriage of Queen Maria Pia, and the Carriage of Queen Amélia. The museum also houses temporary exhibitions, workshops, and educational events that explore the history and art of coaches.",
+                            destaques: "The museum's highlights include royal carriages from the 17th to the 19th century, including the Carriage of King João V, the Carriage of Queen Maria Pia, and the Carriage of Queen Amélia. The museum also houses temporary exhibitions, workshops, and educational events that explore the history and art of coaches.",
                             adress: "Praça Afonso de Albuquerque, 1300-004 Lisbon"
                         )
                     ],
@@ -1319,17 +1319,17 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Museu do Fado",
+                            titulo: "Museu do Fado 🎵 ",
                             shortDescription: "Conheça a história e a tradição do fado, um género musical português.",
                             description: "O Museu do Fado é dedicado à história e cultura do fado, um género musical tradicional português. Localizado no bairro histórico de Alfama, o museu apresenta exposições interativas, concertos ao vivo e oficinas que celebram a rica tradição do fado.",
-                            history: "Os destaques do museu incluem exposições sobre os grandes cantores de fado de Portugal, instrumentos musicais tradicionais usados no fado e a evolução do género ao longo dos séculos. O museu também abriga concertos regulares de fado, onde os visitantes podem experienciar a emoção e a paixão deste estilo musical único.",
+                            destaques: "Os destaques do museu incluem exposições sobre os grandes cantores de fado de Portugal, instrumentos musicais tradicionais usados no fado e a evolução do género ao longo dos séculos. O museu também abriga concertos regulares de fado, onde os visitantes podem experienciar a emoção e a paixão deste estilo musical único.",
                             adress: "Largo do Chafariz de Dentro, 1, 1100-139 Lisbon"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "Fado Museum",
+                            titulo: "Fado Museum 🎵 ",
                             shortDescription: "Dedicated to the history and culture of Fado, Lisbon's music.",
                             description: "The Fado Museum (Portuguese: Museu do Fado) is dedicated to the history and culture of fado, a traditional Portuguese musical genre. Located in the historic neighborhood of Alfama, the museum presents interactive exhibitions, live concerts, and workshops that celebrate the rich tradition of fado.",
-                            history: "The museum's highlights include exhibitions about Portugal's great fado singers, traditional musical instruments used in fado, and the evolution of the genre over the centuries. The museum also houses regular fado concerts, where visitors can experience the emotion and passion of this unique musical style.",
+                            destaques: "The museum's highlights include exhibitions about Portugal's great fado singers, traditional musical instruments used in fado, and the evolution of the genre over the centuries. The museum also houses regular fado concerts, where visitors can experience the emotion and passion of this unique musical style.",
                             adress: "Largo do Chafariz de Dentro, 1, 1100-139 Lisbon"
                         )
                     ],
@@ -1347,16 +1347,16 @@ extension MiniaturaCard {
                     translations: [
                         "pt": MiniaturaCardTranslation(
                             titulo: "Museu de Arte Antiga\nEncerrado para obras",
-                            shortDescription: "Museu Nacional de Arte Antiga de Portugal, abrigando as mais refinadas coleções de arte portuguesa e europeia.",
-                            description: "O Museu de Arte Antiga é o principal museu de arte de Portugal, com uma coleção abrangente que cobre pintura, escultura, artes decorativas e artes aplicadas. Fundado em 1884, o museu é conhecido pela sua coleção de arte portuguesa e europeia, abrangendo desde a Idade Média até ao século XIX.",
-                            history: "Os destaques do museu incluem pinturas de artistas como Hieronymus Bosch, Albrecht Dürer, Pieter Bruegel, Rembrandt, Rubens e Velázquez, bem como esculturas, cerâmicas, têxteis e mobiliário. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes.",
+                            shortDescription: "Museu Nacional de Arte Antiga 🖼️ abriga as mais refinadas coleções de arte portuguesa e europeia.",
+                            description: "O Museu de Arte Antiga 🖼️ é o principal museu de arte de Portugal, com uma coleção abrangente que cobre pintura, escultura, artes decorativas e artes aplicadas. Fundado em 1884, o museu é conhecido pela sua coleção de arte portuguesa e europeia, abrangendo desde a Idade Média até ao século XIX.",
+                            destaques: "Os destaques do museu incluem pinturas de artistas como Hieronymus Bosch, Albrecht Dürer, Pieter Bruegel, Rembrandt, Rubens e Velázquez, bem como esculturas, cerâmicas, têxteis e mobiliário. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes.",
                             adress: "R. das Janelas Verdes, 1249-017 Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
                             titulo: "Ancient Art Museum\nClosed for renovation",
-                            shortDescription: "Masterpieces of Portuguese and European art from the 12th to 19th centuries.",
-                            description: "The Museum of Ancient Art (Portuguese: Museu Nacional de Arte Antiga) is Portugal's main art museum, with a comprehensive collection covering painting, sculpture, decorative arts, and applied arts. Founded in 1884, the museum is known for its collection of Portuguese and European art, spanning from the Middle Ages to the 19th century.",
-                            history: "The museum's highlights include paintings by artists such as Hieronymus Bosch, Albrecht Dürer, Pieter Bruegel, Rembrandt, Rubens, and Velázquez, as well as sculptures, ceramics, textiles, and furniture. The museum also houses temporary exhibitions, concerts, and cultural events that enrich the visitors' experience.",
+                            shortDescription: "Masterpieces of Portuguese and European art 🖼️ from the 12th to 19th centuries.",
+                            description: "The Museum of Ancient Art 🖼️ is Portugal's main art museum, with a comprehensive collection covering painting, sculpture, decorative arts, and applied arts. Founded in 1884, the museum is known for its collection of Portuguese and European art, spanning from the Middle Ages to the 19th century.",
+                            destaques: "The museum's highlights include paintings by artists such as Hieronymus Bosch, Albrecht Dürer, Pieter Bruegel, Rembrandt, Rubens, and Velázquez, as well as sculptures, ceramics, textiles, and furniture. The museum also houses temporary exhibitions, concerts, and cultural events that enrich the visitors' experience.",
                             adress: "R. das Janelas Verdes, 1249-017 Lisboa"
                         )
                     ],
@@ -1373,17 +1373,17 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "CCB",
+                            titulo: "CCB 🖼️ ",
                             shortDescription: "Centro Cultural de Belém: exposições, concertos e arte contemporânea.",
                             description: "O CCB (Centro Cultural de Belém) é uma das mais importantes instituições culturais de Lisboa, abrigando uma impressionante coleção de arte contemporânea e design. O museu apresenta obras de alguns dos maiores artistas da história, incluindo Andy Warhol, Ai Weiwei, Olafur Eliasson e Anish Kapoor. Os visitantes podem explorar a extensa coleção do museu de pinturas, esculturase instalações, bem como os seus belos jardins e sala de concertos.",
-                            history: "Os destaques do museu incluem obras de alguns dos maiores artistas da história, como Andy Warhol, Ai Weiwei, Olafur Eliasson e Anish Kapoor, bem como pinturas, esculturas e instalações. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes, para além dos seus belos jardins e sala de concertos.",
+                            destaques: "Os destaques do museu incluem obras de alguns dos maiores artistas da história, como Andy Warhol, Ai Weiwei, Olafur Eliasson e Anish Kapoor, bem como pinturas, esculturas e instalações. O museu também abriga exposições temporárias, concertos e eventos culturais que enriquecem a experiência dos visitantes, para além dos seus belos jardins e sala de concertos.",
                             adress: "Praça do Império, 1449-003 Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "CCB",
+                            titulo: "CCB 🖼️ ",
                             shortDescription: "Belém Cultural Center: exhibitions, concerts, and contemporary art.",
                             description: "The CCB (Portuguese: Centro Cultural de Belém) is one of Lisbon's most important cultural institutions, housing an impressive collection of contemporary art and design. The museum features works by some of the greatest artists in history, including ANdy Warhol, Ai Weiwei, Olafur Eliasson, and Anish Kapoor. Visitors can explore the museum's extensive collection of paintings, sculptures, and installations, as well as its beautiful gardens and concert hall.",
-                            history: "The museum's highlights include works by some of the greatest artists in history, such as Andy Warhol, Ai Weiwei, Olafur Eliasson, and Anish Kapoor, as well as paintings, sculptures, and installations. The museum also houses temporary exhibitions, concerts, and cultural events that enrich visitors' experience, in addition to its beautiful gardens and concert hall.",
+                            destaques: "The museum's highlights include works by some of the greatest artists in history, such as Andy Warhol, Ai Weiwei, Olafur Eliasson, and Anish Kapoor, as well as paintings, sculptures, and installations. The museum also houses temporary exhibitions, concerts, and cultural events that enrich visitors' experience, in addition to its beautiful gardens and concert hall.",
                             adress: "Praça do Império, 1449-003 Lisboa"
                         )
                     ],
@@ -1400,17 +1400,17 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "MAAT",
+                            titulo: "MAAT 🖼️ ",
                             shortDescription: "Museu de Arte, Arquitetura e Tecnologia, que mostra expressões artísticas contemporâneas.",
                             description: "O MAAT (Museu de Arte, Arquitetura e Tecnologia) é um museu de arte, arquitetura e tecnologia em Lisboa, dedicado a explorar as interseções entre arte, ciência e tecnologia. Localizado na zona ribeirinha de Belém, o museu apresenta exposições inovadoras, instalações interativas e eventos culturais que desafiam os limites tradicionais da arte e da tecnologia.",
-                            history: "Os destaques do museu incluem exposições de arte contemporânea, arquitetura experimental, design inovador e tecnologia emergente. O museu também acolhe eventos culturais, oficinas e palestras que exploram as últimas tendências e práticas em arte, arquitetura e tecnologia.",
+                            destaques: "Os destaques do museu incluem exposições de arte contemporânea, arquitetura experimental, design inovador e tecnologia emergente. O museu também acolhe eventos culturais, oficinas e palestras que exploram as últimas tendências e práticas em arte, arquitetura e tecnologia.",
                             adress: "Av. Brasília, 1300-598 Lisbon"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "MAAT",
+                            titulo: "MAAT 🖼️ ",
                             shortDescription: "Museum of Art, Architecture and Technology by the Tagus river.",
                             description: "MAAT (Portuguese: Museu de Arte Arquitectura e Tecnologia) is a museum of art, architecture, and technology in Lisbon, dedicated to exploring the intersections between art, science, and technology. Located in the riverside area of Belém, the museum presents innovative exhibitions, interactive installations, and cultural events that challenge the traditional boundaries of art and technology.",
-                            history: "The museum's highlights include exhibitions of contemporary art, experimental architecture, innovative design, and emerging technology. The museum also hosts cultural events, workshops, and lectures that explore the latest trends and practices in art, architecture, and technology.",
+                            destaques: "The museum's highlights include exhibitions of contemporary art, experimental architecture, innovative design, and emerging technology. The museum also hosts cultural events, workshops, and lectures that explore the latest trends and practices in art, architecture, and technology.",
                             adress: "Av. Brasília, 1300-598 Lisbon"
                         )
                     ],
@@ -1427,17 +1427,17 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Museus",
+                            titulo: "Mais Museus + ",
                             shortDescription: "Explore  mais museus. Qual é o assunto que mais lhe interessa?",
                             description: "Além dos 7 museus mencionados, Lisboa tem muitos mais museus para visitar. Estes museus cobrem uma ampla gama de tópicos, desde arte e história até ciência e tecnologia, proporcionando uma visão abrangente do rico património cultural de Portugal.",
-                            history: "Museu do Terramoto, Museu Nacional de Arte Contemporânea, Museu Nacional de História Natural e da Ciência, Museu da Marioneta, Museu da Farmácia e Museu do Oriente. Cada museu oferece exposições únicas, programas educativos e eventos culturais que enriquecem a experiência dos visitantes.",
+                            destaques: "Museu do Terramoto, Museu Nacional de Arte Contemporânea, Museu Nacional de História Natural e da Ciência, Museu da Marioneta, Museu da Farmácia e Museu do Oriente. Cada museu oferece exposições únicas, programas educativos e eventos culturais que enriquecem a experiência dos visitantes.",
                             adress: "Vários locais em Lisboa"
                         ),
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Museums",
+                            titulo: "More Museums + ",
                             shortDescription: "Discover other fascinating museums in Lisbon.",
                             description: "In addition to the 7 museums mentioned, Lisbon has many more museums to visit. These museums cover a wide range of topics, from art and history to science and technology, providing a comprehensive view of Portugal's rich cultural heritage.",
-                            history: "Quake Museum, National Museum of Contemporary Art, National Museum of Natural History and Science, Puppet Museum, Pharmacy Museum and Orient Museum. Each museum offers unique exhibitions, educational programs, and cultural events that enrich the visitors' experience.",
+                            destaques: "Quake Museum, National Museum of Contemporary Art, National Museum of Natural History and Science, Puppet Museum, Pharmacy Museum and Orient Museum. Each museum offers unique exhibitions, educational programs, and cultural events that enrich the visitors' experience.",
                             adress: "Various locations in Lisbon'"
                         )
                     ],
@@ -1464,14 +1464,14 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Pena Palace",
+                            titulo: "Pena Palace 🏰 ",
                             shortDescription: "A colorful Romanticist palace on a hilltop, symbol of Sintra.",
                             description: "The National Palace of Pena is a 19th-century Romantic palace made of stone and stucco, situated on the top of the Sintra Mountains. It stands out for its eclectic style, with neo-Gothic, neo-Manueline, and Moorish elements, and for its vibrant colors, visible from the entire surrounding area. The palace is a testament to the king's passion for art and history, combining elements from various periods and cultures.",
                             history: "The Pena Palace was built on the site of an old monastery that was destroyed during the 1755 earthquake. King Ferdinand II acquired the land in 1838 and began construction of the palace in 1842. The palace was completed in 1854 and became the summer residence of the Portuguese royal family. After the fall of the monarchy in 1910, the palace was converted into a museum and opened to the public. The main architect responsible for transforming the monastery into a palace was Baron von Eschwege.",
                             adress: "Estrada da Pena, 2710-609 Sintra"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Palácio da Pena",
+                            titulo: "Palácio da Pena 🏰 ",
                             shortDescription: "Palácio romântico e colorido no topo da serra, símbolo de Sintra.",
                             description: "O Palácio Nacional da Pena é um palácio romântico do século XIX, construído em pedra e estuque, situado no topo da Serra de Sintra. Destaca-se pelo seu estilo eclético, com elementos neogóticos, neo-manuelinos e mouriscos, e pelas suas cores vibrantes, visíveis de toda a área circundante. O palácio é um testemunho da paixão do rei pela arte e história, combinando elementos de vários períodos e culturas.",
                             history: "O Palácio da Pena foi construído no local de um antigo mosteiro que foi destruído durante o terramoto de 1755. O rei Fernando II adquiriu o terreno em 1838 e iniciou a construção do palácio em 1842. O palácio foi concluído em 1854 e tornou-se a residência de verão da família real portuguesa. Após a queda da monarquia em 1910, o palácio foi convertido em museu e aberto ao público. O principal arquiteto responsável pela transformação do mosteiro em palácio foi o Barão von Eschwege.",
@@ -1491,14 +1491,14 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Travesseiros and Queijadas",
+                            titulo: "Travesseiros and Queijadas 🥧 ",
                             shortDescription: "Traditional Sintra pastries, sweet and unique.",
                             description: "Queijadas and travesseiros are two of Sintra's most traditional sweets, made with puff pastry, almonds, eggs, and sugar. Queijadas are small puff pastry tarts filled with a cheese cream, while travesseiros are puff pastry pillows filled with an almond sweet. Both are handcrafted, following centuries-old recipes, and can be found in traditional Sintra pastry shops, such as Piriquita and Casa da Queijada. In Lisbon and surrounding areas, travesseiros and queijadas are sold in various pastry shops and supermarkets.",
                             history: "The creation of Travesseiros dates back to the 1940s, at the Piriquita pastry shop, by Constância Cunha, while Queijadas originated in the 13th century, being produced by the nuns of the Penha Longa Convent. An interesting fact about Queijadas is that they were used as a form of payment for rents and taxes in medieval times.",
                             adress: "Various pastry shops in Sintra"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Travesseiros e Queijadas",
+                            titulo: "Travesseiros e Queijadas 🥧 ",
                             shortDescription: "Doces típicos de Sintra, saborosos e únicos.",
                             description: "As queijadas e os travesseiros são dois dos doces mais tradicionais de Sintra, feitos com massa folhada, amêndoas, ovos e açúcar. As queijadas são pequenas tartes de massa folhada recheadas com um creme de queijo, enquanto os travesseiros são almofadas de massa folhada recheadas com um doce de amêndoa. Ambos são feitos artesanalmente, seguindo receitas centenárias, e podem ser encontrados em pastelarias tradicionais de Sintra, como a Piriquita e a Casa da Queijada. Em Lisboa e arredores, travesseiros e queijadas são vendidos em várias pastelarias e supermercados.",
                             history: "A criação dos Travesseiros remonta à década de 1940, na pastelaria Piriquita, pela mão de Constância Cunha, enquanto as Queijadas têm origem no século XIII, sendo produzidas pelas freiras do Convento da Penha Longa. Um facto interessante sobre as Queijadas é que eram usadas como forma de pagamento de rendas e impostos na época medieval.",
@@ -1520,14 +1520,14 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Moorish Castle",
+                            titulo: "Moorish Castle ⛫ ",
                             shortDescription: "Ancient Moorish castle with panoramic views.",
                             description: "It is a medieval military fortification, built in stone, located at the top of the Sintra Mountains. Dating from the 8th century, during the period of Muslim occupation of the Iberian Peninsula, the castle offers panoramic views of the town of Sintra and the surrounding region. Its walls wind through the mountains, integrating into the natural landscape.",
                             history: "It was built by the Moors to protect the Sintra region, a strategic defense point. In 1147, King Afonso Henriques conquered the castle from the Moors, integrating it into the Kingdom of Portugal. Over the centuries, the castle underwent several renovations and expansions, being restored in the 19th century by King Ferdinand II, who restored its romantic appearance. One of the curiosities is that during the Christian reconquest, the castle was taken by assault during the night, after a long siege.",
                             adress: "Estrada da Pena, 2710-609 Sintra"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Castelo dos Mouros",
+                            titulo: "Castelo dos Mouros ⛫ ",
                             shortDescription: "Castelo mouro antigo com vistas panorâmicas.",
                             description: "É uma fortificação militar medieval, construída em pedra, localizada no topo da Serra de Sintra. Datado do século VIII, durante o período de ocupação muçulmana da Península Ibérica, o castelo oferece vistas panorâmicas sobre a vila de Sintra e a região circundante. As suas muralhas serpenteiam pelas montanhas, integrando-se na paisagem natural.",
                             history: "Foi construído pelos mouros para proteger a região de Sintra, um ponto estratégico de defesa. Em 1147, o rei Afonso Henriques conquistou o castelo aos mouros, integrando-o no Reino de Portugal. Ao longo dos séculos, o castelo sofreu várias reformas e ampliações, sendo restaurado no século XIX pelo rei Fernando II, que lhe deu a sua aparência romântica. Uma das curiosidades é que durante a reconquista cristã, o castelo foi tomado de assalto durante a noite, após um longo cerco.",
@@ -1547,14 +1547,14 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Quinta da Regaleira",
+                            titulo: "Quinta da Regaleira 🏰 ",
                             shortDescription: "A mystical estate with gardens, tunnels, and symbolism.",
                             description: "It is an architectural and landscape complex from the early 20th century, made of stone and stucco, located in Sintra. It features diverse architectural styles, such as neo-Manueline and romantic, with symbolic and esoteric elements. Its lush gardens, caves, and initiation wells make it a unique place.",
                             history: "The construction of Quinta da Regaleira was started in 1904 by António Augusto Carvalho Monteiro, with the aim of creating a space that reflected his esoteric and philosophical interests. Architect Luigi Manini was responsible for the project. Quinta da Regaleira was the scene of various ceremonies and symbolic rituals, linked to Freemasonry and the Templars. One of the curious facts is that the initiation well, with its spiral staircase, represents a descent into hell and a spiritual rebirth.",
                             adress: "2710-567 Sintra"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Quinta da Regaleira",
+                            titulo: "Quinta da Regaleira 🏰 ",
                             shortDescription: "Propriedade mística com jardins, túneis e simbolismo.",
                             description: "É um complexo arquitetônico e paisagístico do início do século XX, construído em pedra e estuque, localizado em Sintra. Apresenta diversos estilos arquitetônicos, como o neomanuelino e o romântico, com elementos simbólicos e esotéricos. Seus exuberantes jardins, grutas e poços iniciáticos tornam-no um lugar único.",
                             history: "A construção da Quinta da Regaleira foi iniciada em 1904 por António Augusto Carvalho Monteiro, com o objetivo de criar um espaço que refletisse seus interesses esotéricos e filosóficos. O arquiteto Luigi Manini foi o responsável pelo projeto. A Quinta da Regaleira foi palco de várias cerimônias e rituais simbólicos, ligados à Maçonaria e aos Templários. Um dos fatos curiosos é que o poço iniciático, com sua escadaria em espiral, representa uma descida ao inferno e um renascimento espiritual.",
@@ -1574,14 +1574,14 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Monserrate Park",
+                            titulo: "Monserrate Park 🌷 ",
                             shortDescription: "Exotic gardens and a unique palace in Sintra.",
                             description: "It is a 19th-century romantic garden, with an eclectic style palace with neo-Gothic, Moorish, Indian, and romantic influences. The park features a unique botanical collection, with plants from around the world including palms, cacti, ferns, and orchids. Its lakes, waterfalls, and ruins create a magical and mysterious environment.",
                             history: "The creation of Monserrate Park was initiated by Francis Cook, a wealthy English merchant, in the 19th century, between 1858 and 1863, to be his summer residence. Architect James Knowles Jr. was responsible for the palace project and landscape architect William Stockdale designed the park. The park was the scene of various parties and high society events of the time. One of the curious facts is that the park was built on the ruins of an old estate, which belonged to Gerard de Visme, an English merchant from the 18th century.",
                             adress: "Sintra Mountains"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Parque de Monserrate",
+                            titulo: "Parque de Monserrate 🌷 ",
                             shortDescription: "Jardins exóticos e palácio único em Sintra.",
                             description: "É um jardim romântico do século XIX, com um palácio de estilo eclético com influências neogóticas, mouriscas, indianas e românticas. O parque apresenta uma coleção botânica única, com plantas de todo o mundo, incluindo palmeiras, cactos, samambaias e orquídeas. Seus lagos, cascatas e ruínas criam um ambiente mágico e misterioso.",
                             history: "A criação do Parque de Monserrate foi iniciada por Francis Cook, um rico comerciante inglês, no século XIX, entre 1858 e 1863, para ser sua residência de verão. O arquiteto James Knowles Jr. foi o responsável pelo projeto do palácio e o paisagista William Stockdale desenhou o parque. O parque foi palco de várias festas e eventos da alta sociedade da época. Um dos fatos curiosos é que o parque foi construído sobre as ruínas de uma antiga propriedade, que pertencia a Gerard de Visme, um comerciante inglês do século XVIII.",
@@ -1601,14 +1601,14 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: " Convent of the Capuchin",
+                            titulo: "Convent of the Capuchin ⛰ ",
                             shortDescription: "A humble and historic convent surrounded by nature.",
                             description: "It is a 16th-century Franciscan convent, built in stone and integrated into the landscape of the Sintra Mountains. It stands out for its austere architecture, with small cells carved into the rock and lined with cork. It is located in an isolated and densely wooded area, providing an environment of seclusion. The convent is a testament to monastic life and Franciscan spirituality, and is now a place of pilgrimage and meditation.",
                             history: "The construction of the convent was initiated in 1560 by D. Álvaro de Castro, to serve as a retreat for the Franciscan friars of the Order of Capuchos. The convent was designed to promote a life of prayer and penance, with great emphasis on poverty and isolation. One of the curious facts is that the small dimensions of the cells and the use of cork on the walls reflect the friars' ideal of simplicity and detachment.",
                             adress: "Sintra Mountains"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Convento dos Capuchos",
+                            titulo: "Convento dos Capuchos ⛰ ",
                             shortDescription: "Convento humilde e histórico rodeado de natureza.",
                             description: "É um convento franciscano do século XVI, construído em pedra e integrado na paisagem da Serra de Sintra. Destaca-se pela sua arquitetura austera, com pequenas celas escavadas na rocha e revestidas de cortiça. Está localizado numa área isolada e densamente arborizada, proporcionando um ambiente de recolhimento. O convento é um testemunho da vida monástica e da espiritualidade franciscana, sendo atualmente um local de peregrinação e meditação.",
                             history: "A construção do convento foi iniciada em 1560 por D. Álvaro de Castro, para servir como retiro para os frades franciscanos da Ordem dos Capuchos. O convento foi projetado para promover uma vida de oração e penitência, com grande ênfase na pobreza e no isolamento. Um dos fatos curiosos é que as pequenas dimensões das celas e o uso de cortiça nas paredes refletem o ideal dos frades de simplicidade e desapego.",
@@ -1628,14 +1628,14 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Palácio da Vila",
+                            titulo: "Palácio da Vila 🏰 ",
                             shortDescription: "The medieval royal palace in the heart of Sintra.",
                             description: "It is a medieval and Renaissance palace, built with various materials such as stone, brick, and tiles, located in the historic center of Sintra. Its architecture reflects different styles, including Gothic, Manueline, and Moorish, the result of centuries of alterations and extensions. Its iconic cone-shaped chimneys are one of its most distinctive features.",
                             history: "The construction of the palace was initiated in the 14th century by King João I, to serve as a summer residence for the Portuguese royal family. Over the centuries, it was the scene of important historical events, such as the marriage of King Manuel I to Maria of Aragon. One of the curiosities is that the palace has a vast collection of Hispano-Moorish tiles, considered among the most important in the country.",
                             adress: "Village of Sintra"
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Palácio da Vila",
+                            titulo: "Palácio da Vila 🏰 ",
                             shortDescription: "O palácio real medieval no centro de Sintra.",
                             description: "É um palácio medieval e renascentista, construído com vários materiais como pedra, tijolo e azulejos, localizado no centro histórico de Sintra. A sua arquitetura reflete diferentes estilos, incluindo gótico, manuelino e mourisco, resultado de séculos de alterações e ampliações. As suas icónicas chaminés em forma de cone são uma das suas características mais distintivas.",
                             history: "A construção do palácio foi iniciada no século XIV pelo rei João I, para servir como residência de verão da família real portuguesa. Ao longo dos séculos, foi palco de importantes eventos históricos, como o casamento do rei Manuel I com Maria de Aragão. Uma das curiosidades é que o palácio possui uma vasta coleção de azulejos hispano-mouriscos, considerados entre os mais importantes do país.",
@@ -1655,14 +1655,14 @@ extension MiniaturaCard {
                     ordem: 8,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "More Sintra",
+                            titulo: "More Sintra ⛱️☀️🌊 ",
                             shortDescription: "Discover even more wonders in Sintra!",
-                            description: "When we talk about Sintra, we may be referring to the Town or the Municipality. The Town of Sintra is a magical place, with a romantic atmosphere and a unique cultural and natural heritage. The Municipality of Sintra is a diverse region, ranging from the Atlantic coast to the mountains of the Sintra Range, with a rich history and breathtaking landscape. In addition to the 7 wonders already mentioned, here are some other emblematic and enchanting places in the region that deserve to be visited and explored.\n- Cabo da Roca: It is the westernmost point of continental Europe, with 140-meter-high cliffs and breathtaking views over the ocean.\n-  Cruz Alta: It is the highest point of the Sintra Mountains, at 528 meters altitude, from where you can see the most beautiful views over Lisbon and Cascais to the south, the Atlantic Ocean to the west, and the rural region to the north.\n-  Adraga Beach: It is one of the most beautiful beaches in the region, with an extensive sandy area, imposing cliffs, and crystal-clear waters.\n-  Praia Grande: It is one of the most popular beaches in the region, with an extensive sandy area, good waves for surfing, and a relaxed atmosphere.\n-  Maçãs Beach: It is a picturesque beach, with a small fishing port, a lively promenade, and a family-friendly atmosphere.\n-  Ursa Beach: It is a wild and isolated beach, with steep cliffs, golden sand, and crystal-clear waters. Aguda Beach: It is a quiet and isolated beach, with an extensive sandy area, calm waters, and a relaxing atmosphere."
+                            description: "When we talk about Sintra, we may be referring to the Town or the Municipality. The Town of Sintra is a magical place, with a romantic atmosphere and a unique cultural and natural heritage. The Municipality of Sintra is a diverse region, ranging from the Atlantic coast to the mountains of the Sintra Range, with a rich history and breathtaking landscape. In addition to the 7 wonders already mentioned, here are some other emblematic and enchanting places in the region that deserve to be visited and explored.\n\n😮 Cabo da Roca: It is the westernmost point of continental Europe, with 140-meter-high cliffs and breathtaking views over the ocean.\n✝️  Cruz Alta: It is the highest point of the Sintra Mountains, at 528 meters altitude, from where you can see the most beautiful views over Lisbon and Cascais to the south, the Atlantic Ocean to the west, and the rural region to the north.\n⛱️ Adraga Beach: It is one of the most beautiful beaches in the region, with an extensive sandy area, imposing cliffs, and crystal-clear waters.\n⛱️ Praia Grande: It is one of the most popular beaches in the region, with an extensive sandy area, good waves for surfing, and a relaxed atmosphere.\n⛱️ Maçãs Beach: It is a picturesque beach, with a small fishing port, a lively promenade, and a family-friendly atmosphere.\n⛱️  Ursa Beach: It is a wild and isolated beach, with steep cliffs, golden sand, and crystal-clear waters.\n⛱️ Aguda Beach: It is a quiet and isolated beach, with an extensive sandy area, calm waters, and a relaxing atmosphere."
                         ),
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Mais Sintra",
+                            titulo: "Mais Sintra ⛱️☀️🌊 ",
                             shortDescription: "Descubra ainda mais maravilhas em Sintra!",
-                            description: "Quando falamos de Sintra, podemos estar a referir-nos à Vila ou ao Concelho. A Vila de Sintra é um lugar mágico, com uma atmosfera romântica e um património cultural e natural único. O Concelho de Sintra é uma região diversa, que vai desde a costa atlântica até às montanhas da Serra de Sintra, com uma rica história e paisagem deslumbrante. Além das 7 maravilhas já mencionadas, aqui estão alguns outros lugares emblemáticos e encantadores da região que merecem ser visitados e explorados.\n\n- Cabo da Roca: É o ponto mais ocidental da Europa continental, com falésias de 140 metros de altura e vistas deslumbrantes sobre o oceano.\n- Cruz Alta: É o ponto mais alto da Serra de Sintra, com 528 metros de altitude, de onde se podem ver as vistas mais bonitas sobre Lisboa e Cascais a sul, o Oceano Atlântico a oeste, e a região rural a norte.\n- Praia da Adraga: É uma das praias mais bonitas da região, com uma extensa área de areia, falésias imponentes e águas cristalinas.\n- Praia Grande: É uma das praias mais populares da região, com uma extensa área de areia, boas ondas para surf e uma atmosfera descontraída.\n- Praia das Maçãs: É uma praia pitoresca, com um pequeno porto de pesca, um passeio animado e uma atmosfera familiar.\n- Praia da Ursa: É uma praia selvagem e isolada, com falésias íngremes, areia dourada e águas cristalinas.\n- Praia da Aguda: É uma praia tranquila e isolada, com uma extensa área de areia, águas calmas e uma atmosfera relaxante."
+                            description: "Quando falamos de Sintra, podemos estar a referir-nos à Vila ou ao Concelho. A Vila de Sintra é um lugar mágico, com uma atmosfera romântica e um património cultural e natural único. O Concelho de Sintra é uma região diversa, que vai desde a costa atlântica até às montanhas da Serra de Sintra, com uma rica história e paisagem deslumbrante. Além das 7 maravilhas já mencionadas, aqui estão alguns outros lugares emblemáticos e encantadores da região que merecem ser visitados e explorados.\n\n😮 Cabo da Roca: É o ponto mais ocidental da Europa continental, com falésias de 140 metros de altura e vistas deslumbrantes sobre o oceano.\n✝️ Cruz Alta: É o ponto mais alto da Serra de Sintra, com 528 metros de altitude, de onde se podem ver as vistas mais bonitas sobre Lisboa e Cascais a sul, o Oceano Atlântico a oeste, e a região rural a norte.\n⛱️ Praia da Adraga: É uma das praias mais bonitas da região, com uma extensa área de areia, falésias imponentes e águas cristalinas.\n⛱️ Praia Grande: É uma das praias mais populares da região, com uma extensa área de areia, boas ondas para surf e uma atmosfera descontraída.\n⛱️ Praia das Maçãs: É uma praia pitoresca, com um pequeno porto de pesca, um passeio animado e uma atmosfera familiar.\n⛱️ Praia da Ursa: É uma praia selvagem e isolada, com falésias íngremes, areia dourada e águas cristalinas.\n⛱️ Praia da Aguda: É uma praia tranquila e isolada, com uma extensa área de areia, águas calmas e uma atmosfera relaxante."
                         )
                     ],
                     locations: [
@@ -1688,7 +1688,7 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Telémovel",
+                            titulo: "Telémovel 📱 ",
                             shortDescription: "Celular",
                             usage: "Posso ligar para o seu telémovel?",
                             pronunciation: "teh-leh-MOH-vel"
@@ -1705,7 +1705,7 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Comboio",
+                            titulo: "Comboio 🚆 ",
                             shortDescription: "Trem",
                             usage: "O comboio parte às 8h.",
                             pronunciation: "kom-BOY-oo"
@@ -1722,7 +1722,7 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Autocarro",
+                            titulo: "Autocarro 🚌 ",
                             shortDescription: "Ônibus",
                             usage: "Vou apanhar o autocarro para o trabalho.",
                             pronunciation: "ow-toh-KAH-roo"
@@ -1739,7 +1739,7 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Eléctrico",
+                            titulo: "Eléctrico 🚃 ",
                             shortDescription: "Bonde",
                             usage: "O eléctrico 28 é famoso em Lisboa.",
                             pronunciation: "eh-LEK-tree-ko"
@@ -1756,7 +1756,7 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Bicha",
+                            titulo: "Bicha 🤭 ",
                             shortDescription: "Fila",
                             usage: "Há uma grande bicha para comprar bilhetes.",
                             pronunciation: "BEE-sha"
@@ -1773,7 +1773,7 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Pequeno-almoço",
+                            titulo: "Pequeno-almoço ☕️ 🥐 ",
                             shortDescription: "Café da manhã",
                             usage: "O pequeno-almoço é servido até às 10h.",
                             pronunciation: "peh-KEN-oo al-MOH-soo"
@@ -1790,7 +1790,7 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "pt": MiniaturaCardTranslation(
-                            titulo: "Casa de banho",
+                            titulo: "Casa de banho 🚻 ",
                             shortDescription: "Banheiro",
                             usage: "Onde fica a casa de banho?",
                             pronunciation: "KAH-za deh BAH-nyoo"
@@ -1812,7 +1812,7 @@ extension MiniaturaCard {
                     ordem: 1,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Hi",
+                            titulo: "Hi/Hello ✋🏼",
                             shortDescription: "\"Olá\" is the most common way to say \"Hello!\" or \"Hi!\"in Portuguese, used in both formal and informal situations.",
                             description: "It is a friendly and welcoming greeting that can be used with people of all ages and social backgrounds. When meeting someone for the first time, it is polite to say \"Olá\" and introduce yourself, followed by a handshake or a smile. \"Olá\" can also be used to get someone's attention or to start a conversation.",
                             usage: "\"Olá\" is a versatile greeting that can be used in a variety of situations, such as: Meeting someone for the first time: Olá, eu sou o João. Prazer em conhecê-lo. (Hello, I'm João. Nice to meet you.) Greeting friends and family: Olá, como estás? (Hello, how are you?) Answering the phone: Olá, quem fala? (Hello, who's calling?) Getting someone's attention: Olá, desculpe incomodar. (Hello, sorry to bother you.) Starting a conversation: Olá, tudo bem contigo? (Hello, how are you doing?)",
@@ -1830,7 +1830,7 @@ extension MiniaturaCard {
                     ordem: 2,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Please",
+                            titulo: "Please 🙏🏽 ",
                             shortDescription: "\"Por favor\" or \"Se faz favor\" are polite expressions used to make requests, ask for help, or show consideration for others.",
                             description: "It is a versatile word that can be used in a variety of situations, from ordering food in a restaurant to asking for directions on the street. Por favor is a simple and effective way to show respect and courtesy to others.",
                             usage: "\"Por favor\" is a versatile expression that can be used in a variety of situations, such as: Asking for something: Por favor, pode passar-me o sal? (Please, can you pass me the salt?) Making a request: Por favor, pode dizer-me onde fica a estação de comboios? (Please, can you tell me where the train station is?) Ordering food: Por favor, um café e um pastel de nata. (Please, a coffee and a custard tart.) Asking for help: Por favor, pode ajudar-me a encontrar o meu hotel? (Please, can you help me find o meu hotel?) Showing consideration: Por favor, desculpe o atraso. (Thank you very much for everything. Please, accept this gift.)",
@@ -1848,7 +1848,7 @@ extension MiniaturaCard {
                     ordem: 3,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Yes/No",
+                            titulo: "Yes/No 👍🏼👎🏼",
                             shortDescription: "\"Sim\" and \"Não\" are simple and effective words used to express agreement or disagreement, answer questions, or make decisions.",
                             description: "They are versatile words that can be used in a variety of situations, from confirming an appointment to expressing your opinion on a topic. \"Sim\" and \"Não\" are essential words in any conversation, allowing you to communicate clearly and effectively.",
                             usage: "\"Sim\" and \"Não\" are simple and effective words that can be used in a variety of situations, such as: Answering questions: \"Sim, eu gostaria de um café.\" (Yes, I would like a coffee.) Expressing agreement: \"Sim, concordo com a tua opinião.\" (Yes, I agree with your opinion.) Making decisions: \"Sim, vou aceitar o emprego.\" (Yes, I will take the job.) Confirming appointments: \"Sim, estarei lá às 10 horas.\" (Yes, I will be there at 10 o'clock.) Expressing disagreement: \"Não, não concordo com essa ideia.\" (No, I don't agree with that idea.) Declining invitations: \"Não, não posso ir à festa.\" (No, I can't go to the party.",
@@ -1866,7 +1866,7 @@ extension MiniaturaCard {
                     ordem: 4,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Thank you",
+                            titulo: "Thank you 🙏🏽",
                             shortDescription: "\"Obrigado\" is a polite and friendly expression used to express gratitude, appreciation, and recognition for a favor, gift, or kind gesture.",
                             description: "It is a versatile word that can be used in a variety of situations, from thanking someone for holding the door open to expressing your appreciation for a thoughtful gift. \"Obrigado\" is a simple and effective way to show gratitude and goodwill to others.",
                             usage: "\"Obrigado\" is a versatile expression that can be used in a variety of situations, such as: Thanking someone: Obrigado pela ajuda. (Thank you for the help.) Expressing gratitude: Obrigado pela prenda. (Thank you for the gift.) Showing appreciation: Obrigado pela hospitalidade. (Thank you for the hospitality.) Acknowledging a favor: Obrigado por me ouvires. (Thank you for listening to me.) Responding to a compliment: Obrigado pelo elogio. (Thank you for the compliment.) Expressing recognition: Obrigado pelo apoio. (Thank you for the support.)",
@@ -1884,7 +1884,7 @@ extension MiniaturaCard {
                     ordem: 5,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Bom Dia/ Boa Noite",
+                            titulo: "Bom Dia/ Boa Noite ☀️🌙 ",
                             shortDescription: "\"Bom dia\" and \"Bom dia\" are polite and friendly expressions used to greet someone in the morning or wish them a good day or night.",
                             description: "They are versatile phrases that can be used in a variety of situations, from greeting friends and family to addressing colleagues and strangers. \"Bom dia\" and \"Boa noite\" are essential phrases in any conversation, allowing you to communicate clearly and effectively.",
                             usage: "\"Bom dia\" and \"Boa noite\" are versatile expressions that can be used in a variety of situations, such as: Greeting someone in the morning: Bom dia, como estás? (Good morning, how are you?) Wishing someone a good day: Bom dia, que tenhas um dia maravilhoso. (Good morning, may you have a wonderful day.) Saying good night: Boa noite, dorme bem. (Good night, sleep well.) Wishing someone sweet dreams: Boa noite, sonhos doces. (Good night, sweet dreams.) Saying goodbye in the evening: Boa noite, até amanhã. (Good night, see you tomorrow.) Ending a phone call: Boa noite, falo contigo amanhã. (Good night, I'll talk to you tomorrow.",
@@ -1902,7 +1902,7 @@ extension MiniaturaCard {
                     ordem: 6,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "I´m sorry",
+                            titulo: "I´m sorry 😔 ",
                             shortDescription: "\"Desculpe\" is a polite and friendly expression used to apologize, ask for forgiveness, or get someone's attention.",
                             description: "It is a versatile word that can be used in a variety of situations, from bumping into someone on the street to interrupting a conversation. \"Desculpe\" is a simple and effective way to show respect and consideration for others.",
                             usage: "\"Desculpe\" is a versatile expression that can be used in a variety of situations, such as: Apologizing: Desculpe pelo atraso. (Excuse me for being late.) Asking for forgiveness: Desculpe se o ofendi. (Excuse me if I offended you.) Getting someone's attention: Desculpe, pode ajudar-me? (Excuse me, can you help me?) Interrupting a conversation: Desculpe interromper, mas tenho uma pergunta. (Excuse me for interrupting, but I have a question.) Passing through a crowded place: Desculpe, com licença. (Excuse me, excuse me.) Correcting a mistake: Desculpe, enganei-me no número. (Excuse me, I got the number wrong.)",
@@ -1920,7 +1920,7 @@ extension MiniaturaCard {
                     ordem: 7,
                     translations: [
                         "en": MiniaturaCardTranslation(
-                            titulo: "Goodbye",
+                            titulo: "Goodbye 👋🏽 ",
                             shortDescription: "\"Adeus\" is a formal and polite way to say goodbye, parting   with respect, goodwill, and best wishes.",
                             description: "It is a versatile word that can be used in a variety of situations, from saying goodbye to friends and family to ending a business meeting. \"Adeus\" is a simple and effective way to show appreciation and respect for others.",
                             usage: "\"Adeus\" is a versatile expression that can be used in a variety of situations, such as: Saying goodbye to someone: Adeus, até à próxima. (Goodbye, see you next time.) Parting with respect: Adeus, foi um prazer conhecê-lo. (Goodbye, it was a pleasure to meet you.) Ending a conversation: Adeus, tenha um bom dia. (Goodbye, have a good day.) Wishing someone well: Adeus, que tudo corra bem. (Goodbye, may everything go well.) Saying farewell to a friend: Adeus, até breve. (Goodbye, see you soon.) Ending a phone call: Adeus, falo contigo mais tarde. (Goodbye, I'll talk to you later.)",

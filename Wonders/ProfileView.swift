@@ -145,7 +145,9 @@ struct SettingsView: View {
                         showContact = true
                     }
                     CardButton(icon: "shield", text: t("privacy"), isDestructive: false) {
-                        showPrivacy = true
+                        if let url = URL(string: "https://sevenwonders.pt/privacy-policy.html") {
+                            UIApplication.shared.open(url)
+                        }
                     }
                 }
                 // Account Section
@@ -175,11 +177,14 @@ struct SettingsView: View {
         }
         .alert(isPresented: $showDeleteAlert) {
             Alert(title: Text(t("delete_title")), message: Text(t("delete_message")), primaryButton: .destructive(Text(t("delete_confirm"))) {
-                // TODO: Implement delete
+                deleteAccount()
             }, secondaryButton: .cancel(Text(t("cancel"))))
         }
         .sheet(isPresented: $showTutorial) {
             TutorialView()
+        }
+        .sheet(isPresented: $showContact) {
+            ContactSheetView(isPresented: $showContact)
         }
     }
 
@@ -220,6 +225,22 @@ struct SettingsView: View {
             isUserLoggedIn = false
         } catch {
             errorMessage = "Error logging out: \(error.localizedDescription)"
+        }
+    }
+
+    private func deleteAccount() {
+        guard let user = user else { return }
+        // Delete Firestore user document first (optional)
+        let db = Firestore.firestore()
+        db.collection("users").document(user.uid).delete { error in
+            // Proceed to delete Firebase Auth user regardless of Firestore result
+            user.delete { authError in
+                if let authError = authError {
+                    errorMessage = "Error deleting account: \(authError.localizedDescription)"
+                } else {
+                    isUserLoggedIn = false
+                }
+            }
         }
     }
 }
@@ -267,5 +288,111 @@ struct CardButton<Trailing: View>: View {
 extension CardButton where Trailing == EmptyView {
     init(icon: String, text: String, isDestructive: Bool = false, action: @escaping () -> Void) {
         self.init(icon: icon, text: text, trailing: EmptyView(), isDestructive: isDestructive, action: action)
+    }
+}
+
+struct ContactSheetView: View {
+    @Binding var isPresented: Bool
+    let iconWidth: CGFloat = 24
+    let copyWidth: CGFloat = 24
+    let rowHeight: CGFloat = 28
+    var body: some View {
+        VStack(spacing: 32) {
+            Text("Contact")
+                .font(.title2)
+                .bold()
+                .padding(.top, 16)
+            VStack(spacing: 20) {
+                // Email row
+                HStack(alignment: .center, spacing: 0) {
+                    Image(systemName: "envelope")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 16))
+                        .frame(width: iconWidth, alignment: .center)
+                        .padding(.leading, 2)
+                    Text("lisbonsevenwonders@gmail.com")
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(minWidth: 140, maxWidth: .infinity, alignment: .center) // <-- centralizado
+                    Button(action: {
+                        UIPasteboard.general.string = "lisbonsevenwonders@gmail.com"
+                    }) {
+                        Image(systemName: "doc.on.doc")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 16))
+                    }
+                    .frame(width: copyWidth, alignment: .center)
+                    .padding(.trailing, 2)
+                }
+                // Phone row
+                HStack(alignment: .center, spacing: 0) {
+                    Image(systemName: "phone")
+                        .foregroundColor(.green)
+                        .font(.system(size: 16))
+                        .frame(width: iconWidth, alignment: .center)
+                        .padding(.leading, 2)
+                    Text("+351 915122373")
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(minWidth: 140, maxWidth: .infinity, alignment: .center) // <-- centralizado
+                    Button(action: {
+                        UIPasteboard.general.string = "+351 915122373"
+                    }) {
+                        Image(systemName: "doc.on.doc")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 16))
+                    }
+                    .frame(width: copyWidth, alignment: .center)
+                    .padding(.trailing, 2)
+                }
+            }
+            // Remove Spacer here, add small padding to Close row
+            HStack(alignment: .center, spacing: 0) {
+                Spacer().frame(width: iconWidth)
+                Spacer().frame(minWidth: 140)
+                Button(action: { isPresented = false }) {
+                    Text("Close")
+                        .fontWeight(.regular)
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 18)
+                        .padding(.vertical, 12)
+                        .background(Color(.systemGray5))
+                        .cornerRadius(8)
+                }
+            }
+            .padding(.top, 16) // Add small gap above Close row
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: 400)
+    }
+}
+
+struct GridRowView: View {
+    let icon: String
+    let text: String
+    let copyText: String
+    var body: some View {
+        HStack(alignment: .center, spacing: 0) {
+            Image(systemName: icon)
+                .frame(width: 40, alignment: .center)
+                .foregroundColor(icon == "envelope" ? .blue : .green)
+                .font(.system(size: 22))
+            Text(text)
+                .font(.body)
+                .foregroundColor(.primary)
+                .frame(minWidth: 200, alignment: .leading)
+            Button(action: {
+                UIPasteboard.general.string = copyText
+            }) {
+                Image(systemName: "doc.on.doc")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 22))
+            }
+            .frame(width: 40, alignment: .center)
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }

@@ -1,5 +1,5 @@
 import SwiftUI
-
+// ponto de restauro
 struct HomeView: View {
     let categories: [(title: String, color: Color)]
     let imageNames: [String]

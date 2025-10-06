@@ -35,10 +35,11 @@ struct CardsDeckPage: View, Identifiable {
                                 favoritesManager.toggleFavorite(card: card)
                             }) {
                                 Image(systemName: favoritesManager.isFavorite(card: card) ? "heart.fill" : "heart")
+                                    .font(.system(size: 24)) // <-- Define o tamanho do ícone
                                     .foregroundColor(favoritesManager.isFavorite(card: card) ? .red : .white)
                                     .padding(10)
-                                    .background(Color.black.opacity(0.3))
-                                    .clipShape(Circle())
+                                   // .background(Color.black.opacity(0.3))
+                                  //  .clipShape(Circle())
                             }
                             .padding(12)
                             .accessibilityLabel(favoritesManager.isFavorite(card: card) ? "Remover dos favoritos" : "Adicionar aos favoritos")
@@ -60,6 +61,7 @@ struct CardsDeckPage: View, Identifiable {
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.bottom, 12) // Adiciona espaço abaixo do título
                             Text(history)
                                 .font(.body)
                                 .foregroundColor(.primary)
@@ -71,6 +73,7 @@ struct CardsDeckPage: View, Identifiable {
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.bottom, 12) // Adiciona espaço abaixo
                             Text(destaques)
                                 .font(.body)
                                 .foregroundColor(.primary)
@@ -82,6 +85,7 @@ struct CardsDeckPage: View, Identifiable {
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.bottom, 12) // Adiciona espaço abaixo
                             Text(usage)
                                 .font(.body)
                                 .foregroundColor(.primary)
@@ -93,6 +97,7 @@ struct CardsDeckPage: View, Identifiable {
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.bottom, 12) // Adiciona espaço abaixo
                             Text(pronunciation)
                                 .font(.body)
                                 .foregroundColor(.primary)
@@ -104,6 +109,7 @@ struct CardsDeckPage: View, Identifiable {
                                 .font(.headline)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.bottom, 12) // Adiciona espaço abaixo
                             Text(adress)
                                 .font(.body)
                                 .foregroundColor(.primary)

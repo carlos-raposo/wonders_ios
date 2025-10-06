@@ -39,10 +39,11 @@ struct MiniaturaCardView: View {
                         favoritesManager.toggleFavorite(card: card)
                     }) {
                         Image(systemName: favoritesManager.isFavorite(card: card) ? "heart.fill" : "heart")
+                            .font(.system(size: 24)) // <-- Define o tamanho do ícone
                             .foregroundColor(favoritesManager.isFavorite(card: card) ? .red : .white)
                             .padding(8)
-                            .background(Color.black.opacity(0.3))
-                            .clipShape(Circle())
+                           // .background(Color.black.opacity(0.3))
+                         //   .clipShape(Circle())
                     }
                     .padding(8)
                     .accessibilityLabel(favoritesManager.isFavorite(card: card) ? "Remover dos favoritos" : "Adicionar aos favoritos")
