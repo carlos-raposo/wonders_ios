@@ -3,7 +3,6 @@
 
 @implementation AppleAuthHelper
 + (FIRAuthCredential *)credentialWithProviderID:(NSString *)providerID idToken:(NSString *)idToken accessToken:(NSString *)accessToken {
-    // Not implemented: Apple Sign-In is not supported via Objective-C in current FirebaseAuth versions.
-    return nil;
+    return [FIROAuthProvider credentialWithProviderID:providerID IDToken:idToken accessToken:accessToken];
 }
 @end

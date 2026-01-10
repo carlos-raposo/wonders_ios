@@ -18,21 +18,11 @@ struct MiniaturaCardView: View {
                 ZStack(alignment: .topLeading) {
                     Image(card.imagem)
                         .resizable()
-                        .scaledToFill()
-                        .frame(height: 180)
+                        .aspectRatio(4.0/3.0, contentMode: .fill)
+                        .frame(maxWidth: .infinity)
                         .clipped()
                         .cornerRadius(16)
                         .accessibilityLabel("Imagem da miniatura \(translation.titulo)")
-                    Circle()
-                        .fill(Color.gray.opacity(0.8))
-                        .frame(width: 32, height: 32)
-                        .overlay(
-                            Text(card.ordem == 8 ? "+" : "\(card.ordem)")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                        )
-                        .padding(8)
-                        .accessibilityLabel("Número da miniatura: \(card.ordem == 8 ? "+" : String(card.ordem))")
                 }
                 if canFavorite {
                     Button(action: {

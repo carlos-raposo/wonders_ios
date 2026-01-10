@@ -2,5 +2,7 @@
 #import <FirebaseAuth/FirebaseAuth.h>
 
 @interface AppleAuthHelper : NSObject
-+ (FIRAuthCredential *)credentialWithProviderID:(NSString *)providerID idToken:(NSString *)idToken accessToken:(NSString *)accessToken;
++ (FIRAuthCredential * _Nonnull)credentialWithProviderID:(NSString * _Nonnull)providerID
+                                                 idToken:(NSString * _Nonnull)idToken
+                                            accessToken:(NSString * _Nonnull)accessToken;
 @end

@@ -27,7 +27,7 @@ struct CardsDeckPage: View, Identifiable {
                     ZStack(alignment: .topTrailing) {
                         Image(card.imagem)
                             .resizable()
-                            .scaledToFit()
+                            .aspectRatio(4.0/3.0, contentMode: .fit)
                             .cornerRadius(16)
                             .accessibilityLabel("Imagem da miniatura \(translation.titulo)")
                         if canFavorite {
