@@ -1,0 +1,16 @@
+login_title = "Sign In";
+signup_title = "Sign Up";
+email_placeholder = "Email";
+password_placeholder = "Password";
+confirm_password_placeholder = "Confirm Password";
+login_button = "Sign In";
+signup_button = "Sign Up";
+google_button = "Continue with Google";
+apple_button = "Continue with Apple";
+have_account = "Already have an account? Sign In";
+dont_have_account = "Don't have an account? Sign Up";
+forgot_password = "Forgot password?";
+error_passwords_no_match = "Passwords do not match.";
+error_google_auth_failed = "Google authentication failed.";
+error_unknown = "Unknown authentication error.";
+name_placeholder = "Name";

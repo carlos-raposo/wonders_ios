@@ -26,13 +26,13 @@ struct LoginView: View {
             .padding(.top)
             .padding(.horizontal)
 
-            Text("Entrar")
+            Text(NSLocalizedString("login_title", comment: ""))
                 .font(.system(size: 32, weight: .bold))
                 .padding(.bottom, 8)
 
             VStack(spacing: 16) {
-                WondersTextField(icon: "envelope", placeholder: "Email", text: $email, isSecure: false)
-                WondersTextField(icon: "lock", placeholder: "Senha", text: $password, isSecure: !isPasswordVisible, trailingIcon: isPasswordVisible ? "eye.slash" : "eye", trailingAction: { isPasswordVisible.toggle() })
+                WondersTextField(icon: "envelope", placeholder: NSLocalizedString("email_placeholder", comment: ""), text: $email, isSecure: false)
+                WondersTextField(icon: "lock", placeholder: NSLocalizedString("password_placeholder", comment: ""), text: $password, isSecure: !isPasswordVisible, trailingIcon: isPasswordVisible ? "eye.slash" : "eye", trailingAction: { isPasswordVisible.toggle() })
             }
             .padding(.horizontal)
 
@@ -52,7 +52,7 @@ struct LoginView: View {
                     }
                 }
             }) {
-                Text("Entrar")
+                Text(NSLocalizedString("login_button", comment: ""))
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -63,6 +63,13 @@ struct LoginView: View {
             }
             .padding(.horizontal)
 
+            SignInWithAppleButtonView(onAuthenticated: onAuthenticated, errorMessage: $errorMessage)
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .background(Color.white)
+                .cornerRadius(16)
+                .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray.opacity(0.3), lineWidth: 1))
+                .padding(.horizontal)
+
             Button(action: {
                 if let rootVC = UIApplication.topViewController() {
                     GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
@@ -72,7 +79,7 @@ struct LoginView: View {
                         }
                         guard let user = signInResult?.user,
                               let idToken = user.idToken?.tokenString else {
-                            self.errorMessage = "Google authentication failed."
+                            self.errorMessage = NSLocalizedString("error_google_auth_failed", comment: "")
                             return
                         }
                         let accessToken = user.accessToken.tokenString
@@ -92,12 +99,11 @@ struct LoginView: View {
                 HStack {
                     Image(systemName: "g.circle")
                         .foregroundColor(.red)
-                    Text("Continue with Google")
-                        .foregroundColor(Color.purple)
+                    Text(NSLocalizedString("google_button", comment: ""))
+                        .foregroundColor(.black)
                         .font(.headline)
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
+                .frame(maxWidth: .infinity, minHeight: 50)
                 .background(Color.white)
                 .cornerRadius(16)
                 .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray.opacity(0.3), lineWidth: 1))
@@ -107,7 +113,7 @@ struct LoginView: View {
             Spacer()
 
             Button(action: { showSignUp = true }) {
-                Text("Não tem uma conta? Cadastre-se")
+                Text(NSLocalizedString("dont_have_account", comment: ""))
                     .foregroundColor(Color.purple)
                     .font(.body)
             }

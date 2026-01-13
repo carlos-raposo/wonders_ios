@@ -1,0 +1,16 @@
+login_title = "Entrar";
+signup_title = "Criar Conta";
+email_placeholder = "Email";
+password_placeholder = "Senha";
+confirm_password_placeholder = "Confirmar Senha";
+name_placeholder = "Nome";
+login_button = "Entrar";
+signup_button = "Criar Conta";
+google_button = "Continuar com Google";
+apple_button = "Continuar com a Apple";
+have_account = "Já tem uma conta? Entre";
+dont_have_account = "Não tem uma conta? Cadastre-se";
+forgot_password = "Esqueceu a senha?";
+error_passwords_no_match = "As senhas não coincidem.";
+error_google_auth_failed = "Falha na autenticação do Google.";
+error_unknown = "Erro desconhecido ao autenticar.";

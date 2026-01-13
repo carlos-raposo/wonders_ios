@@ -27,15 +27,15 @@ struct SignupView: View {
             .padding(.top)
             .padding(.horizontal)
 
-            Text("Criar Conta")
+            Text(NSLocalizedString("signup_title", comment: ""))
                 .font(.system(size: 32, weight: .bold))
                 .padding(.bottom, 8)
 
             VStack(spacing: 16) {
-                WondersTextField(icon: "person", placeholder: "Nome", text: $name, isSecure: false)
-                WondersTextField(icon: "envelope", placeholder: "Email", text: $email, isSecure: false)
-                WondersTextField(icon: "lock", placeholder: "Senha", text: $password, isSecure: !isPasswordVisible, trailingIcon: isPasswordVisible ? "eye.slash" : "eye", trailingAction: { isPasswordVisible.toggle() })
-                WondersTextField(icon: "lock", placeholder: "Confirmar Senha", text: $confirmPassword, isSecure: !isConfirmPasswordVisible, trailingIcon: isConfirmPasswordVisible ? "eye.slash" : "eye", trailingAction: { isConfirmPasswordVisible.toggle() })
+                WondersTextField(icon: "person", placeholder: NSLocalizedString("name_placeholder", comment: ""), text: $name, isSecure: false)
+                WondersTextField(icon: "envelope", placeholder: NSLocalizedString("email_placeholder", comment: ""), text: $email, isSecure: false)
+                WondersTextField(icon: "lock", placeholder: NSLocalizedString("password_placeholder", comment: ""), text: $password, isSecure: !isPasswordVisible, trailingIcon: isPasswordVisible ? "eye.slash" : "eye", trailingAction: { isPasswordVisible.toggle() })
+                WondersTextField(icon: "lock", placeholder: NSLocalizedString("confirm_password_placeholder", comment: ""), text: $confirmPassword, isSecure: !isConfirmPasswordVisible, trailingIcon: isConfirmPasswordVisible ? "eye.slash" : "eye", trailingAction: { isConfirmPasswordVisible.toggle() })
             }
             .padding(.horizontal)
 
@@ -47,7 +47,7 @@ struct SignupView: View {
 
             Button(action: {
                 guard password == confirmPassword else {
-                    errorMessage = "As senhas não coincidem."
+                    errorMessage = NSLocalizedString("error_passwords_no_match", comment: "")
                     return
                 }
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -74,7 +74,7 @@ struct SignupView: View {
                     }
                 }
             }) {
-                Text("Criar Conta")
+                Text(NSLocalizedString("signup_button", comment: ""))
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -85,6 +85,10 @@ struct SignupView: View {
             }
             .padding(.horizontal)
 
+            SignInWithAppleButtonView(onAuthenticated: onAuthenticated, errorMessage: $errorMessage)
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .padding(.horizontal)
+
             Button(action: {
                 if let rootVC = UIApplication.topViewController() {
                     GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
@@ -94,7 +98,7 @@ struct SignupView: View {
                         }
                         guard let user = signInResult?.user,
                               let idToken = user.idToken?.tokenString else {
-                            self.errorMessage = "Google authentication failed."
+                            self.errorMessage = NSLocalizedString("error_google_auth_failed", comment: "")
                             return
                         }
                         let accessToken = user.accessToken.tokenString
@@ -135,22 +139,19 @@ struct SignupView: View {
                 HStack {
                     Image(systemName: "g.circle")
                         .foregroundColor(.red)
-                    Text("Continue with Google")
-                        .foregroundColor(Color.purple)
+                    Text(NSLocalizedString("google_button", comment: ""))
+                        .foregroundColor(.black)
                         .font(.headline)
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
+                .frame(maxWidth: .infinity, minHeight: 50)
                 .background(Color.white)
                 .cornerRadius(16)
                 .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray.opacity(0.3), lineWidth: 1))
             }
             .padding(.horizontal)
 
-            Spacer()
-
             Button(action: { showLogin = true }) {
-                Text("Já tem uma conta? Entre")
+                Text(NSLocalizedString("have_account", comment: ""))
                     .foregroundColor(Color.purple)
                     .font(.body)
             }

@@ -1,8 +1,14 @@
 #import "AppleAuthHelper.h"
-#import <FirebaseAuth/FirebaseAuth.h>
+@import FirebaseAuth;
 
 @implementation AppleAuthHelper
-+ (FIRAuthCredential *)credentialWithProviderID:(NSString *)providerID idToken:(NSString *)idToken accessToken:(NSString *)accessToken {
-    return [FIROAuthProvider credentialWithProviderID:providerID IDToken:idToken accessToken:accessToken];
++ (FIRAuthCredential *)credentialWithProviderID:(NSString *)providerID
+                                        idToken:(NSString *)idToken
+                                       rawNonce:(NSString *)rawNonce
+                                   accessToken:(NSString *)accessToken {
+    return [FIROAuthProvider credentialWithProviderID:providerID
+                                              IDToken:idToken
+                                             rawNonce:rawNonce
+                                          accessToken:accessToken];
 }
 @end

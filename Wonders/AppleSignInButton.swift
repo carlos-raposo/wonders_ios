@@ -40,29 +40,33 @@ struct SignInWithAppleButtonView: View {
         SignInWithAppleButtonInternal { result in
             switch result {
             case .success(let credential):
+                print("[AppleSignIn] Sucesso na autorização Apple. Processando credencial...")
                 guard let appleIDCredential = credential as? ASAuthorizationAppleIDCredential,
                       let identityToken = appleIDCredential.identityToken,
                       let authorizationCode = appleIDCredential.authorizationCode,
                       let idTokenString = String(data: identityToken, encoding: .utf8),
                       let accessTokenString = String(data: authorizationCode, encoding: .utf8) else {
+                    print("[AppleSignIn] Erro ao obter token do Apple.")
                     errorMessage = "Erro ao obter token do Apple."
                     return
                 }
-                guard let firebaseCredential = AppleAuthHelper.credential(withProviderID: "apple.com", idToken: idTokenString, accessToken: accessTokenString) else {
-                    errorMessage = "Erro ao criar credential do Firebase."
-                    return
-                }
+                let firebaseCredential = AppleAuthHelper.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: currentNonce, accessToken: accessTokenString)
+                print("[AppleSignIn] Tentando autenticar no Firebase...")
                 Auth.auth().signIn(with: firebaseCredential) { authResult, error in
                     if let error = error {
+                        print("[AppleSignIn] Erro Firebase: \(error.localizedDescription)")
                         errorMessage = error.localizedDescription
                     } else if let authResult = authResult {
+                        print("[AppleSignIn] Usuário autenticado no Firebase: \(authResult.user.uid)")
                         let db = Firestore.firestore()
                         let userRef = db.collection("users").document(authResult.user.uid)
                         userRef.getDocument { document, error in
                             if let document = document, document.exists {
+                                print("[AppleSignIn] Usuário já existe no Firestore.")
                                 errorMessage = nil
                                 onAuthenticated()
                             } else {
+                                print("[AppleSignIn] Criando usuário no Firestore...")
                                 userRef.setData([
                                     "name": authResult.user.displayName ?? "",
                                     "email": authResult.user.email ?? "",
@@ -72,14 +76,19 @@ struct SignInWithAppleButtonView: View {
                                     "photoURL": authResult.user.photoURL?.absoluteString ?? ""
                                 ]) { error in
                                     if let error = error {
+                                        print("[AppleSignIn] Erro ao criar usuário Firestore: \(error.localizedDescription)")
                                         errorMessage = error.localizedDescription
                                     } else {
+                                        print("[AppleSignIn] Usuário criado no Firestore com sucesso.")
                                         errorMessage = nil
                                         onAuthenticated()
                                     }
                                 }
                             }
                         }
+                    } else {
+                        print("[AppleSignIn] Nenhum erro e nenhum authResult retornado pelo Firebase!")
+                        errorMessage = "Erro desconhecido ao autenticar."
                     }
                 }
             case .failure(let error):
@@ -107,7 +116,19 @@ struct SignInWithAppleButtonInternal: UIViewRepresentable {
     var completion: (Result<ASAuthorizationCredential, Error>) -> Void
     var onRequest: ((ASAuthorizationAppleIDRequest) -> Void)? = nil
     func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
+        // Atualizado para iOS 16+: usar language.languageCode.identifier
+        if #available(iOS 16.0, *) {
+            if Locale.current.language.languageCode?.identifier == "pt" {
+                button.overrideUserInterfaceStyle = .unspecified
+                button.accessibilityLabel = "Iniciar sessão com a Apple"
+            }
+        } else {
+            if Locale.current.languageCode == "pt" {
+                button.overrideUserInterfaceStyle = .unspecified
+                button.accessibilityLabel = "Iniciar sessão com a Apple"
+            }
+        }
         button.addTarget(context.coordinator, action: #selector(Coordinator.didTapButton), for: .touchUpInside)
         return button
     }

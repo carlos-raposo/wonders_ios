@@ -85,7 +85,7 @@ struct AuthenticationFlowView: View {
 
                 VStack(spacing: 16) {
                     Button(action: { showLogin = true }) {
-                        Text("Login")
+                        Text(NSLocalizedString("login_button", comment: ""))
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -95,7 +95,7 @@ struct AuthenticationFlowView: View {
                             .shadow(radius: 2)
                     }
                     Button(action: { showSignup = true }) {
-                        Text("Sign Up")
+                        Text(NSLocalizedString("signup_button", comment: ""))
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -105,7 +105,7 @@ struct AuthenticationFlowView: View {
                             .shadow(radius: 2)
                     }
                     Button(action: { showForgotPassword = true }) {
-                        Text("Forgot Password?")
+                        Text(NSLocalizedString("forgot_password", comment: ""))
                             .font(.subheadline)
                             .foregroundColor(WondersTheme.buttonBlue)
                     }

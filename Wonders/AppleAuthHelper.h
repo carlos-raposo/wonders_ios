@@ -4,5 +4,6 @@
 @interface AppleAuthHelper : NSObject
 + (FIRAuthCredential * _Nonnull)credentialWithProviderID:(NSString * _Nonnull)providerID
                                                  idToken:(NSString * _Nonnull)idToken
+                                                rawNonce:(NSString * _Nonnull)rawNonce
                                             accessToken:(NSString * _Nonnull)accessToken;
 @end
