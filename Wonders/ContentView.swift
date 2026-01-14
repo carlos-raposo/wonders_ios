@@ -40,26 +40,35 @@ struct ContentView: View {
     @State private var showForgotPassword = false
     @StateObject private var favoritesManager = FavoritesManager()
     @StateObject private var languageSettings = LanguageSettings()
+    @State private var selectedTab: Int = 0
+    @State private var showLaunchAnimation: Bool = true
 
     var body: some View {
-        Group {
-            if !isAuthenticated {
-                AuthenticationFlowView(
-                    showLogin: $showLogin,
-                    showSignup: $showSignup,
-                    showForgotPassword: $showForgotPassword,
-                    onAuthenticated: {
-                        isAuthenticated = true
-                        favoritesManager.refreshFavorites() // Ensure favorites update for the new user
-                    }
-                )
-            } else {
-                MainTabView()
-                    .environmentObject(favoritesManager)
-                    .environmentObject(languageSettings)
-            }
+        NavigationStack {
+            MainTabView(
+                selectedTab: $selectedTab,
+                showLogin: $showLogin,
+                onAuthenticated: {
+                    isAuthenticated = true
+                    favoritesManager.refreshFavorites()
+                }
+            )
+            .environmentObject(favoritesManager)
+            .environmentObject(languageSettings)
+            .preferredColorScheme(isDarkMode ? .dark : .light)
         }
-        .preferredColorScheme(isDarkMode ? .dark : .light) // Apply global dark/light mode
+        .fullScreenCover(isPresented: $showLaunchAnimation) {
+            LaunchAnimationView(isPresented: $showLaunchAnimation)
+                .environmentObject(languageSettings)
+        }
+        .sheet(isPresented: $showLogin) {
+            LoginView(onAuthenticated: {
+                isAuthenticated = true
+                favoritesManager.refreshFavorites()
+                showLogin = false
+            })
+            .environmentObject(languageSettings)
+        }
     }
 }
 
@@ -69,61 +78,50 @@ struct AuthenticationFlowView: View {
     @Binding var showSignup: Bool
     @Binding var showForgotPassword: Bool
     var onAuthenticated: () -> Void
+    @EnvironmentObject var languageSettings: LanguageSettings
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 32) {
-                
-                Spacer(minLength: 16)
+        VStack(spacing: 32) {
+            Spacer(minLength: 16)
 
-                // Lottie Animation Placeholder
-                LottieView(filename: "welcome_animation")
-                    .frame(height: 290)
-                    .shadow(radius: 1)
+            // Lottie Animation Placeholder
+            LottieView(filename: "welcome_animation")
+                .frame(height: 290)
+                .shadow(radius: 1)
 
-                Spacer(minLength: 16)
+            Spacer(minLength: 16)
 
-                VStack(spacing: 16) {
-                    Button(action: { showLogin = true }) {
-                        Text(NSLocalizedString("login_button", comment: ""))
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(WondersTheme.buttonBlue)
-                            .foregroundColor(.white)
-                            .cornerRadius(16)
-                            .shadow(radius: 2)
-                    }
-                    Button(action: { showSignup = true }) {
-                        Text(NSLocalizedString("signup_button", comment: ""))
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(WondersTheme.buttonBlue.opacity(0.8))
-                            .foregroundColor(.white)
-                            .cornerRadius(16)
-                            .shadow(radius: 2)
-                    }
-                    Button(action: { showForgotPassword = true }) {
-                        Text(NSLocalizedString("forgot_password", comment: ""))
-                            .font(.subheadline)
-                            .foregroundColor(WondersTheme.buttonBlue)
-                    }
+            VStack(spacing: 16) {
+                Button(action: { showLogin = true }) {
+                    Text(languageSettings.language == "pt" ? "Entrar" : "Sign In")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(WondersTheme.buttonBlue)
+                        .foregroundColor(.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 2)
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 50)
+                Button(action: { showSignup = true }) {
+                    Text(languageSettings.language == "pt" ? "Criar Conta" : "Sign Up")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(WondersTheme.buttonBlue.opacity(0.8))
+                        .foregroundColor(.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 2)
+                }
+                Button(action: { showForgotPassword = true }) {
+                    Text(languageSettings.language == "pt" ? "Esqueceu a senha" : "Forgot Password?")
+                        .font(.subheadline)
+                        .foregroundColor(WondersTheme.buttonBlue)
+                }
             }
-            .padding()
-            .navigationDestination(isPresented: $showLogin) {
-                LoginView(onAuthenticated: onAuthenticated)
-            }
-            .navigationDestination(isPresented: $showSignup) {
-                SignupView(onAuthenticated: onAuthenticated)
-            }
-            .navigationDestination(isPresented: $showForgotPassword) {
-                ForgotPasswordView()
-            }
+            .padding(.horizontal)
+            .padding(.bottom, 50)
         }
+        .padding()
     }
 }
 

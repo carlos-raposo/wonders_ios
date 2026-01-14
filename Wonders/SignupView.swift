@@ -14,6 +14,37 @@ struct SignupView: View {
     @State private var showLogin = false
     @State private var errorMessage: String? = nil
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var languageSettings: LanguageSettings
+
+    private let translations: [String: [String: String]] = [
+        "en": [
+            "signup_title": "Sign Up",
+            "name_placeholder": "Name",
+            "email_placeholder": "Email",
+            "password_placeholder": "Password",
+            "confirm_password_placeholder": "Confirm Password",
+            "signup_button": "Sign Up",
+            "error_passwords_no_match": "Passwords do not match.",
+            "google_button": "Sign Up with Google",
+            "have_account": "Already have an account? Sign in",
+            "privacy": "Privacy Policy"
+        ],
+        "pt": [
+            "signup_title": "Criar Conta",
+            "name_placeholder": "Nome",
+            "email_placeholder": "Email",
+            "password_placeholder": "Senha",
+            "confirm_password_placeholder": "Confirmar Senha",
+            "signup_button": "Criar Conta",
+            "error_passwords_no_match": "As senhas não coincidem.",
+            "google_button": "Criar conta com Google",
+            "have_account": "Já tem conta? Entrar",
+            "privacy": "Política de Privacidade"
+        ]
+    ]
+    private func t(_ key: String) -> String {
+        translations[languageSettings.language]?[key] ?? translations["en"]![key]!
+    }
 
     var body: some View {
         VStack(spacing: 24) {
@@ -27,15 +58,15 @@ struct SignupView: View {
             .padding(.top)
             .padding(.horizontal)
 
-            Text(NSLocalizedString("signup_title", comment: ""))
+            Text(t("signup_title"))
                 .font(.system(size: 32, weight: .bold))
                 .padding(.bottom, 8)
 
             VStack(spacing: 16) {
-                WondersTextField(icon: "person", placeholder: NSLocalizedString("name_placeholder", comment: ""), text: $name, isSecure: false)
-                WondersTextField(icon: "envelope", placeholder: NSLocalizedString("email_placeholder", comment: ""), text: $email, isSecure: false)
-                WondersTextField(icon: "lock", placeholder: NSLocalizedString("password_placeholder", comment: ""), text: $password, isSecure: !isPasswordVisible, trailingIcon: isPasswordVisible ? "eye.slash" : "eye", trailingAction: { isPasswordVisible.toggle() })
-                WondersTextField(icon: "lock", placeholder: NSLocalizedString("confirm_password_placeholder", comment: ""), text: $confirmPassword, isSecure: !isConfirmPasswordVisible, trailingIcon: isConfirmPasswordVisible ? "eye.slash" : "eye", trailingAction: { isConfirmPasswordVisible.toggle() })
+                WondersTextField(icon: "person", placeholder: t("name_placeholder"), text: $name, isSecure: false)
+                WondersTextField(icon: "envelope", placeholder: t("email_placeholder"), text: $email, isSecure: false)
+                WondersTextField(icon: "lock", placeholder: t("password_placeholder"), text: $password, isSecure: !isPasswordVisible, trailingIcon: isPasswordVisible ? "eye.slash" : "eye", trailingAction: { isPasswordVisible.toggle() })
+                WondersTextField(icon: "lock", placeholder: t("confirm_password_placeholder"), text: $confirmPassword, isSecure: !isConfirmPasswordVisible, trailingIcon: isConfirmPasswordVisible ? "eye.slash" : "eye", trailingAction: { isConfirmPasswordVisible.toggle() })
             }
             .padding(.horizontal)
 
@@ -47,7 +78,7 @@ struct SignupView: View {
 
             Button(action: {
                 guard password == confirmPassword else {
-                    errorMessage = NSLocalizedString("error_passwords_no_match", comment: "")
+                    errorMessage = t("error_passwords_no_match")
                     return
                 }
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -74,7 +105,7 @@ struct SignupView: View {
                     }
                 }
             }) {
-                Text(NSLocalizedString("signup_button", comment: ""))
+                Text(t("signup_button"))
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -98,7 +129,7 @@ struct SignupView: View {
                         }
                         guard let user = signInResult?.user,
                               let idToken = user.idToken?.tokenString else {
-                            self.errorMessage = NSLocalizedString("error_google_auth_failed", comment: "")
+                            self.errorMessage = "Google authentication failed."
                             return
                         }
                         let accessToken = user.accessToken.tokenString
@@ -139,7 +170,7 @@ struct SignupView: View {
                 HStack {
                     Image(systemName: "g.circle")
                         .foregroundColor(.red)
-                    Text(NSLocalizedString("google_button", comment: ""))
+                    Text(t("google_button"))
                         .foregroundColor(.black)
                         .font(.headline)
                 }
@@ -151,14 +182,27 @@ struct SignupView: View {
             .padding(.horizontal)
 
             Button(action: { showLogin = true }) {
-                Text(NSLocalizedString("have_account", comment: ""))
+                Text(t("have_account"))
                     .foregroundColor(Color.purple)
                     .font(.body)
             }
             .padding(.bottom)
             .sheet(isPresented: $showLogin) {
                 LoginView(onAuthenticated: onAuthenticated)
+                    .environmentObject(languageSettings)
             }
+            Button(action: {
+                let urlString = languageSettings.language == "pt" ? "https://app.sevenwonders.pt/politica-privacidade.html" : "https://app.sevenwonders.pt/privacy-policy.html"
+                if let url = URL(string: urlString) {
+                    UIApplication.shared.open(url)
+                }
+            }) {
+                Text(t("privacy"))
+                    .foregroundColor(.blue)
+                    .font(.body)
+                    .underline()
+            }
+            .padding(.bottom, 8)
         }
         .navigationBarBackButtonHidden(true)
     }

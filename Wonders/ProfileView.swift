@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var showDeleteAlert = false
     @Environment(\.dismiss) private var dismiss
     @Binding var selectedTab: Int
+    @Binding var showLogin: Bool
     var showBackButton: Bool = false
 
     var user: User? {
@@ -145,7 +146,13 @@ struct SettingsView: View {
                         showContact = true
                     }
                     CardButton(icon: "shield", text: t("privacy"), isDestructive: false) {
-                        if let url = URL(string: "https://sevenwonders.pt/privacy-policy.html") {
+                        let urlString: String
+                        if languageSettings.language == "pt" {
+                            urlString = "https://app.sevenwonders.pt/politica-privacidade.html"
+                        } else {
+                            urlString = "https://app.sevenwonders.pt/privacy-policy.html"
+                        }
+                        if let url = URL(string: urlString) {
                             UIApplication.shared.open(url)
                         }
                     }
@@ -157,11 +164,18 @@ struct SettingsView: View {
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
                         .foregroundColor(.primary)
-                    CardButton(icon: "arrowshape.turn.up.left", text: t("logout"), isDestructive: false) {
-                        logout()
-                    }
-                    CardButton(icon: "trash", text: t("delete_account"), isDestructive: true) {
-                        showDeleteAlert = true
+                    if isUserLoggedIn {
+                        CardButton(icon: "arrowshape.turn.up.left", text: t("logout"), isDestructive: false) {
+                            logout()
+                        }
+                        CardButton(icon: "trash", text: t("delete_account"), isDestructive: true) {
+                            showDeleteAlert = true
+                        }
+                    } else {
+                        CardButton(icon: "person.crop.circle.badge.plus", text: languageSettings.language == "pt" ? "Entrar" : "Login", isDestructive: false) {
+                            // Open global login modal managed by ContentView
+                            showLogin = true
+                        }
                     }
                 }
             }
@@ -186,6 +200,7 @@ struct SettingsView: View {
         .sheet(isPresented: $showContact) {
             ContactSheetView(isPresented: $showContact)
         }
+        
     }
 
     private var userInitial: String {

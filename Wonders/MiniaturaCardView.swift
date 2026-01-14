@@ -5,6 +5,8 @@ struct MiniaturaCardView: View {
     let translation: MiniaturaCardTranslation
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var languageSettings: LanguageSettings
+    @AppStorage("isUserLoggedIn") private var isAuthenticated = false
+    var onRequireAuth: (() -> Void)? = nil
     
     private var isVocabularyPT: Bool {
         let cat = card.categoria.lowercased().replacingOccurrences(of: "á", with: "a")
@@ -26,14 +28,16 @@ struct MiniaturaCardView: View {
                 }
                 if canFavorite {
                     Button(action: {
-                        favoritesManager.toggleFavorite(card: card)
+                        if isAuthenticated {
+                            favoritesManager.toggleFavorite(card: card)
+                        } else {
+                            onRequireAuth?()
+                        }
                     }) {
                         Image(systemName: favoritesManager.isFavorite(card: card) ? "heart.fill" : "heart")
                             .font(.system(size: 24)) // <-- Define o tamanho do ícone
                             .foregroundColor(favoritesManager.isFavorite(card: card) ? .red : .white)
                             .padding(8)
-                           // .background(Color.black.opacity(0.3))
-                         //   .clipShape(Circle())
                     }
                     .padding(8)
                     .accessibilityLabel(favoritesManager.isFavorite(card: card) ? "Remover dos favoritos" : "Adicionar aos favoritos")

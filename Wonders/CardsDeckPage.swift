@@ -8,6 +8,9 @@ struct CardsDeckPage: View, Identifiable {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var languageSettings: LanguageSettings
     @State private var showMapSheet = false
+    @AppStorage("isUserLoggedIn") private var isAuthenticated = false
+    @State private var showAuthModal = false
+    @State private var showSignIn = false
     @Environment(\.colorScheme) var colorScheme
     var translation: MiniaturaCardTranslation { card.translations[language] ?? card.translations["en"]! }
     // Helper to build locations for the map
@@ -32,7 +35,11 @@ struct CardsDeckPage: View, Identifiable {
                             .accessibilityLabel("Imagem da miniatura \(translation.titulo)")
                         if canFavorite {
                             Button(action: {
-                                favoritesManager.toggleFavorite(card: card)
+                                if isAuthenticated {
+                                    favoritesManager.toggleFavorite(card: card)
+                                } else {
+                                    showAuthModal = true
+                                }
                             }) {
                                 Image(systemName: favoritesManager.isFavorite(card: card) ? "heart.fill" : "heart")
                                     .font(.system(size: 24)) // <-- Define o tamanho do ícone
@@ -161,6 +168,20 @@ struct CardsDeckPage: View, Identifiable {
                 zoomSpan: zoomSpan,
                 customCenter: customCenter
             )
+        }
+        .alert(isPresented: $showAuthModal) {
+            Alert(
+                title: Text(languageSettings.language == "pt" ? "Autenticação necessária" : "Authentication required"),
+                message: Text(languageSettings.language == "pt" ? "Faça login para adicionar favoritos." : "Please log in to add favorites."),
+                primaryButton: .default(Text(languageSettings.language == "pt" ? "Entrar" : "Sign In")) {
+                    showSignIn = true
+                },
+                secondaryButton: .cancel(Text("X"))
+            )
+        }
+        .sheet(isPresented: $showSignIn) {
+            LoginView(onAuthenticated: { showSignIn = false })
+                .environmentObject(languageSettings)
         }
     }
 }

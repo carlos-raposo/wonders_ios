@@ -2,7 +2,10 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var languageSettings: LanguageSettings
-    @State private var selectedTab: Int = 0
+    @AppStorage("isUserLoggedIn") private var isAuthenticated = false
+    @Binding var selectedTab: Int
+    @Binding var showLogin: Bool
+    var onAuthenticated: () -> Void
     @State private var showMiniaturas: Bool = false
     @State private var selectedCategoryIndex: Int? = nil
     
@@ -49,7 +52,30 @@ struct MainTabView: View {
                     }
                 case 1:
                     NavigationStack {
-                        FavoritesView()
+                        if isAuthenticated {
+                            FavoritesView()
+                        } else {
+                            VStack {
+                                Spacer()
+                                VStack(spacing: 16) {
+                                    Text(languageSettings.language == "pt" ? "Faça login para acessar os favoritos" : "Log in to access favorites")
+                                        .font(.title3)
+                                        .multilineTextAlignment(.center)
+                                        .padding(.horizontal)
+                                    Button(action: { showLogin = true }) {
+                                        Text(languageSettings.language == "pt" ? "Entrar" : "Login")
+                                            .font(.headline)
+                                            .frame(maxWidth: .infinity)
+                                            .padding()
+                                            .background(Color.purple)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(16)
+                                            .padding(.horizontal)
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
                     }
                 case 2:
                     NavigationStack {
@@ -57,7 +83,7 @@ struct MainTabView: View {
                     }
                 case 3:
                     NavigationStack {
-                        SettingsView(selectedTab: $selectedTab)
+                        SettingsView(selectedTab: $selectedTab, showLogin: $showLogin)
                     }
                 default:
                     EmptyView()

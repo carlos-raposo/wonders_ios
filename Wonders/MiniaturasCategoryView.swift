@@ -5,6 +5,7 @@ struct MiniaturasCategoryView: View {
     @Environment(\.colorScheme) var colorScheme
     let category: String
     let language: String
+    var onRequireAuth: (() -> Void)? = nil
     @State private var showDeckPage: MiniaturaCard? = nil
     @State private var showMapSheet = false
     
@@ -160,13 +161,13 @@ struct MiniaturasCategoryView: View {
                             VStack(spacing: 0) {
                                 if !isVocabularyPT() {
                                     Button(action: { showDeckPage = card }) {
-                                        MiniaturaCardView(card: card, translation: t)
+                                        MiniaturaCardView(card: card, translation: t, onRequireAuth: onRequireAuth)
                                             .contentShape(Rectangle()) // Ensure full area is tappable
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                     .accessibilityLabel("Miniatura número \(card.ordem): \(t.titulo)")
                                 } else {
-                                    MiniaturaCardView(card: card, translation: t)
+                                    MiniaturaCardView(card: card, translation: t, onRequireAuth: onRequireAuth)
                                 }
                                 // Replace the HStack with a single Text view using AttributedString for mixed styles
                                 Text({

@@ -9,6 +9,8 @@ struct MiniaturasView: View {
     @EnvironmentObject var languageSettings: LanguageSettings
     @State private var showSettings = false
     @State private var navigateToSettings = false
+    @State private var showAuthModal = false
+    @State private var showSignIn = false
     
     // Translation dictionary for category names
     private let categoryTranslations: [String: [String: String]] = [
@@ -96,13 +98,31 @@ struct MiniaturasView: View {
             Divider()
             // Swipe lateral entre categorias
             TabView(selection: $selectedCategory) {
-                ForEach(0..<categories.count, id: \.self) { idx in
-                    MiniaturasCategoryView(category: categories[idx], language: languageSettings.language)
+                ForEach(0..<categories.count, id: \ .self) { idx in
+                    MiniaturasCategoryView(
+                        category: categories[idx],
+                        language: languageSettings.language,
+                        onRequireAuth: { showAuthModal = true }
+                    )
                         .tag(idx)
                         .padding(.top, 8)
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .alert(isPresented: $showAuthModal) {
+                Alert(
+                    title: Text(languageSettings.language == "pt" ? "Autenticação necessária" : "Authentication required"),
+                    message: Text(languageSettings.language == "pt" ? "Faça login para adicionar favoritos." : "Please log in to add favorites."),
+                    primaryButton: .default(Text(languageSettings.language == "pt" ? "Entrar" : "Sign In")) {
+                        showSignIn = true
+                    },
+                    secondaryButton: .cancel(Text("X"))
+                )
+            }
+            .sheet(isPresented: $showSignIn) {
+                LoginView(onAuthenticated: { showSignIn = false })
+                    .environmentObject(languageSettings)
+            }
         }
     }
 }
