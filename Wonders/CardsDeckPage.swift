@@ -25,14 +25,17 @@ struct CardsDeckPage: View, Identifiable {
         let canFavorite = !(language == "pt" && card.categoria == "Vocabulary")
         let canShowMap = card.categoria.normalized != "vocabulary"
         ZStack {
+            Color(.systemBackground)
+                .ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     ZStack(alignment: .topTrailing) {
                         Image(card.imagem)
                             .resizable()
                             .aspectRatio(4.0/3.0, contentMode: .fit)
-                            .cornerRadius(16)
+                            .cornerRadius(6)
                             .accessibilityLabel("Imagem da miniatura \(translation.titulo)")
+                            .padding(.horizontal, 0)
                         if canFavorite {
                             Button(action: {
                                 if isAuthenticated {
@@ -52,81 +55,89 @@ struct CardsDeckPage: View, Identifiable {
                             .accessibilityLabel(favoritesManager.isFavorite(card: card) ? "Remover dos favoritos" : "Adicionar aos favoritos")
                         }
                     }
-                    Text(translation.titulo)
-                        .font(.title)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    if let description = translation.description, !description.isEmpty {
-                        Text(description)
-                            .font(.body)
-                            .foregroundColor(.primary)
-                    }
-                    if let history = translation.history, !history.isEmpty {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(Translations.shared.t("history", lang: language))
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.bottom, 12) // Adiciona espaço abaixo do título
-                            Text(history)
+                    Group {
+                        Text(translation.titulo)
+                            .font(.custom("Montserrat", size: 22).weight(.bold))
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.horizontal)
+                        if let description = translation.description, !description.isEmpty {
+                            Text(description)
                                 .font(.body)
                                 .foregroundColor(.primary)
+                                .padding(.horizontal)
                         }
-                    }
-                    if let destaques = translation.destaques, !destaques.isEmpty {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(language == "en" ? "Highlights" : "Destaques")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.bottom, 12) // Adiciona espaço abaixo
-                            Text(destaques)
-                                .font(.body)
-                                .foregroundColor(.primary)
+                        if let history = translation.history, !history.isEmpty {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(Translations.shared.t("history", lang: language))
+                                    .font(.custom("Montserrat", size: 24).weight(.bold))
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.bottom, 12)
+                                Text(history)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.horizontal)
                         }
-                    }
-                    if let usage = translation.usage, !usage.isEmpty {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(language == "en" ? "Usage" : "Uso")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.bottom, 12) // Adiciona espaço abaixo
-                            Text(usage)
-                                .font(.body)
-                                .foregroundColor(.primary)
+                        if let destaques = translation.destaques, !destaques.isEmpty {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(Translations.shared.t("highlights", lang: language))
+                                    .font(.custom("Montserrat", size: 24).weight(.bold))
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.bottom, 12)
+                                Text(destaques)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.horizontal)
                         }
-                    }
-                    if let pronunciation = translation.pronunciation, !pronunciation.isEmpty {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(language == "en" ? "Pronunciation" : "Pronúncia")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.bottom, 12) // Adiciona espaço abaixo
-                            Text(pronunciation)
-                                .font(.body)
-                                .foregroundColor(.primary)
+                        if let usage = translation.usage, !usage.isEmpty {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(Translations.shared.t("usage", lang: language))
+                                    .font(.custom("Montserrat", size: 24).weight(.bold))
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.bottom, 12)
+                                Text(usage)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.horizontal)
                         }
-                    }
-                    if let adress = translation.adress, !adress.isEmpty {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(Translations.shared.t("adress", lang: language))
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.bottom, 12) // Adiciona espaço abaixo
-                            Text(adress)
-                                .font(.body)
-                                .foregroundColor(.primary)
+                        if let pronunciation = translation.pronunciation, !pronunciation.isEmpty {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(Translations.shared.t("pronunciation", lang: language))
+                                    .font(.custom("Montserrat", size: 24).weight(.bold))
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.bottom, 12)
+                                Text(pronunciation)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.horizontal)
+                        }
+                        if let adress = translation.adress, !adress.isEmpty {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(Translations.shared.t("adress", lang: language))
+                                    .font(.custom("Montserrat", size: 24).weight(.bold))
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.bottom, 12)
+                                Text(adress)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.horizontal)
                         }
                     }
                     Spacer(minLength: 48) // ensures space for floating button
                 }
-                .padding()
                 .accessibilityElement(children: .combine)
             }
+            .background(Color(.systemBackground))
             if canShowMap {
                 VStack {
                     Spacer()

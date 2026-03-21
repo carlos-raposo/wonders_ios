@@ -33,6 +33,26 @@ struct MiniaturasView: View {
             "Museums": "Museus",
             "Sintra": "Sintra",
             "Vocabulary": "Vocabulário"
+        ],
+        "es": [
+            "Monuments": "Monumentos",
+            "Nature": "Naturaleza",
+            "Gastronomy": "Gastronomía",
+            "Popular": "Popular",
+            "Churches": "Iglesias",
+            "Museums": "Museos",
+            "Sintra": "Sintra",
+            "Vocabulary": "Vocabulario"
+        ],
+        "fr": [
+            "Monuments": "Monuments",
+            "Nature": "Nature",
+            "Gastronomy": "Gastronomie",
+            "Popular": "Populaire",
+            "Churches": "Églises",
+            "Museums": "Musées",
+            "Sintra": "Sintra",
+            "Vocabulary": "Vocabulaire"
         ]
     ]
     private func tCategory(_ key: String) -> String {

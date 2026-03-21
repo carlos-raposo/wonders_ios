@@ -14,3 +14,6 @@ error_passwords_no_match = "Passwords do not match.";
 error_google_auth_failed = "Google authentication failed.";
 error_unknown = "Unknown authentication error.";
 name_placeholder = "Name";
+highlights = "Highlights";
+usage = "Usage";
+pronunciation = "Pronunciation";

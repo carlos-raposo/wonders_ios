@@ -170,25 +170,23 @@ struct MiniaturasCategoryView: View {
                                     MiniaturaCardView(card: card, translation: t, onRequireAuth: onRequireAuth)
                                 }
                                 // Replace the HStack with a single Text view using AttributedString for mixed styles
-                                Text({
-                                    var attributed = AttributedString(t.titulo + ": ")
-                                    attributed.font = .system(size: 22, weight: .bold)
-                                    attributed.foregroundColor = .primary
-                                    var desc = AttributedString(t.shortDescription)
-                                    desc.font = .system(size: 20, weight: .regular)
-                                    desc.foregroundColor = .primary
-                                    attributed.append(desc)
-                                    return attributed
-                                }())
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.horizontal, 0)
-                                .padding(.top, 8)
-                                .padding(.bottom, 16)
+                                Text(t.titulo)
+                                    .font(Font.custom("Montserrat", size: 20).weight(.semibold))
+                                    .foregroundColor(.primary)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 12)
+                                    .padding(.top, 10)
+                                Text(t.shortDescription)
+                                    .font(Font.custom("Montserrat", size: 16).weight(.medium))
+                                    .foregroundColor(.primary)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 10)
+                                    .padding(.bottom, 16)
                             }
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 46)
+                    .padding(.horizontal, 0)
+                    .padding(.bottom, 24)
                 }
             }
             if category != "Vocabulary" {

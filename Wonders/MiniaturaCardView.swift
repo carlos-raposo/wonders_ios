@@ -23,7 +23,7 @@ struct MiniaturaCardView: View {
                         .aspectRatio(4.0/3.0, contentMode: .fill)
                         .frame(maxWidth: .infinity)
                         .clipped()
-                        .cornerRadius(16)
+                        .cornerRadius(6)
                         .accessibilityLabel("Imagem da miniatura \(translation.titulo)")
                 }
                 if canFavorite {
@@ -45,7 +45,7 @@ struct MiniaturaCardView: View {
             }
         }
         .background(Color(.systemBackground))
-        .cornerRadius(16)
+        .cornerRadius(0)
         .shadow(radius: 4)
     }
 }

@@ -31,6 +31,22 @@ struct LoginView: View {
             "login_button": "Entrar",
             "google_button": "Continuar com Google",
             "have_account": "Ainda não tem conta? Criar conta"
+        ],
+        "fr": [
+            "login_title": "Connexion",
+            "email_placeholder": "E-mail",
+            "password_placeholder": "Mot de passe",
+            "login_button": "Connexion",
+            "google_button": "Continuer avec Google",
+            "have_account": "Vous n'avez pas de compte ? Créer un compte"
+        ],
+        "es": [
+            "login_title": "Iniciar sesión",
+            "email_placeholder": "Correo electrónico",
+            "password_placeholder": "Contraseña",
+            "login_button": "Iniciar sesión",
+            "google_button": "Continuar con Google",
+            "have_account": "¿No tienes cuenta? Crear cuenta"
         ]
     ]
     private func t(_ key: String) -> String {

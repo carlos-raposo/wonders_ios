@@ -29,6 +29,28 @@ struct HomeView: View {
             "Museums": "Museus",
             "Sintra": "Sintra",
             "Vocabulary": "Vocabulário"
+        ],
+        "fr": [
+            "choose_category": "Choisissez une catégorie",
+            "Monuments": "Monuments",
+            "Nature": "Nature",
+            "Gastronomy": "Gastronomie",
+            "Popular": "Populaire",
+            "Churches": "Églises",
+            "Museums": "Musées",
+            "Sintra": "Sintra",
+            "Vocabulary": "Vocabulaire"
+        ],
+        "es": [
+            "choose_category": "Elija una categoría",
+            "Monuments": "Monumentos",
+            "Nature": "Naturaleza",
+            "Gastronomy": "Gastronomía",
+            "Popular": "Popular",
+            "Churches": "Iglesias",
+            "Museums": "Museos",
+            "Sintra": "Sintra",
+            "Vocabulary": "Vocabulario"
         ]
     ]
     private func t(_ key: String) -> String {

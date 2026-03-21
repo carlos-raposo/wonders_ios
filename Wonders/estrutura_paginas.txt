@@ -1,0 +1,36 @@
+Estrutura das páginas principais da app Wonders:
+
+1. MainTabView.swift
+   - Controla a navegação entre as principais páginas/tabs da app.
+   - Usa o componente MiniaturasTabBar para exibir a barra de navegação inferior.
+
+2. HomeView.swift
+   - Página inicial (Home/Início/Accueil/Inicio).
+   - Mostra as categorias e permite navegar para MiniaturasView.
+
+3. MiniaturasView.swift
+   - Página de miniaturas/cards de cada categoria.
+   - Mostra os cards e permite interações como favoritos.
+
+4. FavoritesView.swift
+   - Página de favoritos (Favorites/Favoritos/Favoris/Favoritos).
+   - Mostra os cards marcados como favoritos pelo usuário.
+
+5. SearchView.swift
+   - Página de pesquisa (Search/Pesquisar/Recherche/Buscar).
+   - Permite buscar cards por nome ou descrição.
+
+6. SettingsView.swift (ProfileView.swift)
+   - Página de configurações/perfil (Settings/Definições/Paramètres/Configuración).
+   - Permite alterar idioma, modo escuro/claro, ver tutorial, política de privacidade, etc.
+
+7. SignupView.swift
+   - Página de cadastro/criação de conta.
+
+8. LoginView.swift
+   - Página de login/autenticação.
+
+9. TutorialView.swift
+   - Página de tutorial/ajuda.
+
+Esses arquivos representam as principais páginas e fluxos do app, controlados pelo MainTabView.swift e a barra de navegação inferior.

@@ -61,6 +61,44 @@ struct SettingsView: View {
             "cancel": "Cancelar",
             "select_language": "Selecionar Idioma",
             "user": "Usuário"
+        ],
+        "fr": [
+            "account": "Compte",
+            "settings": "Paramètres",
+            "help": "Aide",
+            "logout": "Déconnexion",
+            "delete_account": "Supprimer le compte",
+            "switch_dark": "Passer en mode sombre",
+            "switch_light": "Passer en mode clair",
+            "language": "Langue",
+            "tutorial": "Tutoriel",
+            "contact": "Contact",
+            "privacy": "Politique de confidentialité",
+            "delete_title": "Supprimer le compte",
+            "delete_message": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action ne peut pas être annulée.",
+            "delete_confirm": "Supprimer",
+            "cancel": "Annuler",
+            "select_language": "Sélectionner la langue",
+            "user": "Utilisateur"
+        ],
+        "es": [
+            "account": "Cuenta",
+            "settings": "Configuración",
+            "help": "Ayuda",
+            "logout": "Cerrar sesión",
+            "delete_account": "Eliminar cuenta",
+            "switch_dark": "Cambiar a modo oscuro",
+            "switch_light": "Cambiar a modo claro",
+            "language": "Idioma",
+            "tutorial": "Tutorial",
+            "contact": "Contacto",
+            "privacy": "Política de privacidad",
+            "delete_title": "Eliminar cuenta",
+            "delete_message": "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.",
+            "delete_confirm": "Eliminar",
+            "cancel": "Cancelar",
+            "select_language": "Seleccionar idioma",
+            "user": "Usuario"
         ]
     ]
     
@@ -185,7 +223,9 @@ struct SettingsView: View {
         .actionSheet(isPresented: $showLanguageSheet) {
             ActionSheet(title: Text(t("select_language")), buttons: [
                 .default(Text("English")) { languageSettings.language = "en" },
-                .default(Text("Portuguese")) { languageSettings.language = "pt" },
+                .default(Text("Português")) { languageSettings.language = "pt" },
+                .default(Text("Français")) { languageSettings.language = "fr" },
+                .default(Text("Español")) { languageSettings.language = "es" },
                 .cancel(Text(t("cancel")))
             ])
         }
@@ -212,8 +252,10 @@ struct SettingsView: View {
 
     private var languageDisplayName: String {
         switch languageSettings.language {
-        case "pt": return "Portuguese"
         case "en": return "English"
+        case "pt": return "Português"
+        case "fr": return "Français"
+        case "es": return "Español"
         default: return languageSettings.language.capitalized
         }
     }

@@ -101,7 +101,9 @@ struct MiniaturasTabBar: View {
     @EnvironmentObject var languageSettings: LanguageSettings
     private let tabTranslations: [String: [String]] = [
         "en": ["Home", "Favorites", "Search", "Settings"],
-        "pt": ["Início", "Favoritos", "Pesquisar", "Definições"]
+        "pt": ["Início", "Favoritos", "Pesquisar", "Definições"],
+        "fr": ["Accueil", "Favoris", "Recherche", "Paramètres"],
+        "es": ["Inicio", "Favoritos", "Buscar", "Configuración"]
     ]
     private func t(_ idx: Int) -> String {
         let lang = languageSettings.language

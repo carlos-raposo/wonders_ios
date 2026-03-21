@@ -40,6 +40,30 @@ struct SignupView: View {
             "google_button": "Criar conta com Google",
             "have_account": "Já tem conta? Entrar",
             "privacy": "Política de Privacidade"
+        ],
+        "fr": [
+            "signup_title": "Créer un compte",
+            "name_placeholder": "Nom",
+            "email_placeholder": "E-mail",
+            "password_placeholder": "Mot de passe",
+            "confirm_password_placeholder": "Confirmer le mot de passe",
+            "signup_button": "Créer un compte",
+            "error_passwords_no_match": "Les mots de passe ne correspondent pas.",
+            "google_button": "Créer un compte avec Google",
+            "have_account": "Vous avez déjà un compte ? Connectez-vous",
+            "privacy": "Politique de confidentialité"
+        ],
+        "es": [
+            "signup_title": "Crear cuenta",
+            "name_placeholder": "Nombre",
+            "email_placeholder": "Correo electrónico",
+            "password_placeholder": "Contraseña",
+            "confirm_password_placeholder": "Confirmar contraseña",
+            "signup_button": "Crear cuenta",
+            "error_passwords_no_match": "Las contraseñas no coinciden.",
+            "google_button": "Crear cuenta con Google",
+            "have_account": "¿Ya tienes una cuenta? Iniciar sesión",
+            "privacy": "Política de privacidad"
         ]
     ]
     private func t(_ key: String) -> String {
