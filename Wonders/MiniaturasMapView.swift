@@ -62,7 +62,12 @@ struct MiniaturasMapView: View {
                     .padding()
                 Spacer()
             } else {
-                Map(coordinateRegion: .constant(region), interactionModes: .all, showsUserLocation: false, annotationItems: locations) { loc in
+                Map(
+                    coordinateRegion: .constant(region),
+                    interactionModes: .all,
+                    showsUserLocation: false,
+                    annotationItems: locations
+                ) { loc in
                     MapAnnotation(coordinate: loc.coordinate) {
                         VStack(spacing: 2) {
                             Button(action: {
@@ -74,18 +79,18 @@ struct MiniaturasMapView: View {
                                 ZStack {
                                     Circle()
                                         .frame(width: 32, height: 32)
-                                        .foregroundColor(.red) // Red circle marker
+                                        .foregroundColor(.red)
                                     if showNumbers {
                                         if loc.ordem == 8 {
                                             Text("+")
                                                 .font(.headline)
                                                 .fontWeight(.bold)
-                                                .foregroundColor(.white) // White number
+                                                .foregroundColor(.white)
                                         } else {
                                             Text("\(loc.ordem)")
                                                 .font(.headline)
                                                 .fontWeight(.bold)
-                                                .foregroundColor(.white) // White number
+                                                .foregroundColor(.white)
                                         }
                                     }
                                 }

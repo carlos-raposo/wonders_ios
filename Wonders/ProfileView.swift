@@ -220,14 +220,11 @@ struct SettingsView: View {
             .padding(.horizontal)
             .onAppear(perform: loadUserName)
         }
-        .actionSheet(isPresented: $showLanguageSheet) {
-            ActionSheet(title: Text(t("select_language")), buttons: [
-                .default(Text("English")) { languageSettings.language = "en" },
-                .default(Text("Português")) { languageSettings.language = "pt" },
-                .default(Text("Français")) { languageSettings.language = "fr" },
-                .default(Text("Español")) { languageSettings.language = "es" },
-                .cancel(Text(t("cancel")))
-            ])
+        .sheet(isPresented: $showLanguageSheet) {
+            LanguagePickerSheet(selectedLanguage: languageSettings.language) { lang in
+                languageSettings.language = lang
+                showLanguageSheet = false
+            }
         }
         .alert(isPresented: $showDeleteAlert) {
             Alert(title: Text(t("delete_title")), message: Text(t("delete_message")), primaryButton: .destructive(Text(t("delete_confirm"))) {
@@ -451,5 +448,44 @@ struct GridRowView: View {
             .frame(width: 40, alignment: .center)
         }
         .frame(maxWidth: .infinity, alignment: .center)
+    }
+}
+
+// View customizada para seleção de idioma
+struct LanguagePickerSheet: View {
+    @State var selectedLanguage: String
+    var onSelect: (String) -> Void
+    let languages = [
+        ("en", "English"),
+        ("pt", "Português"),
+        ("fr", "Français"),
+        ("es", "Español")
+    ]
+    var body: some View {
+        NavigationView {
+            List(languages, id: \.0) { lang in
+                HStack {
+                    Text(lang.1)
+                    Spacer()
+                    if selectedLanguage == lang.0 {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.accentColor)
+                    }
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    onSelect(lang.0)
+                }
+            }
+            .navigationTitle("Idioma")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("OK") {
+                        onSelect(selectedLanguage)
+                    }
+                }
+            }
+        }
     }
 }
