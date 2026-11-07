@@ -5,6 +5,8 @@ struct SearchView: View {
     @State private var allCards: [MiniaturaCard] = MiniaturaCard.allCards()
     @State private var selectedCard: MiniaturaCard? = nil
     @EnvironmentObject var languageSettings: LanguageSettings
+    @EnvironmentObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var purchaseManager: PurchaseManager
     @Environment(\.colorScheme) var colorScheme // Detect dark/light mode
 
     // Custom colors for feedback/placeholder text
@@ -30,14 +32,18 @@ struct SearchView: View {
     }
 
     var body: some View {
+        let isTablet = UIDevice.current.userInterfaceIdiom == .pad
+
         VStack(spacing: 0) {
+            // 🌟 BARRA DE PESQUISA COM LARGURA CONTROLADA NO IPAD
             ZStack {
                 RoundedRectangle(cornerRadius: 14)
-                    .fill(Color(.systemGray6)) // Fundo adaptativo
-                    .frame(height: 48)
+                    .fill(Color(.systemGray6))
+                    .frame(height: isTablet ? 54 : 48)
                     .shadow(color: Color.black.opacity(0.08), radius: 2, x: 0, y: 1)
+                
                 TextField("", text: $searchText)
-                    .font(.system(size: 18))
+                    .font(.system(size: isTablet ? 20 : 18, weight: .regular, design: .rounded))
                     .padding(.horizontal, 16)
                     .foregroundColor(placeholderTextColor)
                     .accentColor(placeholderTextColor)
@@ -45,24 +51,28 @@ struct SearchView: View {
                         hideKeyboard()
                     }
                     .submitLabel(.search)
+                
                 if searchText.isEmpty {
                     HStack {
                         Text(languageSettings.language == "pt" ? "Pesquisar..." : "Search...")
-                            .font(.system(size: 18))
+                            .font(.system(size: isTablet ? 20 : 18, weight: .regular, design: .rounded))
                             .foregroundColor(placeholderTextColor)
                             .padding(.horizontal, 16)
                         Spacer()
                     }
-                    .allowsHitTesting(false) // Permite clicar no TextField normalmente
+                    .allowsHitTesting(false)
                 }
             }
-            .padding(.horizontal)
+            .frame(maxWidth: isTablet ? 750 : .infinity) // 👈 Limita a largura máxima no iPad
+            .padding(.horizontal, isTablet ? 32 : 16)
             .padding(.bottom, 16)
-            .padding(.top, 30) // Adiciona padding top entre a caixa de pesquisa e o topo da tela
+            .padding(.top, isTablet ? 24 : 30)
+
+            // 🌟 CONTEÚDO (RESULTADOS OU MENSAGEM DE FEEDBACK)
             if filteredCards.isEmpty {
                 Spacer()
                 Text(searchText.isEmpty ? (languageSettings.language == "pt" ? "Digite para pesquisar" : "Type to search") : (languageSettings.language == "pt" ? "Nenhum resultado encontrado" : "No results found"))
-                    .font(.system(size: 22, weight: .semibold)) // Maior e mais visível
+                    .font(.system(size: isTablet ? 24 : 22, weight: .semibold, design: .rounded))
                     .foregroundColor(feedbackTextColor)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
@@ -71,28 +81,30 @@ struct SearchView: View {
                 List(filteredCards) { card in
                     let translation = card.translations[languageSettings.language] ?? card.translations["en"] ?? card.translations["pt"]
                     Button(action: { selectedCard = card }) {
-                        VStack(alignment: .leading, spacing: 4) {
+                        VStack(alignment: .leading, spacing: 6) {
                             Text(translation?.titulo ?? "")
-                                .font(.headline)
+                                .font(.system(size: isTablet ? 20 : 17, weight: .bold, design: .rounded))
                                 .foregroundColor(.primary)
                             if let desc = translation?.shortDescription, !desc.isEmpty {
                                 Text(desc)
-                                    .font(.subheadline)
+                                    .font(.system(size: isTablet ? 17 : 15, weight: .light, design: .rounded))
                                     .foregroundColor(feedbackTextColor)
                             }
                         }
-                        .padding(.vertical, 6)
+                        .padding(.vertical, isTablet ? 8 : 6)
                     }
                 }
                 .listStyle(PlainListStyle())
+                .frame(maxWidth: isTablet ? 750 : .infinity) // 👈 Centraliza e limita a largura da lista no iPad
+                .frame(maxWidth: .infinity)
             }
         }
-        .background(Color(.systemBackground)) // Fundo adaptativo
-        .sheet(item: $selectedCard) { card in
+        .background(Color(.systemBackground))
+        .fullScreenCover(item: $selectedCard) { card in
             CardsDeckPage(card: card, language: languageSettings.language)
-                .presentationDetents([.large])
-                .interactiveDismissDisabled(false)
-                .presentationDragIndicator(.visible)
+                .environmentObject(languageSettings)
+                .environmentObject(favoritesManager)
+                .environmentObject(purchaseManager)
         }
     }
 }

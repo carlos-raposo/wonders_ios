@@ -1,5 +1,4 @@
 import SwiftUI
-import Lottie
 
 struct LaunchAnimationView: View {
     @Binding var isPresented: Bool
@@ -10,10 +9,12 @@ struct LaunchAnimationView: View {
             Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
 
-            let animationFile = languageSettings.language == "pt" ? "welcome_pt" : "welcome_animation"
-            if Bundle.main.path(forResource: animationFile, ofType: "json") != nil {
-                LaunchLottieView(filename: animationFile) { _ in
-                    // Dismiss after animation finishes
+            let animationFile = languageSettings.language == "pt" ? "welcome_animation_pt" : "welcome_animation"
+
+            // Verificação da existência do ficheiro .lottie no Bundle
+            if Bundle.main.path(forResource: animationFile, ofType: "lottie") != nil {
+                LottieView(filename: animationFile, loopMode: .playOnce) { _ in
+                    // Dismiss suave após a animação terminar
                     DispatchQueue.main.async {
                         withAnimation {
                             isPresented = false
@@ -22,16 +23,15 @@ struct LaunchAnimationView: View {
                 }
                 .frame(maxWidth: 500, maxHeight: 500)
             } else {
-                // Fallback visual se o arquivo não existir
+                // Fallback visual caso o ficheiro .lottie não esteja no Bundle
                 VStack {
                     Spacer()
-                    Text("Animação não encontrada: \(animationFile).json")
+                    Text("Animação não encontrada: \(animationFile).lottie")
                         .foregroundColor(.red)
                         .font(.headline)
                     Spacer()
                 }
                 .onAppear {
-                    // Dismiss imediatamente para não travar o app
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         withAnimation {
                             isPresented = false
@@ -40,44 +40,6 @@ struct LaunchAnimationView: View {
                 }
             }
         }
-    }
-}
-
-struct LaunchLottieView: UIViewRepresentable {
-    var filename: String
-    var loopMode: LottieLoopMode = .playOnce
-    var onCompletion: ((Bool) -> Void)?
-
-    func makeUIView(context: Context) -> UIView {
-        let container = UIView()
-        container.backgroundColor = .clear
-
-        let animationView = LottieAnimationView()
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-        animationView.backgroundColor = .clear
-        animationView.contentMode = .scaleAspectFit
-
-        if let path = Bundle.main.path(forResource: filename, ofType: "json") {
-            animationView.animation = LottieAnimation.filepath(path)
-        }
-        animationView.loopMode = loopMode
-        animationView.play { finished in
-            onCompletion?(finished)
-        }
-
-        container.addSubview(animationView)
-        NSLayoutConstraint.activate([
-            animationView.widthAnchor.constraint(equalTo: container.widthAnchor),
-            animationView.heightAnchor.constraint(equalTo: container.heightAnchor),
-            animationView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            animationView.centerYAnchor.constraint(equalTo: container.centerYAnchor)
-        ])
-
-        return container
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {
-        // No-op
     }
 }
 

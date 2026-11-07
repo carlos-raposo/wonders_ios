@@ -1,5 +1,18 @@
 import SwiftUI
 
+// MARK: - Helper para Cores Adaptáveis (Light / Dark Mode)
+extension Color {
+    static func adaptive(light: Color, dark: Color) -> Color {
+        Color(UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(dark) : UIColor(light)
+        })
+    }
+}
+
+private let darkCardBackground = Color(red: 30/255, green: 30/255, blue: 30/255)
+// Cor Primária da App (#51A0CE)
+private let brandActiveColor = Color(red: 81/255, green: 160/255, blue: 206/255)
+
 struct MainTabView: View {
     @EnvironmentObject var languageSettings: LanguageSettings
     @AppStorage("isUserLoggedIn") private var isAuthenticated = false
@@ -9,16 +22,50 @@ struct MainTabView: View {
     @State private var showMiniaturas: Bool = false
     @State private var selectedCategoryIndex: Int? = nil
     
-    let categories: [(title: String, color: Color)] = [
-        ("Monuments", Color(red: 1.0, green: 0.92, blue: 0.84)),
-        ("Nature", Color(red: 0.82, green: 1.0, blue: 0.89)),
-        ("Gastronomy", Color(red: 0.91, green: 0.89, blue: 1.0)),
-        ("Popular", Color(red: 1.0, green: 0.98, blue: 0.74)),
-        ("Churches", Color(red: 0.82, green: 0.97, blue: 1.0)),
-        ("Museums", Color(red: 0.95, green: 0.95, blue: 0.96)),
-        ("Sintra", Color(red: 0.87, green: 1.0, blue: 0.82)),
-        ("Vocabulary", Color(red: 1.0, green: 0.87, blue: 0.92))
+    // MARK: - Array de Categorias com Fundo e Texto/Ícone Adaptáveis
+    let categories: [(title: String, backgroundColor: Color, foregroundColor: Color)] = [
+        (
+            title: "Monuments",
+            backgroundColor: .adaptive(light: Color(red: 255/255, green: 228/255, blue: 142/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 255/255, green: 228/255, blue: 142/255))
+        ),
+        (
+            title: "Nature",
+            backgroundColor: .adaptive(light: Color(red: 192/255, green: 255/255, blue: 195/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 192/255, green: 255/255, blue: 195/255))
+        ),
+        (
+            title: "Gastronomy",
+            backgroundColor: .adaptive(light: Color(red: 198/255, green: 229/255, blue: 255/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 198/255, green: 229/255, blue: 255/255))
+        ),
+        (
+            title: "Popular",
+            backgroundColor: .adaptive(light: Color(red: 255/255, green: 189/255, blue: 168/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 253/255, green: 193/255, blue: 175/255))
+        ),
+        (
+            title: "Churches",
+            backgroundColor: .adaptive(light: Color(red: 255/255, green: 225/255, blue: 235/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 255/255, green: 225/255, blue: 235/255))
+        ),
+        (
+            title: "Museums",
+            backgroundColor: .adaptive(light: Color(red: 189/255, green: 255/255, blue: 246/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 189/255, green: 255/255, blue: 246/255))
+        ),
+        (
+            title: "Sintra",
+            backgroundColor: .adaptive(light: Color(red: 238/255, green: 229/255, blue: 255/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 212/255, green: 193/255, blue: 252/255))
+        ),
+        (
+            title: "Vocabulary",
+            backgroundColor: .adaptive(light: Color(red: 251/255, green: 255/255, blue: 187/255), dark: darkCardBackground),
+            foregroundColor: .adaptive(light: .black, dark: Color(red: 249/255, green: 253/255, blue: 190/255))
+        )
     ]
+    
     let imageNames = [
         "monuments", "nature", "gastronomy", "popular", "churches", "museums", "sintra", "vocabulary"
     ]
@@ -42,8 +89,6 @@ struct MainTabView: View {
                             )
                         } else {
                             HomeView(
-                                categories: categories,
-                                imageNames: imageNames,
                                 showMiniaturas: $showMiniaturas,
                                 selectedCategoryIndex: $selectedCategoryIndex,
                                 selectedTab: $selectedTab
@@ -67,11 +112,12 @@ struct MainTabView: View {
                                             .font(.headline)
                                             .frame(maxWidth: .infinity)
                                             .padding()
-                                            .background(Color.purple)
+                                            .background(brandActiveColor)
                                             .foregroundColor(.white)
                                             .cornerRadius(16)
-                                            .padding(.horizontal)
                                     }
+                                    .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? 440 : .infinity)
+                                    .padding(.horizontal)
                                 }
                                 Spacer()
                             }
@@ -94,24 +140,31 @@ struct MainTabView: View {
     }
 }
 
-// BottomNavigationBar igual ao da Home
+// MARK: - BottomNavigationBar
 struct MiniaturasTabBar: View {
     @Binding var selectedTab: Int
     var showMiniaturas: Binding<Bool>? = nil
     @EnvironmentObject var languageSettings: LanguageSettings
+    
+    // Cor azul personalizada para o item selecionado (#51A0CE)
+    private let activeColor = Color(red: 81/255, green: 160/255, blue: 206/255)
+    
     private let tabTranslations: [String: [String]] = [
         "en": ["Home", "Favorites", "Search", "Settings"],
         "pt": ["Início", "Favoritos", "Pesquisar", "Definições"],
         "fr": ["Accueil", "Favoris", "Recherche", "Paramètres"],
         "es": ["Inicio", "Favoritos", "Buscar", "Configuración"]
     ]
+    
     private func t(_ idx: Int) -> String {
         let lang = languageSettings.language
         return tabTranslations[lang]?[idx] ?? tabTranslations["en"]![idx]
     }
+    
     var body: some View {
         HStack {
             Spacer()
+            // Tab 0: Home / Início
             Button(action: {
                 selectedTab = 0
                 showMiniaturas?.wrappedValue = false
@@ -124,9 +177,10 @@ struct MiniaturasTabBar: View {
                         .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 0 ? 1.0 : 0.7)
                 }
-                .foregroundColor(selectedTab == 0 ? .blue : .primary)
+                .foregroundColor(selectedTab == 0 ? activeColor : .primary)
             }
             Spacer()
+            // Tab 1: Favorites / Favoritos
             Button(action: { selectedTab = 1 }) {
                 VStack {
                     Image(systemName: selectedTab == 1 ? "heart.fill" : "heart")
@@ -136,9 +190,10 @@ struct MiniaturasTabBar: View {
                         .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 1 ? 1.0 : 0.7)
                 }
-                .foregroundColor(selectedTab == 1 ? .blue : .primary)
+                .foregroundColor(selectedTab == 1 ? activeColor : .primary)
             }
             Spacer()
+            // Tab 2: Search / Pesquisar
             Button(action: { selectedTab = 2 }) {
                 VStack {
                     Image(systemName: "magnifyingglass")
@@ -148,9 +203,10 @@ struct MiniaturasTabBar: View {
                         .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 2 ? 1.0 : 0.7)
                 }
-                .foregroundColor(selectedTab == 2 ? .blue : .primary)
+                .foregroundColor(selectedTab == 2 ? activeColor : .primary)
             }
             Spacer()
+            // Tab 3: Settings / Definições
             Button(action: { selectedTab = 3 }) {
                 VStack {
                     Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
@@ -160,7 +216,7 @@ struct MiniaturasTabBar: View {
                         .font(.system(size: 14, weight: .light))
                         .opacity(selectedTab == 3 ? 1.0 : 0.7)
                 }
-                .foregroundColor(selectedTab == 3 ? .blue : .primary)
+                .foregroundColor(selectedTab == 3 ? activeColor : .primary)
             }
             Spacer()
         }

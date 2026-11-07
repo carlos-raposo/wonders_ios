@@ -15,16 +15,20 @@ struct MiniaturaCardView: View {
     
     var body: some View {
         let canFavorite = !isVocabularyPT
+        let isTablet = UIDevice.current.userInterfaceIdiom == .pad
+        
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
                 ZStack(alignment: .topLeading) {
-                    Image(card.imagem)
-                        .resizable()
-                        .aspectRatio(4.0/3.0, contentMode: .fill)
-                        .frame(maxWidth: .infinity)
+                    Color.clear
+                        .aspectRatio(16.0 / 10.0, contentMode: .fit)
+                        .overlay(
+                            Image(card.imagem)
+                                .resizable()
+                                .scaledToFill()
+                        )
                         .clipped()
-                        .cornerRadius(6)
-                        .accessibilityLabel("Imagem da miniatura \(translation.titulo)")
+                        .cornerRadius(16)
                 }
                 if canFavorite {
                     Button(action: {
@@ -35,17 +39,16 @@ struct MiniaturaCardView: View {
                         }
                     }) {
                         Image(systemName: favoritesManager.isFavorite(card: card) ? "heart.fill" : "heart")
-                            .font(.system(size: 24)) // <-- Define o tamanho do ícone
+                            .font(.system(size: isTablet ? 28 : 24, weight: .medium, design: .rounded))
                             .foregroundColor(favoritesManager.isFavorite(card: card) ? .red : .white)
-                            .padding(8)
+                            .padding(isTablet ? 12 : 8)
                     }
                     .padding(8)
                     .accessibilityLabel(favoritesManager.isFavorite(card: card) ? "Remover dos favoritos" : "Adicionar aos favoritos")
                 }
             }
         }
-        .background(Color(.systemBackground))
-        .cornerRadius(0)
-        .shadow(radius: 4)
+        .frame(maxWidth: isTablet ? 750 : .infinity)
+        .padding(.horizontal, isTablet ? 8 : 0) // 👈 Alinha perfeitamente com as margens de texto do tablet
     }
 }

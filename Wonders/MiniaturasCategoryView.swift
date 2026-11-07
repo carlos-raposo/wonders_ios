@@ -6,42 +6,14 @@ struct MiniaturasCategoryView: View {
     let category: String
     let language: String
     var onRequireAuth: (() -> Void)? = nil
+    
+    @EnvironmentObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var languageSettings: LanguageSettings
+    @EnvironmentObject var purchaseManager: PurchaseManager
+    
     @State private var showDeckPage: MiniaturaCard? = nil
     @State private var showMapSheet = false
     
-    // Slogans por categoria e idioma
-    /*
-    private let slogans: [String: [String: String]] = [
-        "en": [
-            "Monuments": "History in every stone.",
-            "Nature": "Breathe deep, live nature.",
-            "Gastronomy": "Flavors that tell stories.",
-            "Popular": "Tradition you can feel.",
-            "Churches": "Spirituality and art in harmony.",
-            "Museums": "The past at your fingertips.",
-            "Sintra": "Enchantment among palaces and forests.",
-            "Vocabulary": "Words that bring cultures together."
-        ],
-        "pt": [
-            "Monuments": "História em cada pedra.",
-            "Nature": "Respire fundo, viva a natureza.",
-            "Gastronomy": "Sabores que contam histórias.",
-            "Popular": "Tradição que se sente.",
-            "Churches": "Espiritualidade e arte em harmonia.",
-            "Museums": "O passado ao alcance das mãos.",
-            "Sintra": "Encanto entre palácios e florestas.",
-            "Vocabulary": "Palavras que são diferentes em Portugal e no Brasil"
-        ]
-    ]
-    
-    private func sloganForCategory() -> String {
-        let lang = language
-        let key = category
-        return slogans[lang]?[key] ?? slogans["en"]?[key] ?? ""
-    }
-    */
-    
-    // Adiciona função para garantir categoria original
     private func originalCategoryName(for input: String) -> String {
         switch input.lowercased() {
             case "monuments", "monumentos": return "Monumentos"
@@ -66,57 +38,35 @@ struct MiniaturasCategoryView: View {
         return originalCategoryName(for: category)
     }
     
-    // Custom zoom per category
     private func zoomSpanForCategory(_ category: String) -> MKCoordinateSpan {
         let normalized = category.normalized
         switch normalized {
-        case "monumentos", "monuments":
-            return MKCoordinateSpan(latitudeDelta: 0.75, longitudeDelta: 0.75)
-        case "natureza", "nature":
-            return MKCoordinateSpan(latitudeDelta: 0.99, longitudeDelta: 0.99)
-        case "gastronomia", "gastronomy":
-            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
-        case "popular":
-            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
-        case "igrejas", "churches":
-            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
-        case "museus", "museums":
-            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
-        case "sintra":
-            return MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
-        case "vocabulário", "vocabulario", "vocabulary":
-            return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
-        default:
-            return MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
+        case "monumentos", "monuments": return MKCoordinateSpan(latitudeDelta: 0.75, longitudeDelta: 0.75)
+        case "natureza", "nature": return MKCoordinateSpan(latitudeDelta: 0.99, longitudeDelta: 0.99)
+        case "gastronomy", "gastronomia": return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "popular": return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "igrejas", "churches": return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "museus", "museums": return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        case "sintra": return MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+        case "vocabulário", "vocabulario", "vocabulary": return MKCoordinateSpan(latitudeDelta: 0.20, longitudeDelta: 0.20)
+        default: return MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09)
         }
     }
 
-    // Custom center per category
     private func centerForCategory(_ category: String) -> CLLocationCoordinate2D? {
         let normalized = category.normalized
         switch normalized {
-        case "monumentos", "monuments":
-            return CLLocationCoordinate2D(latitude: 38.760144, longitude: -9.236019) // Amadora
-        case "natureza", "nature":
-            return CLLocationCoordinate2D(latitude: 39.091149, longitude: -9.258869) // Torres Vedras
-        case "gastronomia", "gastronomy":
-            return CLLocationCoordinate2D(latitude: 38.720843, longitude: -9.192982) // Monsanto
-        case "popular":
-            return CLLocationCoordinate2D(latitude: 38.725268, longitude: -9.150002) // Marques de Pombal
-        case "igrejas", "churches":
-            return CLLocationCoordinate2D(latitude: 38.7074, longitude: -9.160447) // Basilica da Estrela
-        case "museus", "museums":
-            return CLLocationCoordinate2D(latitude: 38.7231, longitude: -9.1702) // Museu Arte Antiga
-        case "sintra":
-            return CLLocationCoordinate2D(latitude: 38.777640, longitude: -9.425583) // Parque Sintra Cascais
-        case "vocabulário", "vocabulario", "vocabulary":
-            return nil // Sem centro definido
-        default:
-            return nil
+        case "monumentos", "monuments": return CLLocationCoordinate2D(latitude: 38.760144, longitude: -9.236019)
+        case "natureza", "nature": return CLLocationCoordinate2D(latitude: 39.091149, longitude: -9.258869)
+        case "gastronomy", "gastronomia": return CLLocationCoordinate2D(latitude: 38.720843, longitude: -9.192982)
+        case "popular": return CLLocationCoordinate2D(latitude: 38.725268, longitude: -9.150002)
+        case "igrejas", "churches": return CLLocationCoordinate2D(latitude: 38.7074, longitude: -9.160447)
+        case "museus", "museums": return CLLocationCoordinate2D(latitude: 38.7231, longitude: -9.1702)
+        case "sintra": return CLLocationCoordinate2D(latitude: 38.777640, longitude: -9.425583)
+        default: return nil
         }
     }
     
-    // Helper to get canonical category key for translation
     private func canonicalCategoryKey(_ input: String) -> String {
         switch input.lowercased() {
             case "monuments", "monumentos": return "Monuments"
@@ -132,7 +82,6 @@ struct MiniaturasCategoryView: View {
     }
     
     var body: some View {
-        // Use production data source and filter by category
         let isVocab = correctVocabularyCategory().normalized == "vocabulary"
         let cards = MiniaturaCard.allCards().filter { isVocab ? ($0.categoria.normalized == "vocabulary" || $0.categoria.normalized == "vocabulário") : $0.categoria.normalized == correctVocabularyCategory().normalized }
         let mapLocations: [MiniaturaLocation] = cards.flatMap { card in
@@ -145,16 +94,13 @@ struct MiniaturasCategoryView: View {
                 )
             } ?? []
         }
+        
+        let isTablet = UIDevice.current.userInterfaceIdiom == .pad
+
         ZStack(alignment: .bottom) {
             ScrollView {
                 VStack {
-                    /*Text(sloganForCategory())
-                        .font(.title2)
-                        .fontWeight(.regular)
-                        .padding(.horizontal)
-                        .padding(.top, 12)
-                        .padding(.bottom, 8)
-                        .multilineTextAlignment(.center)*/
+                    Spacer().frame(height: 12)
                     VStack(spacing: 8) {
                         ForEach(cards, id: \.id) { card in
                             let t = card.translations[language] ?? card.translations.values.first!
@@ -162,41 +108,54 @@ struct MiniaturasCategoryView: View {
                                 if !isVocabularyPT() {
                                     Button(action: { showDeckPage = card }) {
                                         MiniaturaCardView(card: card, translation: t, onRequireAuth: onRequireAuth)
-                                            .contentShape(Rectangle()) // Ensure full area is tappable
+                                            .contentShape(Rectangle())
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                     .accessibilityLabel("Miniatura número \(card.ordem): \(t.titulo)")
                                 } else {
                                     MiniaturaCardView(card: card, translation: t, onRequireAuth: onRequireAuth)
                                 }
-                                // Replace the HStack with a single Text view using AttributedString for mixed styles
-                                Text(t.titulo)
-                                    .font(Font.custom("Montserrat", size: 20).weight(.semibold))
-                                    .foregroundColor(.primary)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal, 12)
-                                    .padding(.top, 10)
-                                Text(t.shortDescription)
-                                    .font(Font.custom("Montserrat", size: 16).weight(.medium))
-                                    .foregroundColor(.primary)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal, 10)
-                                    .padding(.bottom, 16)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    // Título centrado
+                                    Text(t.titulo)
+                                        .font(.system(size: isTablet ? 26 : 21, weight: .regular, design: .rounded))
+                                        .foregroundColor(.primary)
+                                        .multilineTextAlignment(.center)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                    
+                                    // Descrição alinhada à esquerda
+                                    if !t.shortDescription.isEmpty {
+                                        Text(t.shortDescription)
+                                            .font(.system(size: isTablet ? 22 : 19, weight: .light, design: .rounded))
+                                            .foregroundColor(.primary)
+                                            .multilineTextAlignment(.leading)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                }
+                                .padding(.horizontal, isTablet ? 8 : 12)
+                                .padding(.top, 12)
+                                .padding(.bottom, 8)
                             }
+                            .frame(maxWidth: isTablet ? 750 : .infinity)
                         }
                     }
-                    .padding(.horizontal, 0)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, isTablet ? 32 : 12)
                     .padding(.bottom, 24)
                 }
             }
+            
             if category != "Vocabulary" {
                 HStack {
                     Spacer()
                     Button(action: { showMapSheet = true }) {
-                        HStack {
+                        HStack(spacing: 6) {
                             Image(systemName: "map")
+                                .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.primary)
                             Text(Translations.shared.t("map", lang: language))
+                                .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.primary)
                         }
                         .padding(.horizontal, 16)
@@ -225,11 +184,24 @@ struct MiniaturasCategoryView: View {
                 customCenter: centerForCategory(category)
             )
         }
-        .sheet(item: $showDeckPage) { card in
-            CardsDeckPage(card: card, language: language)
-                .presentationDetents([.large])
-                .interactiveDismissDisabled(false)
-                .presentationDragIndicator(.visible)
-        }
+        .background(
+            Group {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Color.clear.fullScreenCover(item: $showDeckPage) { card in
+                        CardsDeckPage(card: card, language: language)
+                            .environmentObject(favoritesManager)
+                            .environmentObject(languageSettings)
+                            .environmentObject(purchaseManager)
+                    }
+                } else {
+                    Color.clear.sheet(item: $showDeckPage) { card in
+                        CardsDeckPage(card: card, language: language)
+                            .environmentObject(favoritesManager)
+                            .environmentObject(languageSettings)
+                            .environmentObject(purchaseManager)
+                    }
+                }
+            }
+        )
     }
 }

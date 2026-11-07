@@ -44,24 +44,33 @@ struct ContentView: View {
     @State private var showLaunchAnimation: Bool = true
 
     var body: some View {
-        NavigationStack {
-            MainTabView(
-                selectedTab: $selectedTab,
-                showLogin: $showLogin,
-                onAuthenticated: {
-                    isAuthenticated = true
-                    favoritesManager.refreshFavorites()
-                }
-            )
-            .environmentObject(favoritesManager)
-            .environmentObject(languageSettings)
-            .preferredColorScheme(isDarkMode ? .dark : .light)
-        }
-        .fullScreenCover(isPresented: $showLaunchAnimation) {
-            LaunchAnimationView(isPresented: $showLaunchAnimation)
+        ZStack {
+            // App Principal
+            NavigationStack {
+                MainTabView(
+                    selectedTab: $selectedTab,
+                    showLogin: $showLogin,
+                    onAuthenticated: {
+                        isAuthenticated = true
+                        favoritesManager.refreshFavorites()
+                    }
+                )
+                .environmentObject(favoritesManager)
                 .environmentObject(languageSettings)
+                .preferredColorScheme(isDarkMode ? .dark : .light)
+            }
+
+            // Ecrã de Lançamento Sobreposto (Fade Out suave)
+            if showLaunchAnimation {
+                LaunchAnimationView(isPresented: $showLaunchAnimation)
+                    .environmentObject(languageSettings)
+                    .transition(.opacity) // Faz desaparecer com opacidade em vez de deslizar
+                    .zIndex(1) // Garante que fica no topo durante a transição
+            }
         }
-        .sheet(isPresented: $showLogin) {
+        // Animação global suave para quando o showLaunchAnimation mudar para false
+        .animation(.easeInOut(duration: 0.6), value: showLaunchAnimation)
+        .fullScreenCover(isPresented: $showLogin) {
             LoginView(onAuthenticated: {
                 isAuthenticated = true
                 favoritesManager.refreshFavorites()

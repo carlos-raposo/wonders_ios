@@ -3,24 +3,35 @@ import Lottie
 
 struct LottieView: UIViewRepresentable {
     var filename: String
-    var loopMode: LottieLoopMode = .loop
+    var loopMode: LottieLoopMode = .playOnce
     var speed: CGFloat = 1.0
+    var onCompletion: ((Bool) -> Void)? = nil
 
     func makeUIView(context: Context) -> UIView {
         let container = UIView()
-        container.clipsToBounds = true
+        container.backgroundColor = .clear
 
         let animationView = LottieAnimationView()
         animationView.translatesAutoresizingMaskIntoConstraints = false
-        animationView.clipsToBounds = true
         animationView.backgroundColor = .clear
-        if let path = Bundle.main.path(forResource: filename, ofType: "json") {
-            animationView.animation = LottieAnimation.filepath(path)
-        }
-        animationView.loopMode = loopMode
-        animationView.animationSpeed = speed
         animationView.contentMode = .scaleAspectFit
-        animationView.play()
+
+        // --- CARREGAMENTO DO FICHEIRO .DOTLOTTIE ---
+        DotLottieFile.named(filename) { result in
+            switch result {
+            case .success(let dotLottie):
+                animationView.loadAnimation(from: dotLottie)
+                animationView.loopMode = loopMode
+                animationView.animationSpeed = speed
+                animationView.play { finished in
+                    onCompletion?(finished)
+                }
+                print("✅ [LottieView] Sucesso ao carregar .dotLottie: \(filename)")
+            case .failure(let error):
+                print("❌ [LottieView] Erro ao carregar .dotLottie '\(filename)': \(error)")
+            }
+        }
+        // -------------------------------------------
 
         container.addSubview(animationView)
         NSLayoutConstraint.activate([
@@ -29,10 +40,11 @@ struct LottieView: UIViewRepresentable {
             animationView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
             animationView.centerYAnchor.constraint(equalTo: container.centerYAnchor)
         ])
+
         return container
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-        // No update needed for static animation
+        // No-op
     }
 }
