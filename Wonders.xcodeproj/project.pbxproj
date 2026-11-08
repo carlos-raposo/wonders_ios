@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		765E5622ACAF32BB3CC21547 /* Pods_Wonders_WondersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9FB0F63450079DFFA060AE /* Pods_Wonders_WondersUITests.framework */; };
-		B4199904CEC01015C02C3BCD /* Pods_WondersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A975846902AEC8E444C633 /* Pods_WondersTests.framework */; };
-		CD7955AE5299D26EDEDF0DA9 /* Pods_Wonders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B69334D74D8B3CD9E2E1D21 /* Pods_Wonders.framework */; };
+		8976DC2579A600C1B6D98A00 /* Pods_WondersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9D3876F530ABCE699D1798 /* Pods_WondersTests.framework */; };
+		C2B97E9A308EB9B200B0EDA5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B97E99308EB9B100B0EDA5 /* StoreKit.framework */; };
+		D075B3D301D1C6242394C561 /* Pods_Wonders_WondersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211F6731DCB56230F3D1258B /* Pods_Wonders_WondersUITests.framework */; };
+		EE9B21F108970B62263D1B17 /* Pods_Wonders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5F4A1B17DB851ADAB01355 /* Pods_Wonders.framework */; };
 		F2A3B4C5D6E7F8A9B0C1D2E3 /* Wonders/GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E6F7A8B9C0D1E2 /* Wonders/GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -31,18 +32,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10C291F48D063F4FB1C34F14 /* Pods-Wonders-WondersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders-WondersUITests.release.xcconfig"; path = "Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests.release.xcconfig"; sourceTree = "<group>"; };
-		2B9FB0F63450079DFFA060AE /* Pods_Wonders_WondersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wonders_WondersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F878599E19F6BA0EC4F1563 /* Pods-Wonders.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders.release.xcconfig"; path = "Target Support Files/Pods-Wonders/Pods-Wonders.release.xcconfig"; sourceTree = "<group>"; };
-		517CA0A37BFA20E724BF5D4D /* Pods-WondersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WondersTests.release.xcconfig"; path = "Target Support Files/Pods-WondersTests/Pods-WondersTests.release.xcconfig"; sourceTree = "<group>"; };
-		55A5EF5C344C887CC48C9F02 /* Pods-WondersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WondersTests.debug.xcconfig"; path = "Target Support Files/Pods-WondersTests/Pods-WondersTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6B1BC2A35777833F356BA756 /* Pods-Wonders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders.debug.xcconfig"; path = "Target Support Files/Pods-Wonders/Pods-Wonders.debug.xcconfig"; sourceTree = "<group>"; };
-		7B69334D74D8B3CD9E2E1D21 /* Pods_Wonders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wonders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CE30DF0A049F96A2E0C7F66 /* Pods-Wonders-WondersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders-WondersUITests.debug.xcconfig"; path = "Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1A5F4A1B17DB851ADAB01355 /* Pods_Wonders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wonders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9D3876F530ABCE699D1798 /* Pods_WondersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WondersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		211F6731DCB56230F3D1258B /* Pods_Wonders_WondersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wonders_WondersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BAF5D96DEDB37300F1B28D4 /* Pods-WondersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WondersTests.release.xcconfig"; path = "Target Support Files/Pods-WondersTests/Pods-WondersTests.release.xcconfig"; sourceTree = "<group>"; };
+		4370A09254E980CB081A512A /* Pods-Wonders-WondersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders-WondersUITests.release.xcconfig"; path = "Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4D53C12ECE5FA438BBE5B723 /* Pods-Wonders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders.debug.xcconfig"; path = "Target Support Files/Pods-Wonders/Pods-Wonders.debug.xcconfig"; sourceTree = "<group>"; };
+		50644898CC1C110BA06F9C4B /* Pods-Wonders.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders.release.xcconfig"; path = "Target Support Files/Pods-Wonders/Pods-Wonders.release.xcconfig"; sourceTree = "<group>"; };
+		714D5ED0E0C06B58AC53A456 /* Pods-Wonders-WondersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wonders-WondersUITests.debug.xcconfig"; path = "Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2B97E99308EB9B100B0EDA5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C2E15BBB2E68CBC50071ED0A /* Wonders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wonders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E15BC82E68CBC70071ED0A /* WondersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WondersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E15BD22E68CBC70071ED0A /* WondersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WondersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6A975846902AEC8E444C633 /* Pods_WondersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WondersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAF0505944CF5D1DCE39DA89 /* Pods-WondersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WondersTests.debug.xcconfig"; path = "Target Support Files/Pods-WondersTests/Pods-WondersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1A2B3C4D5E6F7A8B9C0D1E2 /* Wonders/GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wonders/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD7955AE5299D26EDEDF0DA9 /* Pods_Wonders.framework in Frameworks */,
+				EE9B21F108970B62263D1B17 /* Pods_Wonders.framework in Frameworks */,
+				C2B97E9A308EB9B200B0EDA5 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4199904CEC01015C02C3BCD /* Pods_WondersTests.framework in Frameworks */,
+				8976DC2579A600C1B6D98A00 /* Pods_WondersTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,13 +102,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				765E5622ACAF32BB3CC21547 /* Pods_Wonders_WondersUITests.framework in Frameworks */,
+				D075B3D301D1C6242394C561 /* Pods_Wonders_WondersUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85135B79863FA0021105E4BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2B97E99308EB9B100B0EDA5 /* StoreKit.framework */,
+				1A5F4A1B17DB851ADAB01355 /* Pods_Wonders.framework */,
+				211F6731DCB56230F3D1258B /* Pods_Wonders_WondersUITests.framework */,
+				1F9D3876F530ABCE699D1798 /* Pods_WondersTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C22ABB292E68EA6600C8FED5 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +137,7 @@
 				C2E15BBC2E68CBC50071ED0A /* Products */,
 				DEE6D78DCCCBDC6CAD14EA3A /* Pods */,
 				C22ABB292E68EA6600C8FED5 /* Recovered References */,
-				CA29DD1BEED8960471917382 /* Frameworks */,
+				85135B79863FA0021105E4BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,25 +151,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CA29DD1BEED8960471917382 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7B69334D74D8B3CD9E2E1D21 /* Pods_Wonders.framework */,
-				2B9FB0F63450079DFFA060AE /* Pods_Wonders_WondersUITests.framework */,
-				E6A975846902AEC8E444C633 /* Pods_WondersTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		DEE6D78DCCCBDC6CAD14EA3A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6B1BC2A35777833F356BA756 /* Pods-Wonders.debug.xcconfig */,
-				4F878599E19F6BA0EC4F1563 /* Pods-Wonders.release.xcconfig */,
-				7CE30DF0A049F96A2E0C7F66 /* Pods-Wonders-WondersUITests.debug.xcconfig */,
-				10C291F48D063F4FB1C34F14 /* Pods-Wonders-WondersUITests.release.xcconfig */,
-				55A5EF5C344C887CC48C9F02 /* Pods-WondersTests.debug.xcconfig */,
-				517CA0A37BFA20E724BF5D4D /* Pods-WondersTests.release.xcconfig */,
+				4D53C12ECE5FA438BBE5B723 /* Pods-Wonders.debug.xcconfig */,
+				50644898CC1C110BA06F9C4B /* Pods-Wonders.release.xcconfig */,
+				714D5ED0E0C06B58AC53A456 /* Pods-Wonders-WondersUITests.debug.xcconfig */,
+				4370A09254E980CB081A512A /* Pods-Wonders-WondersUITests.release.xcconfig */,
+				DAF0505944CF5D1DCE39DA89 /* Pods-WondersTests.debug.xcconfig */,
+				3BAF5D96DEDB37300F1B28D4 /* Pods-WondersTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -167,11 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2E15BDC2E68CBC70071ED0A /* Build configuration list for PBXNativeTarget "Wonders" */;
 			buildPhases = (
-				8C5AF6529680F8F3117C53A4 /* [CP] Check Pods Manifest.lock */,
+				0197E0A2D6355FF283F00AD6 /* [CP] Check Pods Manifest.lock */,
 				C2E15BB72E68CBC50071ED0A /* Sources */,
 				C2E15BB82E68CBC50071ED0A /* Frameworks */,
 				C2E15BB92E68CBC50071ED0A /* Resources */,
-				967EADD2775F4417FC9AF06F /* [CP] Embed Pods Frameworks */,
+				8696997F26F703F197FAAD0A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,7 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2E15BDF2E68CBC70071ED0A /* Build configuration list for PBXNativeTarget "WondersTests" */;
 			buildPhases = (
-				0AC25CBA81FC6A0B0744844C /* [CP] Check Pods Manifest.lock */,
+				913BF680B6B7CF6BCE84C00B /* [CP] Check Pods Manifest.lock */,
 				C2E15BC42E68CBC70071ED0A /* Sources */,
 				C2E15BC52E68CBC70071ED0A /* Frameworks */,
 				C2E15BC62E68CBC70071ED0A /* Resources */,
@@ -211,11 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2E15BE22E68CBC70071ED0A /* Build configuration list for PBXNativeTarget "WondersUITests" */;
 			buildPhases = (
-				44D35EE07985E278C80D9308 /* [CP] Check Pods Manifest.lock */,
+				7358EC0E7FBE653737C1CF0C /* [CP] Check Pods Manifest.lock */,
 				C2E15BCE2E68CBC70071ED0A /* Sources */,
 				C2E15BCF2E68CBC70071ED0A /* Frameworks */,
 				C2E15BD02E68CBC70071ED0A /* Resources */,
-				28100D0AC6BF05289AF286F1 /* [CP] Embed Pods Frameworks */,
+				D0978BA7122AAE143A0B39A6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,72 +309,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0AC25CBA81FC6A0B0744844C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WondersTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		28100D0AC6BF05289AF286F1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		44D35EE07985E278C80D9308 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wonders-WondersUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8C5AF6529680F8F3117C53A4 /* [CP] Check Pods Manifest.lock */ = {
+		0197E0A2D6355FF283F00AD6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,7 +331,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		967EADD2775F4417FC9AF06F /* [CP] Embed Pods Frameworks */ = {
+		7358EC0E7FBE653737C1CF0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wonders-WondersUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8696997F26F703F197FAAD0A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,6 +372,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wonders/Pods-Wonders-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		913BF680B6B7CF6BCE84C00B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WondersTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0978BA7122AAE143A0B39A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wonders-WondersUITests/Pods-Wonders-WondersUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -598,17 +602,15 @@
 		};
 		C2E15BDD2E68CBC70071ED0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1BC2A35777833F356BA756 /* Pods-Wonders.debug.xcconfig */;
+			baseConfigurationReference = 4D53C12ECE5FA438BBE5B723 /* Pods-Wonders.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Wonders/Wonders.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6HB6VN2ZSR;
+				DEVELOPMENT_TEAM = 6HB6VN2ZSR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -619,17 +621,18 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosraposo.lisbon7wonders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Wonders App Store Jan2026 Development";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wonders/Wonders-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -639,17 +642,15 @@
 		};
 		C2E15BDE2E68CBC70071ED0A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F878599E19F6BA0EC4F1563 /* Pods-Wonders.release.xcconfig */;
+			baseConfigurationReference = 50644898CC1C110BA06F9C4B /* Pods-Wonders.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Wonders/Wonders.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6HB6VN2ZSR;
+				DEVELOPMENT_TEAM = 6HB6VN2ZSR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -660,17 +661,18 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosraposo.lisbon7wonders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Wonders App Store Jan2026 Development";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wonders/Wonders-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -680,7 +682,7 @@
 		};
 		C2E15BE02E68CBC70071ED0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55A5EF5C344C887CC48C9F02 /* Pods-WondersTests.debug.xcconfig */;
+			baseConfigurationReference = DAF0505944CF5D1DCE39DA89 /* Pods-WondersTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -700,7 +702,7 @@
 		};
 		C2E15BE12E68CBC70071ED0A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 517CA0A37BFA20E724BF5D4D /* Pods-WondersTests.release.xcconfig */;
+			baseConfigurationReference = 3BAF5D96DEDB37300F1B28D4 /* Pods-WondersTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -720,7 +722,7 @@
 		};
 		C2E15BE32E68CBC70071ED0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CE30DF0A049F96A2E0C7F66 /* Pods-Wonders-WondersUITests.debug.xcconfig */;
+			baseConfigurationReference = 714D5ED0E0C06B58AC53A456 /* Pods-Wonders-WondersUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -738,7 +740,7 @@
 		};
 		C2E15BE42E68CBC70071ED0A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10C291F48D063F4FB1C34F14 /* Pods-Wonders-WondersUITests.release.xcconfig */;
+			baseConfigurationReference = 4370A09254E980CB081A512A /* Pods-Wonders-WondersUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

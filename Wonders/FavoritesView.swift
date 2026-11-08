@@ -8,13 +8,14 @@ struct FavoritesView: View {
     @State private var showMapSheet = false
     @State private var selectedCard: MiniaturaCard? = nil
     @State private var showShareSheet = false
+    @State private var isEditingOrder = false // Estado para ativar o modo de reordenação
     
     private func getFavoriteCards() -> [(key: String, card: MiniaturaCard, translation: MiniaturaCardTranslation)] {
         var result: [(String, MiniaturaCard, MiniaturaCardTranslation)] = []
         let allCards = MiniaturaCard.allCards()
+        
         for favKey in favoritesManager.favorites {
             if let id = Int(favKey), let card = allCards.first(where: { $0.id == id }) {
-                // Exclude Vocabulary cards when in PT
                 if languageSettings.language == "pt" && card.categoria == "Vocabulary" {
                     continue
                 }
@@ -27,8 +28,6 @@ struct FavoritesView: View {
                 }
             }
         }
-        // Sort by global id
-        result.sort { $0.1.id < $1.1.id }
         return result
     }
     
@@ -45,21 +44,19 @@ struct FavoritesView: View {
             let horizontalPadding: CGFloat = isTablet ? 32 : 16
             let spacing: CGFloat = isTablet ? 16 : 12
             
-            // 🌟 Cálculo dinâmico do número de colunas com base na largura do ecrã
             let screenWidth = geometry.size.width
             let columnsCount: Int = {
-                if screenWidth > 1100 { return 4 }      // Tablets muito grandes / Paisagem
-                else if screenWidth > 750 { return 3 }  // Tablets médios
-                else if screenWidth > 500 { return 2 }  // Tablets pequenos / iPhone Max em paisagem
-                else { return 2 }                       // Telemóveis padrão
+                if screenWidth > 1100 { return 4 }
+                else if screenWidth > 750 { return 3 }
+                else if screenWidth > 500 { return 2 }
+                else { return 2 }
             }()
             
             let totalSpacing = spacing * CGFloat(columnsCount - 1)
-            let availableWidth = min(screenWidth, 1100) - (horizontalPadding * 2) - totalSpacing // 👈 Adicionado o limite de 1100 igual à Home
+            let availableWidth = min(screenWidth, 1100) - (horizontalPadding * 2) - totalSpacing
             let itemWidth = max(availableWidth / CGFloat(columnsCount), 1)
             
             let columns = Array(repeating: GridItem(.fixed(itemWidth), spacing: spacing), count: columnsCount)
-            
             let colorScheme = UITraitCollection.current.userInterfaceStyle == .dark ? ColorScheme.dark : ColorScheme.light
             
             if geometry.size.width.isFinite, geometry.size.width > 0 {
@@ -69,18 +66,38 @@ struct FavoritesView: View {
                         MiniaturaLocation(title: MiniaturaCard.localizedLocationName(loc.name, lang: languageSettings.language), latitude: loc.latitude, longitude: loc.longitude, ordem: card.ordem)
                     } ?? []
                 }
-                let mapTitle: String = languageSettings.language == "pt"
-                    ? "Mapa de Favoritos"
-                    : "Favorites Map"
+                let mapTitle: String = languageSettings.language == "pt" ? "Mapa de Favoritos" : "Favorites Map"
                 
                 ZStack(alignment: .bottom) {
                     VStack(spacing: 0) {
-                        Text(languageSettings.language == "pt" ? "Favoritos" : "Favorites")
-                            .font(.system(size: isTablet ? 34 : 26, weight: .regular, design: .rounded))
-                            .foregroundColor(Color.primary)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.top, isTablet ? 20 : 16)
-                            .padding(.bottom, isTablet ? 28 : 20)
+                        // Cabeçalho com título e botão de reordenar
+                        HStack {
+                            Spacer()
+                            Text(languageSettings.language == "pt" ? "Favoritos" : "Favorites")
+                                .font(.system(size: isTablet ? 34 : 26, weight: .regular, design: .rounded))
+                                .foregroundColor(Color.primary)
+                            Spacer()
+                        }
+                        .overlay(alignment: .trailing) {
+                            if !favoriteCards.isEmpty {
+                                Button(action: {
+                                    withAnimation { isEditingOrder.toggle() }
+                                }) {
+                                    Text(isEditingOrder ?
+                                        (languageSettings.language == "pt" ? "Pronto" :
+                                         languageSettings.language == "es" ? "Listo" :
+                                         languageSettings.language == "fr" ? "Terminé" : "Done") :
+                                        (languageSettings.language == "pt" ? "Reordenar" :
+                                         languageSettings.language == "es" ? "Reordenar" :
+                                         languageSettings.language == "fr" ? "Réordonner" : "Reorder"))
+                                        .font(.system(size: 15, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color(red: 81/255, green: 160/255, blue: 206/255))
+                                }
+                                .padding(.trailing, horizontalPadding)
+                            }
+                        }
+                        .padding(.top, isTablet ? 20 : 16)
+                        .padding(.bottom, isTablet ? 28 : 20)
                         
                         if favoriteCards.isEmpty {
                             Spacer()
@@ -88,54 +105,136 @@ struct FavoritesView: View {
                                 .font(.system(size: isTablet ? 22 : 18, weight: .medium, design: .rounded))
                                 .foregroundColor(.secondary)
                                 .padding()
-                                .accessibilityLabel(languageSettings.language == "pt" ? "Nenhum favorito ainda" : "No favorites yet")
                             Spacer()
                         } else {
                             ScrollView {
                                 VStack(spacing: 0) {
                                     LazyVGrid(columns: columns, spacing: spacing) {
-                                        ForEach(favoriteCards, id: \.key) { (favKey, card, translation) in
-                                            Button(action: { selectedCard = card }) {
-                                                VStack(alignment: .center, spacing: 10) {
-                                                    ZStack(alignment: .topTrailing) {
-                                                        // Imagem com cantos arredondados em toda a volta
+                                        ForEach(Array(favoriteCards.enumerated()), id: \.element.key) { index, element in
+                                            let card = element.card
+                                            let translation = element.translation
+                                            
+                                            VStack(alignment: .center, spacing: 10) {
+                                                ZStack(alignment: .center) {
+                                                    // Cartão de fundo (Imagem)
+                                                    Button(action: {
+                                                        if !isEditingOrder { selectedCard = card }
+                                                    }) {
                                                         Image(imageName(for: card))
                                                             .resizable()
                                                             .scaledToFill()
                                                             .frame(width: itemWidth, height: itemWidth)
                                                             .clipped()
                                                             .cornerRadius(16)
-                                                        
-                                                        // Botão de favorito no canto superior direito
-                                                        Button(action: {
-                                                            favoritesManager.toggleFavorite(card: card)
-                                                        }) {
-                                                            Image(systemName: "heart.fill")
-                                                                .foregroundColor(.red)
-                                                                .font(.system(size: isTablet ? 20 : 16))
-                                                                .padding(8)
-                                                        }
-                                                        .frame(width: 44, height: 44)
-                                                        .contentShape(Circle())
-                                                        .padding(4)
-                                                        .accessibilityLabel(languageSettings.language == "pt" ? "Remover dos favoritos" : "Remove from favorites")
                                                     }
-                                                    .frame(width: itemWidth, height: itemWidth)
+                                                    .buttonStyle(PlainButtonStyle())
                                                     
-                                                    // Nome do cartão FORA e ABAIXO da imagem
-                                                    Text(translation.titulo)
-                                                        .font(.system(size: isTablet ? 16 : 14, weight: .medium, design: .rounded))
-                                                        .foregroundColor(.primary)
-                                                        .multilineTextAlignment(.center)
-                                                        .lineLimit(1)
-                                                        .frame(width: itemWidth)
+                                                    // Se estiver em modo de edição, mostra sempre as 4 setas em cruz em todos os cartões
+                                                    if isEditingOrder {
+                                                        Color.black.opacity(0.6)
+                                                            .cornerRadius(16)
+                                                        
+                                                        ZStack {
+                                                            // Seta para Cima (sempre visível; desativada se estiver no topo)
+                                                            Button(action: {
+                                                                if index - columnsCount >= 0 {
+                                                                    withAnimation {
+                                                                        favoritesManager.moveItem(from: index, to: index - columnsCount)
+                                                                    }
+                                                                }
+                                                            }) {
+                                                                Image(systemName: "chevron.up")
+                                                                    .font(.system(size: 24, weight: .bold))
+                                                                    .foregroundColor(.white)
+                                                                    .shadow(color: Color.black.opacity(0.8), radius: 2, x: 0, y: 1)
+                                                            }
+                                                            .offset(y: -38)
+                                                            .opacity(index - columnsCount >= 0 ? 1.0 : 0.3) // Fica mais transparente se não houver para onde subir
+                                                            
+                                                            // Seta para Baixo (permite mover até ao limite máximo do array)
+                                                            // Seta para Baixo (permite descer se não for o último elemento)
+                                                            Button(action: {
+                                                                if index < favoriteCards.count - 1 {
+                                                                    withAnimation {
+                                                                        let target = min(index + columnsCount, favoriteCards.count - 1)
+                                                                        favoritesManager.moveItem(from: index, to: target)
+                                                                    }
+                                                                }
+                                                            }) {
+                                                                Image(systemName: "chevron.down")
+                                                                    .font(.system(size: 24, weight: .bold))
+                                                                    .foregroundColor(.white)
+                                                                    .shadow(color: Color.black.opacity(0.8), radius: 2, x: 0, y: 1)
+                                                            }
+                                                            .offset(y: 38)
+                                                            .opacity(index < favoriteCards.count - 1 ? 1.0 : 0.3)
+                                                            
+                                                            // Seta para a Esquerda (sempre visível; desativada no primeiro item)
+                                                            Button(action: {
+                                                                if index > 0 {
+                                                                    withAnimation {
+                                                                        favoritesManager.moveItem(from: index, to: index - 1)
+                                                                    }
+                                                                }
+                                                            }) {
+                                                                Image(systemName: "chevron.left")
+                                                                    .font(.system(size: 24, weight: .bold))
+                                                                    .foregroundColor(.white)
+                                                                    .shadow(color: Color.black.opacity(0.8), radius: 2, x: 0, y: 1)
+                                                            }
+                                                            .offset(x: -38)
+                                                            .opacity(index > 0 ? 1.0 : 0.3)
+                                                            
+                                                            // Seta para a Direita (sempre visível; desativada no último item)
+                                                            Button(action: {
+                                                                if index < favoriteCards.count - 1 {
+                                                                    withAnimation {
+                                                                        favoritesManager.moveItem(from: index, to: index + 1)
+                                                                    }
+                                                                }
+                                                            }) {
+                                                                Image(systemName: "chevron.right")
+                                                                    .font(.system(size: 24, weight: .bold))
+                                                                    .foregroundColor(.white)
+                                                                    .shadow(color: Color.black.opacity(0.8), radius: 2, x: 0, y: 1)
+                                                            }
+                                                            .offset(x: 38)
+                                                            .opacity(index < favoriteCards.count - 1 ? 1.0 : 0.3)
+                                                        }
+                                                    }else {
+                                                        // Botão normal de favorito (canto superior direito)
+                                                        VStack {
+                                                            HStack {
+                                                                Spacer()
+                                                                Button(action: {
+                                                                    favoritesManager.toggleFavorite(card: card)
+                                                                }) {
+                                                                    Image(systemName: "heart.fill")
+                                                                        .foregroundColor(.red)
+                                                                        .font(.system(size: isTablet ? 20 : 16))
+                                                                        .padding(8)
+                                                                }
+                                                                .frame(width: 44, height: 44)
+                                                                .contentShape(Circle())
+                                                                .padding(4)
+                                                            }
+                                                            Spacer()
+                                                        }
+                                                    }
                                                 }
+                                                .frame(width: itemWidth, height: itemWidth)
+                                                
+                                                Text(translation.titulo)
+                                                    .font(.system(size: isTablet ? 16 : 14, weight: .medium, design: .rounded))
+                                                    .foregroundColor(.primary)
+                                                    .multilineTextAlignment(.center)
+                                                    .lineLimit(1)
+                                                    .frame(width: itemWidth)
                                             }
-                                            .buttonStyle(PlainButtonStyle())
                                         }
                                     }
                                     .padding(.horizontal, horizontalPadding)
-                                    .frame(maxWidth: 1100) // 👈 Garante que a grelha não estica para além do limite
+                                    .frame(maxWidth: 1100)
                                     .frame(maxWidth: .infinity)
                                     .padding(.bottom, 100)
                                 }
@@ -163,12 +262,9 @@ struct FavoritesView: View {
                             .padding(.vertical, 10)
                             .background(.regularMaterial)
                             .clipShape(Capsule())
-                            .overlay(
-                                Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1)
-                            )
+                            .overlay(Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1))
                             .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.6 : 0.15), radius: 4)
                         }
-                        .accessibilityLabel(languageSettings.language == "pt" ? "Abrir mapa dos favoritos" : "Open favorites map")
                         
                         Spacer()
                         
@@ -185,12 +281,9 @@ struct FavoritesView: View {
                             .padding(.vertical, 10)
                             .background(.regularMaterial)
                             .clipShape(Capsule())
-                            .overlay(
-                                Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1)
-                            )
+                            .overlay(Capsule().stroke(Color.primary.opacity(0.2), lineWidth: 1))
                             .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.6 : 0.15), radius: 4)
                         }
-                        .accessibilityLabel(languageSettings.language == "pt" ? "Partilhar favoritos" : "Share favorites")
                         Spacer()
                     }
                     .padding(.bottom, 12)
@@ -224,7 +317,17 @@ struct FavoritesView: View {
                     }
                 )
                 .sheet(isPresented: $showShareSheet) {
-                    let favoritesList = favoriteCards.map { "• " + $0.2.titulo }.joined(separator: "\n")
+                    let favoritesList = favoriteCards.map { element in
+                        let translation = element.2
+                        // Junta o título e, se existir shortDescription, adiciona-a numa nova linha
+                        var text = "• " + translation.titulo
+                        let shortDesc = translation.shortDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+                        if !shortDesc.isEmpty {
+                            text += "\n  \(shortDesc)"
+                        }
+                        return text
+                    }.joined(separator: "\n\n")
+                    
                     ActivityView(activityItems: [favoritesList])
                 }
             } else {

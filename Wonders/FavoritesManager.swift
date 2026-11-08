@@ -5,7 +5,7 @@ import FirebaseFirestore
 import os
 
 class FavoritesManager: ObservableObject {
-    @Published private(set) var favorites: Set<String> = []
+    @Published var favorites: [String] = [] // Array ordenado para preservar a ordem dos favoritos
     private var listener: ListenerRegistration?
     private var userId: String? {
         Auth.auth().currentUser?.uid
@@ -30,16 +30,40 @@ class FavoritesManager: ObservableObject {
         guard let uid = userId else { return }
         let favKey = favoriteKey(for: card)
         let userRef = db.collection("users").document(uid)
-        if favorites.contains(favKey) {
-            favorites.remove(favKey)
+        
+        if let index = favorites.firstIndex(of: favKey) {
+            favorites.remove(at: index)
             userRef.updateData([
                 "favorites": FieldValue.arrayRemove([favKey])
             ])
         } else {
-            favorites.insert(favKey)
-            userRef.setData([
+            favorites.append(favKey) // Adiciona ao fim da lista ordenada
+            userRef.updateData([
                 "favorites": FieldValue.arrayUnion([favKey])
-            ], merge: true)
+            ])
+        }
+    }
+
+    // Função para mover itens na grelha 2D (suporta linhas incompletas e adaptáveis)
+        func moveItem(from sourceIndex: Int, to destinationIndex: Int) {
+            guard sourceIndex >= 0, sourceIndex < favorites.count,
+                  sourceIndex != destinationIndex else { return }
+            
+            // Garante que o índice de destino respeita os limites do array
+            let targetIndex = min(max(0, destinationIndex), favorites.count - 1)
+            
+            let item = favorites.remove(at: sourceIndex)
+            favorites.insert(item, at: targetIndex)
+            saveFavoritesOrder()
+        }
+
+    private func saveFavoritesOrder() {
+        guard let uid = userId else { return }
+        let userRef = db.collection("users").document(uid)
+        userRef.setData(["favorites": favorites], merge: true) { error in
+            if let error = error {
+                os_log("[FavoritesManager] Erro ao guardar ordem dos favoritos: %{public}@", log: .default, type: .error, error.localizedDescription)
+            }
         }
     }
 
@@ -66,7 +90,7 @@ class FavoritesManager: ObservableObject {
                 return
             }
             if let data = snapshot?.data(), let favs = data["favorites"] as? [String] {
-                self.favorites = Set(favs)
+                self.favorites = favs
             } else {
                 self.favorites = []
             }
